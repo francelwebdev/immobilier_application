@@ -21,3 +21,10 @@ puts "========================"
     redirect_to root_path
   end
 end
+
+def facebook
+    if request.env["omniauth.auth"].info.email.blank?
+      redirect_to "/users/auth/facebook?auth_type=rerequest&scope=email"
+      return # be sure to include an return if there is code after this otherwise it will be executed
+    end
+  end
