@@ -5,9 +5,36 @@
         <div class="row">
             <div class="col-12">
                 <h2 class="text-white">Affiner votre recherche</h2>
-            </div>            
+            </div>
             <div class="col-12 py-3" style="border-radius: 5px; background-color: rgba(0, 0, 0, 0.3) !important;">
-                <%= render "shareds/property_search_form_in_result_page" %>
+                <%= simple_form_for "", url: properties_path, method: :get do |f| %>
+                <div class="row px-3">
+                    <div class="col-lg-4 px-1 mb-2">
+                        <%= f.input :property_type, collection: ["Appartement", "Maison", "Bureau", "Commerce", "Villa", "Sanitaire"], prompt: "Type de bien", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                    </div>
+                    <div class="col-lg-4 px-1 mb-2">
+                        <%= f.input :ad_type, collection: ["Location"], prompt: "Type d'annonce", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                    </div>
+                    <div class="col-lg-4 px-1 mb-2">
+                        <%= f.input :city, placeholder: "Ou ? Zogbo, Fifadji, Fidjrossè ?", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                    </div>
+                    <div class="col-lg-4 px-1 mb-2">
+                        <%= f.input :room, collection: ["1 pièce", "2 pièces", "3 pièces", "4 pièces", "5 pièces", "plus de 5 pièces"], prompt: "Nombres de pièce", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                    </div>
+                    <div class="col-lg-2 px-1 mb-2">
+                        <%= f.input :loyer_minimum, as: :decimal, placeholder: "Loyer min", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                    </div>
+                    <div class="col-lg-2 px-1 mb-2">
+                        <%= f.input :loyer_maximum, as: :decimal, placeholder: "Loyer max", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                    </div>
+                    <div class="col-lg-2 px-1 mb-2">
+                        <%= f.input :surface_minimum, as: :integer, placeholder: "Surface min", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                    </div>
+                    <div class="col-lg-2 px-1 mb-2">
+                        <%= f.button :submit, "Rechercher", name: nil, class: 'btn btn-primary btn-block btn-lg' %>
+                    </div>
+                </div>
+                <% end %>
             </div>
         </div>
     </div>

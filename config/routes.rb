@@ -21,9 +21,7 @@ Rails.application.routes.draw do
 		post 'properties/:id/publish', to: 'properties#publish', as: "publish_property"
 
 		post 'properties/:id/deactivate', to: 'properties#deactivate', as: "deactivate_property"
-
-		get "profile/:full_name", to: 'profiles#show', as: "user_profile"
-
+		
 		resources :properties
 
 		resources :messages, only: [:create]
