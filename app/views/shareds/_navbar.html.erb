@@ -8,7 +8,7 @@
 <% content_for :dropdown_menu do %>
 <% if user_signed_in? %>
 <div class="dropdown-menu dropdown-menu-right mt-3" aria-labelledby="navbarDropdown">
-    <h6 class="dropdown-header">Content de vous revoir ! <br> <%= current_user.name %></h6>
+    <h6 class="dropdown-header">Content de vous revoir ! <br> <%= current_user.first_name %> <%= current_user.last_name %></h6>
     <div class="dropdown-divider"></div>
     <%= link_to "Mes biens", my_properties_path, class: "dropdown-item" %>
     <%= link_to "Mon profile", edit_user_registration_path, class: "dropdown-item" %>
@@ -66,10 +66,10 @@ box-shadow: 0 10px 20px rgba(0,0,0,.1);
 
 <ul class="navbar-nav ml-auto d-flex align-items-center">
     <% if user_signed_in? %>
-        <% if current_user.picture.attached? %>
+        <% if current_user.image.attached? %>
             <%= yield :add_property %>
             <li class="nav-item dropdown mx-2">
-                <%= image_tag(current_user.picture, size: "50x50", class: "rounded-circle dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false") %>
+                <%= image_tag(current_user.image, size: "50x50", class: "rounded-circle dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false") %>
                 <%= yield :dropdown_menu %>
             </li>
         <% else %>

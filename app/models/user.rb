@@ -27,8 +27,8 @@ class User < ApplicationRecord
 
     user.first_name = auth.info.first_name
     user.last_name = auth.info.last_name
-    user.picture = auth.info.picture
     user.gender = auth.info.gender
+    user.phone = auth.info.phone
 
     # If you are using confirmable and the provider(s) you use validate emails, 
     # uncomment the line below to skip the confirmation emails.
