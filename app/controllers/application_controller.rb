@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
     def default_url_options
         { locale: I18n.locale }
-    end    
+    end
 
     def tout_les_ad_types
         @ad_types = Property::AD_TYPE

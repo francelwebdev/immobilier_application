@@ -254,9 +254,13 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-
-  config.omniauth :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"], callback_url: "https://sicoapp.herokuapp.com/users/auth/facebook/callback"
-
+  config.omniauth :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"], token_params: { parse: :json }, scope: 'public_profile,email',
+                info_fields: 'email,first_name,last_name,gender,birthday,location,picture',
+                client_options: {
+                    site: 'https://graph.facebook.com/v2.11',
+                    authorize_url: "https://www.facebook.com/v2.11/dialog/oauth",
+                    ssl: { ca_file: '/usr/lib/ssl/certs/ca-certificates.crt' }
+                }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
