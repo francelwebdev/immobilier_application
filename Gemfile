@@ -113,6 +113,7 @@ gem 'cancancan'
 gem 'typedJS'
 gem 'sweetalert-rails'
 gem 'sweet-alert-confirm'
+gem 'sweetify'
 gem 'magnific-popup-rails'
 
 # Géolocalisation
@@ -121,7 +122,5 @@ gem 'magnific-popup-rails'
 
 gem 'trix'
 gem 'will_paginate'
-
 gem 'ransack'
 
-gem 'sweetify'

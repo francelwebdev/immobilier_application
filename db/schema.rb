@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_03_124027) do
+ActiveRecord::Schema.define(version: 2018_05_18_205844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2018_06_03_124027) do
   create_table "contacts", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.bigint "phone_number"
+    t.integer "phone"
     t.string "email"
     t.text "message"
     t.datetime "created_at", null: false
@@ -59,10 +59,10 @@ ActiveRecord::Schema.define(version: 2018_06_03_124027) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string "customer_full_name"
-    t.string "customer_email"
-    t.bigint "customer_phone_number"
-    t.text "customer_message"
+    t.string "name"
+    t.string "email"
+    t.integer "phone"
+    t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2018_06_03_124027) do
     t.string "city"
     t.string "room"
     t.boolean "available"
-    t.boolean "published"
+    t.boolean "published", default: false
     t.integer "avance"
     t.string "feature", array: true
     t.string "etage"
@@ -94,10 +94,10 @@ ActiveRecord::Schema.define(version: 2018_06_03_124027) do
     t.string "commune"
     t.string "property_type"
     t.string "ad_type"
-    t.datetime "expiration_date"
+    t.datetime "expire_at"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
     t.index ["slug"], name: "index_properties_on_slug", unique: true
     t.index ["user_id"], name: "index_properties_on_user_id"
   end
@@ -111,27 +111,26 @@ ActiveRecord::Schema.define(version: 2018_06_03_124027) do
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "terms_and_conditions"
-    t.string "first_name"
-    t.string "last_name"
-    t.bigint "phone"
+    t.boolean "terms_and_conditions", default: false
     t.boolean "admin", default: false
     t.string "role"
-    t.string "gender"
     t.string "provider"
     t.string "uid"
+    t.string "first_name"
+    t.string "last_name"
     t.string "image"
-    t.datetime "token_expiry"
-    t.string "token"
+    t.string "gender"
+    t.integer "phone"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["phone"], name: "index_users_on_phone", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

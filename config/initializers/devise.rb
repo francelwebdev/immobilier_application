@@ -254,6 +254,14 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
+  # Mon code
+  config.omniauth :facebook, ENV["APP_ID"], ENV["APP_SECRET"], token_params: { parse: :json }, scope: 'email', info_fields: 'email, first_name, last_name, phone, gender, image', image_size: 'square', secure_image_url: true, client_options: {
+    site: 'https://graph.facebook.com/v2.11',
+    authorize_url: "https://www.facebook.com/v2.11/dialog/oauth",
+    ssl: { ca_path: '/etc/ssl/certs' }
+  }
+# Mon code
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
@@ -276,12 +284,4 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
-
-# Mon code
-config.omniauth :facebook, ENV["APP_ID"], ENV["APP_SECRET"], token_params: { parse: :json }, scope: 'email, public_profile', info_fields: 'email, first_name, last_name, phone, gender, picture', secure_image_url: true, client_options: {
-                    site: 'https://graph.facebook.com/v2.11',
-                    authorize_url: "https://www.facebook.com/v2.11/dialog/oauth",
-                    ssl: { ca_path: '/etc/ssl/certs' }
-                }
-# Mon code
 end

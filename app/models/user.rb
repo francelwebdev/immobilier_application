@@ -6,17 +6,17 @@ class User < ApplicationRecord
   devise :confirmable
   devise :omniauthable, omniauth_providers: %i[facebook]
 
-  # validates :role, :terms_and_conditions, presence: true
+  validates :role, :terms_and_conditions, presence: true, on: :update
 
   after_create :send_welcome_email
   after_destroy :suprimer_les_photos
 
   has_many :properties, dependent: :destroy
   has_many :messages
-  has_one_attached :profile_photo
+  has_one_attached :image
 
-  # ROLE = ["Propriétaire", "Agent immobilier"]
-  # GENDER = ["Masculin", "Féminin
+  ROLE = ["Propriétaire", "Agent immobilier"]
+  GENDER = ["Masculin", "Féminin"]
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
