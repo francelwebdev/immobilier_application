@@ -1,10 +1,10 @@
 <%- if controller_name != 'sessions' %>
-    <span>Vous avez déjà un compte ?</span>
+    <span>Vous avez un compte ?</span>
   <%= link_to t(".sign_in"), new_session_path(resource_name) %><br />
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-    <span>Vous n'avez pas encore un compte ?</span>
+    <span>Vous n'avez pas un compte ?</span>
   <%= link_to t(".sign_up"), new_registration_path(resource_name) %><br />
 <% end -%>
 
