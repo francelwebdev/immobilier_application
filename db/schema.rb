@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_03_124021) do
+ActiveRecord::Schema.define(version: 2018_06_03_124027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,17 +131,13 @@ ActiveRecord::Schema.define(version: 2018_06_03_124021) do
     t.boolean "terms_and_conditions"
     t.string "first_name"
     t.string "last_name"
-    t.bigint "phone_number"
+    t.bigint "phone"
     t.boolean "admin", default: false
     t.string "role"
     t.string "gender"
-    t.text "about_me"
-    t.string "address"
     t.string "provider"
     t.string "uid"
     t.string "image"
-    t.string "name"
-    t.string "facebook_picture_url"
     t.datetime "token_expiry"
     t.string "token"
     t.index ["email"], name: "index_users_on_email", unique: true
