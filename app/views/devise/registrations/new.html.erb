@@ -10,20 +10,7 @@
         <div class="card-body px-5">
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.error_notification %>
-
-          <% if resource.errors.any? %>
-          <div class="alert alert-danger" role="alert">
-            <p class="alert-heading">
-              <%= pluralize(resource.errors.count, "erreur", "erreurs") %> ont empêché l'enregistrement de ce produit:
-            </p>
-            <ul>
-              <% resource.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
-          <% end %>
-
+          
           <div class="form-inputs">
             <%= f.input :role, autofocus: true, collection: ["Propriétaire", "Agent immobilier"], required: true, label: "Vous êtes" %>
             <%= f.input :email, required: true %>

@@ -10,3 +10,10 @@
 <p>To login to the site, just follow this link: <%= link_to "#{home_page_url}", home_page_url %>.</p>
 <p>Thanks for joining and have a great day!</p>
 <p>If you have any questions please don't hesitate to contact us!</p>
+
+
+<h2>Bienvenue sur <%= link_to "SICO", home_page_url %>, <%= @user.first_name %>,</h2>
+<p>Vous vous êtes inscrit avec succès sur <%= link_to "SICO", "sicoapp.herokuapp.com" %>, votre adresse email est: <%= @user.email %> .</p>
+<p>Pour vous connecter au site, il suffit de suivre ce lien: <%= link_to "#{home_page_url}", home_page_url %> .</p>
+<p>Merci de votre inscription et bonne journée!</p>
+<p>Si vous avez des questions, n'hésitez pas à nous contacter!</p>

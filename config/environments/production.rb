@@ -96,7 +96,6 @@ Rails.application.configure do
   config.active_storage.service = :cloudinary
 
   # Pour l'envoie d'email en prodduction.
-
   config.action_mailer.default_url_options = { :host => "sicoapp.herokuapp.com" }
   config.action_mailer.delivery_method = :smtp
 

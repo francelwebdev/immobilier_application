@@ -2,19 +2,6 @@
 
 <%= f.error_notification %>
 
-<% if @property.errors.any? %>
-<div class="alert alert-danger" role="alert">
-    <p>
-        <%= pluralize(@property.errors.count, "erreur", "erreurs") %> ont empêché l'enregistrement de ce produit:
-    </p>
-    <ul>
-        <% @property.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-    </ul>
-</div>    
-<% end %>
-
 <div class="card border-0 mb-4 mon-box-shadow">
     <div class="card-body">
         <div class="form-row p-2">

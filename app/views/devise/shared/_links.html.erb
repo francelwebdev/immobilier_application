@@ -25,3 +25,12 @@
     <%= link_to t('.sign_in_with_provider', provider: provider.to_s.titleize), omniauth_authorize_path(resource_name, provider) %><br />
   <% end -%>
 <% end -%>
+
+
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+<%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-primary btn-lg" do %>
+<%= t('.sign_in_with_provider', provider: provider.to_s.titleize) -%>
+<% end -%>
+  <% end -%>
+<% end -%>
