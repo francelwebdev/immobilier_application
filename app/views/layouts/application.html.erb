@@ -28,7 +28,7 @@
 		<%= render 'shareds/flash' %>
 		<%= yield %>
 	</main>
-	
+
 	<!-- <%= render "shareds/call_to_action_for_agency" if !current_page?(agency_benefits_path) %> -->
 	<%= render "shareds/call_to_action_for_owner" %>
 	<%= render "shareds/footer" %>
@@ -37,18 +37,21 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
-    <!-- <% if current_page?(home_page_path) %>
-    <%= yield :value_proposition_text_typed %>
-    <% end %> -->
+	<!-- <% if current_page?(home_page_path) %>
+	<%= yield :value_proposition_text_typed %>
+	<% end %> -->
 
-    <script>
-    	$("#js-rotating").Morphext({
-    animation: "swing", // Overrides default "bounceIn"
-    speed: 4000, // Overrides default 2000
-    complete: function () {
-        // Overrides default empty function
-    }
-});
+	<script>
+	$("#js-rotating").Morphext({
+		animation: "swing", // Overrides default "bounceIn"
+		speed: 4000, // Overrides default 2000
+		complete: function () {
+			// Overrides default empty function
+		}
+	});
 </script>
+
+<%= render 'sweetify/alert' %>
+
 </body>
 </html>

@@ -123,3 +123,5 @@ gem 'trix'
 gem 'will_paginate'
 
 gem 'ransack'
+
+gem 'sweetify'
