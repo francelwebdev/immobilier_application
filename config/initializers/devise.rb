@@ -255,8 +255,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
 
-  config.omniauth :facebook, ENV["FACEBOOK_KEY"], ENV["FACEBOOK_SECRET"], callback_url: "https://sicoapp.herokuapp.com/users/auth/facebook/callback"
-
+  config.omniauth :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"], callback_url: "https://sicoapp.herokuapp.com/users/auth/facebook/callback"
 
 
   # ==> Warden configuration

@@ -11,7 +11,7 @@ class User < ApplicationRecord
     after_create :send_welcome_email
     after_destroy :suprimer_les_photos
 
-    has_many :properties, dependent: :destroy    
+    has_many :properties, dependent: :destroy
     has_many :messages
     has_one_attached :profile_photo
 

@@ -9,7 +9,7 @@
 <div class="dropdown-menu dropdown-menu-right mt-3" aria-labelledby="navbarDropdown">
     <h6 class="dropdown-header">Content de vous revoir ! <br> <%= current_user.email %></h6>
     <div class="dropdown-divider"></div>
-    <%= link_to "Mes biens", my_properties_path, class: "dropdown-item" %> 
+    <%= link_to "Mes biens", my_properties_path, class: "dropdown-item" %>
     <%= link_to "Mon profile", edit_user_registration_path, class: "dropdown-item" %>
     <div class="dropdown-divider"></div>
     <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>

@@ -23,7 +23,7 @@ Rails.application.routes.draw do
         post 'properties/:id/deactivate', to: 'properties#deactivate', as: "deactivate_property"
 
         get "profile/:full_name", to: 'profiles#show', as: "user_profile"
-        
+
         resources :properties
 
         resources :messages, only: [:create]
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
         scope "/dashboard" do
             resources :my_properties, only: [:index, :edit, :destroy]
         end
-   
+
     end
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
