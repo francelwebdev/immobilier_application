@@ -17,8 +17,8 @@
 </head>
 <body class="<%= controller.controller_name %>/<%= controller.action_name %>">
 	<%= render "shareds/navbar" %>
-	<main>
 		<%= render 'shareds/flash' %>
+	<main>
 		<%= yield %>
 	</main>
 	<!-- <%= render "shareds/call_to_action_for_agency" if !current_page?(agency_benefits_path) %> -->

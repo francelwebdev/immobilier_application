@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   has_many :properties, dependent: :destroy
   has_many :messages
-  has_one_attached :picture
+  has_one_attached :image
 
   ROLE = ["Propriétaire", "Agent immobilier"]
   GENDER = ["Masculin", "Féminin"]
