@@ -6,6 +6,8 @@ class User < ApplicationRecord
   devise :confirmable
   devise :omniauthable, omniauth_providers: %i[facebook]
 
+  validates :role, presence: true
+
   after_create :send_welcome_email
   after_destroy :suprimer_photo_de_profile
 
@@ -20,7 +22,7 @@ class User < ApplicationRecord
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     user.email = auth.info.email
     user.password = Devise.friendly_token[0,20]
-    user.name = auth.info.name   # assuming the user model has a name
+    #user.name = auth.info.name   # assuming the user model has a name
     user.image = auth.info.image # assuming the user model has an image
 
     user.first_name = auth.info.first_name
