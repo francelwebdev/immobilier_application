@@ -1,0 +1,13 @@
+<%= simple_form_for :search, url: , method: :get do |f| %>
+  <div class="row px-1">
+      <div class="col-md-5 px-0">
+        <%= f.input :mot_cle, label: false, placeholder: "Nom d'un médecin, clinique ou spécialité", input_html: { class: 'form-control form-control-lg supri-bordu' } %>
+      </div>
+      <div class="col-md-6 offset-md-2 px-0">
+        <%= f.input :lieu, label: false, required: true, placeholder: "Nom de votre ville ou quartier", input_html: { class: 'form-control form-control-lg supri-bordu' } %>
+      </div>
+      <div class="col-md-2 px-0">
+        <%= f.button :submit, "Rechercher", name: nil,  class: 'btn btn-primary btn-lg btn btn-block supri-bordu' %>
+      </div>
+  </div>
+<% end %>

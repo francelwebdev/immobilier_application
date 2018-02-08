@@ -1,0 +1,38 @@
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron jumbotron-fluid d-flex align-items-center mb-0 jumbotron-welcomes">
+    <div class="container text-center">
+        <h1 class="text-white font-weight-bold mb-4">Trouvez votre maison de rêve sans l'aide d'un agent immobilier</h1>
+            <div class="row">
+                <div class="col-12">
+                    <%= form_with url: accueil_path, method: :get, local: true do |form|  %>
+                        <div class="row px-1">
+                            <div class="col-md-3 px-0">
+                                <!--  style="box-shadow: 0 5px 30px rgba(156, 160, 171, 0.25) !important;" -->
+                            <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control form-control-lg supri-bordu' %>
+                            </div>
+                            <div class="col-md-3 px-0">
+                            <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control form-control-lg supri-bordu' %>
+                            </div>
+                            <div class="col-md-4 px-0">
+                            <%= form.text_field :city, required: true, placeholder: "Ou cherchez-vous ? Ex: Agla, Zogbo", class: 'form-control form-control-lg supri-bordu' %>
+                            </div>
+                            <div class="col-md-2 px-0">
+                            <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn-lg btn btn-block supri-bordu' %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+
+            <div class="col-12 text-center text-white sr-only">
+                <p class="h1">Ou</p>
+            </div>
+            <div class="col-12 d-flex justify-content-center align-items-center sr-only">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">A proximité de moi</a>
+                    </li>
+                </ul>
+            </div>
+         </div>
+    </div>
+</div>

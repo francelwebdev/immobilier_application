@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <meta name="description" content="Application de petite annonce immobilier de particulier à particulier">
+        <meta name="author" content="Francel AMAMOO">
+
+        <title>Sico - <%= content_for?(:page_title) ? yield(:page_title) : "Pas de title" %></title>
+
+        <%= favicon_link_tag "" %>
+
+        <%= csrf_meta_tags %>
+
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+        <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css", media: "all" %>
+
+        <!-- Add the slick-theme.css if you want default styling -->
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
+        <!-- Add the slick-theme.css if you want default styling -->
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/>
+
+  </head>
+  <body class="Controller : <%= controller.controller_name  %>, Action : <%= controller.action_name  %>">
+
+        <% flash.each do |name, message| %>
+            <%= content_tag :div, message, class: name %>
+        <% end %>
+
+        <%= render "shareds/navbar" %>
+
+        <main>
+
+            <%= yield %>
+
+        </main>
+
+        <!-- <%= render "shareds/mobile_apps" %> -->
+
+        <%= render "shareds/footer" %>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <script src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
+
+        <% if current_page?(accueil_path) %>
+            <%= yield :annonce_nouvellement_publié %>
+        <% end %>
+
+    </body>
+</html>

@@ -1,0 +1,103 @@
+<footer class="container-fluid" style="background-color: #FCFCFC;">
+	<div class="container">
+		<div class="row py-5">
+			<div class="col-md-4 my-3 my-md-0">
+				<h4 class="mb-3 text-uppercase font-weight-bold"><i class="fa fa-home fa-lg" aria-hidden="true""></i> Sico</h4>
+				Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.
+			</div>
+			<div class="col-md-5 my-3 my-md-0">
+				<h4 class="mb-3 font-weight-bold">Liens utiles</h4>
+				<div class="row">
+					<div class="col-md-6">
+						<ul class="nav flex-column">
+							<li class="nav-item">
+								<%= link_to 'Qui sommes-nous', page_path('about'), class: "nav-link pl-0 py-1 text-dark" %>
+							</li>
+							<li class="nav-item">
+								<%= link_to 'Contacter-nous', page_path('about'), class: "nav-link pl-0 py-1 text-dark" %>
+							</li>
+							<li class="nav-item">
+								<%= link_to "Carrières", accueil_path, class: "nav-link pl-0 py-1 text-dark" %>
+							</li>
+							<li class="nav-item">
+								<%= link_to "Tarifs", accueil_path, class: "nav-link pl-0 py-1 text-dark" %>
+							</li>
+							<li class="nav-item">
+								<%= link_to "Conditions générales d'utilisation", accueil_path, class: "nav-link pl-0 py-1 text-dark" %>
+							</li>
+
+							<li class="nav-item">
+								<%= link_to "Politique de confidentialité", accueil_path, class: "nav-link pl-0 py-1 text-dark" %>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-6">
+						<ul class="nav flex-column">
+					<li class="nav-item">
+						<%= link_to "FAQ", accueil_path, class: "nav-link pl-0 py-1 text-dark" %>
+					</li>
+					<li class="nav-item">
+						<%= link_to "Blog", accueil_path, class: "nav-link pl-0 py-1 text-dark" %>
+					</li>
+					<li class="nav-item">
+						<%= link_to "Comment ça marche ?", accueil_path, class: "nav-link pl-0 py-1 text-dark" %>
+					</li>
+					<li class="nav-item">
+						<%= link_to "Contact", accueil_path, class: "nav-link pl-0 py-1 text-dark" %>
+					</li>
+				</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 my-3 my-md-0">
+				<h4 class="mb-3 font-weight-bold">Contact</h4>
+				<address>
+					<ul class="nav flex-column">
+						<li class="nav-item">
+							<a href="" class="nav-link pl-0 py-1 text-dark">
+								<i class="fa fa-map-marker mr-1" aria-hidden="true"></i>
+								<span>Cococodji, Bénin</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="" class="nav-link pl-0 py-1 text-dark">
+								<i class="fa fa-phone mr-1" aria-hidden="true"></i>
+								<span>(229) 62 20 03 90</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<%= mail_to "francel.webdev@gmail.com", subject: "Demande d'information !", class: "nav-link pl-0 py-1 " do %>
+								<i class="fa fa-envelope-o mr-1" aria-hidden="true"></i>
+								<span>francel.webdev@gmail.com</span>
+							<% end %>
+						</li>
+					</ul>
+				</address>
+
+				<ul class="nav">
+					<li class="nav-item">
+						<%= link_to "http://facebook.com", class: "nav-link pl-0 text-dark" do %>
+							<i class="fa fa-facebook fa-lg mr-1" aria-hidden="true"></i>
+						<% end %>
+					</li>
+					<li class="nav-item">
+						<%= link_to "http://facebook.com", class: "nav-link pl-0 text-dark" do %>
+							<i class="fa fa-twitter fa-lg mr-1" aria-hidden="true"></i>
+						<% end %>
+					</li>
+				</ul>
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<hr>
+			</div>
+		</div>
+		<div class="row py-3">
+			<div class="col-12 text-center text-md-right">
+				<p class="text-center">&copy; 2017 - <%= Time.now.year %> Dototché. Tous droit réservé.</p>
+			</div>
+		</div>
+	</div>
+</footer>

@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @ad.title %>
+</p>
+
+<p>
+  <strong>Type of transaction:</strong>
+  <%= @ad.type_of_transaction.name %>
+</p>
+
+<p>
+  <strong>Type of property:</strong>
+  <%= @ad.type_of_property.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @ad.price %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @ad.area %>
+</p>
+
+<p>
+  <strong>Image1 url:</strong>
+  <%= @ad.image1_url %>
+</p>
+
+<p>
+  <strong>Image2 url:</strong>
+  <%= @ad.image2_url %>
+</p>
+
+<p>
+  <strong>Image3 url:</strong>
+  <%= @ad.image3_url %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @ad.description %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @ad.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @ad.city %>
+</p>
+
+<%= link_to 'Edit', edit_ad_path(@ad) %> |
+<%= link_to 'Back', ads_path %>

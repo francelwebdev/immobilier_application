@@ -1,0 +1,15 @@
+// Mon style global
+
+body {
+  * {
+    font-family: 'Roboto', sans-serif;
+
+  }
+  section.besoin_daide {
+    background-image: linear-gradient(rgba(50, 50, 50, .3)), linear-gradient(rgba(50, 50, 50, .3)), url(asset-path("sylwia-pietruszka-218324.jpg")) !important;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+  }
+
+}

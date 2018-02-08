@@ -1,0 +1,113 @@
+<%= form_with url: recherche_path, method: :get, local: true, class: "px-2", role: "search" do |f|  %>
+                    <div class="row">
+                        <div class="col-md-5 px-0">
+                            <div class="form-group">
+                                 <%= f.text_field :mot_cle, class: "form-control form-control-lg supri-bordu", placeholder: "Nom d'un médecin, clinique ou spécialité" %>
+                            </div>
+                        </div>
+                        <div class="col-md-5 px-0">
+                            <div class="form-group">
+                               <%= f.text_field :lieu, class: "form-control form-control-lg supri-bordu", placeholder: "Nom de votre ville ou quartier" %>
+                            </div>
+                        </div>
+                        <div class="col-md-2 px-0">
+                            <div class="form-group">
+                                <%= f.submit "Rechercher", class: "btn btn-primary btn-lg btn btn-block supri-bordu" %>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+
+
+                
+<!-- <div class="container sr-only">
+	<form class="form-signin">
+		<h2 class="form-signin-heading">Please sign in</h2>
+		<label for="inputEmail" class="sr-only">Email address</label>
+		<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+		<label for="inputPassword" class="sr-only">Password</label>
+		<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+		<div class="checkbox">
+			<label>
+				<input type="checkbox" value="remember-me"> Remember me
+			</label>
+		</div>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+	</form>
+</div>
+
+
+<section class="container-fluid" style="background-color: #3799ff;">
+	<div class="container-fluid">
+		<div class="row py-3">
+			<div class="col-12 text-center">
+				<h2 class="text-light">Déposer une annonce</h2>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section>
+	<div class="container">
+		<div class="row py-5">
+			<div class="col-lg-8 offset-lg-2 ">
+				<p>
+					<span class="font-weight-bold">Info :</span> Les champs précédé du signe ( * ) doivent être renseigné ! </p>
+
+				<%= simple_form_for :ad do |f| %>
+					<div class="card mb-4">
+						<div class="card-header bg-primary">
+							<p class="text-light font-weight-bold mb-0">Votre annonce</p>
+						</div>
+						<div class="card-body">
+
+							<%= f.association :category, label: "Catégorie", prompt: "--- Sélectionner une catégorie ---" %>
+
+								<%= f.association :ad_type, as: :radio_buttons, label: "Type d'annonce" %>
+
+									<%= f.association :seller_type, as: :radio_buttons, label: "Vous êtes un" %>
+
+										<%= f.input :title, label: "Titre de l'annonce" %>
+
+											<%= f.input :description, as: :text, label: "Description de l'annonce", input_html: { rows: 10 }  %>
+												<%= f.input :price, as: :integer, label: "Prix"  %>
+
+													<p>
+														<small>
+															<strong>Photos : </strong>Une annonce avec photo est 8 fois plus consultée qu'une annonce sans photo.</small>
+													</p>
+
+													<%= f.input :photo_one, as: :file, wrapper: :horizontal_file_input, label: "Photo 1" %>
+														<%= f.input :photo_two, as: :file, wrapper: :horizontal_file_input, label: "Photo 2" %>
+															<%= f.input :photo_three, as: :file, wrapper: :horizontal_file_input, label: "Photo 3" %>
+						</div>
+					</div>
+
+					<div class="card mb-4">
+						<div class="card-header bg-primary">
+							<p class="text-light font-weight-bold mb-0">Localisation</p>
+						</div>
+						<div class="card-body">
+							<%= f.input :ad_adress, label: "Adresse", placeholder: "Saisissez le lieu ou se trouve l'objet" %>
+						</div>
+					</div>
+
+					<div class="card mb-4">
+						<div class="card-header bg-primary">
+							<p class="text-light font-weight-bold mb-0">Vos informations</p>
+						</div>
+						<div class="card-body">
+							<%= f.input :seller_name, label: "Nom"  %>
+
+								<%= f.input :seller_email, as: :email, placeholder: 'utilisateur@domaine.com', label: "Email"  %>
+
+									<%= f.input :seller_phone_number, as: :tel, label: "Numéro de téléphone", input_html: { maxlength: 8 }  %>
+						</div>
+					</div>
+
+					<%= f.button :submit, "Valider l'annonce", class: "btn btn-primary" %>
+						<% end %>
+			</div>
+		</div>
+	</div>
+</section> -->

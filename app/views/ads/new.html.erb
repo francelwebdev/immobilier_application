@@ -1,0 +1,30 @@
+<% provide :page_title, "Publier une annonce" %>
+
+
+<section class="container-fluid bg-light py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2><i class="fa fa-plus-square mr-1" aria-hidden="true"></i> Publier une annonce</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="container-fluid py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <h2>Information sur le bien immobilier</h2>
+        <hr class="mb-5">
+
+        <%= render 'form', ad: @ad %>
+
+        <!-- <%= link_to 'Back', ads_path %> -->
+
+      </div>
+    </div>
+  </div>
+</section>
+

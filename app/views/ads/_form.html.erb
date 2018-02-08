@@ -1,0 +1,21 @@
+<%= simple_form_for(@ad) do |f| %>
+<%= f.error_notification %>
+
+<div class="form-inputs">
+    <%= f.input :title, label: "Titre de l'annonce" %>
+    <%= f.association :type_of_transaction, label: "Type de transaction" %>
+    <%= f.association :type_of_property, label: "Type de bien immobilier" %>
+    <%= f.input :price, label: "Prix" %>
+    <%= f.input :area, label: "Surface" %>
+    <%= f.input :image1_url, label: "Image" %>
+    <%= f.input :image2_url, label: "Image" %>
+    <%= f.input :image3_url, label: "Image" %>
+    <%= f.input :description, label: "Description" %>
+    <%= f.input :address, label: "Adresse" %>
+    <%= f.input :city, label: "Ville" %>
+</div>
+
+<div class="form-actions">
+    <%= f.button :submit, "Voir l'aperçu", class: "btn btn-primary btn-lg" %>
+</div>
+<% end %>
