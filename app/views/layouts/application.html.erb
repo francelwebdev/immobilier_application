@@ -33,7 +33,17 @@
   <body class="Controller : <%= controller.controller_name  %>, Action : <%= controller.action_name  %>">
 
         <% flash.each do |name, message| %>
-            <%= content_tag :div, message, class: name %>
+
+            <!-- <%= content_tag :div, message, class: name %> -->
+            <% if name == "alert" %>
+            <div class="<%= name %> <%= name %>-danger mb-0">
+                <p class="text-center mb-0 font-weight-bold"><%= message  %></p>
+            </div>
+            <% else %>
+                <div class="<%= name %> <%= name %>-success mb-0">
+                <p class="text-center mb-0 font-weight-bold"><%= message  %></p>
+            </div>
+            <% end %>
         <% end %>
 
         <%= render "shareds/navbar" %>

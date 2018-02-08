@@ -1,5 +1,6 @@
 class AdsController < ApplicationController
   before_action :set_ad, only: [:show, :edit, :update, :destroy, :aperçu]
+  before_action :authenticate_user!, only: [:new]
 
 
   def apercu
