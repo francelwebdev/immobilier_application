@@ -92,8 +92,8 @@ gem 'simple_form', '~> 3.5'
 
 #gem 'activeadmin', '~> 1.1'
 
-# gem 'devise', '~> 4.3'
-# gem 'devise-i18n', '~> 1.4'
+gem 'devise', '~> 4.3'
+gem 'devise-i18n', '~> 1.4'
 
 gem 'geocoder', '~> 1.4', '>= 1.4.5'
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
