@@ -3,7 +3,7 @@
 one:
   title: MyString
   type_of_property: one
-  price: 9.99
+  price: 
   area: 1
   image1_url: MyString
   image2_url: MyString
@@ -11,11 +11,12 @@ one:
   description: MyText
   address: MyString
   city: MyString
+  type_of_transaction: one
 
 two:
   title: MyString
   type_of_property: two
-  price: 9.99
+  price: 
   area: 1
   image1_url: MyString
   image2_url: MyString
@@ -23,3 +24,4 @@ two:
   description: MyText
   address: MyString
   city: MyString
+  type_of_transaction: two

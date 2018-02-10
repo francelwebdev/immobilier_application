@@ -3,12 +3,6 @@ class AdsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
 
-  def apercu
-    @ad = Ad.find(params[:id])
-  end
-
-
-
   # GET /ads
   # GET /ads.json
   def index
@@ -36,7 +30,7 @@ class AdsController < ApplicationController
 
     respond_to do |format|
       if @ad.save
-        format.html { redirect_to voir_apercu_path(@ad), notice: "L'annonce a été créé avec succès." }
+        format.html { redirect_to @ad, notice: "L'annonce a été créé avec succès." }
         format.json { render :show, status: :created, location: @ad }
       else
         format.html { render :new }

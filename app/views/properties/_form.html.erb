@@ -1,0 +1,51 @@
+
+
+<%= simple_form_for(@property) do |f| %>
+  <%= f.error_notification %>
+
+
+
+  <div class="form-inputs">
+    <div class="form-row">
+      <div class="col-12">
+        <%= f.input :title, label: "Titre de l'annonce" %>
+      </div>
+      <div class="col-lg-6">
+        <%= f.association :type_of_transaction, label: "Type de transaction" %>
+      </div>
+      <div class="col-lg-6">
+        <%= f.association :type_of_property, label: "Type de bien immobilier" %>
+      </div>
+      <div class="col-lg-4">
+      <%= f.input :price, label: "Prix" %>
+    </div>
+    <div class="col-lg-4">
+      <%= f.input :area, label: "Surface" %>
+    </div>
+    <div class="col-lg-6">
+
+    </div>
+    <div class="col-lg-6">
+
+    </div>
+    <div class="col-12">
+      <%= f.input :description, label: "Description" %>
+    </div>
+
+    </div>
+    <%= f.input :image1_url, label: "Image1", as: :file %>
+    <%= f.input :image2_url, label: "Image2", as: :file %>
+    <%= f.input :image3_url, label: "Image3", as: :file %>
+
+    <%= f.input :address, label: "Adresse" %>
+    <%= f.input :city, label: "Ville" %>
+  </div>
+
+
+  <div class="form-actions">
+    <%= f.button :submit, "Ajouter mon bien", class: "btn btn-primary btn-lg" %>
+  </div>
+<% end %>
+
+
+<p>Vos coordonnées</p>

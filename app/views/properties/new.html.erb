@@ -1,11 +1,11 @@
-<% provide :page_title, "Publier une annonce" %>
+<% provide :page_title, "Ajouter mon bien immobilier" %>
 
 
 <section class="container-fluid bg-light py-5">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2><i class="fa fa-plus-square mr-1" aria-hidden="true"></i> Publier une annonce</h2>
+                <h2><i class="fa fa-plus-square mr-1" aria-hidden="true"></i> Ajouter mon bien immobilier</h2>
             </div>
         </div>
     </div>
@@ -19,12 +19,14 @@
         <h2>Information sur le bien immobilier</h2>
         <hr class="mb-5">
 
-        <%= render 'form', ad: @ad %>
+        <%= render 'form', property: @property %>
 
-        <!-- <%= link_to 'Back', ads_path %> -->
+        <!-- <%= link_to 'Back', properties_path %> -->
 
       </div>
     </div>
   </div>
 </section>
+
+
 

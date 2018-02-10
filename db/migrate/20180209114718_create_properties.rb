@@ -1,6 +1,6 @@
-class CreateAds < ActiveRecord::Migration[5.1]
+class CreateProperties < ActiveRecord::Migration[5.1]
   def change
-    create_table :ads do |t|
+    create_table :properties do |t|
       t.string :title
       t.references :type_of_property, foreign_key: true
       t.decimal :price, precision: 8, scale: 2
@@ -11,6 +11,7 @@ class CreateAds < ActiveRecord::Migration[5.1]
       t.text :description
       t.string :address
       t.string :city
+      t.references :type_of_transaction, foreign_key: true
 
       t.timestamps
     end

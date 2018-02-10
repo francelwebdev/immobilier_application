@@ -60,7 +60,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #---------- MES GEMS ------#
 #--------------------------#
 
-group :development, :test do
+group :development do
   gem 'sqlite3'
 
   gem 'better_errors', '~> 2.4'
@@ -68,6 +68,9 @@ group :development, :test do
 
   #gem "quiet_assets"
   #gem "pry-byebug"
+
+
+
 end
 
 group :production do
@@ -94,6 +97,12 @@ gem 'simple_form', '~> 3.5'
 
 gem 'devise', '~> 4.3'
 gem 'devise-i18n', '~> 1.4'
+
+# gem 'cancancan', '~> 2.1', '>= 2.1.3'
+
+# gem 'pundit', '~> 1.1'
+
+gem 'friendly_id', '~> 5.2', '>= 5.2.3'
 
 gem 'geocoder', '~> 1.4', '>= 1.4.5'
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
