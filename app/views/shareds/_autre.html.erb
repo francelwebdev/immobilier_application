@@ -1,3 +1,94 @@
+<%= simple_form_for(@property) do |f| %>
+  <%= f.error_notification %>
+
+    <h2>Information sur le bien</h2>
+    <hr class="mb-5">
+
+    <div class="form-inputs">
+      <div class="form-row">
+        <div class="col-12">
+          <%= f.input :title, label: "Titre de l'annonce" %>
+        </div>
+        <div class="col-lg-6">
+          <%= f.association :type_of_transaction, label: "Type de transaction" %>
+        </div>
+        <div class="col-lg-6">
+          <%= f.association :type_of_property, label: "Type de bien immobilier" %>
+        </div>
+        <div class="col-lg-4">
+        <%= f.input :price, label: "Prix" %>
+      </div>
+      <div class="col-lg-4">
+        <%= f.input :area, label: "Surface" %>
+      </div>
+      <div class="col-lg-4">
+        <%= f.input :area, label: "Nombres de pièce" %>
+      </div>
+      <div class="col-12">
+        <%= f.input :description, label: "Description", input_html: { rows: 10 } %>
+      </div>
+      <div class="col-6">
+        <%= f.input :address, label: "Adresse" %>
+      </div>
+      <div class="col-6">
+          <%= f.input :city, label: "Ville" %>
+      </div>
+      </div>
+    </div>
+
+        <h2>Ajouter les photos du bien</h2>
+        <hr class="mb-5">
+
+        <div class="form-inputs">
+
+          <%= f.input :image1_url, label: "Image1", as: :file %>
+          <%= f.input :image2_url, label: "Image2", as: :file %>
+          <%= f.input :image3_url, label: "Image3", as: :file %>
+
+        </div>
+
+
+    <h2>Information de contact</h2>
+    <hr class="mb-5">
+
+    <%= f.simple_fields_for :profile do |profile_form| %>
+
+        <div class="form-inputs">
+          <div class="form-row">
+
+            <div class="col-lg-4">
+                <%= profile_form.input :first_name, label: "Nom" %>
+            </div>
+            <div class="col-lg-4">
+                <%= profile_form.input :last_name, label: "Prénom" %>
+            </div>
+            <div class="col-lg-4">
+                <%= profile_form.input :phone_number, label: "Numéros de contact" %>
+            </div>
+
+          </div>
+        </div>
+
+  <% end %>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Ajouter mon bien", class: "btn btn-primary btn-lg" %>
+  </div>
+
+<% end %>
+
+
+<p>Vos coordonnées</p>
+
+
+
+
+
+
+
+
+
+
 <%= form_with url: recherche_path, method: :get, local: true, class: "px-2", role: "search" do |f|  %>
                     <div class="row">
                         <div class="col-md-5 px-0">
@@ -19,7 +110,7 @@
                 <% end %>
 
 
-                
+
 <!-- <div class="container sr-only">
 	<form class="form-signin">
 		<h2 class="form-signin-heading">Please sign in</h2>

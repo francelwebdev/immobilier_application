@@ -1,27 +1,31 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  property_type: one
+  ad_type: one
   title: MyString
-  type_of_property: one
-  price: 
+  price: 9.99
   area: 1
-  image1_url: MyString
-  image2_url: MyString
-  image3_url: MyString
   description: MyText
   address: MyString
   city: MyString
-  type_of_transaction: one
+  image1: MyString
+  image2: MyString
+  image3: MyString
+  latitude: 1.5
+  longitude: 1.5
 
 two:
+  property_type: two
+  ad_type: two
   title: MyString
-  type_of_property: two
-  price: 
+  price: 9.99
   area: 1
-  image1_url: MyString
-  image2_url: MyString
-  image3_url: MyString
   description: MyText
   address: MyString
   city: MyString
-  type_of_transaction: two
+  image1: MyString
+  image2: MyString
+  image3: MyString
+  latitude: 1.5
+  longitude: 1.5

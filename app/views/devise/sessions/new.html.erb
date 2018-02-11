@@ -1,41 +1,25 @@
-<% provide :page_title, "Connexion" %>
-
 <section class="container-fluid">
     <div class="container">
         <div class="row py-5">
-            <div class="col-lg-6 offset-lg-3">
+            <div class="col-lg-4 offset-lg-4">
 
-                <h3 class="mb-3 text-center">Connexion</h3>
-
-                <div class="card py-4" style="box-shadow: 0 10px 32px 0 rgba(0,0,0,.1);">
-                  <div class="card-body"><!--
-                  <h5 class="card-title">Card title</h5>
-                  <h3 class="card-title  mb-3 text-center">Connexion</h3> -->
+                <h2><%= t(".sign_in") %></h2>
 
                 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
                   <div class="form-inputs">
-                    <%= f.input :email, required: true, autofocus: true, label: "Adresse email" %>
-
-                    <%= f.input :password, required: true, label: "Mot de passe" %>
-
-                    <%= f.input :remember_me, label: "Se souvenir de moi ", as: :boolean if devise_mapping.rememberable? %>
-                    </div>
+                    <%= f.input :email, required: false, autofocus: true %>
+                    <%= f.input :password, required: false %>
+                    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                  </div>
 
                   <div class="form-actions">
-                    <%= f.button :submit, "Se connecter", class: "btn btn-lg btn-primary btn-block" %>
+                    <%= f.button :submit, t(".sign_in") %>
                   </div>
-
-                  </div>
-
                 <% end %>
 
-                  <p class=" card-text text-center">
-                    <%= render "devise/shared/links" %>
-                  </p>
+                <%= render "devise/shared/links" %>
 
-                  </div>
-                </div>
+
             </div>
         </div>
     </div>

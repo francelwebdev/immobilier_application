@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180209183033) do
+ActiveRecord::Schema.define(version: 20180211144548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ad_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string "first_name"
@@ -24,35 +42,36 @@ ActiveRecord::Schema.define(version: 20180209183033) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_profiles_on_slug", unique: true
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "properties", force: :cascade do |t|
+    t.bigint "property_type_id"
+    t.bigint "ad_type_id"
     t.string "title"
-    t.bigint "type_of_property_id"
     t.decimal "price", precision: 8, scale: 2
     t.integer "area"
-    t.string "image1_url"
-    t.string "image2_url"
-    t.string "image3_url"
     t.text "description"
     t.string "address"
     t.string "city"
-    t.bigint "type_of_transaction_id"
+    t.string "image1"
+    t.string "image2"
+    t.string "image3"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.index ["type_of_property_id"], name: "index_properties_on_type_of_property_id"
-    t.index ["type_of_transaction_id"], name: "index_properties_on_type_of_transaction_id"
+    t.integer "profile_id"
+    t.index ["ad_type_id"], name: "index_properties_on_ad_type_id"
+    t.index ["profile_id"], name: "index_properties_on_profile_id"
+    t.index ["property_type_id"], name: "index_properties_on_property_type_id"
+    t.index ["user_id"], name: "index_properties_on_user_id"
   end
 
-  create_table "type_of_properties", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "type_of_transactions", force: :cascade do |t|
+  create_table "property_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -71,13 +90,11 @@ ActiveRecord::Schema.define(version: 20180209183033) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "profiles", "users"
-  add_foreign_key "properties", "type_of_properties"
-  add_foreign_key "properties", "type_of_transactions"
+  add_foreign_key "properties", "ad_types"
+  add_foreign_key "properties", "property_types"
 end

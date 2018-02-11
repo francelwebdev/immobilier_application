@@ -95,8 +95,8 @@ gem 'simple_form', '~> 3.5'
 
 #gem 'activeadmin', '~> 1.1'
 
-gem 'devise', '~> 4.3'
-gem 'devise-i18n', '~> 1.4'
+gem 'devise', '~> 4.4', '>= 4.4.1'
+gem 'devise-i18n', '~> 1.5', '>= 1.5.1'
 
 # gem 'cancancan', '~> 2.1', '>= 2.1.3'
 

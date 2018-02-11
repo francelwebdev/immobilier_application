@@ -1,34 +1,17 @@
-<% provide :page_title, "Inscription" %>
+<h2><%= t(".sign_up") %></h2>
 
-<section class="container-fluid">
-    <div class="container">
-        <div class="row py-5">
-            <div class="col-lg-6 offset-lg-3">
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
 
-                <h3 class="mb-3 text-center">Inscription</h3>
+  <div class="form-inputs">
+    <%= f.input :email, required: true, autofocus: true %>
+    <%= f.input :password, required: true %>
+    <%= f.input :password_confirmation, required: true %>
+  </div>
 
-                <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                  <%= f.error_notification %>
+  <div class="form-actions">
+    <%= f.button :submit, t(".sign_up") %>
+  </div>
+<% end %>
 
-                  <div class="form-inputs">
-                    <%= f.input :username, required: true, autofocus: true, label: "Nom d'utilisateur" %>
-                    <%= f.input :email, required: true, label: "Adresse email" %>
-                    <%= f.input :password, required: true, label: "Mot de passe", hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length) %>
-                    <%= f.input :password_confirmation, required: true, label: "Confirmer le mot de passe" %>
-                  </div>
-
-                  <p class="text-center text-muted"><small>En cliquant sur S’inscrire,, vous acceptez les <a href="" title="">conditions d'utilisation</a> et la <a href="" title="">politique de confidentialité</a>.</small></p>
-
-                  <div class="form-actions">
-                    <%= f.button :submit, "S’inscrire", class: "btn btn-lg btn-primary btn-block" %>
-                  </div>
-                <% end %>
-
-                <p>Déjà inscrit ? <%= render "devise/shared/links" %></p>
-
-
-
-            </div>
-        </div>
-    </div>
-</section>
+<%= render "devise/shared/links" %>

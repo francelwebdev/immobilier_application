@@ -20,7 +20,7 @@ class ProfilesController < ApplicationController
     private
 
     def set_profile
-        @profile = Profile.find(current_user.profile.id)
+        @profile = Profile.friendly.find(current_user.profile.id)
     end
 
     def profile_params

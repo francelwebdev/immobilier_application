@@ -5,12 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
     has_many :properties
-
-    has_one :profile
+    has_one :profile, dependent: :destroy
 
     after_create :build_profile
-
     def build_profile
-        Profile.create(user: self)
-      end
+      Profile.create(user: self)
+    end
+
 end

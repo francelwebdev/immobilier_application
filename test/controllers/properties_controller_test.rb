@@ -17,7 +17,7 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create property" do
     assert_difference('Property.count') do
-      post properties_url, params: { property: { address: @property.address, area: @property.area, city: @property.city, description: @property.description, image1_url: @property.image1_url, image2_url: @property.image2_url, image3_url: @property.image3_url, price: @property.price, title: @property.title, type_of_property_id: @property.type_of_property_id, type_of_transaction_id: @property.type_of_transaction_id } }
+      post properties_url, params: { property: { ad_type_id: @property.ad_type_id, address: @property.address, area: @property.area, city: @property.city, description: @property.description, image1: @property.image1, image2: @property.image2, image3: @property.image3, latitude: @property.latitude, longitude: @property.longitude, price: @property.price, property_type_id: @property.property_type_id, title: @property.title } }
     end
 
     assert_redirected_to property_url(Property.last)
@@ -34,7 +34,7 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update property" do
-    patch property_url(@property), params: { property: { address: @property.address, area: @property.area, city: @property.city, description: @property.description, image1_url: @property.image1_url, image2_url: @property.image2_url, image3_url: @property.image3_url, price: @property.price, title: @property.title, type_of_property_id: @property.type_of_property_id, type_of_transaction_id: @property.type_of_transaction_id } }
+    patch property_url(@property), params: { property: { ad_type_id: @property.ad_type_id, address: @property.address, area: @property.area, city: @property.city, description: @property.description, image1: @property.image1, image2: @property.image2, image3: @property.image3, latitude: @property.latitude, longitude: @property.longitude, price: @property.price, property_type_id: @property.property_type_id, title: @property.title } }
     assert_redirected_to property_url(@property)
   end
 

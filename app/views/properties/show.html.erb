@@ -1,13 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @property.title %>
+  <strong>Property type:</strong>
+  <%= @property.property_type %>
 </p>
 
 <p>
-  <strong>Type of property:</strong>
-  <%= @property.type_of_property %>
+  <strong>Ad type:</strong>
+  <%= @property.ad_type %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @property.title %>
 </p>
 
 <p>
@@ -18,21 +23,6 @@
 <p>
   <strong>Area:</strong>
   <%= @property.area %>
-</p>
-
-<p>
-  <strong>Image1 url:</strong>
-  <%= @property.image1_url %>
-</p>
-
-<p>
-  <strong>Image2 url:</strong>
-  <%= @property.image2_url %>
-</p>
-
-<p>
-  <strong>Image3 url:</strong>
-  <%= @property.image3_url %>
 </p>
 
 <p>
@@ -51,8 +41,28 @@
 </p>
 
 <p>
-  <strong>Type of transaction:</strong>
-  <%= @property.type_of_transaction %>
+  <strong>Image1:</strong>
+  <%= @property.image1 %>
+</p>
+
+<p>
+  <strong>Image2:</strong>
+  <%= @property.image2 %>
+</p>
+
+<p>
+  <strong>Image3:</strong>
+  <%= @property.image3 %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @property.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @property.longitude %>
 </p>
 
 <%= link_to 'Edit', edit_property_path(@property) %> |
