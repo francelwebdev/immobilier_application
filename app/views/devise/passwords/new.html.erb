@@ -1,4 +1,13 @@
-<h2><%= t(".forgot_your_password") %></h2>
+<section class="container-fluid">
+    <div class="container">
+        <div class="row py-5">
+            <div class="col-lg-4 offset-lg-4">
+
+                <div class="card"">
+                    <div class="card-body" style="box-shadow: 0 2px 10px rgba(0,0,0,.3);">
+
+
+<h2 class="card-title text-center"><%= t(".forgot_your_password") %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
@@ -8,8 +17,17 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, t(".send_me_reset_password_instructions") %>
+    <%= f.button :submit, t(".send_me_reset_password_instructions"), class: "btn btn-primary btn-block" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
