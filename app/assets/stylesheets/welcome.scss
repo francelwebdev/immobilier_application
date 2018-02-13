@@ -5,11 +5,10 @@
 // Mon style du controlleur welcomes
 .jumbotron-welcomes {
     height: 100vh !important;
-    // background-image: linear-gradient(rgba(50, 50, 50, .2)), linear-gradient(rgba(50, 50, 50, .2)), url(asset-path("pexels-photo-323780.jpg")) !important;
-    background-image: linear-gradient(rgba(50, 50, 50, .2)), linear-gradient(rgba(50, 50, 50, .3)) !important;
-    // background-size: cover;
-    // background-position: center center;
-    // background-attachment: fixed;
+    background-image: linear-gradient(rgba(0,0,0,0.3)), linear-gradient(rgba(0,0,0,0.3)), url(asset-path("pexels-photo-164558.jpg")) !important;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
 }
 
 .supri-bordu {

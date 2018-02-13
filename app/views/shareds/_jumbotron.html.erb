@@ -1,23 +1,40 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron jumbotron-fluid d-flex align-items-center mb-0 jumbotron-welcomes jarallax" data-jarallax='{"speed": 0.2}' data-jarallax-video="https://www.youtube.com/watch?v=UrkXWG9WgC8">
+
+<!-- POur jarallax" data-jarallax='{"speed": 0.2}' data-jarallax-video="https://www.youtube.com/watch?v=UrkXWG9WgC8" -->
+<div class="jumbotron jumbotron-fluid d-flex align-items-center mb-0 jumbotron-welcomes">
     <div class="container text-center">
-        <h1 class="display-4 text-white font-weight-bold mb-4">Trouvez votre maison de rêve sans l'aide d'un agent immobilier</h1>
+        <h1 class="text-white mb-4">Trouvez votre <span class="element"></span> de rêve sans l'aide d'un agent immobilier</h1>
             <div class="row">
                 <div class="col-12">
-                    <%= form_with url: accueil_path, method: :get, local: true do |form|  %>
-                        <div class="row px-1">
+
+                    <!-- <%= simple_form_for :search_property,  url: properties_path , method: :get do |f| %>
+                        <div class="form-row">
+                            <div class="col-lg-3 px-0">
+                                <%= f.input :query, autofocus: true, label: false, class: "form-control-lg" %>
+                            </div>
+                        <div class="col-lg-3 px-0">
+                            <%= f.submit "Rechercher", name: nil, class: 'btn btn-primary btn-lg btn btn-block supri-bordu' %>
+                        </div>
+                        </div>
+                    <% end %> -->
+
+                    <%= form_with url: properties_path, method: :get, local: true do |form|  %>
+                        <div class="form-row px-1">
+                            <div class="col-md-3 px-0">
+                                <%= form.label :property_type, "Quel type de bien cherchez-vous", class: "d-flex justify-content-left text-white mb-0 font-weight-bold ml-3 sr-only"  %>
+                                <%= form.select :property_type, PropertyType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type de bien" }, { class: "form-control form-control-lg supri-bordu" } %>
+                            </div>
                             <div class="col-md-3 px-0">
                                 <!--  style="box-shadow: 0 5px 30px rgba(156, 160, 171, 0.25) !important;" -->
-                            <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control form-control-lg supri-bordu' %>
-                            </div>
-                            <div class="col-md-3 px-0">
-                            <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control form-control-lg supri-bordu' %>
+                                <%= form.label :property_type, "A louer ou A vendre", class: "d-flex justify-content-left text-white mb-0 font-weight-bold ml-3 sr-only"  %>
+                                <%= form.select :ad_type, AdType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type d'annonce" }, { class: "form-control form-control-lg supri-bordu" } %>
                             </div>
                             <div class="col-md-4 px-0">
-                            <%= form.text_field :city, required: true, placeholder: "Ou cherchez-vous ? Ex: Agla, Zogbo", class: 'form-control form-control-lg supri-bordu' %>
+                                <%= form.label :property_type, "Où", class: "d-flex justify-content-left text-white mb-0 font-weight-bold ml-3 sr-only"  %>
+                                <%= form.text_field :city, placeholder: "Où", class: 'form-control form-control-lg supri-bordu' %>
                             </div>
                             <div class="col-md-2 px-0">
-                            <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn-lg btn btn-block supri-bordu' %>
+                                <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn-lg btn btn-block supri-bordu' %>
                             </div>
                         </div>
                     <% end %>
