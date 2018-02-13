@@ -40,37 +40,53 @@
         <hr class="mb-5">
 
         <div class="form-inputs">
-
           <%= f.input :image1, label: "Image1", as: :file %>
           <%= f.input :image2, label: "Image2", as: :file %>
           <%= f.input :image3, label: "Image3", as: :file %>
-
         </div>
 
 
-        <% if current_user.first_name.blank? and current_user.last_name.blank? and current_user.phone_number.blank? %>
+        <% if current_user.phone_number.blank? %>
+          <h3 class="mt-5">Information de contact</h3>
+          <hr class="mb-5">
 
-    <h3 class="mt-5">Information de contact</h3>
-    <hr class="mb-5">
+          <%= f.simple_fields_for @property.user.build do |user_form| %>
+              <div class="form-inputs">
+                <div class="form-row">
+                    <div class="col-lg-4">
+                      <%= user_form.input :first_name, placeholder: "#{current_user.first_name}", label: "Prénom", input_html: {readonly: true} %>
+                  </div>
+                  <div class="col-lg-4">
+                      <%= user_form.input :last_name, placeholder: "#{current_user.last_name}", label: "Nom", input_html: {readonly: true} %>
+                  </div>
+                  <div class="col-lg-4">
+                      <%= user_form.input :phone_number, required: true, label: "Numéros de contact" %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+      <% else %>
+        <h3 class="mt-5">Information de contact</h3>
+          <hr class="mb-5">
 
-    <%= f.simple_fields_for @property.build_user do |user_form| %>
+          <%= f.simple_fields_for @property.build_user do |user_form| %>
 
-        <div class="form-inputs">
-          <div class="form-row">
-              <div class="col-lg-4">
-                <%= user_form.input :first_name, required: true, disabled: true, label: "Nom" %>
-            </div>
-            <div class="col-lg-4">
-                <%= user_form.input :last_name, required: true, label: "Prénom" %>
-            </div>
-            <div class="col-lg-4">
-                <%= user_form.input :phone_number, required: true, label: "Numéros de contact" %>
-            </div>
-
-          </div>
-        </div>
+          <fieldset disabled>
+              <div class="form-inputs">
+                <div class="form-row">
+                    <div class="col-lg-4">
+                      <%= user_form.input :first_name, placeholder: "#{current_user.first_name}", label: "Prénom" %>
+                  </div>
+                  <div class="col-lg-4">
+                      <%= user_form.input :last_name, placeholder: "#{current_user.last_name}", label: "Nom" %>
+                  </div>
+                  <div class="col-lg-4">
+                      <%= user_form.input :phone_number, placeholder: "#{current_user.phone_number}", label: "Numéro de téléphone" %>
+                  </div>
+                </div>
+              </div>
+          </fieldset>
       <% end %>
-
   <% end %>
 
   <div class="form-actions">

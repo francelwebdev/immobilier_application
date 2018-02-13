@@ -79,7 +79,7 @@ end
 
 gem 'bootstrap', '~> 4.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-gem 'popper_js', '~> 1.12.3'
+gem 'popper_js', '~> 1.12', '>= 1.12.9'
 
 gem 'font-awesome-sass', '~> 4.7'
 

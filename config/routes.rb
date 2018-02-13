@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'profiles/show'
+
     root to: "welcome#index", as: "accueil"
 
     devise_for :users
 
     # Mon code
-    get "profile/:full_name", to: "users#show", as: "user_profile"
+    get "profile/:full_name", to: "profiles#show", as: "user_profile"
 
     resources :properties
 

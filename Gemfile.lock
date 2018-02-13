@@ -277,7 +277,7 @@ DEPENDENCIES
   meta_request (~> 0.4.3)
   paperclip (~> 5.1)
   pg (~> 0.18)
-  popper_js (~> 1.12.3)
+  popper_js (~> 1.12, >= 1.12.9)
   puma (~> 3.7)
   rails (~> 5.1.4)
   sass-rails (~> 5.0)
