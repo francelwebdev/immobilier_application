@@ -1,3 +1,3 @@
 class AdType < ApplicationRecord
-    has_many :property
+    has_many :properties
 end

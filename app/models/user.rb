@@ -4,12 +4,6 @@ class User < ApplicationRecord
     devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-    has_many :properties
-    has_one :profile, dependent: :destroy
-
-    after_create :build_profile
-    def build_profile
-      Profile.create(user: self)
-    end
+    has_many :properties, dependent: :destroy
 
 end

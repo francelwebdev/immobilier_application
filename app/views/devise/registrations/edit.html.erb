@@ -1,7 +1,7 @@
 <section class="container-fluid">
     <div class="container">
         <div class="row py-5">
-            <div class="col-lg-4 offset-lg-4">
+            <div class="col-lg-6 offset-lg-3">
 
                 <div class="card"">
                     <div class="card-body" style="box-shadow: 0 2px 10px rgba(0,0,0,.3);">
@@ -12,7 +12,18 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+    <div class="form-row">
+      <div class="col-lg-6">
+          <%= f.input :first_name, required: true, autofocus: true, label: "Prénom" %>
+      </div>
+      <div class="col-lg-6">
+          <%= f.input :last_name, required: true, label: "Nom" %>
+      </div>
+      <div class="col-lg-6">
+          <%= f.input :phone_number, required: true, label: "Numéro de téléphone" %>
+      </div>
+    </div>
+    <%= f.input :email, required: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>
@@ -26,7 +37,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, t(".update"), class: "btn btn-primary btn-block" %>
+    <%= f.button :submit, t(".update"), class: "btn btn-primary btn-block btn-lg" %>
   </div>
 <% end %>
 

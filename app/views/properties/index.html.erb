@@ -1,33 +1,91 @@
+<% provide :page_title, "Resultat de recherche"  %>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Properties</h1>
+<section class="container-fluid" style="background-color: #FAFAFA;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Afinner votre recherche</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Property type</th>
-      <th>Ad type</th>
-      <th>Title</th>
-      <th>Price</th>
-      <th>Area</th>
-      <th>Description</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>Image1</th>
-      <th>Image2</th>
-      <th>Image3</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <%= form_with url: accueil_path, method: :get, local: true do |form|  %>
+                        <div class="row px-1">
+                            <div class="col-md-3 px-0">
+                                <!--  style="box-shadow: 0 5px 30px rgba(156, 160, 171, 0.25) !important;" -->
+                            <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control form-control-lg supri-bordu' %>
+                            </div>
+                            <div class="col-md-3 px-0">
+                            <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control form-control-lg supri-bordu' %>
+                            </div>
+                            <div class="col-md-4 px-0">
+                            <%= form.text_field :city, required: true, placeholder: "Ou cherchez-vous ? Ex: Agla, Zogbo", class: 'form-control form-control-lg supri-bordu' %>
+                            </div>
+                            <div class="col-md-2 px-0">
+                            <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn-lg btn btn-block supri-bordu' %>
+                            </div>
+                        </div>
+                    <% end %>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+
+        <% @properties.each do |property| %>
+
+        <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
+            <div class="card-body d-flex flex-column align-items-start">
+              <p class="h3"><%= property.title %></p>
+              <strong class="d-inline-block mb-2 text-primary">World</strong>
+              <h3 class="mb-0">
+                <a class="text-dark" href="#">Featured post</a>
+              </h3>
+              <div class="mb-1 text-muted">Nov 12</div>
+              <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+              <a href="#">Continue reading</a>
+            </div>
+          </div>
+
+          <% end %>
+
+          <div class="card flex-md-row mb-4">
+            <%= image_tag "philipp-berndt-173197.jpg", class: "card-img-right flex-auto d-none d-md-block img-fluid", alt: "Photo du buien" %>
+            <div class="card-body d-flex flex-column align-items-start">
+              <p class="hcard-title h4"><a href="" title="" class="text-dark">Titre du bien</a></p>
+
+              <address>
+                <p>
+                  <i class="fa fa-map-marker mr-1" aria-hidden="true"></i>
+                  <span>Cococodji, Bénin</span>
+                </p>
+              </address>
+
+              <div class="d-flex justify-content-around">
+                <span class="text-dark">Par Francel</span>
+                <span class="text-muted">AJouté le Nov 12</span>
+              </div>
+
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 
   <tbody>
     <% @properties.each do |property| %>
       <tr>
         <td><%= property.property_type %></td>
         <td><%= property.ad_type %></td>
-        <td><%= property.title %></td>
+        <td></td>
         <td><%= property.price %></td>
         <td><%= property.area %></td>
         <td><%= property.description %></td>

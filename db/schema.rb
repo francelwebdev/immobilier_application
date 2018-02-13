@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180211144548) do
+ActiveRecord::Schema.define(version: 20180213105313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,20 +31,6 @@ ActiveRecord::Schema.define(version: 20180211144548) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
-  end
-
-  create_table "profiles", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.bigint "phone_number"
-    t.string "address"
-    t.string "city"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "slug"
-    t.index ["slug"], name: "index_profiles_on_slug", unique: true
-    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "properties", force: :cascade do |t|
@@ -90,11 +76,15 @@ ActiveRecord::Schema.define(version: 20180211144548) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.bigint "phone_number"
+    t.string "profile_photo"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["phone_number"], name: "index_users_on_phone_number", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "profiles", "users"
   add_foreign_key "properties", "ad_types"
   add_foreign_key "properties", "property_types"
 end

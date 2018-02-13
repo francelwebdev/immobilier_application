@@ -1,5 +1,19 @@
-<h1>New Property</h1>
+<section class="container-fluid">
+    <div class="container">
+        <div class="row py-5">
+            <div class="col-12">
+                <h1 class="text-primary text-center">Formulaire d'ajout d'un bien immobilier</h1>
+                <p class="text-warning text-center"><small>Les champs précédé du signe (*) sont obligatoire</small></p>
 
-<%= render 'form', property: @property %>
+                <div class="row">
+                    <div class="col-10 offset-lg-1">
+                        <%= render 'form', property: @property %>
 
-<%= link_to 'Back', properties_path %>
+                        <%= link_to 'Back', properties_path, class: "sr-only" %>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
