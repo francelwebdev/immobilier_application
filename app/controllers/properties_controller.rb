@@ -15,7 +15,8 @@ class PropertiesController < ApplicationController
 
   # GET /properties/new
   def new
-    @property = current_user.properties.build
+    @current_user = User.find(current_user.id)
+    @property = @current_user.properties.build
   end
 
   # GET /properties/1/edit
