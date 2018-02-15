@@ -47,6 +47,7 @@ box-shadow: 0 2px 10px rgba(0,0,0,.3);
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <%= link_to "#{current_user.first_name} #{current_user.last_name}", user_profile_path(current_user.first_name + "_" + current_user.last_name), class: "dropdown-item" %>
                         <div class="dropdown-divider"></div>
+                        <%= link_to "Mes annonces", accueil_path, class: "dropdown-item" %>
                         <%= link_to "Mon compte", edit_user_registration_path, class: "dropdown-item" %>
                         <div class="dropdown-divider"></div>
                         <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>

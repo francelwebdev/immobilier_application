@@ -5,104 +5,75 @@
     <div class="row">
       <div class="col-12">
         <h1>Afinner votre recherche</h1>
-
-        <%= form_with url: accueil_path, method: :get, local: true do |form|  %>
-                        <div class="row px-1">
-                            <div class="col-md-3 px-0">
-                                <!--  style="box-shadow: 0 5px 30px rgba(156, 160, 171, 0.25) !important;" -->
-                            <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control form-control-lg supri-bordu' %>
-                            </div>
-                            <div class="col-md-3 px-0">
-                            <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control form-control-lg supri-bordu' %>
-                            </div>
-                            <div class="col-md-4 px-0">
-                            <%= form.text_field :city, required: true, placeholder: "Ou cherchez-vous ? Ex: Agla, Zogbo", class: 'form-control form-control-lg supri-bordu' %>
-                            </div>
-                            <div class="col-md-2 px-0">
-                            <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn-lg btn btn-block supri-bordu' %>
-                            </div>
-                        </div>
-                    <% end %>
-
+          <%= form_with url: accueil_path, method: :get, local: true do |form|  %>
+              <div class="row px-1">
+                  <div class="col-md-3 px-0">
+                      <!--  style="box-shadow: 0 5px 30px rgba(156, 160, 171, 0.25) !important;" -->
+                  <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control form-control-lg supri-bordu' %>
+                  </div>
+                  <div class="col-md-3 px-0">
+                  <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control form-control-lg supri-bordu' %>
+                  </div>
+                  <div class="col-md-4 px-0">
+                  <%= form.text_field :city, required: true, placeholder: "Ou cherchez-vous ? Ex: Agla, Zogbo", class: 'form-control form-control-lg supri-bordu' %>
+                  </div>
+                  <div class="col-md-2 px-0">
+                  <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn-lg btn btn-block supri-bordu' %>
+                  </div>
+              </div>
+          <% end %>
       </div>
     </div>
   </div>
 </section>
 
 <section class="container-fluid">
-  <div class="container">
+    <div class="container">
+        <div class="row py-5">
+            <div class="col-12">
+                <h1>Properties List – All Properties</h1>
+                <hr>
+            </div>
 
-    <div class="row">
-      <div class="col-12">
-        <h1>Properties List – All Properties</h1>
-      </div>
+            <ul class="list-unstyled col-12 my-4">
+                <% @properties.each do |property| %>
+                  <li class="border p-0 mb-4" style="box-shadow: 0 2px 10px rgba(0,0,0,.3);">
+                    <a href="" title="" class="text-dark">
+                      <div class="d-lg-flex row">
+                        <div class="col-lg-3">
+                            <img src="https://picsum.photos/200" alt="" class="img-fluid h-100 w-100">
+                        </div>
+                        <div class="col-lg-9 py-3 px-4 px-lg-0">
+                          <h4><%= property.title %></h4>
+                          <address>
+                              <i class="fa fa-map-marker mr-1" aria-hidden="true"></i>
+                              <span>Cococodji, Bénin</span>
+                          </address>
+                          <ul>
+                            <li></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                <% end %>
+            </ul>
+
+        </div>
     </div>
-
-    <div class="row py-5">
-
-        <% @properties.each do |property| %>
-
-          <div class="col-12 mb-4">
-              <div class="row border">
-                <div class="col-lg-3 px-0">
-                  <img src="https://picsum.photos/200" alt="" class="img-fluid w-100">
-                </div>
-                <div class="col-lg-9 p-3">
-                  <h2>Beautiful home for sale in Chicago</h2>
-                  adresse
-                </div>
-              </div>
-          </div>
-
-          <div class="col-12 mb-4">
-              <div class="row border">
-                <div class="col-lg-3 px-0">
-                  <img src="https://picsum.photos/200" alt="" class="img-fluid w-100">
-                </div>
-                <div class="col-lg-9 p-3">
-                  <h2>Titre</h2>
-                  adresse
-                </div>
-              </div>
-          </div>
-
-          <div class="col-12 mb-4">
-              <div class="row border">
-                <div class="col-lg-3 px-0">
-                  <img src="https://picsum.photos/200" alt="" class="img-fluid w-100">
-                </div>
-                <div class="col-lg-9 p-3">
-                  <h2>Titre</h2>
-                  adresse
-                </div>
-              </div>
-          </div>
-
-          <div class="col-12 mb-4">
-              <div class="row border">
-                <div class="col-lg-3 px-0">
-                  <img src="https://picsum.photos/200" alt="" class="img-fluid w-100">
-                </div>
-                <div class="col-lg-9 p-3">
-                  <h2>Titre</h2>
-                  adresse
-                </div>
-              </div>
-          </div>
-
-        <% end %>
-
-    </div>
-  </div>
 </section>
 
 
-  <tbody>
+<section class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                  <tbody>
     <% @properties.each do |property| %>
       <tr>
         <td><%= property.property_type %></td>
         <td><%= property.ad_type %></td>
-        <td><%= property.title %></td>
+        <td></td>
         <td><%= property.price %></td>
         <td><%= property.area %></td>
         <td><%= property.description %></td>
@@ -124,3 +95,7 @@
 <br>
 
 <%= link_to 'New Property', new_property_path %>
+            </div>
+        </div>
+    </div>
+</section>
