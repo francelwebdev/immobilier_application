@@ -31,48 +31,67 @@
 
 <section class="container-fluid">
   <div class="container">
+
     <div class="row">
       <div class="col-12">
+        <h1>Properties List – All Properties</h1>
+      </div>
+    </div>
+
+    <div class="row py-5">
 
         <% @properties.each do |property| %>
 
-        <div class="card flex-md-row mb-4 box-shadow h-md-250">
-            <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
-            <div class="card-body d-flex flex-column align-items-start">
-              <p class="h3"><%= property.title %></p>
-              <strong class="d-inline-block mb-2 text-primary">World</strong>
-              <h3 class="mb-0">
-                <a class="text-dark" href="#">Featured post</a>
-              </h3>
-              <div class="mb-1 text-muted">Nov 12</div>
-              <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-              <a href="#">Continue reading</a>
-            </div>
-          </div>
-
-          <% end %>
-
-          <div class="card flex-md-row mb-4">
-            <%= image_tag "philipp-berndt-173197.jpg", class: "card-img-right flex-auto d-none d-md-block img-fluid", alt: "Photo du buien" %>
-            <div class="card-body d-flex flex-column align-items-start">
-              <p class="hcard-title h4"><a href="" title="" class="text-dark">Titre du bien</a></p>
-
-              <address>
-                <p>
-                  <i class="fa fa-map-marker mr-1" aria-hidden="true"></i>
-                  <span>Cococodji, Bénin</span>
-                </p>
-              </address>
-
-              <div class="d-flex justify-content-around">
-                <span class="text-dark">Par Francel</span>
-                <span class="text-muted">AJouté le Nov 12</span>
+          <div class="col-12 mb-4">
+              <div class="row border">
+                <div class="col-lg-3 px-0">
+                  <img src="https://picsum.photos/200" alt="" class="img-fluid w-100">
+                </div>
+                <div class="col-lg-9 p-3">
+                  <h2>Beautiful home for sale in Chicago</h2>
+                  adresse
+                </div>
               </div>
-
-            </div>
           </div>
 
-      </div>
+          <div class="col-12 mb-4">
+              <div class="row border">
+                <div class="col-lg-3 px-0">
+                  <img src="https://picsum.photos/200" alt="" class="img-fluid w-100">
+                </div>
+                <div class="col-lg-9 p-3">
+                  <h2>Titre</h2>
+                  adresse
+                </div>
+              </div>
+          </div>
+
+          <div class="col-12 mb-4">
+              <div class="row border">
+                <div class="col-lg-3 px-0">
+                  <img src="https://picsum.photos/200" alt="" class="img-fluid w-100">
+                </div>
+                <div class="col-lg-9 p-3">
+                  <h2>Titre</h2>
+                  adresse
+                </div>
+              </div>
+          </div>
+
+          <div class="col-12 mb-4">
+              <div class="row border">
+                <div class="col-lg-3 px-0">
+                  <img src="https://picsum.photos/200" alt="" class="img-fluid w-100">
+                </div>
+                <div class="col-lg-9 p-3">
+                  <h2>Titre</h2>
+                  adresse
+                </div>
+              </div>
+          </div>
+
+        <% end %>
+
     </div>
   </div>
 </section>
@@ -83,7 +102,7 @@
       <tr>
         <td><%= property.property_type %></td>
         <td><%= property.ad_type %></td>
-        <td></td>
+        <td><%= property.title %></td>
         <td><%= property.price %></td>
         <td><%= property.area %></td>
         <td><%= property.description %></td>
