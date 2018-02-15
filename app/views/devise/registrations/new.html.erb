@@ -13,14 +13,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <div class="form-row">
-      <div class="col-lg-6">
-        <%= f.input :first_name, required: true, autofocus: true, label: "Prénom" %>
-      </div>
-      <div class="col-lg-6">
-        <%= f.input :last_name, required: true, label: "Nom" %>
-      </div>
-    </div>
+    <%= f.input :first_name, required: true, autofocus: true, label: "Prénom" %>
+    <%= f.input :last_name, required: true, label: "Nom" %>
     <%= f.input :email, required: true %>
     <%= f.input :password, required: true %>
     <%= f.input :password_confirmation, required: true %>
@@ -31,7 +25,9 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="text-center mt-4">
+  <%= render "devise/shared/links" %>
+</div>
 
 
 
