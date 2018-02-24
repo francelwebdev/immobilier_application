@@ -1,7 +1,7 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 
 <!-- POur jarallax" data-jarallax='{"speed": 0.2}' data-jarallax-video="https://www.youtube.com/watch?v=UrkXWG9WgC8" -->
-<div class="jumbotron jumbotron-fluid d-flex align-items-center mb-0 jumbotron-welcomes">
+<div class="jumbotron jumbotron-fluid d-flex align-items-center mb-0 p-0 jumbotron-welcomes">
     <div class="container text-center">
         <h1 class="text-white mb-4">Trouvez votre <span id="js-rotating">Maison, Parcelle, Terrain, Appartement, Commerce</span> de rêve sans l'aide d'un agent immobilier</h1>
         <p class="lead sr-only"></p>
@@ -21,21 +21,21 @@
 
                     <%= form_with url: properties_path, method: :get, local: true do |form|  %>
                         <div class="form-row px-1">
-                            <div class="col-md-3 px-0">
-                                <%= form.label :property_type, "Quel type de bien cherchez-vous", class: "d-flex justify-content-left text-white mb-0 font-weight-bold ml-3 sr-only"  %>
-                                <%= form.select :property_type, PropertyType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type de bien" }, { class: "form-control form-control-lg" } %>
-                            </div>
-                            <div class="col-md-3 px-0">
+                            <div class="col-md-3">
                                 <!--  style="box-shadow: 0 5px 30px rgba(156, 160, 171, 0.25) !important;" -->
                                 <%= form.label :property_type, "A louer ou A vendre", class: "d-flex justify-content-left text-white mb-0 font-weight-bold ml-3 sr-only"  %>
-                                <%= form.select :ad_type, AdType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type d'annonce" }, { class: "form-control form-control-lg" } %>
+                                <%= form.select :ad_type, AdType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type d'annonce" }, { class: "form-control form-control-lg suprime-border-input-form" } %>
                             </div>
-                            <div class="col-md-4 px-0">
+                            <div class="col-md-3">
+                                <%= form.label :property_type, "Quel type de bien cherchez-vous", class: "d-flex justify-content-left text-white mb-0 font-weight-bold ml-3 sr-only"  %>
+                                <%= form.select :property_type, PropertyType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type de bien" }, { class: "form-control form-control-lg suprime-border-input-form" } %>
+                            </div>
+                            <div class="col-md-4">
                                 <%= form.label :property_type, "Où", class: "d-flex justify-content-left text-white mb-0 font-weight-bold ml-3 sr-only"  %>
-                                <%= form.text_field :city, placeholder: "Où", class: 'form-control form-control-lg' %>
+                                <%= form.text_field :city, placeholder: "Où", class: 'form-control form-control-lg suprime-border-input-form' %>
                             </div>
-                            <div class="col-md-2 px-0">
-                                <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn-lg btn btn-block' %>
+                            <div class="col-md-2">
+                                <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn-lg btn btn-block suprime-border-input-form' %>
                             </div>
                         </div>
                     <% end %>

@@ -14,10 +14,12 @@
 
         <title>Sico - <%= content_for?(:page_title) ? yield(:page_title) : "Pas de title" %></title>
 
+        <%= action_cable_meta_tag %>
+
         <%= csrf_meta_tags %>
 
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
 
         <!-- Add the slick-theme.css if you want default styling -->
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
@@ -25,38 +27,12 @@
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/>
 
   </head>
+
   <body class="Controller : <%= controller.controller_name  %>, Action : <%= controller.action_name  %>">
 
         <%= render "shareds/navbar" %>
 
-        <% flash.each do |name, message| %>
-            <!-- <%= content_tag :div, message, class: name %> -->
-            <% if name == "alert" %>
-                <div class="<%= name %> <%= name %>-danger mb-0 text-center alert-dismissible fade show" role="alert">
-                  <h6 class="alert-heading mb-0"><%= message %></h6>
-                  <!-- <p class="mb-0 font-weight-bold"><%= message %></p> -->
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-            <% elsif name == "notice" %>
-                <div class="alert alert-success mb-0 text-center alert-dismissible fade show" role="alert">
-                  <h6 class="alert-heading mb-0"><%= message %></h6>
-                  <!-- <p class="mb-0 font-weight-bold"><%= message %></p> -->
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-            <% else %>
-                <div class="<%= name %> <%= name %>-danger mb-0 text-center alert-dismissible fade show" role="alert">
-                  <h6 class="alert-heading mb-0"><%= message %></h6>
-                  <!-- <p class="mb-0 font-weight-bold"><%= message %></p> -->
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-            <% end %>
-        <% end %>
+        <%= render "shareds/flash" %>
 
         <main>
             <%= yield %>
@@ -65,6 +41,9 @@
         <!-- <%= render "shareds/mobile_apps" %> -->
 
         <%= render "shareds/footer" %>
+
+
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
         <script src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
 
