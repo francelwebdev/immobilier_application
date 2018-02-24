@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'profiles/show'
+    get 'profiles/show'
 
     root to: "welcome#index", as: "accueil"
 
