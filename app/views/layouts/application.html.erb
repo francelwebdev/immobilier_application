@@ -7,19 +7,17 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <meta name="description" content="Application de petite annonce immobilier de particulier à particulier">
         <meta name="author" content="Francel AMAMOO">
-
-        <title>Sico - <%= content_for?(:page_title) ? yield(:page_title) : "Pas de title" %></title>
+        <meta name="description" content="Petite annonce immobilier entre particulier">
 
         <%= favicon_link_tag "" %>
+
+        <title>Sico - <%= content_for?(:page_title) ? yield(:page_title) : "Pas de title" %></title>
 
         <%= csrf_meta_tags %>
 
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-        <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css", media: "all" %>
 
         <!-- Add the slick-theme.css if you want default styling -->
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
@@ -28,6 +26,8 @@
 
   </head>
   <body class="Controller : <%= controller.controller_name  %>, Action : <%= controller.action_name  %>">
+
+        <%= render "shareds/navbar" %>
 
         <% flash.each do |name, message| %>
             <!-- <%= content_tag :div, message, class: name %> -->
@@ -58,32 +58,25 @@
             <% end %>
         <% end %>
 
-
-
-        <%= render "shareds/navbar" %>
-
         <main>
-
             <%= yield %>
-
         </main>
 
         <!-- <%= render "shareds/mobile_apps" %> -->
 
         <%= render "shareds/footer" %>
 
-
         <script src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
 
         <!-- Jarallax -->
         <script src="https://unpkg.com/jarallax@1.9/dist/jarallax.min.js"></script>
-
         <!-- Include it if you want to use Video parallax -->
         <script src="https://unpkg.com/jarallax@1.9/dist/jarallax-video.min.js"></script>
 
-
         <% if current_page?(accueil_path) %>
             <%= yield :annonce_nouvellement_publié %>
+
+            <%= yield :animate_text  %>
         <% end %>
 
     </body>

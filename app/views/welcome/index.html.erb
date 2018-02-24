@@ -475,17 +475,17 @@
 										});
 				});
 		</script>
+<% end %>
 
-        <script type="text/javascript">
-            $(function(){
-      $(".element").typed({
-        strings: ["Maison", "Parcelle", "Terrain", "Appartement", "Commerce"],
-        typeSpeed: 150,
-
-    backSpeed: 25,
-    fadeOut: true,
-    loop: true
-      });
-  });
-        </script>
+<% content_for :animate_text do %>
+    <script>
+       $("#js-rotating").Morphext({
+    animation: "fadeIn", // Overrides default "bounceIn"
+    separator: "|", // Overrides default ","
+    speed: 3000, // Overrides default 2000
+    complete: function () {
+        // Overrides default empty function
+    }
+});
+    </script>
 <% end %>

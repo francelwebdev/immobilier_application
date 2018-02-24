@@ -101,4 +101,4 @@ gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
 
 gem 'activerecord-postgresql-adapter', '~> 0.0.1'
 
-gem 'typedJS', '~> 0.0.2'
+# gem 'typedJS', '~> 0.0.2'

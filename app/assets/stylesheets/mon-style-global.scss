@@ -3,7 +3,6 @@
 body {
   * {
     font-family: 'Roboto', sans-serif;
-
   }
   section.besoin_daide {
     background-image: linear-gradient(rgba(50, 50, 50, .3)), linear-gradient(rgba(50, 50, 50, .3)), url(asset-path("sylwia-pietruszka-218324.jpg")) !important;
@@ -12,4 +11,24 @@ body {
     background-attachment: fixed;
   }
 
+}
+
+.jumbotron-welcomes {
+    height: 100vh !important;
+    background-image: linear-gradient(rgba(0,0,0,0.3)), linear-gradient(rgba(0,0,0,0.3)), url(asset-path("pexels-photo-210265.jpg")) !important;
+
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+// .au-survole {
+//     transition: all 0.5s ease-out;
+// }
+// .au-survole-ccm:hover {
+//     // box-shadow: 0 16px 20px 0 rgba(216, 216, 216, .75);
+//     box-shadow: rgba(121,121,121,.35) 1px 10px 20px;
+// }
+.ccm {
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, .1);
 }
