@@ -113,7 +113,7 @@
                 <h3>Comment louer ou acheter</h3>
             </div>
             <div class="col-lg-3 text-center">
-                <h1 class="display-3">1</h1>
+                <%= image_tag "511120-characters-and-numbers/png/009-one.png", class: "img-fluid"  %>
                 <p>Choisissez le bien immobilier dans notre liste</p>
             </div>
             <div class="col-lg-3 text-center">
@@ -488,4 +488,13 @@
     }
 });
     </script>
+
+    <script>
+            $("#js-rotating").Morphext({
+                animation: "rotateIn",
+                complete: function () {
+                    console.log("This is called after a phrase is animated in! Current phrase index: " + this.index);
+                }
+            });
+        </script>
 <% end %>
