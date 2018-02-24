@@ -61,16 +61,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #--------------------------#
 
 group :development do
-  gem 'sqlite3'
-
   gem 'better_errors', '~> 2.4'
-  gem 'binding_of_caller', '~> 0.7.3'
+  gem 'binding_of_caller', '~> 0.8.0'
+
+  gem 'pry-byebug', '~> 3.6'
 
   #gem "quiet_assets"
-  #gem "pry-byebug"
-
-
-
 end
 
 group :production do
@@ -81,33 +77,27 @@ gem 'bootstrap', '~> 4.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'popper_js', '~> 1.12', '>= 1.12.9'
 
-gem 'font-awesome-sass', '~> 4.7'
-
-gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'font-awesome-sass', '~> 5.0', '>= 5.0.6.2'
 
 gem 'high_voltage', '~> 3.0'
 
-gem 'paperclip', '~> 5.1'
+gem 'simple_form', '~> 3.5', '>= 3.5.1'
+gem 'devise', '~> 4.4', '>= 4.4.1'
+gem 'devise-i18n', '~> 1.6'
 
-gem 'meta_request', '~> 0.4.3'
+gem 'friendly_id', '~> 5.2', '>= 5.2.3'
 
-gem 'simple_form', '~> 3.5'
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
 
 #gem 'activeadmin', '~> 1.1'
-
-gem 'devise', '~> 4.4', '>= 4.4.1'
-gem 'devise-i18n', '~> 1.5', '>= 1.5.1'
 
 # gem 'cancancan', '~> 2.1', '>= 2.1.3'
 
 # gem 'pundit', '~> 1.1'
 
-gem 'friendly_id', '~> 5.2', '>= 5.2.3'
-
+gem 'meta_request', '~> 0.4.3'
 gem 'geocoder', '~> 1.4', '>= 1.4.5'
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
-
-gem 'hirb', '~> 0.7.3'
 
 gem 'activerecord-postgresql-adapter', '~> 0.0.1'
 
