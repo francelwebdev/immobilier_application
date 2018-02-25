@@ -66,6 +66,8 @@ group :development do
 
   gem 'pry-byebug', '~> 3.6'
 
+  gem 'meta_request', '~> 0.5.0'
+
   #gem "quiet_assets"
 end
 
@@ -89,15 +91,20 @@ gem 'friendly_id', '~> 5.2', '>= 5.2.3'
 
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 
-#gem 'activeadmin', '~> 1.1'
+# gem 'attachinary', '~> 1.3', '>= 1.3.1'
+# gem 'cloudinary', '~> 1.8', '>= 1.8.3'
 
-# gem 'cancancan', '~> 2.1', '>= 2.1.3'
+gem 'autoprefixer-rails', '~> 8.0'
 
-# gem 'pundit', '~> 1.1'
-
-gem 'meta_request', '~> 0.4.3'
 gem 'geocoder', '~> 1.4', '>= 1.4.5'
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
+
+
+
+
+
+# gem 'cancancan', '~> 2.1', '>= 2.1.3'
+# gem 'pundit', '~> 1.1'
 
 gem 'activerecord-postgresql-adapter', '~> 0.0.1'
 
