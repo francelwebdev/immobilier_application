@@ -63,12 +63,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :development do
   gem 'better_errors', '~> 2.4'
   gem 'binding_of_caller', '~> 0.8.0'
-
   gem 'pry-byebug', '~> 3.6'
-
   gem 'meta_request', '~> 0.5.0'
-
-  #gem "quiet_assets"
+  gem 'hirb', '~> 0.7.3'
 end
 
 group :production do

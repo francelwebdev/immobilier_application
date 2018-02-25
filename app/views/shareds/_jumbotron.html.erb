@@ -17,7 +17,9 @@
             </div>
         <% end %> -->
 
-        <%= form_with url: properties_path, method: :get, local: true do |form|  %>
+        <div class="row py-3" style="background-color: rgba(69,68,63,.5);">
+            <div class="col-12">
+                <%= form_with url: properties_path, method: :get, local: true do |form|  %>
             <div class="form-row px-1">
                 <div class="col-md-3">
                     <!--  style="box-shadow: 0 5px 30px rgba(156, 160, 171, 0.25) !important;" -->
@@ -30,12 +32,14 @@
                 </div>
                 <div class="col-md-4">
                     <%= form.label :property_type, "Où", class: "d-flex justify-content-left text-white mb-0 font-weight-bold ml-3 sr-only"  %>
-                    <%= form.text_field :city, placeholder: "Où", class: 'form-control form-control-lg' %>
+                    <%= form.text_field :city, placeholder: "Dans quel ville où quartier ?", class: 'form-control form-control-lg' %>
                 </div>
                 <div class="col-md-2">
-                    <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn-lg btn btn-block' %>
+                    <%= form.submit "J'ai la chance", name: nil, class: 'btn btn-primary btn-lg btn btn-block' %>
                 </div>
             </div>
         <% end %>
+            </div>
+        </div>
     </div>
 </div>
