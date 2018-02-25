@@ -1,10 +1,17 @@
+<section class="container-fluid" style="background-color: #F8F8F8;">
+    <div class="container">
+        <div class="row py-4">
+            <div class="col-lg-11 offset-lg-1">
+                <h2><i class="fas fa-plus-square"></i> Ajout d'un bien immobilier</h2>
+                <p class="text-info">(*) Champs obligatoires</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="container-fluid">
     <div class="container">
         <div class="row py-5">
-            <div class="col-12">
-                <h2 class="text-primary text-center">Formulaire d'ajout d'un bien immobilier</h2>
-                <p class="text-info text-center">(*) Champs obligatoires</p>
-            </div>
             <div class="col-8 offset-lg-2">
                 <%= render 'form', property: @property %>
             </div>
