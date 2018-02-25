@@ -2,7 +2,7 @@
 
 <%= render "shareds/jumbotron" %>
 
-<section class="container-fluid py-5">
+<section class="container-fluid py-5 sr-only">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center mb-4">
@@ -106,54 +106,24 @@
     </div>
 </section>
 
-<section class="container-fluid py-5 sr-only">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center mb-4">
-                <h3>Comment louer ou acheter</h3>
-            </div>
-            <div class="col-lg-3 text-center">
-                <%= image_tag "511120-characters-and-numbers/png/009-one.png", class: "img-fluid"  %>
-                <p>Choisissez le bien immobilier dans la liste</p>
-            </div>
-            <div class="col-lg-3 text-center">
-                <h1 class="display-3 font-weight-bold">2</h1>
-                <p>Contactez le propriétaire pour convenir d'une visite</p>
-            </div>
-            <!-- /.col-lg-4 -->
-            <div class="col-lg-3 text-center">
-                <h1 class="display-3 font-weight-bold">3</h1>
-                <p>Visitez le bien immobilier puis donner votre avis</p>
-            </div>
-            <div class="col-lg-3 text-center">
-                <h1 class="display-3 font-weight-bold">4</h1>
-                <p>Et enfin concluez la transaction (devant un notaire dans le cas d'une vente)</p>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="container-fluid py-5" style="background-color: #FCFCFC;">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center mb-4">
                 <h2>Comment louer ou acheter</h2>
             </div>
-            <div class="col-md-3 text-center mb-4">
-                <p><span class="display-3 rounded-circle px-4 py-2" style="box-shadow: 0 2px 11px 0 rgba(0,0,0,.29);">1</span></p>
-                <p class="h5">Choisissez le bien immobilier dans notre liste</p>
+            <div class="col-lg-4 text-center mb-4">
+                <p><%= image_tag "511120-characters-and-numbers/svg/009-one.svg", class: "img-fluid w-25"  %></p>
+                <!-- <p><span class="display-3 rounded-circle px-4 py-2" style="box-shadow: 0 2px 11px 0 rgba(0,0,0,.29);">1</span></p> -->
+                <p>Choisissez le bien dans la liste des résultats de recherche</p>
             </div>
-            <div class="col-md-3 text-center mb-4">
-                <p><span class="display-3 rounded-circle px-4 py-2" style="box-shadow: 0 2px 11px 0 rgba(0,0,0,.29);">2</span></p>
-                <p class="h5">Appelez le propriétaire du bien immobilier</p>
+            <div class="col-lg-4 text-center mb-4">
+                <p><%= image_tag "511120-characters-and-numbers/svg/008-two.svg", class: "img-fluid w-25"  %></p>
+                <p>Régardez les photos et lisez les détails puis contactez le propriétaire pour convenir d'une visite</p>
             </div>
-            <div class="col-md-3 text-center mb-4">
-                <p><span class="display-3 rounded-circle px-4 py-2" style="box-shadow: 0 2px 11px 0 rgba(0,0,0,.29);">3</span></p>
-                <p class="h5">Visitez le biens immobilier</p>
-            </div>
-            <div class="col-md-3 text-center mb-4">
-                <p><span class="display-3 rounded-circle px-4 py-2" style="box-shadow: 0 2px 11px 0 rgba(0,0,0,.29);">4</span></p>
-                <p class="h5">Concluez la transaction</p>
+            <div class="col-lg-4 text-center mb-4">
+                <p><%= image_tag "511120-characters-and-numbers/svg/007-three.svg", class: "img-fluid w-25"  %></p>
+                <p>Ensuite visitez le bien et arriver à un commun accord</p>
             </div>
         </div>
     </div>
@@ -210,7 +180,7 @@
 </section>
 
 
-<section class="container-fluid">
+<section class="container-fluid sr-only">
     <div class="container">
         <div class="row py-5">
             <div class="col-12 text-center mb-4">
@@ -232,7 +202,7 @@
 </section>
 
 
-<section class="container-fluid" style="background-color: #FcFcFc;">
+<section class="container-fluid sr-only" style="background-color: #FcFcFc;">
     <div class="container">
         <div class="row py-5">
             <div class="col-12 text-center mb-4">
@@ -272,7 +242,6 @@
     </div>
 </section>
 
-
 <section class="container-fluid py-5 besoin_daide">
     <div class="container ">
         <div class="row ">
@@ -283,152 +252,6 @@
         </div>
     </div>
 </section>
-
-
-<section class="container-fluid py-5 bg-light sr-only ">
-	<div class="container ">
-		<div class="row ">
-			<div class="col-md-4 ">
-				<div class="card mb-4 box-shadow ">
-					<img class="card-img-top " data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail " alt="Card image cap ">
-					<div class="card-body ">
-						<p class="card-text ">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-						<div class="d-flex justify-content-between align-items-center ">
-							<div class="btn-group ">
-								<button type="button " class="btn btn-sm btn-outline-secondary ">View</button>
-								<button type="button " class="btn btn-sm btn-outline-secondary ">Edit</button>
-							</div>
-							<small class="text-muted ">9 mins</small>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 ">
-				<div class="card mb-4 box-shadow ">
-					<img class="card-img-top " data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail " alt="Card image cap ">
-					<div class="card-body ">
-						<p class="card-text ">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-						<div class="d-flex justify-content-between align-items-center ">
-							<div class="btn-group ">
-								<button type="button " class="btn btn-sm btn-outline-secondary ">View</button>
-								<button type="button " class="btn btn-sm btn-outline-secondary ">Edit</button>
-							</div>
-							<small class="text-muted ">9 mins</small>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 ">
-				<div class="card mb-4 box-shadow ">
-					<img class="card-img-top " data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail " alt="Card image cap ">
-					<div class="card-body ">
-						<p class="card-text ">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-						<div class="d-flex justify-content-between align-items-center ">
-							<div class="btn-group ">
-								<button type="button " class="btn btn-sm btn-outline-secondary ">View</button>
-								<button type="button " class="btn btn-sm btn-outline-secondary ">Edit</button>
-							</div>
-							<small class="text-muted ">9 mins</small>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-4 ">
-				<div class="card mb-4 box-shadow ">
-					<img class="card-img-top " data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail " alt="Card image cap ">
-					<div class="card-body ">
-						<p class="card-text ">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-						<div class="d-flex justify-content-between align-items-center ">
-							<div class="btn-group ">
-								<button type="button " class="btn btn-sm btn-outline-secondary ">View</button>
-								<button type="button " class="btn btn-sm btn-outline-secondary ">Edit</button>
-							</div>
-							<small class="text-muted ">9 mins</small>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 ">
-				<div class="card mb-4 box-shadow ">
-					<img class="card-img-top " data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail " alt="Card image cap ">
-					<div class="card-body ">
-						<p class="card-text ">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-						<div class="d-flex justify-content-between align-items-center ">
-							<div class="btn-group ">
-								<button type="button " class="btn btn-sm btn-outline-secondary ">View</button>
-								<button type="button " class="btn btn-sm btn-outline-secondary ">Edit</button>
-							</div>
-							<small class="text-muted ">9 mins</small>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 ">
-				<div class="card mb-4 box-shadow ">
-					<img class="card-img-top " data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail " alt="Card image cap ">
-					<div class="card-body ">
-						<p class="card-text ">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-						<div class="d-flex justify-content-between align-items-center ">
-							<div class="btn-group ">
-								<button type="button " class="btn btn-sm btn-outline-secondary ">View</button>
-								<button type="button " class="btn btn-sm btn-outline-secondary ">Edit</button>
-							</div>
-							<small class="text-muted ">9 mins</small>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-4 ">
-				<div class="card mb-4 box-shadow ">
-					<img class="card-img-top " data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail " alt="Card image cap ">
-					<div class="card-body ">
-						<p class="card-text ">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-						<div class="d-flex justify-content-between align-items-center ">
-							<div class="btn-group ">
-								<button type="button " class="btn btn-sm btn-outline-secondary ">View</button>
-								<button type="button " class="btn btn-sm btn-outline-secondary ">Edit</button>
-							</div>
-							<small class="text-muted ">9 mins</small>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 ">
-				<div class="card mb-4 box-shadow ">
-					<img class="card-img-top "holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail " alt="Card image cap  data-src="">
-					<div class="card-body ">
-						<p class="card-text ">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-						<div class="d-flex justify-content-between align-items-center ">
-							<div class="btn-group ">
-								<button type="button " class="btn btn-sm btn-outline-secondary ">View</button>
-								<button type="button " class="btn btn-sm btn-outline-secondary ">Edit</button>
-							</div>
-							<small class="text-muted ">9 mins</small>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 ">
-				<div class="card mb-4 box-shadow ">
-					<img class="card-img-top " data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail " alt="Card image cap ">
-					<div class="card-body ">
-						<p class="card-text ">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-						<div class="d-flex justify-content-between align-items-center ">
-							<div class="btn-group ">
-								<button type="button " class="btn btn-sm btn-outline-secondary ">View</button>
-								<button type="button " class="btn btn-sm btn-outline-secondary ">Edit</button>
-							</div>
-							<small class="text-muted ">9 mins</small>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
 
 
 <% content_for :annonce_nouvellement_publié do %>
