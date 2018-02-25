@@ -88,13 +88,16 @@ gem 'friendly_id', '~> 5.2', '>= 5.2.3'
 
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 
-# gem 'attachinary', '~> 1.3', '>= 1.3.1'
-# gem 'cloudinary', '~> 1.8', '>= 1.8.3'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
+
+gem 'carrierwave', '~> 1.2', '>= 1.2.2'
+gem 'cloudinary', '~> 1.8', '>= 1.8.3'
 
 gem 'autoprefixer-rails', '~> 8.0'
 
 gem 'geocoder', '~> 1.4', '>= 1.4.5'
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
+
 
 
 
