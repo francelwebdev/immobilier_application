@@ -9,16 +9,16 @@
               <div class="row px-1">
                   <div class="col-md-3 px-0">
                       <!--  style="box-shadow: 0 5px 30px rgba(156, 160, 171, 0.25) !important;" -->
-                  <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control form-control-lg supri-bordu' %>
+                  <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control' %>
                   </div>
                   <div class="col-md-3 px-0">
-                  <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control form-control-lg supri-bordu' %>
+                  <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control' %>
                   </div>
                   <div class="col-md-4 px-0">
-                  <%= form.text_field :city, required: true, placeholder: "Ou cherchez-vous ? Ex: Agla, Zogbo", class: 'form-control form-control-lg supri-bordu' %>
+                  <%= form.text_field :city, required: true, placeholder: "Ou cherchez-vous ? Ex: Agla, Zogbo", class: 'form-control' %>
                   </div>
                   <div class="col-md-2 px-0">
-                  <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn-lg btn btn-block supri-bordu' %>
+                  <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary' %>
                   </div>
               </div>
           <% end %>
@@ -58,6 +58,16 @@
                   </li>
                 <% end %>
             </ul>
+
+
+            <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
 
         </div>
     </div>
