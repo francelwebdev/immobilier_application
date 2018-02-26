@@ -12,11 +12,11 @@ box-shadow: 0 2px 10px rgba(0,0,0,.3);
 box-shadow: 0 0 40px 0 rgba(0,0,0,0.1)
 <%= image_tag "", height: 50 %>
 
-<a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name + " " + current_user.last_name %></a>
+<a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
 
 
 <h6 class="dropdown-header sr-only">
-<i class="fas fa-user"></i> <%= current_user.first_name + " " + current_user.last_name %>
+<i class="fas fa-user"></i>
 </h6>
 
 -->
@@ -70,7 +70,7 @@ box-shadow: 0 0 40px 0 rgba(0,0,0,0.1)
                 </li>
             <% else %>
               <li class="nav-item mx-1">
-                <%= link_to new_user_session_path, class: " nav-link" do %>
+                <%= link_to new_user_session_path, class: "nav-link" do %>
                     <i class="fas fa-sign-in-alt"></i> Connexion
                 <% end %>
               </li>
