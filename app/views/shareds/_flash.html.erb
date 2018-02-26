@@ -1,7 +1,7 @@
 <% flash.each do |name, message| %>
     <!-- <%= content_tag :div, message, class: name %> -->
     <% if name == "alert" %>
-        <div class="<%= name %> <%= name %>-danger mb-0 text-center alert-dismissible fade show" role="alert">
+        <div class="py-3 <%= name %> <%= name %>-danger mb-0 text-center alert-dismissible fade show" role="alert">
           <h6 class="alert-heading mb-0"><%= message %></h6>
           <!-- <p class="mb-0 font-weight-bold"><%= message %></p> -->
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -9,7 +9,7 @@
           </button>
         </div>
     <% elsif name == "notice" %>
-        <div class="alert alert-success mb-0 text-center alert-dismissible fade show" role="alert">
+        <div class="py-3 alert alert-success mb-0 text-center alert-dismissible fade show" role="alert">
           <h6 class="alert-heading mb-0"><%= message %></h6>
           <!-- <p class="mb-0 font-weight-bold"><%= message %></p> -->
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -17,7 +17,7 @@
           </button>
         </div>
     <% else %>
-        <div class="<%= name %> <%= name %>-danger mb-0 text-center alert-dismissible fade show" role="alert">
+        <div class="py-3 <%= name %> <%= name %>-danger mb-0 text-center alert-dismissible fade show" role="alert">
           <h6 class="alert-heading mb-0"><%= message %></h6>
           <!-- <p class="mb-0 font-weight-bold"><%= message %></p> -->
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
