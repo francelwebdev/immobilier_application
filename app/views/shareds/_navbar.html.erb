@@ -52,7 +52,11 @@ box-shadow: 0 0 40px 0 rgba(0,0,0,0.1)
           </li>
           <% if user_signed_in? %>
                 <li class="nav-item dropdown mx-1">
-                    <%= image_tag current_user.profile_photo.url(:thumb), class: "nav-link dropdown-toggle rounded-circle img-fluid profile_photo", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" %>
+                    <% if current_user.profile_photo.url.present? || current_user.profile_photo.url(:thumb).present? %>
+                        <%= image_tag current_user.profile_photo.url(:thumb), class: "nav-link dropdown-toggle rounded-circle img-fluid profile_photo", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" %>
+                    <% else %>
+                        <i class="fas fa-user-circle nav-link dropdown-toggle rounded-circle img-fluid profile_photo" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name + " " + current_user.last_name  %></i>
+                    <% end %>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <%= link_to accueil_path, class: "dropdown-item" do %>
                             <i class="fas fa-list"></i> Mes annonces
