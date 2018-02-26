@@ -11,12 +11,15 @@ class PropertiesController < ApplicationController
   # GET /properties/1
   # GET /properties/1.json
   def show
+
+    @property_photos = @property.property_photos.all
   end
 
   # GET /properties/new
   def new
     @current_user = User.find(current_user.id)
     @property = @current_user.properties.build
+    @property_photo = @property.property_photos.build
   end
 
   # GET /properties/1/edit

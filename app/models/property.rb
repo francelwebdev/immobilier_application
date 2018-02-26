@@ -12,6 +12,5 @@ class Property < ApplicationRecord
   validates :description, presence: true
 
   accepts_nested_attributes_for :user
-
-  mount_uploaders :property_photos, PropertyPhotosUploader
+  accepts_nested_attributes_for :property_photos
 end

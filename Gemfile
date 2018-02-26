@@ -90,9 +90,13 @@ gem 'kaminari', '~> 1.1', '>= 1.1.1'
 
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 
-gem 'carrierwave', '~> 1.2', '>= 1.2.2'
-gem 'cloudinary', '~> 1.8', '>= 1.8.3'
+
+# Upload de fichier
 gem 'mini_magick', '~> 4.8'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'cloudinary'
+gem 'jquery-fileupload-rails'
+
 
 gem 'autoprefixer-rails', '~> 8.0'
 
