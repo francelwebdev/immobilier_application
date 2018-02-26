@@ -14,6 +14,11 @@ box-shadow: 0 0 40px 0 rgba(0,0,0,0.1)
 
 <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name + " " + current_user.last_name %></a>
 
+
+<h6 class="dropdown-header sr-only">
+<i class="fas fa-user"></i> <%= current_user.first_name + " " + current_user.last_name %>
+</h6>
+
 -->
 	<div class="container">
 		<%= link_to accueil_path, class: "navbar-brand font-weight-bold text-uppercase" do %>
@@ -49,9 +54,6 @@ box-shadow: 0 0 40px 0 rgba(0,0,0,0.1)
                 <li class="nav-item dropdown mx-1">
                     <%= image_tag current_user.profile_photo.url(:thumb), class: "nav-link dropdown-toggle rounded-circle img-fluid profile_photo", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" %>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <h6 class="dropdown-header sr-only">
-                          <i class="fas fa-user"></i> <%= current_user.first_name + " " + current_user.last_name %>
-                        </h6>
                         <%= link_to accueil_path, class: "dropdown-item" do %>
                             <i class="fas fa-list"></i> Mes annonces
                         <% end %>
