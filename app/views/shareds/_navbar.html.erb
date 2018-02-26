@@ -15,7 +15,7 @@ box-shadow: 0 0 40px 0 rgba(0,0,0,0.1)
 -->
 	<div class="container">
 		<%= link_to accueil_path, class: "navbar-brand font-weight-bold text-uppercase" do %>
-			<i class="fas fa-home fa-lg"></i> Sico
+			<i class="fas fa-home fa-2x"></i> Sico
 		<% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -40,7 +40,7 @@ box-shadow: 0 0 40px 0 rgba(0,0,0,0.1)
 
           <li class="nav-item mx-1">
               <%= link_to new_property_path, class: "btn btn-primary" do %>
-                <i class="fas fa-bullhorn"></i> Publiez une annonce
+                <i class="fas fa-bullhorn fa-lg"></i>&nbsp; Publiez une annonce
                 <% end %>
           </li>
           <% if user_signed_in? %>
@@ -48,26 +48,24 @@ box-shadow: 0 0 40px 0 rgba(0,0,0,0.1)
                     <li class="nav-item dropdown mx-1">
                         <%= image_tag current_user.profile_photo.url(:thumb), class: "nav-link dropdown-toggle rounded-circle img-fluid profile_photo", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" %>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <h6 class="dropdown-header">
-                                    <i class="fas fa-user"></i> <%= current_user.first_name + " " + current_user.last_name  %>
-                                </h6>
                                 <%= link_to accueil_path, class: "dropdown-item" do %>
-                                    <i class="fas fa-list"></i> Mes annonces
+                                    <i class="fas fa-user fa-lg"></i>&nbsp; <%= current_user.first_name + " " + current_user.last_name  %>
                                 <% end %>
                                 <%= link_to accueil_path, class: "dropdown-item" do %>
-                                    <i class="fas fa-user"></i> Mon profile
+                                    <i class="fas fa-list fa-lg"></i>&nbsp; Mes annonces
                                 <% end %>
                                 <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
-                                    <i class="fas fa-cog"></i> Mon compte
+                                    <i class="fas fa-cog fa-lg"></i>&nbsp; Mon compte
                                 <% end %>
                                 <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
-                                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                                    <i class="fas fa-sign-out-alt fa-lg"></i>&nbsp; Déconnexion
                                 <% end %>
                             </div>
                         </li>
                     <% else %>
                         <li class="nav-item dropdown mx-1">
-                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle fa-lg"></i></a>
+                            <i class="fas fa-user-circle fa-3x nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <h6 class="dropdown-header">
                                     <i class="fas fa-user"></i> <%= current_user.first_name + " " + current_user.last_name  %>
@@ -90,7 +88,7 @@ box-shadow: 0 0 40px 0 rgba(0,0,0,0.1)
             <% else %>
               <li class="nav-item mx-1">
                 <%= link_to new_user_session_path, class: "nav-link" do %>
-                    <i class="fas fa-sign-in-alt"></i> Connexion
+                    <i class="fas fa-sign-in-alt fa-lg"></i>&nbsp; Connexion
                 <% end %>
               </li>
             <% end %>
