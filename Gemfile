@@ -92,6 +92,7 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 gem 'cloudinary', '~> 1.8', '>= 1.8.3'
+gem 'mini_magick', '~> 4.8'
 
 gem 'autoprefixer-rails', '~> 8.0'
 

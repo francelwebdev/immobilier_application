@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row py-5">
       <div class="col-12">
-        <h2>Afinner votre recherche</h2>
+        <h3>Afinner votre recherche</h3>
           <%= form_with url: accueil_path, method: :get, local: true do |form|  %>
               <div class="row px-1">
                   <div class="col-md-3 px-0">
@@ -31,8 +31,7 @@
     <div class="container">
         <div class="row py-5">
             <div class="col-12">
-                <h1>Properties List – All Properties</h1>
-                <hr>
+                <p>26 000 résultats trouvés</p>
             </div>
 
             <% @properties.each do |property| %>
@@ -40,7 +39,7 @@
               <div class="col-lg-4">
                 <a href="<%= property %>" title="">
                   <div class="card position-relative">
-                  <img class="card-img-top" src="https://picsum.photos/200/300" alt="Card image cap">
+                  <img class="card-img-top h-25" src="<%= property.property_photos %>" %>" alt="Card image cap">
                   <div class="card-body">
                     <h5 class="card-title"><%= property.title %></h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -67,9 +66,6 @@
         <td><%= property.description %></td>
         <td><%= property.address %></td>
         <td><%= property.city %></td>
-        <td><%= property.image1 %></td>
-        <td><%= property.image2 %></td>
-        <td><%= property.image3 %></td>
         <td><%= property.latitude %></td>
         <td><%= property.longitude %></td>
         <td><%= link_to 'Show', property %></td>

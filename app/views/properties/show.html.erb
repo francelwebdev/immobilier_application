@@ -42,17 +42,8 @@
 
 <p>
   <strong>Image1:</strong>
-  <%= @property.image1 %>
-</p>
-
-<p>
-  <strong>Image2:</strong>
-  <%= @property.image2 %>
-</p>
-
-<p>
-  <strong>Image3:</strong>
-  <%= @property.image3 %>
+  <%= @property.property_photos %>
+  <%= image_tag(@property.image.url, alt: 'Property photos') if @property.property_photos? %>
 </p>
 
 <p>

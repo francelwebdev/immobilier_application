@@ -14,7 +14,7 @@
           <%= f.association :property_type, required: true, label: "Type de bien" %>
         </div>
         <div class="col-lg-6">
-        <%= f.input :price, required: true, label: "Prix" %>
+        <%= f.input :price, required: true, label: "Prix", as: :decimal %>
       </div>
       <div class="col-lg-6">
         <%= f.input :area, required: true, label: "Surface" %>
@@ -35,13 +35,7 @@
     <hr class="mb-5">
     <div class="form-inputs form-row">
       <div class="col-12">
-        <%= f.input :image1, label: "Image1", input_html: { class: "form-control-file" }, as: :file %>
-      </div>
-      <div class="col-12">
-        <%= f.input :image2, label: "Image2", input_html: { class: "form-control-file" }, as: :file %>
-      </div>
-      <div class="col-12">
-        <%= f.input :image3, label: "Image3", input_html: { class: "form-control-file" }, as: :file %>
+        <%= f.input :property_photos, label: "Photo1", input_html: { class: "form-control-file" }, as: :file, multiple: true %>
       </div>
     </div>
 
@@ -49,19 +43,17 @@
           <p class="h3 mt-5">Information de contact</p>
           <hr class="mb-5">
           <%= f.simple_fields_for @current_user do |user_form| %>
-            <fieldset disabled>
                 <div class="form-inputs form-row">
-                      <div class="col-lg-4">
-                        <%= user_form.input :first_name, placeholder: "#{current_user.first_name}", label: "Prénom" %>
+                    <div class="col-lg-4">
+                        <%= user_form.input :first_name, placeholder: "#{current_user.first_name}", label: "Prénom", input_html: { disabled: true } %>
                     </div>
                     <div class="col-lg-4">
-                        <%= user_form.input :last_name, placeholder: "#{current_user.last_name}", label: "Nom" %>
+                        <%= user_form.input :last_name, placeholder: "#{current_user.last_name}", label: "Nom", input_html: { disabled: true } %>
                     </div>
                     <div class="col-lg-4">
                         <%= user_form.input :phone_number, required: true, label: "Numéros de contact", placeholder: "Votre numéro de tél" %>
                     </div>
                 </div>
-            </fieldset>
             <% end %>
       <% else %>
         <p class=" h3 mt-5">Information de contact</p>
@@ -77,15 +69,17 @@
                       <%= user_form.input :last_name, placeholder: "#{current_user.last_name}", label: "Nom" %>
                   </div>
                   <div class="col-lg-4">
-                      <%= user_form.input :phone_number, placeholder: "#{current_user.phone_number}", label: "Numéro de téléphone" %>
+                      <%= user_form.input :phone_number, as: :tel, placeholder: "#{current_user.phone_number}", label: "Numéro de téléphone" %>
                   </div>
               </div>
           </fieldset>
       <% end %>
   <% end %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Ajouter mon bien", class: "btn btn-primary btn-lg" %>
+  <div class="form-actions form-row mt-4">
+    <div class="col-12">
+        <%= f.button :submit, "Valider", class: "btn btn-primary btn-lg btn-block" %>
+    </div>
   </div>
 
 <% end %>
