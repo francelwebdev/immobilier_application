@@ -75,7 +75,6 @@ end
 gem 'bootstrap', '~> 4.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'popper_js', '~> 1.12', '>= 1.12.9'
-
 gem 'font-awesome-sass', '~> 5.0', '>= 5.0.6.2'
 
 gem 'high_voltage', '~> 3.0'
@@ -91,12 +90,6 @@ gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 
-# Upload de fichier
-gem 'mini_magick', '~> 4.8'
-gem 'attachinary', github: 'assembler/attachinary'
-gem 'cloudinary'
-gem 'jquery-fileupload-rails'
-
 
 gem 'autoprefixer-rails', '~> 8.0'
 
@@ -111,6 +104,6 @@ gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
 # gem 'cancancan', '~> 2.1', '>= 2.1.3'
 # gem 'pundit', '~> 1.1'
 
-gem 'activerecord-postgresql-adapter', '~> 0.0.1'
+# gem 'activerecord-postgresql-adapter', '~> 0.0.1'
 
 # gem 'typedJS', '~> 0.0.2'
