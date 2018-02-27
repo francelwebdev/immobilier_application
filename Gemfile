@@ -89,7 +89,8 @@ gem 'kaminari', '~> 1.1', '>= 1.1.1'
 
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 
-
+gem 'carrierwave', '~> 1.2', '>= 1.2.2'
+gem "mini_magick"
 
 gem 'autoprefixer-rails', '~> 8.0'
 
