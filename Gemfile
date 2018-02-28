@@ -72,29 +72,37 @@ group :production do
   gem 'pg', '~> 0.18'
 end
 
+# Design
 gem 'bootstrap', '~> 4.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'popper_js', '~> 1.12', '>= 1.12.9'
 gem 'font-awesome-sass', '~> 5.0', '>= 5.0.6.2'
 
+# Static page
 gem 'high_voltage', '~> 3.0'
 
+# Design form and auth
 gem 'simple_form', '~> 3.5', '>= 3.5.1'
 gem 'devise', '~> 4.4', '>= 4.4.1'
 gem 'devise-i18n', '~> 1.6'
 
+
 gem 'friendly_id', '~> 5.2', '>= 5.2.3'
 
+# Pagination
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 
+# secret keys
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 
-gem 'carrierwave', '~> 1.2', '>= 1.2.2'
+# File upload
 gem "mini_magick"
-gem 'cloudinary'
+gem 'carrierwave', '~> 1.2', '>= 1.2.2'
+gem 'cloudinary', '~> 1.9'
 
 gem 'autoprefixer-rails', '~> 8.0'
 
+# Géolocalisation
 gem 'geocoder', '~> 1.4', '>= 1.4.5'
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
 
