@@ -5,14 +5,13 @@ class PropertiesController < ApplicationController
   # GET /properties
   # GET /properties.json
   def index
-    @properties = Property.all
+    @properties = Property.all.order("created_at DESC")
+    @property_photos = @properties.property_photos.all
   end
 
   # GET /properties/1
   # GET /properties/1.json
   def show
-
-    @property_photos = @property.property_photos.all
   end
 
   # GET /properties/new
@@ -33,6 +32,10 @@ class PropertiesController < ApplicationController
 
     respond_to do |format|
       if @property.save
+          # params[:property_photos].each do |p|
+            @property_photo = @property.property_photos.build(title: params[:property_photos][:title], property_id: @property.id)
+        # end
+
         format.html { redirect_to @property, notice: 'Property was successfully created.' }
         format.json { render :show, status: :created, location: @property }
       else
@@ -74,6 +77,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params.require(:property).permit(:property_type_id, :ad_type_id, :title, :price, :area, :room_id, :description, :address, :city, {property_photos: []}, user_attributes: [:phone_number])
+      params.require(:property).permit(:property_type_id, :ad_type_id, :title, :price, :area, :room_id, :description, :address, :city, user_attributes: [:phone_number], property_photos_attributes: [:title])
     end
 end

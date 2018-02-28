@@ -11,6 +11,6 @@ class Property < ApplicationRecord
   validates :property_type_id, presence: true
   validates :description, presence: true
 
-  accepts_nested_attributes_for :user
-  accepts_nested_attributes_for :property_photos
+  accepts_nested_attributes_for :user, allow_destroy: true
+  accepts_nested_attributes_for :property_photos, allow_destroy: true
 end
