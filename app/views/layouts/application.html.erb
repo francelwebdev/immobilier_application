@@ -20,7 +20,8 @@
         <%= csrf_meta_tags %>
 
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>       
+        
         <%= cloudinary_js_config %>
 
         <!-- Add the slick-theme.css if you want default styling -->
@@ -41,10 +42,8 @@
 
         <!-- <%= render "shareds/mobile_apps" %> -->
 
-        <%= render "shareds/footer" %>
+        <%= render "shareds/footer" %>        
 
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-        
 
         <script src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
 
@@ -58,14 +57,6 @@
 
             <%= yield :animate_text  %>
         <% end %>
-
-        <script>
-            $(function() {
-              if($.fn.cloudinary_fileupload !== undefined) {
-                $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
-              }
-            });
-        </script>
 
     </body>
 </html>

@@ -99,6 +99,8 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem "mini_magick"
 gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 gem 'cloudinary', '~> 1.9'
+gem 'jquery-fileupload-rails', '~> 0.4.7'
+
 
 gem 'autoprefixer-rails', '~> 8.0'
 

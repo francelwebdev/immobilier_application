@@ -14,7 +14,6 @@
 //= require turbolinks
 //= require_tree .
 
-
 //= require jquery3
 //= require jquery_ujs
 
@@ -25,3 +24,4 @@
 //= require gmaps/google
 
 //= require cloudinary
+//= require jquery-fileupload/basic
