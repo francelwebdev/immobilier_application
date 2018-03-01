@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new]
+  skip_before_action :authenticate_user!, only: :index, :show
 
   # GET /properties
   # GET /properties.json
