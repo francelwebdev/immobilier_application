@@ -1,6 +1,5 @@
-ruby "2.4.3"
-
 source 'https://rubygems.org'
+ruby "2.4.3"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -61,6 +60,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #--------------------------#
 
 group :development do
+  gem 'pry-rails', '~> 0.3.6'
+
   gem 'better_errors', '~> 2.4'
   gem 'binding_of_caller', '~> 0.8.0'
   gem 'pry-byebug', '~> 3.6'
