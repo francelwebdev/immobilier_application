@@ -2,7 +2,7 @@ class Property < ApplicationRecord
   belongs_to :property_type
   belongs_to :ad_type
   belongs_to :user
-  has_many :property_photos
+  has_many :property_photos, dependent: :destroy
 
   validates :title, presence: true
   validates :price, presence: true

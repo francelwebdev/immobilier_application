@@ -1,6 +1,6 @@
 <%= simple_form_for(@property) do |f| %>
   <%= f.error_notification %>
-
+  
     <p class="h3 mt-4">Information sur le bien</p>
     <hr class="mb-5">
     <div class="form-inputs form-row">
@@ -36,7 +36,7 @@
     <div class="form-inputs form-row">
       <div class="col-12">
         <%= f.simple_fields_for :property_photos do |photo| %>
-          <%= photo.input :name, label: "Photo du bien", multiple: true, input_html: { class: "form-control-file" }, as: :file, name: "property_photos[:image][]" %>
+          <%= photo.input :name, label: "Photo du bien", input_html: { class: "form-control-file" }, as: :file, name: "property_photos[name][]" %>
         <% end %>
       </div>
     </div>
