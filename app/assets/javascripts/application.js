@@ -24,4 +24,5 @@
 //= require gmaps/google
 
 //= require cloudinary
-//= require jquery-fileupload/basic
+
+//= require dropzone

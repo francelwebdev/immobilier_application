@@ -36,14 +36,7 @@
     <div class="form-inputs form-row">
       <div class="col-12">
         <%= f.simple_fields_for :property_photos do |photo| %>
-          <%= photo.input :name, label: "Photo du bien", input_html: { class: "form-control-file" }, as: :file, name: "property_photos[name]", multiple: true %>
-
-            <script id="template-upload" type="text/x-tmpl">
-              <div class="upload">
-                {%=o.name%}
-                <div class="progress"><div class="bar" style="width: 0%"></div></div>
-              </div>
-            </script>
+          <%= photo.input :name, label: "Photo du bien", input_html: { class: "form-control-file dropzone fallback", id: "upload-dropzone" }, as: :file, name: "property_photos[name]", multiple: true %>
 
         <% end %>
       </div>

@@ -1,6 +1,5 @@
-ruby "2.4.3"
-
 source 'https://rubygems.org'
+ruby "2.4.3"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -99,7 +98,7 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem "mini_magick"
 gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 gem 'cloudinary', '~> 1.9'
-gem 'jquery-fileupload-rails', '~> 0.4.7'
+gem 'dropzonejs-rails', '~> 0.8.2'
 
 
 gem 'autoprefixer-rails', '~> 8.0'
