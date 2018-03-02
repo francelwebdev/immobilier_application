@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180228182433) do
+ActiveRecord::Schema.define(version: 20180302165552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,21 @@ ActiveRecord::Schema.define(version: 20180228182433) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "attachinary_files", force: :cascade do |t|
+    t.string "attachinariable_type"
+    t.bigint "attachinariable_id"
+    t.string "scope"
+    t.string "public_id"
+    t.string "version"
+    t.integer "width"
+    t.integer "height"
+    t.string "format"
+    t.string "resource_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -56,7 +71,7 @@ ActiveRecord::Schema.define(version: 20180228182433) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "property_id"
-    t.string "name"
+    t.json "names"
     t.index ["property_id"], name: "index_property_photos_on_property_id"
   end
 
@@ -88,7 +103,10 @@ ActiveRecord::Schema.define(version: 20180228182433) do
     t.string "first_name"
     t.string "last_name"
     t.bigint "phone_number"
-    t.string "profile_photo"
+    t.string "profile_photo_id"
+    t.string "profile_photo_filename"
+    t.string "profile_photo_content_size"
+    t.string "profile_photo_content_type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["phone_number"], name: "index_users_on_phone_number", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
