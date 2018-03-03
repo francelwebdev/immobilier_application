@@ -1,10 +1,10 @@
 <section class="container-fluid">
     <div class="container">
         <div class="row py-5">
-            <div class="col-lg-6 offset-lg-3">
+            <div class="col-lg-4 offset-lg-4">
 
                 <div class="card"">
-                    <div class="card-body" style="box-shadow: 0 2px 10px rgba(0,0,0,.3);">
+                    <div class="card-body">
 
 <h2 class="card-title text-center"><%= t(".title", resource: resource_class.model_name.human) %></h2>
 
@@ -44,15 +44,19 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, t(".update"), class: "btn btn-primary btn-block btn-lg" %>
+    <%= f.button :submit, t(".update"), class: "btn btn-primary btn-block" %>
   </div>
 <% end %>
 
-<h3><%= t(".cancel_my_account") %></h3>
+<div class="text-center mt-4">
 
-<p><%= t(".unhappy") %> <%= link_to t(".cancel_my_account"), registration_path(resource_name), data: { confirm: t(".are_you_sure") }, method: :delete %></p>
+  <h3><%= t(".cancel_my_account") %></h3>
 
-<%= link_to t("devise.shared.links.back"), :back %>
+  <p><%= t(".unhappy") %> <%= link_to t(".cancel_my_account"), registration_path(resource_name), data: { confirm: t(".are_you_sure") }, method: :delete %></p>
+
+  <%= link_to t("devise.shared.links.back"), :back %>
+</div>
+
 
      </div>
                 </div>

@@ -55,20 +55,17 @@
 					<ul class="nav flex-column">
 						<li class="nav-item">
 							<a href="" class="nav-link pl-0 py-1 text-dark">
-								<i class="fa fa-map-marker mr-1" aria-hidden="true"></i>
-								<span>Cococodji, Bénin</span>
+								<i class="fas fa-map-marker-alt mr-1" aria-hidden="true"></i>&nbsp; Cococodji, Bénin
 							</a>
 						</li>
 						<li class="nav-item">
 							<a href="" class="nav-link pl-0 py-1 text-dark">
-								<i class="fa fa-phone mr-1" aria-hidden="true"></i>
-								<span>(229) 62 20 03 90</span>
+								<i class="fas fa-mobile mr-1" aria-hidden="true"></i>&nbsp; 62 20 03 90
 							</a>
 						</li>
 						<li class="nav-item">
-							<%= mail_to "francel.webdev@gmail.com", subject: "Demande d'information !", class: "nav-link pl-0 py-1 " do %>
-								<i class="fa fa-envelope-o mr-1" aria-hidden="true"></i>
-								<span>francel.webdev@gmail.com</span>
+							<%= mail_to "francel.webdev@gmail.com", subject: "Demande d'information", class: "nav-link pl-0 py-1 text-dark" do %>
+								<i class="fas fa-envelope mr-1" aria-hidden="true"></i>&nbsp; francel.webdev@gmail.com
 							<% end %>
 						</li>
 					</ul>
@@ -76,13 +73,13 @@
 
 				<ul class="nav">
 					<li class="nav-item">
-						<%= link_to "http://facebook.com", class: "nav-link pl-0 text-dark" do %>
-							<i class="fa fa-facebook fa-lg mr-1" aria-hidden="true"></i>
+						<%= link_to "", class: "nav-link pl-0 text-dark" do %>
+							<i class="fas fa-facebook-f mr-1" aria-hidden="true"></i>
 						<% end %>
 					</li>
 					<li class="nav-item">
-						<%= link_to "http://facebook.com", class: "nav-link pl-0 text-dark" do %>
-							<i class="fa fa-twitter fa-lg mr-1" aria-hidden="true"></i>
+						<%= link_to "", class: "nav-link pl-0 text-dark" do %>
+							<i class="fas fa-twitter mr-1" aria-hidden="true"></i>
 						<% end %>
 					</li>
 				</ul>
@@ -96,7 +93,7 @@
 		</div>
 		<div class="row py-3">
 			<div class="col-12 text-center text-md-right">
-				<p class="text-center text-muted">&copy; 2017 - <%= Time.now.year %> Sico. Tous droit réservé.</p>
+				<p class="text-center text-muted">&copy; <%= Time.now.year %> Sico. Tous droit réservé.</p>
 			</div>
 		</div>
 	</div>
