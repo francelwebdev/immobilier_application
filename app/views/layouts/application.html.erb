@@ -18,8 +18,11 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
 
         <%= csrf_meta_tags %>
-
+        <%= action_cable_meta_tag %>
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>       
+        
+        <%= cloudinary_js_config %>
 
         <!-- Add the slick-theme.css if you want default styling -->
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
@@ -29,7 +32,7 @@
   </head>
 
   <body class="Controller : <%= controller.controller_name  %>, Action : <%= controller.action_name  %>">
-
+		
         <%= render "shareds/navbar" %>
         <%= render 'shareds/flash' %>
 
@@ -39,9 +42,8 @@
 
         <!-- <%= render "shareds/mobile_apps" %> -->
 
-        <%= render "shareds/footer" %>
+        <%= render "shareds/footer" %>        
 
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
         <script src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
 

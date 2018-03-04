@@ -14,7 +14,6 @@
 //= require turbolinks
 //= require_tree .
 
-
 //= require jquery3
 //= require jquery_ujs
 
@@ -23,3 +22,7 @@
 
 //= require underscore
 //= require gmaps/google
+
+//= require cloudinary
+
+//= require dropzone

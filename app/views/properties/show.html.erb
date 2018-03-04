@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Property titre:</strong>
+  <%= @property.title %>
+</p>
+
+<p>
   <strong>Property type:</strong>
   <%= @property.property_type.name %>
 </p>
@@ -42,18 +47,9 @@
 
 <p>
   <strong>Image1:</strong>
-  <%= @property.property_photos %>
-  <%= image_tag(@property.image.url, alt: 'Property photos') if @property.property_photos? %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @property.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @property.longitude %>
+  <% @property.photos.each do |photo| %>
+    <%= image_tag(photo.url alt: 'Property photos', width: 50, height: 50, class: "") if photo.present? %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_property_path(@property) %> |
