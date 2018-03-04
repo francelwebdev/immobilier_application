@@ -35,36 +35,7 @@
         <hr class="mb-5">
         <div class="form-inputs form-row">
             <div class="col-12">
-                <%= f.fields_for :property_photos do |photo| %>
-                  <div class="form-group">
-                  	<%= label(:names, :title, "Photo 1") %>
-                    <%= photo.file_field :names, class: "form-control-file", name: "property_photos[names][]", multiple: true  %>
-                  </div>
-
-                  <div class="form-group">
-                    <%= label(:names, :title, "Photo 2") %>
-                    <%= photo.file_field :names, class: "form-control-file", name: "property_photos[names][]", multiple: true  %>
-                  </div>
-
-                  <div class="form-group">
-                    <%= label(:names, :title, "Photo 3") %>
-                    <%= photo.file_field :names, class: "form-control-file", name: "property_photos[names][]", multiple: true  %>
-                  </div>                
-                <% end %>
-
-                <%= f.fields_for :property_photos, class: "dropzone", id: "photo_upload_dropzone" do |photo| %>
-                    <div class="dz-message needsclick">
-                        <h4>Déplacer les photos ici</h4>
-                        <p>ou</p>
-                        <h5>Cliquer ici pour télécharger les photos</h5>
-                    </div>
-                    <div class="fallback">
-                      <div class="form-group">
-                        <%= label(:names, :title, "Photo 1") %>
-                        <%= photo.file_field :names, class: "form-control-file", name: "property_photos[names][]", multiple: true  %>
-                      </div>
-                    </div>     
-                <% end %>
+                <%= f.input :photos, as: :file, input_html: { class: "form-control-file" }, label: "Photo 1", multiple: true %>
             </div>
         </div>
 

@@ -24,18 +24,18 @@
                 <div class="col-md-3">
                     <!--  style="box-shadow: 0 5px 30px rgba(156, 160, 171, 0.25) !important;" -->
                     <%= form.label :property_type, "A louer ou A vendre", class: "d-flex justify-content-left text-white mb-0 font-weight-bold ml-3 sr-only"  %>
-                    <%= form.select :ad_type, AdType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type d'annonce" }, { class: "form-control form-control-lg" } %>
+                    <%= form.select :ad_type, AdType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type d'annonce" }, { class: "form-control" } %>
                 </div>
                 <div class="col-md-3">
                     <%= form.label :property_type, "Quel type de bien cherchez-vous", class: "d-flex justify-content-left text-white mb-0 font-weight-bold ml-3 sr-only"  %>
-                    <%= form.select :property_type, PropertyType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type de bien" }, { class: "form-control form-control-lg" } %>
+                    <%= form.select :property_type, PropertyType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type de bien" }, { class: "form-control" } %>
                 </div>
                 <div class="col-md-4">
                     <%= form.label :property_type, "Où", class: "d-flex justify-content-left text-white mb-0 font-weight-bold ml-3 sr-only"  %>
-                    <%= form.text_field :city, placeholder: "Dans quel ville où quartier ?", class: 'form-control form-control-lg' %>
+                    <%= form.text_field :city, placeholder: "Dans quel ville où quartier ?", class: 'form-control' %>
                 </div>
                 <div class="col-md-2">
-                    <%= form.submit "J'ai la chance", name: nil, class: 'btn btn-primary btn-lg btn btn-block' %>
+                    <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn btn-block' %>
                 </div>
             </div>
         <% end %>

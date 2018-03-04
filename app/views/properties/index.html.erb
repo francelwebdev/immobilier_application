@@ -1,78 +1,107 @@
 <% provide :page_title, "Resultat de recherche"  %>
 
-<section class="container-fluid" style="background-color: #FAFAFA;">
-  <div class="container">
-    <div class="row py-5">
-      <div class="col-12">
-        <h3>Afinner votre recherche</h3>
-          <%= form_with url: accueil_path, method: :get, local: true do |form|  %>
-              <div class="row px-1">
-                  <div class="col-md-3 px-0">
-                      <!--  style="box-shadow: 0 5px 30px rgba(156, 160, 171, 0.25) !important;" -->
-                  <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control' %>
-                  </div>
-                  <div class="col-md-3 px-0">
-                  <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control' %>
-                  </div>
-                  <div class="col-md-4 px-0">
-                  <%= form.text_field :city, required: true, placeholder: "Ou cherchez-vous ? Ex: Agla, Zogbo", class: 'form-control' %>
-                  </div>
-                  <div class="col-md-2 px-0">
-                  <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary' %>
-                  </div>
-              </div>
-          <% end %>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="container-fluid">
-    <div class="container">
-        <div class="row py-5">
-            <div class="col-12">
-                <p><%= @properties.size %> résultats trouvés</p>
-            </div>
-
-            <% @properties.each do |property| %>
-
-              <div class="col-lg-4">
-                <a href="<%= property %>" title="">
-                  <div class="card position-relative mb-5">
-                  <img class="card-img-top h-25" src="" alt="Card image cap">
-                  <%= image_tag property.property_photos.url  %>
-                  <div class="card-body">
-                    <h5 class="card-title"><%= property.title %></h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="<%= property %>" class="btn btn-primary text-right">Détail</a>
-                  </div>
+    <section class="container-fluid" style="background-color: #FAFAFA;">
+        <div class="container">
+            <div class="row py-5">
+                <div class="col-12">
+                    <h3>Afinner votre recherche</h3>
+                    <%= form_with url: accueil_path, method: :get, local: true do |form|  %>
+                        <div class="row px-1">
+                            <div class="col-md-3 px-0">
+                                <!--  style="box-shadow: 0 5px 30px rgba(156, 160, 171, 0.25) !important;" -->
+                                <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control' %>
+                            </div>
+                            <div class="col-md-3 px-0">
+                                <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control' %>
+                            </div>
+                            <div class="col-md-4 px-0">
+                                <%= form.text_field :city, required: true, placeholder: "Ou cherchez-vous ? Ex: Agla, Zogbo", class: 'form-control' %>
+                            </div>
+                            <div class="col-md-2 px-0">
+                                <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary' %>
+                            </div>
+                        </div>
+                        <% end %>
                 </div>
-                </a>
-              </div>
-
-            <% end %>
-
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section class="container-fluid">
+        <div class="container">
+            <div class="row py-5">
+                <div class="col-12">
+                    <p>
+                        <%= @properties.count %> résultats trouvés</p>
+                </div>
+
+                <% @properties.each do |property| %>
+
+                    <div class="col-lg-4">
+                        <a href="<%= property %>" title="">
+                            <div class="card position-relative mb-5">
+                                <img class="card-img-top h-25" src="" alt="Card image cap">
+
+                                <%= image_tag property.photos[0].url %>
+
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <%= property.title %>
+                                        </h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="<%= property %>" class="btn btn-primary text-right">Détail</a>
+                                    </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <% end %>
+
+            </div>
+        </div>
+    </section>
 
 
-  <% @properties.each do |property| %>
-      <tr>
-        <td><%= property.property_type %></td>
-        <td><%= property.ad_type %></td>
-        <td></td>
-        <td><%= property.price %></td>
-        <td><%= property.area %></td>
-        <td><%= property.description %></td>
-        <td><%= property.address %></td>
-        <td><%= property.city %></td>
-        <td><%= property.latitude %></td>
-        <td><%= property.longitude %></td>
-        <td><%= link_to 'Show', property %></td>
-        <td><%= link_to 'Edit', edit_property_path(property) %></td>
-        <td><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <% @properties.each do |property| %>
+        <tr>
+            <td>
+                <%= property.property_type %>
+            </td>
+            <td>
+                <%= property.ad_type %>
+            </td>
+            <td></td>
+            <td>
+                <%= property.price %>
+            </td>
+            <td>
+                <%= property.area %>
+            </td>
+            <td>
+                <%= property.description %>
+            </td>
+            <td>
+                <%= property.address %>
+            </td>
+            <td>
+                <%= property.city %>
+            </td>
+            <td>
+                <%= property.latitude %>
+            </td>
+            <td>
+                <%= property.longitude %>
+            </td>
+            <td>
+                <%= link_to 'Show', property %>
+            </td>
+            <td>
+                <%= link_to 'Edit', edit_property_path(property) %>
+            </td>
+            <td>
+                <%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
+        </tr>
+        <% end %>
 
-<%= link_to 'New Property', new_property_path %>
+            <%= link_to 'New Property', new_property_path %>

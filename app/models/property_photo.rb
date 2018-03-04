@@ -1,5 +1,5 @@
 class PropertyPhoto < ApplicationRecord    
     belongs_to :property
 
-    mount_uploader :names, PropertyPhotoUploader
+    mount_uploaders :names, PropertyPhotoUploader
 end

@@ -1,28 +1,22 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   # GET /properties
   # GET /properties.json
   def index
-    @properties = Property.all.order("created_at DESC")
-
-    @properties.each do |property|
-      @property_photos = property.property_photos.all
-    end
+    @properties = Property.includes(:property_photos).all.order("created_at DESC")
   end
 
   # GET /properties/1
   # GET /properties/1.json
   def show
-    @property_photos = @property.property_photos.all
   end
 
   # GET /properties/new
   def new
     @current_user = User.find(current_user.id)
     @property = @current_user.properties.build
-    @property_photo = @property.property_photos.build
   end
 
   # GET /properties/1/edit
@@ -33,15 +27,10 @@ class PropertiesController < ApplicationController
   # POST /properties.json
   def create
     @property = current_user.properties.build(property_params)
+    @property.photos = params[:property][:photos]
 
     respond_to do |format|
 	  if @property.save
-		if params[:property_photos]
-			params[:property_photos]['names'].each do |photo|
-				@property_photo = @property.property_photos.create!(names: photo, property_id: @property.id)
-			end
-		end
-
         format.html { redirect_to @property, notice: 'Property was successfully created.' }
         format.json { render :show, status: :created, location: @property }
       else
@@ -83,6 +72,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params.require(:property).permit(:property_type_id, :ad_type_id, :title, :price, :area, :room_id, :description, :address, :city, user_attributes: [:phone_number], property_photos_attributes: [])
+      params.require(:property).permit(:property_type_id, :ad_type_id, :title, :price, :area, :description, :address, :city, {photos: []}, user_attributes: [:phone_number])
     end
 end
