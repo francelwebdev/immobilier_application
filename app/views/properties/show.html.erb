@@ -46,9 +46,9 @@
 </p>
 
 <p>
-  <strong>Image1:</strong>
-  <% @property.photos.each do |photo| %>
-    <%= image_tag(photo.url alt: 'Property photos', width: 50, height: 50, class: "") if photo.present? %>
+  <strong>Photo:</strong>
+  <% @property_photos.each do |photo| %>
+    <%= image_tag(photo.photo.url(:large), alt: 'Property photos', class: "") if photo.present? %>
   <% end %>
 </p>
 

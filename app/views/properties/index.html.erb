@@ -36,14 +36,12 @@
                 </div>
 
                 <% @properties.each do |property| %>
-
                     <div class="col-lg-4">
                         <a href="<%= property %>" title="">
                             <div class="card position-relative mb-5">
                                 <img class="card-img-top h-25" src="" alt="Card image cap">
-
-                                <%= image_tag property.photos[0].url %>
-
+	
+									<%= image_tag property.property_photos.first_url %>
                                     <div class="card-body">
                                         <h5 class="card-title">
                                             <%= property.title %>
@@ -54,8 +52,7 @@
                             </div>
                         </a>
                     </div>
-
-                    <% end %>
+                <% end %>
 
             </div>
         </div>
