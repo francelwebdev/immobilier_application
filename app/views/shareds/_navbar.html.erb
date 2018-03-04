@@ -25,12 +25,16 @@ style="box-shadow: 0 2px 10px rgba(0,0,0,.3);
             <span class="navbar-toggler-icon"></span>
           </button>
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav ml-auto d-flex align-items-center">
-          <li class="nav-item active mx-1 sr-only">
-            <a class="nav-link" href="<%= accueil_path %>">Accueil <span class="sr-only">(current)</span></a>
+          <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+            <li class="nav-item active">
+              <a class="nav-link mx-1" href="<%= accueil_path %>">Accueil <span class="sr-only">(current)</span></a>
+            </li>
+          <li class="nav-item mx-1">
+            <a class="nav-link" href="<%= accueil_path %>#comment-ca-marche">Comment ça marche ?</a>
           </li>
-          <li class="nav-item mx-1 sr-only">
+          <li class="nav-item mx-1">
             <a class="nav-link" href="#">Tout les types de bien</a>
           </li>
           <!-- <li class="nav-item dropdown">
@@ -42,7 +46,10 @@ style="box-shadow: 0 2px 10px rgba(0,0,0,.3);
             </div>
           </li> -->
 
-          
+            
+          </ul>
+
+        <ul class="navbar-nav ml-auto d-flex align-items-center">   
           <% if user_signed_in? %>
                 <% if current_user.profile_photo_url.present? %>
                     <li class="nav-item dropdown mx-2">                        

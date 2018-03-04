@@ -37,20 +37,18 @@
 
                 <% @properties.each do |property| %>
                     <div class="col-lg-4">
-                        <a href="<%= property %>" title="">
+                        <%= link_to property do %>
                             <div class="card position-relative mb-5">
                                 <img class="card-img-top h-25" src="" alt="Card image cap">
-	
-									<%= image_tag property.property_photos.first_url %>
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            <%= property.title %>
-                                        </h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="<%= property %>" class="btn btn-primary text-right">Détail</a>
-                                    </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= property.title %>
+                                    </h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <a href="<%= property %>" class="btn btn-primary text-right">Détail</a>
+                                </div>
                             </div>
-                        </a>
+                        <% end%>
                     </div>
                 <% end %>
 

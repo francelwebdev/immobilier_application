@@ -36,9 +36,9 @@
             <div class="col-12">
                 <%= f.fields_for :property_photos do |photo| %>
                     <%= photo.file_field :photo, input_html: { class: "form-control-file" }, label: "Photo 1", multiple: true, name: "property_photos[photo][]" %>
-                    <%= photo.file_field :photo, input_html: { class: "form-control-file" }, label: "Photo 1", multiple: true, name: "property_photos[photo][]" %>
-                    <%= photo.file_field :photo, input_html: { class: "form-control-file" }, label: "Photo 1", multiple: true, name: "property_photos[photo][]" %>
-                <% end %>
+                        <%= photo.file_field :photo, input_html: { class: "form-control-file" }, label: "Photo 1", multiple: true, name: "property_photos[photo][]" %>
+                            <%= photo.file_field :photo, input_html: { class: "form-control-file" }, label: "Photo 1", multiple: true, name: "property_photos[photo][]" %>
+                                <% end %>
             </div>
         </div>
 
