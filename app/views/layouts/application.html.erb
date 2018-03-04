@@ -1,15 +1,14 @@
 <!doctype html>
-<html lang="fr" class="no-js">
+<html lang="fr">
   <head>
         <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
 
         <meta name="author" content="Francel AMAMOO">
         <meta name="description" content="Petite annonce immobilier entre particulier">
 
         <!-- Required meta tags -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
 
         <%= favicon_link_tag "" %>
 
@@ -18,11 +17,9 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
 
         <%= csrf_meta_tags %>
-        <%= action_cable_meta_tag %>
+
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>       
         
-        <%= cloudinary_js_config %>
 
         <!-- Add the slick-theme.css if you want default styling -->
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
@@ -42,7 +39,12 @@
 
         <!-- <%= render "shareds/mobile_apps" %> -->
 
-        <%= render "shareds/footer" %>        
+        <%= render "shareds/footer" %>
+
+
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>       
+        
+        <%= cloudinary_js_config %>
 
 
         <script src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
