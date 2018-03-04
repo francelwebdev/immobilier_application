@@ -96,9 +96,11 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 # File upload
 gem "mini_magick"
-gem 'carrierwave', '~> 1.2', '>= 1.2.2'
-gem 'cloudinary', '~> 1.9'
-gem 'dropzonejs-rails', '~> 0.8.2'
+gem 'carrierwave'
+gem 'cloudinary'
+gem 'dropzonejs-rails'
+
+
 
 
 gem 'autoprefixer-rails', '~> 8.0'

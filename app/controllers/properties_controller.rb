@@ -6,7 +6,10 @@ class PropertiesController < ApplicationController
   # GET /properties.json
   def index
     @properties = Property.all.order("created_at DESC")
-    @property_photos = @properties.property_photos.all
+
+    @properties.each do |property|
+      @property_photos = property.property_photos.all
+    end
   end
 
   # GET /properties/1

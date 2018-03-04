@@ -328,12 +328,12 @@ DEPENDENCIES
   bootstrap (~> 4.0)
   byebug
   capybara (~> 2.13)
-  carrierwave (~> 1.2, >= 1.2.2)
-  cloudinary (~> 1.9)
+  carrierwave
+  cloudinary
   coffee-rails (~> 4.2)
   devise (~> 4.4, >= 4.4.1)
   devise-i18n (~> 1.6)
-  dropzonejs-rails (~> 0.8.2)
+  dropzonejs-rails
   figaro (~> 1.1, >= 1.1.1)
   font-awesome-sass (~> 5.0, >= 5.0.6.2)
   friendly_id (~> 5.2, >= 5.2.3)

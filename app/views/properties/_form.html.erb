@@ -30,44 +30,40 @@
             </div>
         </div>
 
-        <p class="h3 mt-4">Ajouter les photos</p>
+        <p class="h3 mt-4">Photos</p>
         <p><small>Ajoutez les photos pour rendre votre annonce encore plus visible</small></p>
         <hr class="mb-5">
         <div class="form-inputs form-row">
             <div class="col-12">
                 <%= f.fields_for :property_photos do |photo| %>
-
                   <div class="form-group">
-                    <label for="exampleFormControlFile1">Photo N°1</label>
-                    <%= photo.file_field :names, label: "Photos du bien", class: "form-control-file", name: "property_photos[names][]", multiple: true  %>
+                  	<%= label(:names, :title, "Photo 1") %>
+                    <%= photo.file_field :names, class: "form-control-file", name: "property_photos[names][]", multiple: true  %>
                   </div>
 
                   <div class="form-group">
-                    <label for="exampleFormControlFile1">Photo N°2</label>
-                    <%= photo.file_field :names, label: "Photos du bien", class: "form-control-file", name: "property_photos[names][]", multiple: true  %>
+                    <%= label(:names, :title, "Photo 2") %>
+                    <%= photo.file_field :names, class: "form-control-file", name: "property_photos[names][]", multiple: true  %>
                   </div>
 
                   <div class="form-group">
-                    <label for="exampleFormControlFile1">Photo N°3</label>
-                    <%= photo.file_field :names, label: "Photos du bien", class: "form-control-file", name: "property_photos[names][]", multiple: true  %>
-                  </div>
+                    <%= label(:names, :title, "Photo 3") %>
+                    <%= photo.file_field :names, class: "form-control-file", name: "property_photos[names][]", multiple: true  %>
+                  </div>                
+                <% end %>
 
-                  <div class="form-group">
-                    <%= photo.hidden_field :names, label: "Photos du bien", class: "form-control-file", id: "file", name: "property_photos[names][]", multiple: true  %>
-                  </div>
-
-
-
-					<div class="dropzone dropzone-file-area" id="fileUpload">
-					<div class="dz-default dz-message">
-					<h3 class="sbold">Drop files here to upload</h3>
-					<span>You can also click to open file browser</span>
-					</div>
-					</div>
-
-
-
-                
+                <%= f.fields_for :property_photos, class: "dropzone", id: "photo_upload_dropzone" do |photo| %>
+                    <div class="dz-message needsclick">
+                        <h4>Déplacer les photos ici</h4>
+                        <p>ou</p>
+                        <h5>Cliquer ici pour télécharger les photos</h5>
+                    </div>
+                    <div class="fallback">
+                      <div class="form-group">
+                        <%= label(:names, :title, "Photo 1") %>
+                        <%= photo.file_field :names, class: "form-control-file", name: "property_photos[names][]", multiple: true  %>
+                      </div>
+                    </div>     
                 <% end %>
             </div>
         </div>

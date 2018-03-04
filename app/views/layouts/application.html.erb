@@ -18,7 +18,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
 
         <%= csrf_meta_tags %>
-
+        <%= action_cable_meta_tag %>
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>       
         
@@ -32,7 +32,7 @@
   </head>
 
   <body class="Controller : <%= controller.controller_name  %>, Action : <%= controller.action_name  %>">
-
+		
         <%= render "shareds/navbar" %>
         <%= render 'shareds/flash' %>
 

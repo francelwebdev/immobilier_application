@@ -11,39 +11,39 @@
 					<div class="col-md-6">
 						<ul class="nav flex-column">
 							<li class="nav-item">
-								<%= link_to 'Qui sommes-nous', page_path('about'), class: "nav-link pl-0 py-1 text-dark" %>
+								<%= link_to 'Qui sommes-nous', page_path('about'), class: "nav-link pl-0 py-1 text-muted" %>
 							</li>
 							<li class="nav-item">
-								<%= link_to 'Contacter-nous', page_path('about'), class: "nav-link pl-0 py-1 text-dark" %>
+								<%= link_to 'Contacter-nous', page_path('about'), class: "nav-link pl-0 py-1 text-muted" %>
 							</li>
 							<li class="nav-item">
-								<%= link_to "Carrières", accueil_path, class: "nav-link pl-0 py-1 text-dark" %>
+								<%= link_to "Carrières", accueil_path, class: "nav-link pl-0 py-1 text-muted" %>
 							</li>
 							<li class="nav-item">
-								<%= link_to "Tarifs", accueil_path, class: "nav-link pl-0 py-1 text-dark" %>
+								<%= link_to "Tarifs", accueil_path, class: "nav-link pl-0 py-1 text-muted" %>
 							</li>
 							<li class="nav-item">
-								<%= link_to "Conditions générales d'utilisation", accueil_path, class: "nav-link pl-0 py-1 text-dark" %>
+								<%= link_to "Conditions générales d'utilisation", accueil_path, class: "nav-link pl-0 py-1 text-muted" %>
 							</li>
 
 							<li class="nav-item">
-								<%= link_to "Politique de confidentialité", accueil_path, class: "nav-link pl-0 py-1 text-dark" %>
+								<%= link_to "Politique de confidentialité", accueil_path, class: "nav-link pl-0 py-1 text-muted" %>
 							</li>
 						</ul>
 					</div>
 					<div class="col-md-6">
 						<ul class="nav flex-column">
 					<li class="nav-item">
-						<%= link_to "FAQ", accueil_path, class: "nav-link pl-0 py-1 text-dark" %>
+						<%= link_to "FAQ", accueil_path, class: "nav-link pl-0 py-1 text-muted" %>
 					</li>
 					<li class="nav-item">
-						<%= link_to "Blog", accueil_path, class: "nav-link pl-0 py-1 text-dark" %>
+						<%= link_to "Blog", accueil_path, class: "nav-link pl-0 py-1 text-muted" %>
 					</li>
 					<li class="nav-item">
-						<%= link_to "Comment ça marche ?", accueil_path, class: "nav-link pl-0 py-1 text-dark" %>
+						<%= link_to "Comment ça marche ?", accueil_path, class: "nav-link pl-0 py-1 text-muted" %>
 					</li>
 					<li class="nav-item">
-						<%= link_to "Contact", accueil_path, class: "nav-link pl-0 py-1 text-dark" %>
+						<%= link_to "Contact", accueil_path, class: "nav-link pl-0 py-1 text-muted" %>
 					</li>
 				</ul>
 					</div>
@@ -54,17 +54,17 @@
 				<address>
 					<ul class="nav flex-column">
 						<li class="nav-item">
-							<a href="" class="nav-link pl-0 py-1 text-dark">
+							<a href="" class="nav-link pl-0 py-1 text-muted">
 								<i class="fas fa-map-marker-alt mr-1" aria-hidden="true"></i>&nbsp; Cococodji, Bénin
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="" class="nav-link pl-0 py-1 text-dark">
+							<a href="" class="nav-link pl-0 py-1 text-muted">
 								<i class="fas fa-mobile mr-1" aria-hidden="true"></i>&nbsp; 62 20 03 90
 							</a>
 						</li>
 						<li class="nav-item">
-							<%= mail_to "francel.webdev@gmail.com", subject: "Demande d'information", class: "nav-link pl-0 py-1 text-dark" do %>
+							<%= mail_to "francel.webdev@gmail.com", subject: "Demande d'information", class: "nav-link pl-0 py-1 text-muted" do %>
 								<i class="fas fa-envelope mr-1" aria-hidden="true"></i>&nbsp; francel.webdev@gmail.com
 							<% end %>
 						</li>
@@ -73,13 +73,15 @@
 
 				<ul class="nav">
 					<li class="nav-item">
-						<%= link_to "", class: "nav-link pl-0 text-dark" do %>
-							<i class="fas fa-facebook-f mr-1" aria-hidden="true"></i>
+						<%= link_to "", class: "nav-link pl-0" do %>
+							<%= image_tag "220199-social-media/svg/facebook.svg", class: "w-25" %>
+							<i class="fas fa-facebook-f mr-1 sr-only" aria-hidden="true"></i>
 						<% end %>
 					</li>
 					<li class="nav-item">
-						<%= link_to "", class: "nav-link pl-0 text-dark" do %>
-							<i class="fas fa-twitter mr-1" aria-hidden="true"></i>
+						<%= link_to "", class: "nav-link pl-0" do %>
+							<%= image_tag "220199-social-media/svg/twitter.svg", class: "w-25" %>
+							<i class="fas fa-twitter mr-1 sr-only" aria-hidden="true"></i>
 						<% end %>
 					</li>
 				</ul>

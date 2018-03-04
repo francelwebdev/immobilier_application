@@ -39,7 +39,8 @@
               <div class="col-lg-4">
                 <a href="<%= property %>" title="">
                   <div class="card position-relative mb-5">
-                  <img class="card-img-top h-25" src="<%= @property_photos %>" %>" alt="Card image cap">
+                  <img class="card-img-top h-25" src="" alt="Card image cap">
+                  <%= image_tag property.property_photos.url  %>
                   <div class="card-body">
                     <h5 class="card-title"><%= property.title %></h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
