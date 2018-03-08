@@ -23,8 +23,8 @@ class PropertiesController < ApplicationController
   # GET /properties/new
   def new
     @property = current_user.properties.build
+    @property.build_user
     @property_photos = @property.property_photos.build
-    @current_user = User.find(current_user.id)
   end
 
   # GET /properties/1/edit
