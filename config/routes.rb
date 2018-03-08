@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'pages/home'
+
     root to: "pages#home", as: "accueil"
 
     devise_for :users
