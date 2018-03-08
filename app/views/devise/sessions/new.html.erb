@@ -1,12 +1,13 @@
+<% content_for :page_title, "Connexion" %>
+
+<%= render "shareds/haut-page-connexion" %>
+
 <section class="container-fluid">
     <div class="container">
         <div class="row py-5">
-            <div class="col-lg-4 offset-lg-4">
-                <div class="card"">
-                    <div class="card-body">
-                        <img class="mb-4 sr-only" src="" alt="" width="72" height="72">
+            <div class="col-lg-4 offset-lg-4 py-4" style="box-shadow: 0 10px 20px rgba(0,0,0,.1);">
 
-                        <h2 class="card-title text-center font-weight-normal"><%= t(".sign_in") %></h2>
+                <h2 class="card-title text-center font-weight-normal"><%= t(".sign_in") %></h2>
 
                 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                   <div class="form-inputs">
@@ -20,11 +21,8 @@
                   </div>
                 <% end %>
 
-                    <div class="text-center mt-4">
-                        <%= render "devise/shared/links" %>
-                    </div>
-
-                    </div>
+                <div class="text-center mt-4">
+                    <%= render "devise/shared/links" %>
                 </div>
 
             </div>

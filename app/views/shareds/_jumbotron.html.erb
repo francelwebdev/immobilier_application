@@ -3,8 +3,8 @@
 <!-- POur jarallax" data-jarallax='{"speed": 0.2}' data-jarallax-video="https://www.youtube.com/watch?v=UrkXWG9WgC8" -->
 <div class="jumbotron jumbotron-fluid d-flex align-items-center mb-0 p-0 jumbotron-welcomes">
     <div class="container text-center">
-        <h1 class="display-4 text-white">Bienvenue sur <span class="font-weight-bold">SICO</span></h1>
-        <p class="lead text-white">Trouvez votre <span id="js-rotating">Maison, Parcelle, Terrain, Appartement, Commerce</span> de rêve sans les frais d'un agent immobilier</p>
+        <h1 class="display-4 text-white">Immobilier entre particuliers</h1>
+        <p class="lead text-white">Trouvez votre <span id="js-rotating">Maison, Parcelle, Terrain, Appartement ou Commerce</span> sans intermédiaires</p>
 
         <!-- <%= simple_form_for :search_property,  url: properties_path , method: :get do |f| %>
             <div class="form-row">
@@ -19,26 +19,7 @@
 
         <div class="row py-3" style="background-color: rgba(69,68,63,.5);">
             <div class="col-12">
-                <%= form_with url: properties_path, method: :get, local: true do |form|  %>
-            <div class="form-row px-1">
-                <div class="col-md-3">
-                    <!--  style="box-shadow: 0 5px 30px rgba(156, 160, 171, 0.25) !important;" -->
-                    <%= form.label :property_type, "A louer ou A vendre", class: "d-flex justify-content-left text-white mb-0 font-weight-bold ml-3 sr-only"  %>
-                    <%= form.select :ad_type, AdType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type d'annonce" }, { class: "form-control" } %>
-                </div>
-                <div class="col-md-3">
-                    <%= form.label :property_type, "Quel type de bien cherchez-vous", class: "d-flex justify-content-left text-white mb-0 font-weight-bold ml-3 sr-only"  %>
-                    <%= form.select :property_type, PropertyType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type de bien" }, { class: "form-control" } %>
-                </div>
-                <div class="col-md-4">
-                    <%= form.label :property_type, "Où", class: "d-flex justify-content-left text-white mb-0 font-weight-bold ml-3 sr-only"  %>
-                    <%= form.text_field :city, placeholder: "Dans quel ville où quartier ?", class: 'form-control' %>
-                </div>
-                <div class="col-md-2">
-                    <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn btn-block' %>
-                </div>
-            </div>
-        <% end %>
+                <%= render "shareds/property_search_form" %>
             </div>
         </div>
     </div>

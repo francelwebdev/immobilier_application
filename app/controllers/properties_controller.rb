@@ -5,7 +5,13 @@ class PropertiesController < ApplicationController
   # GET /properties
   # GET /properties.json
   def index
-    @properties = Property.includes(:property_photos).all.order("created_at DESC")
+    if params[:property_type].present? and params[:ad_type].present? and params[:city].present?
+      @properties = Property.where("property_type_id = ? AND ad_type_id = ? AND city LIKE ?", params[:property_type], params[:ad_type], "#{params[:city]}")
+    elsif params[:property_type].blank? and params[:ad_type].present? and params[:city].present?
+      @properties = Property.where("ad_type_id = ? AND (city LIKE '#{params[:city]}' OR city LIKE '#{params[:city]}') OR (city LIKE '#{params[:city]}' OR city LIKE '#{params[:city]}')", params[:ad_type])
+    else
+      @properties = Property.all.order("created_at DESC")
+    end
   end
 
   # GET /properties/1

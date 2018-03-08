@@ -2,26 +2,10 @@
 
     <section class="container-fluid" style="background-color: #FAFAFA;">
         <div class="container">
-            <div class="row py-5">
-                <div class="col-12">
+            <div class="row py-4">
+                <div class="col-12 col-lg-10 offset-lg-1">
                     <h3>Afinner votre recherche</h3>
-                    <%= form_with url: accueil_path, method: :get, local: true do |form|  %>
-                        <div class="row px-1">
-                            <div class="col-md-3 px-0">
-                                <!--  style="box-shadow: 0 5px 30px rgba(156, 160, 171, 0.25) !important;" -->
-                                <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control' %>
-                            </div>
-                            <div class="col-md-3 px-0">
-                                <%= form.text_field :city, required: true, placeholder: "Nom de votre ville ou quartier. Ex: Agla, Zogbo, Fifadji", class: 'form-control' %>
-                            </div>
-                            <div class="col-md-4 px-0">
-                                <%= form.text_field :city, required: true, placeholder: "Ou cherchez-vous ? Ex: Agla, Zogbo", class: 'form-control' %>
-                            </div>
-                            <div class="col-md-2 px-0">
-                                <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary' %>
-                            </div>
-                        </div>
-                        <% end %>
+                    <%= render "shareds/property_search_form" %>
                 </div>
             </div>
         </div>
@@ -37,20 +21,36 @@
 
                 <% @properties.each do |property| %>
                     <div class="col-lg-4">
-                        <%= link_to property do %>
-                            <div class="card position-relative mb-5">
-                                <img class="card-img-top h-25" src="" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <%= property.title %>
-                                    </h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="<%= property %>" class="btn btn-primary text-right">Détail</a>
-                                </div>
-                            </div>
-                        <% end%>
+                        <div class="card mb-4 position-relative liste-card-recherche">
+                            <%= image_tag property.property_photos.first.photo_url, class: "card-img-top card-photo-property", alt: "Photo de lannonce : #{ property.title }", size: "200x200" %>
+                                <% if property.ad_type.name == "A vendre" %>
+                                    <small class="position-absolute text-white badge-success px-2 py-1 font-weight-bold" style="top: 20px; right: 10px;"><%= property.ad_type.name %></small>
+                                    <% elsif property.ad_type.name == "A louer" %>
+                                        <small class="position-absolute text-white badge-warning px-2 py-1 font-weight-bold" style="top: 20px; right: 10px;"><%= property.ad_type.name %></small>
+                                        <% end %>
+
+                                            <% unless property.ad_type.name == "A vendre" %>
+                                                <p class="position-absolute text-white h3 m-0 font-weight-bold badge-secondary px-2 py-1" style="bottom: 200px; left: 10px;">
+                                                    <%= property.price %><small>/mois</small></p>
+                                                <% else %>
+                                                    <p class="position-absolute text-white h3 m-0 font-weight-bold badge-secondary px-2 py-1" style="bottom: 200px; left: 10px;">
+                                                        <%= property.price %>
+                                                    </p>
+                                                    <% end %>
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">
+                                                                <%= property.title.capitalize %>
+                                                            </h5>
+                                                            <p class="card-text text-muted"><i class="fas fa-map-marker-alt"></i>&nbsp;
+                                                                <%= property.address %>, <%= property.city %>
+                                                            </p>
+                                                            <p><%= truncate(strip_tags(property.description), length: 15)  %></p>
+                                                            <p class="text-primary text-right m-0">
+                                                                <%= link_to "Plus d'infos", property %>&nbsp; <i class="fas fa-angle-right"></i></p>
+                                                        </div>
+                        </div>
                     </div>
-                <% end %>
+                    <% end %>
 
             </div>
         </div>
@@ -90,13 +90,11 @@
             <td>
                 <%= link_to 'Show', property %>
             </td>
-            <td>
+            <td class="sr-only">
                 <%= link_to 'Edit', edit_property_path(property) %>
             </td>
-            <td>
+            <td class="sr-only">
                 <%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %>
             </td>
         </tr>
         <% end %>
-
-            <%= link_to 'New Property', new_property_path %>

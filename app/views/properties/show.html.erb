@@ -1,14 +1,94 @@
-<section class="container-fluid">
+<p id="notice" class="sr-only"><%= notice %></p>
+
+<section class="container-fluid pt-5 pb-2" style="background-color: #FAFAFA;">
   <div class="container">
     <div class="row">
-      <div class="row">
-        
-        <p id="notice" class="sr-only"><%= notice %></p>
+      <div class="col-lg-8 offset-lg-1">
+        <h3><%= @property.title.capitalize %></h3>
+        <address>
+          <p><i class="fas fa-map-marker-alt mr-1"></i>&nbsp;  <%= @property.address %>, <%= @property.city %></p>
+        </address>
+      </div>
+      <div class="col-lg-2 d-flex justify-content-lg-end">
+        <h3 class="text-primary"><%= @property.price %> <sup><small>Fcfa</small></sup></h3>
+      </div>
+    </div>
+  </div>
+</section>
 
-<p>
-  <strong>Property titre:</strong>
-  <%= @property.title %>
-</p>
+<section class="container pt-3 pb-5">
+  <div class="row">
+    <% @property_photos.each do |photo| %>
+      <div class="col-lg-4">
+        <%= image_tag(photo.photo.url, alt: 'Property photos', class: "") if photo.present? %>        
+      </div>
+    <% end %>
+
+      <div class="col-lg-8">
+        <div class="row">
+          <div class="col-12 my-3">
+              <h4 class="mb-0">Description</h4>
+              <hr>
+              <p> <%= @property.description %></p> 
+          </div>
+
+          <div class="col-12 my-3">
+            <h4 class="mb-0">Details</h4>
+            <hr>
+            <ul class="nav flex-column">
+            <li class="nav-item">
+              <a href="" class="nav-link pl-0 py-1 text-muted">
+                <i class="fas fa-map-marker-alt"></i>&nbsp; Cococodji, Bénin
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link pl-0 py-1 text-muted">
+                <i class="fas fa-mobile mr-1" aria-hidden="true"></i>&nbsp; 62 20 03 90
+              </a>
+            </li>
+            <li class="nav-item">
+              <%= mail_to "francel.webdev@gmail.com", subject: "Demande d'information", class: "nav-link pl-0 py-1 text-muted" do %>
+                <i class="fas fa-envelope mr-1" aria-hidden="true"></i>&nbsp; francel.webdev@gmail.com
+              <% end %>
+            </li>
+          </ul>
+          </div>
+
+          <div class="col-12 my-3">
+            <h4 class="mb-0">Location</h4>
+            <hr>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-4">
+                <%= image_tag @property.user.profile_photo_url, class: "rounded-circle", size: "80x80" %>
+              </div>
+              <div class="col-lg-8">
+                <h5 class="card-text">
+                    <%= @property.user.first_name %> <%= @property.user.last_name %>
+                </h5>
+                <p><%= @property.user.phone_number %></p>
+              </div>
+              <div class="col-lg-12 my-3">
+                <%= form_with scope: :contact, class: "d-flex flex-column justify-content-center" do |contact| %>
+
+                    <%= contact.email_field :email %>
+                    <%= contact.email_field :email %>
+                    <%= contact.submit :submit %>
+
+                <% end %>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+
 
 <p>
   <strong>Property type:</strong>
@@ -24,44 +104,12 @@
   <strong>Title:</strong>
   <%= @property.title %>
 </p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @property.price %>
-</p>
-
 <p>
   <strong>Area:</strong>
   <%= @property.area %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @property.description %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @property.address %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @property.city %>
-</p>
-
-<p>
-  <strong>Photo:</strong>
-  <% @property_photos.each do |photo| %>
-    <%= image_tag(photo.photo.url(:large), alt: 'Property photos', class: "") if photo.present? %>
-  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_property_path(@property) %> |
 <%= link_to 'Back', properties_path %>
 
 
-      </div>
-    </div>
-  </div>
-</section>

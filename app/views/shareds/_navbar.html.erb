@@ -1,20 +1,17 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white sticky-top" style="box-shadow: 0 10px 20px rgba(0,0,0,.1);">
-	<!-- " style="box-shadow: 0 2px 10px rgba(0,0,0,.3); -->
-	<!-- style="box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px 0px, rgba(0, 0, 0, 0.2) 0px 2px 20px 0px; -->
-	<!-- box-shadow: 0 10px 32px 0 rgba(0,0,0,.1);
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
+	<!-- " style="box-shadow: 0 2px 10px rgba(0,0,0,.3); 
+
+   style="box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px 0px, rgba(0, 0, 0, 0.2) 0px 2px 20px 0px; 
+
+   box-shadow: 0 10px 32px 0 rgba(0,0,0,.1);
 box-shadow: 0 0 40px 0 rgba(0,0,0,0.1);
-box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
-} -->
-<!-- a utiliser pour card   rgba(121,121,121,.35) 1px 10px 20px
 
-box-shadow: 0 2px 10px rgba(0,0,0,.3);
+ box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 
-box-shadow: 0 0 40px 0 rgba(0,0,0,0.1)
-<%= image_tag "", height: 50 %>
+  box-shadow: 0 16px 20px 0 rgba(216, 216, 216, .75)
 
-style="box-shadow: 0 2px 10px rgba(0,0,0,.3);
- style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-  style="box-shadow: 0 2px 10px rgba(0,0,0,.3);
+
+  box-shadow: 0 10px 20px rgba(0,0,0,.1);
 
 -->
 	<div class="container">
@@ -32,10 +29,10 @@ style="box-shadow: 0 2px 10px rgba(0,0,0,.3);
               <a class="nav-link mx-1" href="<%= accueil_path %>">Accueil <span class="sr-only">(current)</span></a>
             </li>
           <li class="nav-item mx-1">
-            <a class="nav-link" href="<%= accueil_path %>#comment-ca-marche">Comment ça marche ?</a>
+            <a class="nav-link" href="<%= accueil_path %>#comment-ca-marche">Comment ça marche</a>
           </li>
-          <li class="nav-item mx-1 sr-only">
-            <a class="nav-link" href="#">Tout les types de bien</a>
+          <li class="nav-item mx-1">
+            <%= link_to "Tout les biens", properties_path, class: "nav-link"  %>
           </li>
           <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type de bien</a>
@@ -50,11 +47,15 @@ style="box-shadow: 0 2px 10px rgba(0,0,0,.3);
           </ul>
 
         <ul class="navbar-nav ml-auto d-flex align-items-center">   
+          <li class="nav-item mx-2">
+                <%= link_to "Publiez une annonce", new_property_path, class: "btn btn-outline-primary" %>
+            </li>
+
           <% if user_signed_in? %>
                 <% if current_user.profile_photo_url.present? %>
-                    <li class="nav-item dropdown mx-2">                        
-                        <%= image_tag(current_user.profile_photo_url(:thumb), width: 30, height: 30, class: "rounded-circle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false") %>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <li class="nav-item dropdown mx-1">                        
+                        <%= image_tag(current_user.profile_photo_url, size: "25x25", class: "rounded-circle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false") %>
+                        <div class="dropdown-menu dropdown-menu-right mt-3" aria-labelledby="navbarDropdown">
                             <h6 class="dropdown-header">Connecté en tant que <br><%= current_user.email %></h6>
                             <div class="dropdown-divider"></div>
                             <%= link_to accueil_path, class: "dropdown-item" do %>
@@ -94,10 +95,7 @@ style="box-shadow: 0 2px 10px rgba(0,0,0,.3);
                 <%= link_to new_user_session_path, class: "nav-link" do %>Connexion
                 <% end %>
               </li>
-            <% end %>
-            <li class="nav-item mx-2">
-                <%= link_to "Publiez une annonce", new_property_path, class: "btn btn-outline-primary" %>
-            </li>
+            <% end %>           
 
         </ul>
       </div>

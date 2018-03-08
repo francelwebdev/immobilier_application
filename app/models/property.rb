@@ -8,14 +8,12 @@ class Property < ApplicationRecord
   belongs_to :user
   has_many :property_photos
 
-  validates :title, presence: true
-  validates :price, presence: true
-  validates :area, presence: true
-  validates :ad_type_id, presence: true
-  validates :property_type_id, presence: true
-  validates :description, presence: true
-  validates :city, presence: true
-  validates :address, presence: true
+  validates :title, :price, :area, :ad_type_id, :property_type_id, :description, :city, :address, presence: true
+  validates :title, uniqueness: true
+  validates :price, numericality: {greater_than_or_equal_to: 0.01}
+
+  # AD_TYPE = ["A louer", "A vendre"]
+  # PROPERTY_TYPE = []
 
 
   accepts_nested_attributes_for :user, allow_destroy: true
