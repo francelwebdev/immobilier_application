@@ -7,4 +7,6 @@ class User < ApplicationRecord
     has_many :properties, dependent: :destroy
 
     mount_uploader :profile_photo, ProfilePhotoUploader
+
+    #validates :first_name, :last_name, :phone_number, :profile_photo, presence: true
 end

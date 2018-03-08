@@ -102,7 +102,7 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem 'dropzonejs-rails'
 
-
+# gem 'gibbon'
 
 
 gem 'autoprefixer-rails', '~> 8.0'
