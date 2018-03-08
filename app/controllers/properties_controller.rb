@@ -6,10 +6,10 @@ class PropertiesController < ApplicationController
   # GET /properties.json
   def index
     if params[:property_type].present? and params[:ad_type].present? and params[:city].present?
-      @properties = Property.where("property_type_id = ? and ad_type_id = ? and city LIKE ? or city LIKE ?", params[:property_type].to_i, params[:ad_type].to_i, params[:city], params[:city])
+      @properties = Property.where("property_type_id = ? and ad_type_id = ? and city LIKE ? or city LIKE ?", params[:property_type].to_i, params[:ad_type].to_i, params[:city], params[:city]).page
       @total_properties = @properties.count
     else
-      @properties = Property.all.order("created_at DESC")
+      @properties = Property.all.order("created_at DESC").page(params[:page]).per(9)
       @total_properties = @properties.count
     end
   end
@@ -22,9 +22,10 @@ class PropertiesController < ApplicationController
 
   # GET /properties/new
   def new
-    @property = current_user.properties.build
-    @property.build_user
+    @current_user = User.find(current_user.id)    
+    @property = @current_user.properties.build
     @property_photos = @property.property_photos.build
+    @property.build_user
   end
 
   # GET /properties/1/edit
@@ -37,9 +38,9 @@ class PropertiesController < ApplicationController
     @property = current_user.properties.build(property_params)
 
     respond_to do |format|
-	  if @property.save
+      if @property.save
       params[:property_photos]['photo'].each do |photo|
-          @property_photo = @property.property_photos.create!(photo: photo, property_id: @property.id)
+          @property_photo = @property.property_photos.create!(:photo => photo, :property_id => @property.id)
        end
         format.html { redirect_to @property, notice: 'Property was successfully created.' }
         format.json { render :show, status: :created, location: @property }

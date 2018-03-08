@@ -52,7 +52,8 @@
                 <% if current_user.first_name.blank? and current_user.last_name.blank? and current_user.phone_number.blank? %>
                     <p class="h3 mt-5">Information de contact</p>
                     <hr class="mb-5">
-                    <%= f.simple_fields_for @property.user do |user_form| %>
+                    <%= f.simple_fields_for :user do |user_form| %>
+                    <!-- @property.build_user -->
                         <div class="form-inputs form-row">
                             <div class="col-lg-4">
                                 <%= user_form.input :first_name, required: true, label: "Prénom" %>

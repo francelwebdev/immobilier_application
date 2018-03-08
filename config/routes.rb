@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-    root to: "welcome#index", as: "accueil"
+    root to: "pages#home", as: "accueil"
 
     devise_for :users
 
