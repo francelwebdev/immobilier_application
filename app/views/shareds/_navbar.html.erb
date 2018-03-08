@@ -8,8 +8,9 @@
     box-shadow: 0 10px 20px rgba(0,0,0,.1);
 -->
 	<div class="container">
-		<%= link_to accueil_path, class: "navbar-brand font-weight-bold text-uppercase" do %>
-			<i class="fas fa-home fa-lg"></i> Sico
+		<%= link_to accueil_path, class: "navbar-brand font-weight-bold text-uppercase d-flex flex-column align-items-center" do %>
+			<div class="m-0 p-0"><i class="fas fa-home fa-lg"></i> Sico</div>
+      <small style="font-size: 1rem;" class="text-lowercase"><em>Immobilier entres particuliers</em></small>
 		<% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

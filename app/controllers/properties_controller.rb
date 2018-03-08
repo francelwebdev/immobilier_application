@@ -6,7 +6,7 @@ class PropertiesController < ApplicationController
   # GET /properties.json
   def index
     if params[:property_type].present? and params[:ad_type].present? and params[:city].present?
-      @properties = Property.where("property_type_id = ? and ad_type_id = ? and city LIKE ? or city LIKE ?", params[:property_type].to_i, params[:ad_type].to_i, params[:city], params[:city]).page
+      @properties = Property.where("property_type_id = ? and ad_type_id = ? and city LIKE ? or city LIKE ?", params[:property_type].to_i, params[:ad_type].to_i, params[:city], params[:city]).page(params[:page]).per(9)
       @total_properties = @properties.count
     else
       @properties = Property.all.order("created_at DESC").page(params[:page]).per(9)
@@ -21,9 +21,8 @@ class PropertiesController < ApplicationController
   end
 
   # GET /properties/new
-  def new
-    @current_user = User.find(current_user.id)    
-    @property = @current_user.properties.build
+  def new  
+    @property = current_user.properties.build
     @property_photos = @property.property_photos.build
     @property.build_user
   end
@@ -36,6 +35,7 @@ class PropertiesController < ApplicationController
   # POST /properties.json
   def create
     @property = current_user.properties.build(property_params)
+    @property.build_user
 
     respond_to do |format|
       if @property.save
