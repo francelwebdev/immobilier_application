@@ -26,7 +26,6 @@ class PropertiesController < ApplicationController
 
   # GET /properties/new
   def new
-    @current_user = User.find(current_user.id)
     @property = current_user.properties.build
     @property_photos = @property.property_photos.build
   end

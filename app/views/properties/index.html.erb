@@ -15,7 +15,11 @@
     <div class="container">
         <div class="row py-5">
             <div class="col-12">
-                <p><%= @total_properties %> résultats trouvés</p>
+                <% if @total_properties > 1 %>
+                    <p><%= @total_properties %> resultats trouvés</p>
+                <% else %>
+                    <p><%= @total_properties %> resultat trouvé</p>
+                <% end %>
             </div>
 
             <% @properties.each do |property| %>
@@ -23,24 +27,40 @@
                     <div class="card mb-4 liste-card-recherche">
 						<%= image_tag property.property_photos.first.photo_url, class: "card-img-top", alt: "Photo de lannonce : #{ property.title }", height: "250px" %>
                         <% if property.ad_type.name == "A vendre" %>
-                            <small class="position-absolute text-white badge-success px-2 py-1 font-weight-bold" style="top: 10px; left: 10px;"><%= property.ad_type.name %></small>                                
+                            <small class="position-absolute text-white badge-secondary px-2 py-1 font-weight-bold" style="top: 10px; left: 10px;"><%= property.ad_type.name %></small>                                
                         <% elsif property.ad_type.name == "A louer" %>
                             <small class="position-absolute text-white badge-secondary px-2 py-1 font-weight-bold" style="top: 10px; left: 10px;"><%= property.ad_type.name %></small>
                         <% end %>
                         <div class="card-body">
                             <h5 class="card-title font-weight-bold">
-                            	<%= link_to truncate(property.title.capitalize, length: 25), property %>
+                                <%= truncate(strip_tags(property.title.capitalize), length: 25) %>
                             </h5>
                             <address class="card-text">
                                 <i class="fas fa-map-marker-alt"></i>&nbsp; <%= property.address %>, <%= property.city %>
                             </address>
                             <% if property.ad_type.name == "A vendre" %>
-	                            <p class="h5 m-0 p-0 font-weight-bold"><%= sprintf("%0.00f", property.price) %><sup>F</sup></p>
+                                <div class="d-flex justify-content-between align-items-center">                                    
+    	                            <p class="h4 m-0 p-0">
+                                        <%= sprintf("%0.00f", property.price) %><sup>F</sup>
+                                    </p>
+                                    <p class="m-0 p-0">
+                                        <%= link_to "Detail", property, class: "btn btn-primary btn-sm" %>
+                                    </p>
+                                </div>
                             <% elsif property.ad_type.name == "A louer" %>
-                            	<p class="h5 m-0 p-0 font-weight-bold"><%= sprintf("%0.00f", property.price) %><sup>F</sup><small>/mois</small></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                            	   <p class="h4 m-0 p-0">
+                                        <%= sprintf("%0.00f", property.price) %><sup>F</sup><small>/mois</small>           
+                                    </p>
+                                    <p class="m-0 p-0">
+                                        <%= link_to "Detail", property, class: "btn btn-primary btn-sm" %>
+                                    </p>
+                                </div>
                             <% end %>
-                            <p class="m-0 sr-only">
-                                <small>Il y a <%= time_ago_in_words(property.created_at) %></small>
+
+                            <p class="m-0 ">
+                                <small class="sr-only">Il y a <%= time_ago_in_words(property.created_at) %></small>
+                                
                             </p>
                         </div>
                     </div>

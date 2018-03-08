@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
     resources :properties
 
-    namespace :my_ads do
+    namespace :dashboard do
         resources :properties, only: [:index, :show, :edit, :delete]
     end
 

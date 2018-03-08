@@ -13,8 +13,8 @@ class Property < ApplicationRecord
   validates :title, uniqueness: true
   validates :price, numericality: {greater_than_or_equal_to: 0.01}
 
-  # AD_TYPE = ["A louer", "A vendre"]
-  # PROPERTY_TYPE = []
+  AD_TYPE = ["A louer", "A vendre"]
+  PROPERTY_TYPE = ["Maison", "Appartement"]
 
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :property_photos, allow_destroy: true

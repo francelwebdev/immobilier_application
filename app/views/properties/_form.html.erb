@@ -7,6 +7,18 @@
         <div class="col-12">
             <%= f.input :title, autofocus: true, required: true, label: "Titre de l'annonce" %>
         </div>
+
+
+
+        <div class="col-12">
+            <%= f.input :property_type, as: :select, required: true, collection: Property::PROPERTY_TYPE, prompt: "Selectionner le type de bien", include_blank: true %>
+        </div>
+        <div class="col-12">
+            <%= f.input :ad_type, as: :select, required: true, collection: Property::AD_TYPE, prompt: "Selectionner le type d'annonce", include_blank: true %>
+        </div>
+
+
+
         <div class="col-lg-6">
             <%= f.association :ad_type, required: true, label: "Type d'annonce" %>
         </div>
