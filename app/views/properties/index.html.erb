@@ -1,97 +1,72 @@
 <% provide :page_title, "Resultat de recherche"  %>
 
-    <section class="container-fluid" style="background-color: #FAFAFA;">
-        <div class="container">
-            <div class="row py-4">
-                <div class="col-12 col-lg-10 offset-lg-1">
-                    <h3>Afinner votre recherche</h3>
-                    <%= render "shareds/property_search_form" %>
-                </div>
+<section class="container-fluid py-5" style="background-color: #FAFAFA;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3>Afinner votre recherche</h3>
+                <%= render "shareds/property_search_form" %>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="container-fluid">
-        <div class="container">
-            <div class="row py-5">
-                <div class="col-12">
-                    <p>
-                        <%= @properties.count %> résultats trouvés</p>
-                </div>
+<section class="container-fluid">
+    <div class="container">
+        <div class="row py-5">
+            <div class="col-12">
+                <% if @total_properties > 1 %>
+                    <p><%= @total_properties %> resultats trouvés</p>
+                <% else %>
+                    <p><%= @total_properties %> resultat trouvé</p>
+                <% end %>
+            </div>
 
-                <% @properties.each do |property| %>
-                    <div class="col-lg-4">
-                        <div class="card mb-4 position-relative liste-card-recherche">
-                            <%= image_tag property.property_photos.first.photo_url, class: "card-img-top card-photo-property", alt: "Photo de lannonce : #{ property.title }", size: "200x200" %>
-                                <% if property.ad_type.name == "A vendre" %>
-                                    <small class="position-absolute text-white badge-success px-2 py-1 font-weight-bold" style="top: 20px; right: 10px;"><%= property.ad_type.name %></small>
-                                    <p class="position-absolute text-white h4 m-0 font-weight-bold badge-secondary px-2 py-1" style="bottom: 200px; left: 10px;">
-                                                        <%= sprintf("%0.00f", property.price) %>
-                                                    </p>
-                                    <% elsif property.ad_type.name == "A louer" %>
-                                        <small class="position-absolute text-white badge-warning px-2 py-1 font-weight-bold" style="top: 20px; right: 10px;"><%= property.ad_type.name %></small>
-                                        <p class="position-absolute text-white h4 m-0 font-weight-bold badge-secondary px-2 py-1" style="bottom: 200px; left: 10px;">
-                                                        <%= sprintf("%0.00f", property.price) %><small>/mois</small>
-                                                    </p>
-                                        <% end %>
-                                                        <div class="card-body">
-                                                            <h5 class="card-title">
-                                                                <%= property.title.capitalize %>
-                                                            </h5>
-                                                            <p class="card-text text-muted"><i class="fas fa-map-marker-alt"></i>&nbsp;
-                                                                <%= property.address %>, <%= property.city %>
-                                                            </p>
-                                                            <p><%= truncate(strip_tags(property.description), length: 15)  %></p>
-                                                            <p class="text-primary text-right m-0">
-                                                                <%= link_to "Plus d'infos", property %>&nbsp; <i class="fas fa-angle-right"></i></p>
-                                                        </div>
+            <% @properties.each do |property| %>
+                <div class="col-lg-4">
+                    <div class="card mb-4 liste-card-recherche">
+						<%= image_tag property.property_photos.first.photo_url, class: "card-img-top", alt: "Photo de lannonce : #{ property.title }", height: "250px" %>
+                        <% if property.ad_type.name == "A vendre" %>
+                            <small class="position-absolute text-white badge-secondary px-2 py-1 font-weight-bold" style="top: 10px; left: 10px;"><%= property.ad_type.name %></small>                                
+                        <% elsif property.ad_type.name == "A louer" %>
+                            <small class="position-absolute text-white badge-secondary px-2 py-1 font-weight-bold" style="top: 10px; left: 10px;"><%= property.ad_type.name %></small>
+                        <% end %>
+                        <div class="card-body">
+                            <h5 class="card-title font-weight-bold">
+                                <%= truncate(strip_tags(property.title.capitalize), length: 25) %>
+                            </h5>
+                            <address class="card-text">
+                                <i class="fas fa-map-marker-alt"></i>&nbsp; <%= property.address %>, <%= property.city %>
+                            </address>
+                            <% if property.ad_type.name == "A vendre" %>
+                                <div class="d-flex justify-content-between align-items-center">                                    
+    	                            <p class="h4 m-0 p-0">
+                                        <%= sprintf("%0.00f", property.price) %><sup>F</sup>
+                                    </p>
+                                    <p class="m-0 p-0">
+                                        <%= link_to "Detail", property, class: "btn btn-primary btn-sm" %>
+                                    </p>
+                                </div>
+                            <% elsif property.ad_type.name == "A louer" %>
+                                <div class="d-flex justify-content-between align-items-center">
+                            	   <p class="h4 m-0 p-0">
+                                        <%= sprintf("%0.00f", property.price) %><sup>F</sup><small>/mois</small>           
+                                    </p>
+                                    <p class="m-0 p-0">
+                                        <%= link_to "Detail", property, class: "btn btn-primary btn-sm" %>
+                                    </p>
+                                </div>
+                            <% end %>
+
+                            <p class="m-0 ">
+                                <small class="sr-only">Il y a <%= time_ago_in_words(property.created_at) %></small>
+                                
+                            </p>
                         </div>
                     </div>
-                    <% end %>
+                </div>
+            <% end %>
 
-            </div>
         </div>
-    </section>
-
-
-    <% @properties.each do |property| %>
-        <tr>
-            <td>
-                <%= property.property_type %>
-            </td>
-            <td>
-                <%= property.ad_type %>
-            </td>
-            <td></td>
-            <td>
-                <%= property.price %>
-            </td>
-            <td>
-                <%= property.area %>
-            </td>
-            <td>
-                <%= property.description %>
-            </td>
-            <td>
-                <%= property.address %>
-            </td>
-            <td>
-                <%= property.city %>
-            </td>
-            <td>
-                <%= property.latitude %>
-            </td>
-            <td>
-                <%= property.longitude %>
-            </td>
-            <td>
-                <%= link_to 'Show', property %>
-            </td>
-            <td class="sr-only">
-                <%= link_to 'Edit', edit_property_path(property) %>
-            </td>
-            <td class="sr-only">
-                <%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </td>
-        </tr>
-        <% end %>
+    </div>
+</section>
