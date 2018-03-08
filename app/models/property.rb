@@ -6,6 +6,7 @@ class Property < ApplicationRecord
   belongs_to :property_type
   belongs_to :ad_type
   belongs_to :user
+  
   has_many :property_photos
 
   validates :title, :price, :area, :ad_type_id, :property_type_id, :description, :city, :address, presence: true
@@ -15,5 +16,6 @@ class Property < ApplicationRecord
   # AD_TYPE = ["A louer", "A vendre"]
   # PROPERTY_TYPE = []
 
+  accepts_nested_attributes_for :user
   accepts_nested_attributes_for :property_photos, allow_destroy: true
 end

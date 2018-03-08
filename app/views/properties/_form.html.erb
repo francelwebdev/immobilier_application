@@ -48,6 +48,24 @@
             </div>
         </div>
     <% end %>
+     
+    <% if current_user.first_name.blank? && current_user.last_name.blank? && current_user.phone_number.blank? %>
+        <p class="h3 mt-5">Information de contact</p>
+        <hr class="mb-5">
+        <%= f.simple_fields_for @current_user do |user_form| %>
+            <div class="form-inputs form-row">
+                <div class="col-lg-4">
+                    <%= user_form.input :first_name, required: true, label: "Prénom" %>
+                </div>
+                <div class="col-lg-4">
+                    <%= user_form.input :last_name, required: true, label: "Nom" %>
+                </div>
+                <div class="col-lg-4">
+                    <%= user_form.input :phone_number, required: true, label: "Numéros de contact" %>
+                </div>
+            </div>
+        <% end %>    
+    <% end %>
 
     <div class="form-actions form-row mt-4">
         <div class="col-12">

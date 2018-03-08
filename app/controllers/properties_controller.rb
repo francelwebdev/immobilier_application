@@ -26,6 +26,7 @@ class PropertiesController < ApplicationController
 
   # GET /properties/new
   def new
+    @current_user = User.find(current_user.id)
     @property = current_user.properties.build
     @property_photos = @property.property_photos.build
   end
@@ -42,7 +43,7 @@ class PropertiesController < ApplicationController
     respond_to do |format|
 	  if @property.save
       params[:property_photos]['photo'].each do |photo|
-          @property_photo = @property.property_photos.create!(:photo => photo, :property_id => @property.id)
+          @property_photo = @property.property_photos.create!(photo: photo, property_id: @property.id)
        end
         format.html { redirect_to @property, notice: 'Property was successfully created.' }
         format.json { render :show, status: :created, location: @property }
@@ -85,6 +86,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params.require(:property).permit(:property_type_id, :ad_type_id, :title, :price, :area, :description, :address, :city, property_photos_attributes: [:photo])
+      params.require(:property).permit(:property_type_id, :ad_type_id, :title, :price, :area, :description, :address, :city, property_photos_attributes: [:photo], user_attributes: [:first_name, :last_name, :phone_number])
     end
 end
