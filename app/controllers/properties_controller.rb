@@ -7,10 +7,13 @@ class PropertiesController < ApplicationController
   def index
     if params[:property_type].present? and params[:ad_type].present? and params[:city].present?
       @properties = Property.where("property_type_id = ? AND ad_type_id = ? AND city LIKE ?", params[:property_type], params[:ad_type], "#{params[:city]}")
+      @total_properties = @properties.count
     elsif params[:property_type].blank? and params[:ad_type].present? and params[:city].present?
       @properties = Property.where("ad_type_id = ? AND (city LIKE '#{params[:city]}' OR city LIKE '#{params[:city]}') OR (city LIKE '#{params[:city]}' OR city LIKE '#{params[:city]}')", params[:ad_type])
+      @total_properties = @properties.count
     else
       @properties = Property.all.order("created_at DESC")
+      @total_properties = @properties.count
     end
   end
 

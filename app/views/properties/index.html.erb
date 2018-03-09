@@ -16,7 +16,7 @@
             <div class="row py-5">
                 <div class="col-12">
                     <p>
-                        <%= @properties.count %> résultats trouvés</p>
+                        <%= @total_properties %> résultats trouvés</p>
                 </div>
 
                 <% @properties.each do |property| %>
@@ -44,54 +44,16 @@
                                                             <p><%= truncate(strip_tags(property.description), length: 15)  %></p>
                                                             <p class="text-primary text-right m-0">
                                                                 <%= link_to "Plus d'infos", property %>&nbsp; <i class="fas fa-angle-right"></i></p>
+                                                                <hr class="sr-only">
+                                                            <p class="m-0 sr-only">
+                                                                Publié le 
+                                                                <small><%= time_ago_in_words(property.created_at) %></small>
+                                                            </p>
                                                         </div>
                         </div>
                     </div>
-                    <% end %>
+                <% end %>
 
             </div>
         </div>
     </section>
-
-
-    <% @properties.each do |property| %>
-        <tr>
-            <td>
-                <%= property.property_type %>
-            </td>
-            <td>
-                <%= property.ad_type %>
-            </td>
-            <td></td>
-            <td>
-                <%= property.price %>
-            </td>
-            <td>
-                <%= property.area %>
-            </td>
-            <td>
-                <%= property.description %>
-            </td>
-            <td>
-                <%= property.address %>
-            </td>
-            <td>
-                <%= property.city %>
-            </td>
-            <td>
-                <%= property.latitude %>
-            </td>
-            <td>
-                <%= property.longitude %>
-            </td>
-            <td>
-                <%= link_to 'Show', property %>
-            </td>
-            <td class="sr-only">
-                <%= link_to 'Edit', edit_property_path(property) %>
-            </td>
-            <td class="sr-only">
-                <%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </td>
-        </tr>
-        <% end %>
