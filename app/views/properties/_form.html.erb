@@ -30,7 +30,6 @@
             </div>            
         </div>
 
-
         <%= f.fields_for :property_photos do |photo| %>
             <p class="h3 mt-4 mb-0">Photos</p>
             <hr class="mb-5">
@@ -48,43 +47,40 @@
                     <%= photo.file_field :photo, class: "form -control form-control-file", name: "property_photos[photo][]" %>
                 </div>
             </div>
-        <% end %>
-        
+        <% end %>        
 
         <% if current_user.phone_number.blank? %>
-            <%= f.simple_fields_for @current_user do |user_form| %>
+            <%= f.simple_fields_for @current_user do |user_info| %>
                 <p class="h3 mt-5">Information de contact</p>
                 <hr class="mb-5">
                 <div class="form-inputs form-row">
                     <div class="col-lg-4">
-                        <%= user_form.input :first_name, placeholder: "#{current_user.first_name}", label: "Prénom", input_html: { disabled: true } %>
+                        <%= user_info.input :first_name, placeholder: "#{current_user.first_name}", label: "Prénom", input_html: { disabled: true } %>
                     </div>
                     <div class="col-lg-4">
-                        <%= user_form.input :last_name, placeholder: "#{current_user.last_name}", label: "Nom", input_html: { disabled: true } %>
+                        <%= user_info.input :last_name, placeholder: "#{current_user.last_name}", label: "Nom", input_html: { disabled: true } %>
                     </div>
                     <div class="col-lg-4">
-                        <%= user_form.input :phone_number, required: true, label: "Numéros de contact", placeholder: "Votre numéro de tél" %>
+                        <%= user_info.input :phone_number, required: true, label: "Numéros de contact", placeholder: "Votre numéro de tél" %>
                     </div>
                 </div>
             <% end %>
         <% else %>
-            <%= f.simple_fields_for @property.build_user do |user_form| %>
-                <p class=" h3 mt-5">Information de contact</p>
-                <hr class="mb-5">
-                <fieldset disabled>
-                    <div class="form-inputs form-row">
-                        <div class="col-lg-4">
-                            <%= user_form.input :first_name, placeholder: "#{current_user.first_name}", label: "Prénom" %>
-                        </div>
-                        <div class="col-lg-4">
-                            <%= user_form.input :last_name, placeholder: "#{current_user.last_name}", label: "Nom" %>
-                        </div>
-                        <div class="col-lg-4">
-                            <%= user_form.input :phone_number, as: :tel, placeholder: "#{current_user.phone_number}", label: "Numéro de téléphone" %>
-                        </div>
+            <p class=" h3 mt-5">Information de contact</p>
+            <hr class="mb-5">
+            <fieldset disabled>
+                <div class="form-inputs form-row">
+                    <div class="col-lg-4">
+                        <%= f.input :first_name, placeholder: "#{current_user.first_name}", label: "Prénom" %>
                     </div>
-                </fieldset>
-            <% end %>
+                    <div class="col-lg-4">
+                        <%= f.input :last_name, placeholder: "#{current_user.last_name}", label: "Nom" %>
+                    </div>
+                    <div class="col-lg-4">
+                        <%= f.input :phone_number, as: :tel, placeholder: "#{current_user.phone_number}", label: "Numéro de téléphone" %>
+                    </div>
+                </div>
+            </fieldset>
         <% end %>
 
     <div class="form-actions form-row mt-4">
