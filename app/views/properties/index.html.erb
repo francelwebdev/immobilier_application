@@ -25,7 +25,7 @@
             <% @properties.each do |property| %>
                 <div class="col-lg-4">
                     <div class="card mb-4 liste-card-recherche">
-						<%= image_tag property.property_photos.first.photo_url, class: "card-img-top", alt: "Photo de lannonce : #{ property.title }", height: "250px" %>
+						<%= image_tag property.property_photos.first.photo_url, class: "card-img-top", alt: "Photo de lannonce : #{ property.title }", height: "225px" %>
                         <% if property.ad_type.name == "A vendre" %>
                             <small class="position-absolute text-white badge-secondary px-2 py-1 font-weight-bold" style="top: 10px; left: 10px;"><%= property.ad_type.name %></small>                                
                         <% elsif property.ad_type.name == "A louer" %>

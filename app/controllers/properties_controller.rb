@@ -6,10 +6,7 @@ class PropertiesController < ApplicationController
   # GET /properties.json
   def index
     if params[:property_type].present? and params[:ad_type].present? and params[:city].present?
-      @properties = Property.where("property_type_id = ? and ad_type_id = ? and city LIKE lower(?) or city LIKE upper(?)", params[:property_type], params[:ad_type], params[:city], params[:city])
-      @total_properties = @properties.count
-    elsif params[:property_type].blank? and params[:ad_type].present? and params[:city].present?
-      @properties = Property.where("ad_type_id = ? and city LIKE ?", params[:ad_type], params[:city])
+      @properties = Property.where("property_type_id = ? and ad_type_id = ? and city LIKE ? or city LIKE ?", params[:property_type].to_i, params[:ad_type].to_i, params[:city], params[:city])
       @total_properties = @properties.count
     else
       @properties = Property.all.order("created_at DESC")
@@ -20,7 +17,6 @@ class PropertiesController < ApplicationController
   # GET /properties/1
   # GET /properties/1.json
   def show
-
     @property_photos = @property.property_photos.all
   end
 
@@ -28,6 +24,7 @@ class PropertiesController < ApplicationController
   def new
     @property = current_user.properties.build
     @property_photos = @property.property_photos.build
+    @current_user = User.find(current_user.id)
   end
 
   # GET /properties/1/edit

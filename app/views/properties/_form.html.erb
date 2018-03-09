@@ -7,18 +7,6 @@
         <div class="col-12">
             <%= f.input :title, autofocus: true, required: true, label: "Titre de l'annonce" %>
         </div>
-
-
-
-        <div class="col-12">
-            <%= f.input :property_type, as: :select, required: true, collection: Property::PROPERTY_TYPE, prompt: "Selectionner le type de bien", include_blank: true %>
-        </div>
-        <div class="col-12">
-            <%= f.input :ad_type, as: :select, required: true, collection: Property::AD_TYPE, prompt: "Selectionner le type d'annonce", include_blank: true %>
-        </div>
-
-
-
         <div class="col-lg-6">
             <%= f.association :ad_type, required: true, label: "Type d'annonce" %>
         </div>
@@ -61,7 +49,7 @@
         </div>
     <% end %>
      
-    <% if current_user.first_name.blank? && current_user.last_name.blank? && current_user.phone_number.blank? %>
+    <% if current_user.first_name.blank? and current_user.last_name.blank? and current_user.phone_number.blank? %>
         <p class="h3 mt-5">Information de contact</p>
         <hr class="mb-5">
         <%= f.simple_fields_for @current_user do |user_form| %>
