@@ -4,13 +4,9 @@
    style="box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px 0px, rgba(0, 0, 0, 0.2) 0px 2px 20px 0px; 
 
    box-shadow: 0 10px 32px 0 rgba(0,0,0,.1);
-box-shadow: 0 0 40px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 0 40px 0 rgba(0,0,0,0.1);
 
- box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-
-  box-shadow: 0 16px 20px 0 rgba(216, 216, 216, .75)
-
-
+   box-shadow: 0 16px 20px 0 rgba(216, 216, 216, .75);
   box-shadow: 0 10px 20px rgba(0,0,0,.1);
 
 -->
@@ -25,15 +21,21 @@ box-shadow: 0 0 40px 0 rgba(0,0,0,0.1);
           <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 
             <ul class="navbar-nav ml-auto d-flex align-items-center">
-            <li class="nav-item active">
+            <li class="nav-item active sr-only">              
               <a class="nav-link mx-1" href="<%= accueil_path %>">Accueil <span class="sr-only">(current)</span></a>
             </li>
-          <li class="nav-item mx-1">
-            <a class="nav-link" href="<%= accueil_path %>#comment-ca-marche">Comment ça marche</a>
-          </li>
-          <li class="nav-item mx-1">
-            <%= link_to "Tout les biens", properties_path, class: "nav-link"  %>
-          </li>
+            <% if user_signed_in? %>
+              <li class="nav-item mx-1">
+              <%= link_to "Tout les biens", properties_path, class: "nav-link"  %>
+              </li>
+            <% else %>
+              <li class="nav-item mx-1">
+              <a class="nav-link" href="<%= accueil_path %>#comment-ca-marche">Comment ça marche</a>
+              </li>
+              <li class="nav-item mx-1">
+              <%= link_to "Tout les biens", properties_path, class: "nav-link"  %>
+              </li>
+            <% end %>
           <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type de bien</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -54,7 +56,7 @@ box-shadow: 0 0 40px 0 rgba(0,0,0,0.1);
           <% if user_signed_in? %>
                 <% if current_user.profile_photo_url.present? %>
                     <li class="nav-item dropdown mx-1">                        
-                        <%= image_tag(current_user.profile_photo_url, size: "25x25", class: "rounded-circle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false") %>
+                        <%= image_tag(current_user.profile_photo_url, size: "40x40", class: "rounded-circle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false") %>
                         <div class="dropdown-menu dropdown-menu-right mt-3" aria-labelledby="navbarDropdown">
                             <h6 class="dropdown-header">Connecté en tant que <br><%= current_user.email %></h6>
                             <div class="dropdown-divider"></div>

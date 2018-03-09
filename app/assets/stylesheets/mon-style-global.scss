@@ -36,10 +36,15 @@ body {
     height: 3rem;
 }
 
-.liste-card-recherche:hover {  
-  box-shadow: 0 16px 20px 0 rgba(216, 216, 216, .75)
+.liste-card-rech4rche {
+  transition: all 0.2s ease-out 50ms !important;
+}
+
+.liste-card-recherche:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,.1);
+  transition: all 0.2s ease-out 50ms !important;
 }
 
 .card-photo-property {
-
+  
 }

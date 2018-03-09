@@ -18,8 +18,6 @@
 
         <%= csrf_meta_tags %>
 
-        <%= action_cable_meta_tag %>
-
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         
 
@@ -38,8 +36,6 @@
         <main>
             <%= yield %>
         </main>
-
-        <!-- <%= render "shareds/mobile_apps" %> -->
 
         <%= render "shareds/footer" %>
 
@@ -60,6 +56,8 @@
             <%= yield :annonce_nouvellement_publié %>
 
             <%= yield :animate_text  %>
+        <% elsif current_page?(accueil_path) %>
+            <%= yield :slide_properties_photo %>
         <% end %>
 
     </body>

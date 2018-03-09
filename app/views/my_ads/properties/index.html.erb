@@ -1,9 +1,9 @@
 <% provide :page_title, "Mes annonces"  %>
 
-<section class="container-fluid py-4" style="background-color: #FAFAFA;">
+<section class="container-fluid py-5" style="background-color: #FAFAFA;">
     <div class="container">
         <div class="row">
-            <div class="col-lg-10 offset-lg-1">
+            <div class="col-12">
                 <h3>Mes annonces</h3>
             </div>
         </div>
@@ -13,12 +13,7 @@
 <section class="container-fluid py-5">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
-                <ul class="list-group">
-                    <li>OK</li>
-                </ul>
-            </div>
-            <div class="col-lg-8">
+            <div class="col-12">
                 <% if @my_ads_total > 1 %>
                     <p><%= @my_ads_total %> annonces publié</p>
                 <% else %>
@@ -27,39 +22,33 @@
 
                 <div class="row">
                      <% @my_ads.each do |my_ad| %>
-                <div class="col-lg-6">
-                    <div class="card mb-4 position-relative liste-card-recherche">
-                        <%= image_tag my_ad.property_photos.first.photo_url, class: "card-img-top card-photo-property", alt: "Photo de lannonce : #{ my_ad.title }", size: "200x200" %>
-                            <% if my_ad.ad_type.name == "A vendre" %>
-                                <small class="position-absolute text-white badge-success px-2 py-1 font-weight-bold" style="top: 20px; right: 10px;"><%= my_ad.ad_type.name %></small>
-                                <p class="position-absolute text-white h4 m-0 font-weight-bold badge-secondary px-2 py-1" style="bottom: 200px; left: 10px;">
-                                                    <%= sprintf("%0.00f", my_ad.price) %>
-                                                </p>
+                        <div class="col-lg-4">
+                            <div class="card mb-4 liste-card-recherche">
+                                <%= image_tag my_ad.property_photos.first.photo_url, class: "card-img-top", alt: "Photo de lannonce : #{ my_ad.title }", height: "250px" %>
+                                <% if my_ad.ad_type.name == "A vendre" %>
+                                    <small class="position-absolute text-white badge-success px-2 py-1 font-weight-bold" style="top: 10px; left: 10px;"><%= my_ad.ad_type.name %></small>                                
                                 <% elsif my_ad.ad_type.name == "A louer" %>
-                                    <small class="position-absolute text-white badge-warning px-2 py-1 font-weight-bold" style="top: 20px; right: 10px;"><%= my_ad.ad_type.name %></small>
-                                    <p class="position-absolute text-white h4 m-0 font-weight-bold badge-secondary px-2 py-1" style="bottom: 200px; left: 10px;">
-                                                    <%= sprintf("%0.00f", my_ad.price) %><small>/mois</small>
-                                                </p>
+                                    <small class="position-absolute text-white badge-secondary px-2 py-1 font-weight-bold" style="top: 10px; left: 10px;"><%= my_ad.ad_type.name %></small>
+                                <% end %>
+                                <div class="card-body">
+                                    <h5 class="card-title font-weight-bold">
+                                        <%= link_to "#{my_ad.title.capitalize}", my_ad %>
+                                    </h5>
+                                    <address class="card-text">
+                                        <i class="fas fa-map-marker-alt"></i>&nbsp; <%= my_ad.address %>, <%= my_ad.city %>
+                                    </address>
+                                    <% if my_ad.ad_type.name == "A vendre" %>
+                                        <p class="h5 m-0 p-0 font-weight-bold"><%= sprintf("%0.00f", my_ad.price) %><sup>F</sup></p>
+                                    <% elsif my_ad.ad_type.name == "A louer" %>
+                                        <p class="h5 m-0 p-0 font-weight-bold"><%= sprintf("%0.00f", my_ad.price) %><sup>F</sup><small>/mois</small></p>
                                     <% end %>
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">
-                                                            <%= my_ad.title.capitalize %>
-                                                        </h5>
-                                                        <p class="card-text text-muted"><i class="fas fa-map-marker-alt"></i>&nbsp;
-                                                            <%= my_ad.address %>, <%= my_ad.city %>
-                                                        </p>
-                                                        <p><%= truncate(strip_tags(my_ad.description), length: 15)  %></p>
-                                                        <p class="text-primary text-right m-0">
-                                                            <%= link_to "Plus d'infos", my_ad %>&nbsp; <i class="fas fa-angle-right"></i></p>
-                                                            <hr class="sr-only">
-                                                        <p class="m-0 sr-only">
-                                                            Publié le 
-                                                            <small><%= time_ago_in_words(my_ad.created_at) %></small>
-                                                        </p>
-                                                    </div>
-                    </div>
-                </div>
-            <% end %>
+                                    <p class="m-0 sr-only">
+                                        <small>Il y a <%= time_ago_in_words(my_ad.created_at) %></small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
                 </div>
             </div>
         </div>
