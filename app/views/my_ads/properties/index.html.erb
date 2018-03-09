@@ -32,7 +32,7 @@
                                 <% end %>
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold">
-                                        <%= link_to "#{my_ad.title.capitalize}", my_ad %>
+                                        <%= link_to truncate(my_ad.title.capitalize, length: 30),  my_ad %>
                                     </h5>
                                     <address class="card-text">
                                         <i class="fas fa-map-marker-alt"></i>&nbsp; <%= my_ad.address %>, <%= my_ad.city %>

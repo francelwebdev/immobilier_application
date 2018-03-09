@@ -26,8 +26,7 @@ class PropertiesController < ApplicationController
 
   # GET /properties/new
   def new
-    @current_user = User.find(current_user.id)
-    @property = @current_user.properties.build
+    @property = current_user.properties.build
     @property_photos = @property.property_photos.build
   end
 
@@ -86,6 +85,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params.require(:property).permit(:property_type_id, :ad_type_id, :title, :price, :area, :description, :address, :city, user_attributes: [:phone_number], property_photos_attributes: [:photo])
+      params.require(:property).permit(:property_type_id, :ad_type_id, :title, :price, :area, :description, :address, :city, property_photos_attributes: [:photo])
     end
 end

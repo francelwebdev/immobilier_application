@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180309032612) do
+ActiveRecord::Schema.define(version: 20180309033802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20180309032612) do
     t.bigint "property_type_id"
     t.bigint "ad_type_id"
     t.string "title"
-    t.decimal "price", precision: 9, scale: 2
+    t.decimal "price"
     t.integer "area"
     t.text "description"
     t.string "address"

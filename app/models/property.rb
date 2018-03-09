@@ -15,7 +15,5 @@ class Property < ApplicationRecord
   # AD_TYPE = ["A louer", "A vendre"]
   # PROPERTY_TYPE = []
 
-
-  accepts_nested_attributes_for :user, allow_destroy: true
   accepts_nested_attributes_for :property_photos, allow_destroy: true
 end
