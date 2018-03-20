@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-
-  namespace :dashboard do
-    get 'properties/index'
-  end
-
     root to: "pages#home", as: "accueil"
     devise_for :users
 
@@ -13,7 +8,8 @@ Rails.application.routes.draw do
 
     resources :properties
     namespace :dashboard do
-        resources :properties, only: [:index, :show, :edit, :delete]
+        get 'mes_annonces', to: 'properties#index', as: "mes-annonces"
+        # resources :properties, only: [:index, :show, :edit, :delete]
     end
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

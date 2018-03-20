@@ -9,13 +9,11 @@
 		  <p class="text-muted"><i class="fas fa-map-marker-alt mr-1"></i>&nbsp; <%= @property.address %>, <%= @property.city %></p>
 		</address>
 	  </div>
-	  <div class="col-lg-3 text-lg-right">
+	  <div class="col-lg-3 d-flex justify-content-center align-items-center">
 	  	<% if @property.ad_type.name == "A louer" %>
 			<p class="h3 text-primary"><%= @property.price %><sup>f</sup></%>/<small>mois</small></sup></p>
-			<p class="h4">Surface: <small><%= @property.area %> m<sup>2</sup></small></p>
 		<% else %>
 			<p class="h3 text-primary"><%= @property.price %> <small>Fcfa</small></sup></p>
-			<p class="h4"><small class="font-weight-bold">Surface: <%= @property.area %> m<sup>2</sup></small></p>
 		<% end %>
 	  </div>
 	</div>
@@ -41,81 +39,83 @@
 <section class="container py-5">
   <div class="row">
 	  <div class="col-lg-8">
+	  	<div class="card border-0 mb-4" style="background-color: #FAFAFA;">
+	  		<div class="card-body">
+				<div class="row">
+					<div class="col-lg-3 text-center">
+						<h6 class="font-weight-bold">Surface</h6>
+						<p><%= @property.area %> m<sup>2</sup></p>
+					</div>
+					<div class="col-lg-3 text-center">
+						<h6 class="font-weight-bold">Nombres de pièces</h6>
+						<p></p>
+					</div>
+					<div class="col-lg-3 text-center">
+						<h6 class="font-weight-bold">Nombres de pièces</h6>
+						<p></p>
+					</div>
+					<div class="col-lg-3 text-center">
+						<h6 class="font-weight-bold">Nombres de pièces</h6>
+						<p></p>
+					</div>
+				</div>
+	  		</div>
+		</div>
+
 		<div class="row">
 		  <div class="col-12 my-3">
 			  <h4 class="mb-0">Description</h4>
 			  <hr>
 			  <p> <%= @property.description %></p> 
 		  </div>
-
 		  <div class="col-12 my-3">
-			<h4 class="mb-0">Details</h4>
+			<h4 class="mb-0">Caractéristique</h4>
 			<hr>
-			<ul class="nav flex-column">
-			<li class="nav-item">
-			  <a href="" class="nav-link pl-0 py-1 text-muted">
-				<i class="fas fa-map-marker-alt"></i>&nbsp; Cococodji, Bénin
-			  </a>
-			</li>
-			<li class="nav-item">
-			  <a href="" class="nav-link pl-0 py-1 text-muted">
-				<i class="fas fa-mobile mr-1" aria-hidden="true"></i>&nbsp; 62 20 03 90
-			  </a>
-			</li>
-			<li class="nav-item">
-			  <%= mail_to "francel.webdev@gmail.com", subject: "Demande d'information", class: "nav-link pl-0 py-1 text-muted" do %>
-				<i class="fas fa-envelope mr-1" aria-hidden="true"></i>&nbsp; francel.webdev@gmail.com
-			  <% end %>
-			</li>
-		  </ul>
 		  </div>
-
 		  <div class="col-12 my-3">
 			<h4 class="mb-0">Addresse</h4>
 			<hr>
 		  </div>
-
 		  <div class="col-12 my-3">
 			<h4 class="mb-0">Plan</h4>
 			<hr>
 		  </div>
-
 		  <div class="col-12 my-3">
 			<h4 class="mb-0">Vidéo</h4>
-			<hr>
-		  </div>
-
-		  <div class="col-12 my-3">
-			<h4 class="mb-0">Avis</h4>
 			<hr>
 		  </div>
 		</div>
 	  </div>
 	  <div class="col-lg-4">
-		<div class="card">
-		  <div class="card-body">
-			<div class="row">
-			  <div class="col-lg-4">
-				<%= image_tag @property.user.profile_photo_url, class: "rounded-circle", size: "80x80" %>
-			  </div>
-			  <div class="col-lg-8">
-				<h5 class="card-text">
-					<%= @property.user.first_name %> <%= @property.user.last_name %>
-				</h5>
-				<p><%= @property.user.phone_number %></p>
-			  </div>
-			  <div class="col-lg-12 my-3">
-				<%= form_with scope: :contact, class: "d-flex flex-column justify-content-center" do |contact| %>
-
-					<%= contact.email_field :email %>
-					<%= contact.email_field :email %>
-					<%= contact.submit :submit %>
+		<div class="card border-0" style="box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);">			
+			<div class="card-body pb-0">	
+				<p class="h5 mb-4 font-weight-bold text-center">Propriétaire du bien</p>			
+				<div class="row">
+				  <div class="col-lg-4">
+					<%= image_tag @property.user.profile_photo_url, class: "rounded-circle", size: "80x80" %>
+				  </div>
+				  <div class="col-lg-8 d-flex flex-column justify-content-center">
+					<p class="text-primary m-0">
+						<%= @property.user.first_name %> <%= @property.user.last_name %>
+					</p>
+					<p class="m-0">
+						<i class="fas fa-phone mr-1" aria-hidden="true"></i>&nbsp; <%= @property.user.phone_number %>
+					</p>
+				  </div>			  
+				</div>
+			</div>
+			<div class="card-body">
+				<p>Lui écrire</p>
+				<%= simple_form_for :contact do |contact| %>
+					<%= contact.input :client_name, label: false, placeholder: "Nom et prénom"  %>
+					<%= contact.input :subject, label: false, placeholder: "Sujet"  %>
+					<%= contact.input :message, label: false, placeholder: "Message", as: :text, input_html: {rows: 4}  %>
+					<%= contact.submit "Envoyer", class: "btn btn-primary" %>
 
 				<% end %>
-			  </div>
 			</div>
 		</div>
-	  </div>
+		</div>
   	</div>
   	<div class="col-12">
 		<%= link_to 'Retour', properties_path, class: "btn btn-primary" %>

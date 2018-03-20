@@ -3,16 +3,18 @@ class PropertiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    if params[:property_type].present? and params[:ad_type].present? and params[:city].present?
-      @properties = Property.where("property_type_id = ? and ad_type_id = ? and (lower(city) LIKE ? or upper(city) LIKE ?)", params[:property_type].to_i, params[:ad_type].to_i, "%#{params[:city]}%", "%#{params[:city]}%").order("created_at DESC").page(params[:page]).per(9)
+    @ad_types = AdType.all
+
+      if params[:ad_type].present?
+        @ad_type_id = AdType.find_by(name: params[:ad_type]).id
+        @properties = Property.where("ad_type_id = ?", @ad_type_id).all.order("created_at DESC").page(params[:page]).per(9)
+      elsif  params[:property_type].present? and params[:ad_type].present? and params[:city].present?
+      @properties = Property.where("property_type_id = ? and ad_type_id = ? and (lower(city) LIKE ? or upper(city) LIKE ?)", params[:property_type].to_i, params[:ad_type].to_i, "%#{params[:city]}%", "%#{params[:city]}%").all.order("created_at DESC").page(params[:page]).per(9)
       if @properties.blank?
         flash.now[:warning] = "Aucun resultat trouvé !"
       end
     else
       @properties = Property.all.order("created_at DESC").page(params[:page]).per(9)
-      if @properties.blank?
-        flash.now[:warning] = "Aucun resultat trouvé !"
-      end
     end
   end
 
@@ -23,6 +25,8 @@ class PropertiesController < ApplicationController
     @property = current_user.properties.build
     @property_photos = @property.property_photos.build
     @user = @property.build_user
+
+    @ad_types = AdType.all
   end
 
   def edit

@@ -1,111 +1,70 @@
 <% provide :page_title, "Mes annonces"  %>
 
-    <section class="container-fluid py-4" style="background-color: #FAFAFA;">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h3>Mes annonces</h3>
-                </div>
+<section class="container-fluid py-4" style="background-color: #FAFAFA;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3>Mes annonces</h3>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="container-fluid py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-4">
-                    <% if @my_ads_total > 1 %>
-                        <p>
-                            <%= @my_ads_total %> annonces publié</p>
-                        <% else %>
-                            <p>
-                                <%= @my_ads_total %> annonce publié</p>
-                            <% end %>
-                </div>
-                <div class="col-12">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <div class="card" style="background-color: #FAFAFA;">
-                                <div class="card-body">
-                                    <p><small class="font-weight-bold">Gérer mes biens</small></p>
-                                    <ul class="list-unstyled">
-                                        <li class="py-1">
-                                            <%= link_to dashboard_properties_path, class: "text-dark" do %>
-                                                <i class="fas fa-list fa-lg"></i>&nbsp; Mes annonces
-                                                <% end %>
-                                        </li>
-                                        <li class="py-1">
-                                            <%= link_to new_property_path, class: "text-dark" do %>
-                                                <i class="fas fa-plus fa-lg"></i>&nbsp; Publier une annonce
-                                                <% end %>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <hr class="m-0">
-                                <div class="card-body">
-                                    <p><small class="font-weight-bold">Gérer mon compte</small></p>
-                                    <ul class="list-unstyled">
-                                        <li class="py-1">
-                                            <%= link_to edit_user_registration_path, class: "text-dark" do %>
-                                                <i class="fas fa-cog fa-lg"></i>&nbsp; Mon compte
-                                                <% end %>
-                                        </li>
-                                        <li class="py-1">
-                                            <%= link_to destroy_user_session_path, method: :delete, class: "text-dark" do %>
-                                                <i class="fas fa-sign-out-alt fa-lg"></i>&nbsp; Déconnexion
-                                                <% end %>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-9">
-                            <div class="rox">
-                                <div class="col-12 mb-4">
-                                    <div class="card bg-primary py-4">
-                                        <div class="card-bory">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <% @my_ads.each do |my_ad| %>
-                                    <div class="col-lg-4">
-                                        <div class="card mb-4 liste-card-recherche">
-                                            <%= image_tag my_ad.property_photos.first.photo_url, class: "card-img-top", alt: "Photo de lannonce : #{ my_ad.title }", height: "250px" %>
-                                                <% if my_ad.ad_type.name == "A vendre" %>
-                                                    <small class="position-absolute text-white badge-success px-2 py-1 font-weight-bold" style="top: 10px; left: 10px;"><%= my_ad.ad_type.name %></small>
-                                                    <% elsif my_ad.ad_type.name == "A louer" %>
-                                                        <small class="position-absolute text-white badge-secondary px-2 py-1 font-weight-bold" style="top: 10px; left: 10px;"><%= my_ad.ad_type.name %></small>
-                                                        <% end %>
-                                                            <div class="card-body">
-                                                                <h5 class="card-title font-weight-bold">
-                                                                    <%= link_to truncate(my_ad.title.capitalize, length: 30),  my_ad %>
-                                                                </h5>
-                                                                <address class="card-text">
-                                            <i class="fas fa-map-marker-alt"></i>&nbsp; <%= my_ad.address %>, <%= my_ad.city %>
-                                        </address>
-                                                                <% if my_ad.ad_type.name == "A vendre" %>
-                                                                    <p class="h5 m-0 p-0 font-weight-bold">
-                                                                        <%= sprintf("%0.00f", my_ad.price) %><sup>F</sup></p>
-                                                                    <% elsif my_ad.ad_type.name == "A louer" %>
-                                                                        <p class="h5 m-0 p-0 font-weight-bold">
-                                                                            <%= sprintf("%0.00f", my_ad.price) %><sup>F</sup><small>/mois</small></p>
-                                                                        <% end %>
-                                                                            <p class="m-0 sr-only">
-                                                                                <small>Il y a <%= time_ago_in_words(my_ad.created_at) %></small>
-                                                                            </p>
-                                                            </div>
-                                        </div>
-                                    </div>
-                                    <% end %>
-                            </div>
-                        </div>
-
+<section class="container-fluid py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <% if @my_ads.count > 1 %>
+                    <p><%= @my_ads.count %> annonces publié</p>
+                <% else %>
+                    <p><%= @my_ads.count %> annonce publié</p>
+                <% end %>
+            </div>
+            <div class="col-lg-10 offset-lg-1">
+                <div class="card bg-primary py-4">
+                    <div class="card-bory">
                     </div>
                 </div>
+            </div>
 
+            <div class="col-lg-10 offset-lg-1">                
+                <ul class="list-unstyled">
+                    <% @my_ads.each do |my_ad| %>
+                        <li class="row">
+                            <div class="col-lg-3">
+                                <%= image_tag my_ad.property_photos.first.photo_url, class: "card-img-top", alt: "Photo de lannonce : #{ my_ad.title }" %>
+                            </div>
+                            <div class="col-lg-6">
+                                <h5>
+                                    <%= truncate(strip_tags(my_ad.title.capitalize), length: 25) %>
+                                </h5>
+                                <address class="card-text text-muted">
+                                    <i class="fas fa-map-marker-alt"></i>&nbsp; <%= property.address %>, <%= property.city %>
+                                </address>
+                                <% if property.ad_type.name == "A vendre" %>
+                                    <p>
+                                        <span><%= sprintf("%0.00f", property.price) %><sup>F</sup></span>
+                                    </p>
+                                <% elsif property.ad_type.name == "A louer" %>
+                                    <p>
+                                        <span>
+                                            <%= sprintf("%0.00f", property.price) %><sup>F</sup><small>/mois</small>
+                                        </span>
+                                    </p>
+                                <% end %>
+                            </div>
+                            <div class="col-lg-3">
+                                <ul class="list-unstyled">
+                                    <li><%= link_to "Voir", my_ad %></li>
+                                    <li><%= link_to "Voir", edit_property_path(my_ad) %></li>
+                                    <li><%= link_to 'Suprimer', my_ad, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <hr>
+                    <% end %>
+                </ul>
             </div>
         </div>
-        </div>
-    </section>
+    </div>
+</section>
