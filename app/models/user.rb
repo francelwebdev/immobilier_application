@@ -8,5 +8,6 @@ class User < ApplicationRecord
 
     mount_uploader :profile_photo, ProfilePhotoUploader
 
-    #validates :first_name, :last_name, :phone_number, :profile_photo, presence: true
+    validates :first_name, :last_name, :phone_number, :profile_photo, presence: true
+    validates :phone_number, uniqueness: :true
 end

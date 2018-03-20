@@ -67,6 +67,9 @@ group :development do
   gem 'pry-byebug', '~> 3.6'
   gem 'meta_request', '~> 0.5.0'
   gem 'hirb', '~> 0.7.3'
+
+  #guard
+  #
 end
 
 group :production do

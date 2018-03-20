@@ -18,7 +18,7 @@
 
 <section class="container pt-3 pb-5">
   <div class="row">
-    <% @property_photos.each do |photo| %>
+    <% @property.property_photos.all.each do |photo| %>
       <div class="col-lg-4">
         <%= image_tag(photo.photo.url, alt: 'Property photos', class: "") if photo.present? %>        
       </div>

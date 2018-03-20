@@ -4,18 +4,18 @@
   <div class="container">
 	<div class="row">
 	  <div class="col-lg-9">
-		<h2 class="font-weight-normal"><%= @property.title.capitalize %>&nbsp; <small class="badge-primary p-2 text-white font-weight-bold h6"><%= @property.ad_type.name %></small></%></%></h2>
+		<h3 class="font-weight-normal"><%= @property.title.capitalize %>&nbsp; <small class="badge-primary py-1 px-3 text-white h6"><%= @property.ad_type.name %></small></%></%></h3>
 		<address>
 		  <p class="text-muted"><i class="fas fa-map-marker-alt mr-1"></i>&nbsp; <%= @property.address %>, <%= @property.city %></p>
 		</address>
 	  </div>
-	  <div class="col-lg-3 d-flex flex-column justify-content-lg-center align-items-lg-center">
+	  <div class="col-lg-3 text-lg-right">
 	  	<% if @property.ad_type.name == "A louer" %>
-			<p class="h2 text-primary"><%= @property.price %><sup>f</sup></%>/<small>mois</small></sup></p>
-			<p class="h3"><small><%= @property.area %> m<sup>2</sup></small></p>
+			<p class="h3 text-primary"><%= @property.price %><sup>f</sup></%>/<small>mois</small></sup></p>
+			<p class="h4">Surface: <small><%= @property.area %> m<sup>2</sup></small></p>
 		<% else %>
-			<p class="h2 text-primary"><%= @property.price %> <small>Fcfa</small></sup></p>
-			<p class="h3"><small class="font-weight-bold"><%= @property.area %> m<sup>2</sup></small></p>
+			<p class="h3 text-primary"><%= @property.price %> <small>Fcfa</small></sup></p>
+			<p class="h4"><small class="font-weight-bold">Surface: <%= @property.area %> m<sup>2</sup></small></p>
 		<% end %>
 	  </div>
 	</div>
@@ -29,12 +29,12 @@
 </section>
 
 <div class="slick_properties_photo">
-  <% if @property_photos.present? %>
-  	<% @property_photos.each do |photo| %>
+  <% if @property.property_photos.present? %>
+  	<% @property.property_photos.each do |photo| %>
 	  <%= image_tag(photo.photo.url, alt: 'Property photos', class: "img-fluid") if photo.present? %>
   	<% end %>
   <% else %>
-	<p>CETTE ANNONCE N'A AUCUNE PHOTO</p>
+	<p>ANNONCE SASNS PHOTOs</p>
   <% end %>
 </div>
 

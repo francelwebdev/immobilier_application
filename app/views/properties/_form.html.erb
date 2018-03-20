@@ -29,6 +29,28 @@
         </div>
     </div>
 
+    <!-- <%= f.simple_fields_for :property_photos, include_id: false do |photo_form| %>
+        <p class="h3 mt-4 mb-0">Photos</p>
+        <hr class="mb-5">
+        <div class="form-inputs form-row">
+            <div class="col-12">
+                <%= photo_form.input :photo, as: :file, label: "Photo 1", input_html: {class: "form -control form-control-file" } %>
+            </div>
+            <div class="col-12">
+                <%= photo_form.input :photo, as: :file, label: "Photo 2", input_html: {class: "form -control form-control-file" } %>
+            </div>
+            <div class="col-12">
+                <%= photo_form.input :photo, as: :file, label: "Photo 3", input_html: {class: "form -control form-control-file" } %>
+            </div>
+            <div class="col-12">
+                <%= photo_form.input :photo, as: :file, label: "Photo 4", input_html: {class: "form -control form-control-file" } %>
+            </div>
+            <div class="col-12">
+                <%= photo_form.input :photo, as: :file, label: "Photo 5", input_html: {class: "form -control form-control-file" } %>
+            </div>
+        </div>
+    <% end %> -->
+
     <%= f.fields_for :property_photos do |photo_form| %>
         <p class="h4 font-weight-bold ">Ajouter les photos</p>
         <hr>
@@ -56,22 +78,9 @@
         </div>
     <% end %>
 
-        <% if current_user.phone_number.blank? %>            
-            <%= f.fields_for :user do |user_form| %>
-                <p class="h4 font-weight-bold">Information de contact</p>
-                <hr>
-                <div class="form-inputs form-row">
-                    <div class="col-12 form-group">
-                        <%= user_form.label "Numéros de téléphone", class: "control-label" %>
-                        <%= user_form.phone_field :phone_number, class: "form-control" %>
-                    </div>
-                </div>
-            <% end %>
-        <% end %>
-
-        <div class="form-actions form-row mt-4">
-            <div class="col-12">
-                <%= f.button :submit, "Valider", class: "btn btn-primary btn-lg btn-block" %>
-            </div>
+    <div class="form-actions form-row mt-4">
+        <div class="col-12">
+            <%= f.button :submit, "Valider", class: "btn btn-primary btn-lg btn-block" %>
         </div>
+    </div>
 <% end %>

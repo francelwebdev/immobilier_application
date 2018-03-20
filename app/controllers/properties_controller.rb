@@ -4,22 +4,25 @@ class PropertiesController < ApplicationController
 
   def index
     if params[:property_type].present? and params[:ad_type].present? and params[:city].present?
-      @properties = Property.where("property_type_id = ? and ad_type_id = ? and city LIKE lower(?) or city LIKE ?", params[:property_type].to_i, params[:ad_type].to_i, params[:city], params[:city]).order("created_at DESC").page(params[:page]).per(9)
-      @total_properties = @properties.count
+      @properties = Property.where("property_type_id = ? and ad_type_id = ? and (lower(city) LIKE ? or upper(city) LIKE ?)", params[:property_type].to_i, params[:ad_type].to_i, "%#{params[:city]}%", "%#{params[:city]}%").order("created_at DESC").page(params[:page]).per(9)
+      if @properties.blank?
+        flash.now[:warning] = "Aucun resultat trouvé !"
+      end
     else
       @properties = Property.all.order("created_at DESC").page(params[:page]).per(9)
-      @total_properties = @properties.count
+      if @properties.blank?
+        flash.now[:warning] = "Aucun resultat trouvé !"
+      end
     end
   end
 
   def show
-    @property_photos = @property.property_photos.all
   end
 
   def new
     @property = current_user.properties.build
-    @property.property_photos.build
-    @property.build_user
+    @property_photos = @property.property_photos.build
+    @user = @property.build_user
   end
 
   def edit
@@ -32,8 +35,7 @@ class PropertiesController < ApplicationController
         params[:property_photos][:photo].each do |photo|
           @property.property_photos.create!(photo: photo, property_id: @property.id)
        end
-      end      
-      @property.create_user!(phone_number: params[:property][:user_attributes][:phone_number])
+      end
       redirect_to @property, notice: 'Property was successfully created.'
     else
       render :new
@@ -61,6 +63,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params.require(:property).permit(:property_type_id, :ad_type_id, :title, :price, :area, :description, :address, :city, property_photos_attributes: [:id, :photo, :property_id], user_attributes: [:id, :phone_number])
+      params.require(:property).permit(:property_type_id, :ad_type_id, :title, :price, :area, :description, :address, :city, property_photos_attributes: [:photo])
     end
 end

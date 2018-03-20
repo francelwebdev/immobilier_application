@@ -14,15 +14,15 @@
 <section class="container-fluid">
     <div class="container">
         <div class="row py-4">
-            <div class="col-12">
-                <% if @total_properties > 1 %>
-                    <p><%= @total_properties %> resultats trouvés</p>
-                <% else %>
-                    <p><%= @total_properties %> resultat trouvé</p>
-                <% end %>
-            </div>
-
             <% if @properties.present? %>
+                <div class="col-12">
+                    <% if @properties.size > 1 %>
+                        <p><%= @properties.size %> resultats trouvés</p>
+                    <% else %>
+                        <p><%= @properties.size %> resultat trouvé</p>
+                    <% end %>
+                </div>
+
                 <% @properties.each do |property| %>
                 <div class="col-lg-4">
                     <%= link_to property, class: "sans-text-decoration" do %>
