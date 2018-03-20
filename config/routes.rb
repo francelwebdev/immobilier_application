@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :dashboard do
+    get 'properties/index'
+  end
+
     root to: "pages#home", as: "accueil"
     devise_for :users
 
