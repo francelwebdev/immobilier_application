@@ -1,76 +1,69 @@
 <%= simple_form_for(@property) do |f| %>
     <%= f.error_notification %>
-        <p class="h3 mt-4">Information sur le bien</p>
-        <hr class="mb-5">
+    <p class="h4 font-weight-bold">Information sur le bien</p>
+    <hr>
+    <div class="form-inputs form-row">
+        <div class="col-12">
+            <%= f.input :title, autofocus: true, label: "Titre de l'annonce" %>
+        </div>
+        <div class="col-lg-6">
+            <%= f.association :ad_type, include_blank: false, label: "Type d'annonce" %>
+        </div>
+        <div class="col-lg-6">
+            <%= f.association :property_type, include_blank: false, label: "Type de bien" %>
+        </div>
+        <div class="col-lg-6">
+            <%= f.input :area, required: true, label: "Surface du bien" %>
+        </div>
+        <div class="col-lg-6">
+            <%= f.input :price, required: true, label: "Prix" %>
+        </div>
+        <div class="col-12">
+            <%= f.input :description, required: true, label: "Description du bien", input_html: { rows: 8 } %>
+        </div>
+        <div class="col-6">
+            <%= f.input :address, required: true, label: "Adresse du bien" %>
+        </div>
+        <div class="col-6">
+            <%= f.input :city, required: true, label: "Ville" %>
+        </div>
+    </div>
+
+    <%= f.fields_for :property_photos do |photo_form| %>
+        <p class="h4 font-weight-bold ">Ajouter les photos</p>
+        <hr>
         <div class="form-inputs form-row">
-            <div class="col-12">
-                <%= f.input :title, autofocus: true, required: true, label: "Titre de l'annonce" %>
+            <div class="col-12 form-group">
+                <%= photo_form.label "Photo 1", class: "control-label" %>
+                <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
             </div>
-            <div class="col-lg-6">
-                <%= f.association :ad_type, include_blank: false, label: "Type d'annonce" %>
+            <div class="col-12 form-group">
+                <%= photo_form.label "Photo 2", class: "control-label" %>
+                <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
             </div>
-            <div class="col-lg-6">
-                <%= f.association :property_type, include_blank: false, label: "Type de bien" %>
+            <div class="col-12 form-group">
+                <%= photo_form.label "Photo 3", class: "control-label" %>
+                <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
             </div>
-            <div class="col-lg-6">
-                <%= f.input :price, required: true, label: "Prix", as: :decimal %>
+            <div class="col-12 form-group">
+                <%= photo_form.label "Photo 4", class: "control-label" %>
+                <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
             </div>
-            <div class="col-lg-6">
-                <%= f.input :area, required: true, label: "Surface" %>
-            </div>
-            <div class="col-12">
-                <%= f.input :description, required: true, label: "Description", input_html: { rows: 8 } %>
-            </div>
-            <div class="col-6">
-                <%= f.input :address, required: true, label: "Adresse" %>
-            </div>
-            <div class="col-6">
-                <%= f.input :city, required: true, label: "Ville" %>
+            <div class="col-12 form-group">
+                <%= photo_form.label "Photo 5", class: "control-label" %>
+                <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
             </div>
         </div>
+    <% end %>
 
-        <%= f.simple_fields_for :property_photos, name: "property_photos[photo][]" do |photo| %>
-            <p class="h3 mt-4 mb-0">Photos</p>
-            <hr class="mb-5">
-            <div class="form-inputs form-row">
-                <div class="col-12">
-                    <%= photo.input :photo, as: :file, label: "Photo 1", input_html: {class: "form -control form-control-file" } %>
-                </div>
-                <div class="col-12">
-                    <%= photo.input :photo, as: :file, label: "Photo 1", input_html: {class: "form -control form-control-file" } %>
-                </div>
-                <div class="col-12">
-                    <%= photo.input :photo, as: :file, label: "Photo 1", input_html: {class: "form -control form-control-file" } %>
-                </div>
-            </div>
-        <% end %>
-
-        <!-- <%= f.fields_for :property_photos do |photo| %>
-            <p class="h3 mt-4 mb-0">Photos</p>
-            <hr class="mb-5">
-            <div class="form-inputs form-row">
-                <div class="col-12 form-group">
-                    <%= photo.label "Photo 1", class: "control-label"  %>
-                    <%= photo.file_field :photo, class: "form -control form-control-file", name: "property_photos[photo][]" %>
-                </div>
-                <div class="col-12 form-group">
-                    <%= photo.label "Photo 2", class: "conrol-label"  %>
-                    <%= photo.file_field :photo, class: "form -control form-control-file", name: "property_photos[photo][]" %>
-                </div>
-                <div class="col-12 form-group">
-                    <%= photo.label "Photo 3", class: "conrol-label"  %>
-                    <%= photo.file_field :photo, class: "form -control form-control-file", name: "property_photos[photo][]" %>
-                </div>
-            </div>
-        <% end %> -->
-
-        <% if current_user.phone_number.blank? %>
-            <p class="h3 mt-5">Information de contact</p>
-            <hr class="mb-5">
-            <%= f.simple_fields_for :user do |user_form| %>
+        <% if current_user.phone_number.blank? %>            
+            <%= f.fields_for :user do |user_form| %>
+                <p class="h4 font-weight-bold">Information de contact</p>
+                <hr>
                 <div class="form-inputs form-row">
-                    <div class="col-12">
-                        <%= user_form.input :phone_number, required: true, label: "Numéros de contact" %>
+                    <div class="col-12 form-group">
+                        <%= user_form.label "Numéros de téléphone", class: "control-label" %>
+                        <%= user_form.phone_field :phone_number, class: "form-control" %>
                     </div>
                 </div>
             <% end %>

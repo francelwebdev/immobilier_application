@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.4.3"
+ruby "2.5.0"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -84,14 +84,19 @@ gem 'high_voltage', '~> 3.0'
 
 # Design form and auth
 gem 'simple_form', '~> 3.5', '>= 3.5.1'
-gem 'devise', '~> 4.4', '>= 4.4.1'
+gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'devise-i18n', '~> 1.6'
+
+gem 'jquery-slick-rails'
 
 
 gem 'friendly_id', '~> 5.2', '>= 5.2.3'
 
 # Pagination
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'bootstrap-kaminari-views', '~> 0.0.5'
+gem 'kaminari-i18n', '~> 0.5.0'
+
 
 # secret keys
 gem 'figaro', '~> 1.1', '>= 1.1.1'

@@ -1,160 +1,176 @@
-<p id="notice" class="sr-only"><%= notice %></p>
+<% provide :page_title, @property.title.capitalize %>
 
-<section class="container-fluid pt-5 pb-2" style="background-color: #FAFAFA;">
+<section class="container-fluid py-4" style="background-color: #FAFAFA;">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-8 offset-lg-1">
-        <h3><%= @property.title.capitalize %></h3>
-        <address>
-          <p><i class="fas fa-map-marker-alt mr-1"></i>&nbsp;  <%= @property.address %>, <%= @property.city %></p>
-        </address>
-      </div>
-      <div class="col-lg-2 d-flex justify-content-lg-end">
-        <h3 class="text-primary"><%= @property.price %> <sup><small>Fcfa</small></sup></h3>
-      </div>
-    </div>
+	<div class="row">
+	  <div class="col-lg-9">
+		<h2 class="font-weight-normal"><%= @property.title.capitalize %>&nbsp; <small class="badge-primary p-2 text-white font-weight-bold h6"><%= @property.ad_type.name %></small></%></%></h2>
+		<address>
+		  <p class="text-muted"><i class="fas fa-map-marker-alt mr-1"></i>&nbsp; <%= @property.address %>, <%= @property.city %></p>
+		</address>
+	  </div>
+	  <div class="col-lg-3 d-flex flex-column justify-content-lg-center align-items-lg-center">
+	  	<% if @property.ad_type.name == "A louer" %>
+			<p class="h2 text-primary"><%= @property.price %><sup>f</sup></%>/<small>mois</small></sup></p>
+			<p class="h3"><small><%= @property.area %> m<sup>2</sup></small></p>
+		<% else %>
+			<p class="h2 text-primary"><%= @property.price %> <small>Fcfa</small></sup></p>
+			<p class="h3"><small class="font-weight-bold"><%= @property.area %> m<sup>2</sup></small></p>
+		<% end %>
+	  </div>
+	</div>
   </div>
 </section>
 
-<section class="container pt-3 pb-5">
+<section class="container-fluid">
   <div class="row">
-    <% @property_photos.each do |photo| %>
-      <div class="col-lg-4">
-        <%= image_tag(photo.photo.url, alt: 'Property photos', class: "") if photo.present? %>        
-      </div>
-    <% end %>
+	
+  </div>
+</section>
 
-      <div class="col-lg-8">
-        <div class="row">
-          <div class="col-12 my-3">
-              <h4 class="mb-0">Description</h4>
-              <hr>
-              <p> <%= @property.description %></p> 
-          </div>
+<div class="slick_properties_photo">
+  <% if @property_photos.present? %>
+  	<% @property_photos.each do |photo| %>
+	  <%= image_tag(photo.photo.url, alt: 'Property photos', class: "img-fluid") if photo.present? %>
+  	<% end %>
+  <% else %>
+	<p>CETTE ANNONCE N'A AUCUNE PHOTO</p>
+  <% end %>
+</div>
 
-          <div class="col-12 my-3">
-            <h4 class="mb-0">Details</h4>
-            <hr>
-            <ul class="nav flex-column">
-            <li class="nav-item">
-              <a href="" class="nav-link pl-0 py-1 text-muted">
-                <i class="fas fa-map-marker-alt"></i>&nbsp; Cococodji, Bénin
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="" class="nav-link pl-0 py-1 text-muted">
-                <i class="fas fa-mobile mr-1" aria-hidden="true"></i>&nbsp; 62 20 03 90
-              </a>
-            </li>
-            <li class="nav-item">
-              <%= mail_to "francel.webdev@gmail.com", subject: "Demande d'information", class: "nav-link pl-0 py-1 text-muted" do %>
-                <i class="fas fa-envelope mr-1" aria-hidden="true"></i>&nbsp; francel.webdev@gmail.com
-              <% end %>
-            </li>
-          </ul>
-          </div>
+<section class="container py-5">
+  <div class="row">
+	  <div class="col-lg-8">
+		<div class="row">
+		  <div class="col-12 my-3">
+			  <h4 class="mb-0">Description</h4>
+			  <hr>
+			  <p> <%= @property.description %></p> 
+		  </div>
 
-          <div class="col-12 my-3">
-            <h4 class="mb-0">Location</h4>
-            <hr>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-lg-4">
-                <%= image_tag @property.user.profile_photo_url, class: "rounded-circle", size: "80x80" %>
-              </div>
-              <div class="col-lg-8">
-                <h5 class="card-text">
-                    <%= @property.user.first_name %> <%= @property.user.last_name %>
-                </h5>
-                <p><%= @property.user.phone_number %></p>
-              </div>
-              <div class="col-lg-12 my-3">
-                <%= form_with scope: :contact, class: "d-flex flex-column justify-content-center" do |contact| %>
+		  <div class="col-12 my-3">
+			<h4 class="mb-0">Details</h4>
+			<hr>
+			<ul class="nav flex-column">
+			<li class="nav-item">
+			  <a href="" class="nav-link pl-0 py-1 text-muted">
+				<i class="fas fa-map-marker-alt"></i>&nbsp; Cococodji, Bénin
+			  </a>
+			</li>
+			<li class="nav-item">
+			  <a href="" class="nav-link pl-0 py-1 text-muted">
+				<i class="fas fa-mobile mr-1" aria-hidden="true"></i>&nbsp; 62 20 03 90
+			  </a>
+			</li>
+			<li class="nav-item">
+			  <%= mail_to "francel.webdev@gmail.com", subject: "Demande d'information", class: "nav-link pl-0 py-1 text-muted" do %>
+				<i class="fas fa-envelope mr-1" aria-hidden="true"></i>&nbsp; francel.webdev@gmail.com
+			  <% end %>
+			</li>
+		  </ul>
+		  </div>
 
-                    <%= contact.email_field :email %>
-                    <%= contact.email_field :email %>
-                    <%= contact.submit :submit %>
+		  <div class="col-12 my-3">
+			<h4 class="mb-0">Addresse</h4>
+			<hr>
+		  </div>
 
-                <% end %>
-              </div>
-            </div>
-        </div>
-      </div>
+		  <div class="col-12 my-3">
+			<h4 class="mb-0">Plan</h4>
+			<hr>
+		  </div>
+
+		  <div class="col-12 my-3">
+			<h4 class="mb-0">Vidéo</h4>
+			<hr>
+		  </div>
+
+		  <div class="col-12 my-3">
+			<h4 class="mb-0">Avis</h4>
+			<hr>
+		  </div>
+		</div>
+	  </div>
+	  <div class="col-lg-4">
+		<div class="card">
+		  <div class="card-body">
+			<div class="row">
+			  <div class="col-lg-4">
+				<%= image_tag @property.user.profile_photo_url, class: "rounded-circle", size: "80x80" %>
+			  </div>
+			  <div class="col-lg-8">
+				<h5 class="card-text">
+					<%= @property.user.first_name %> <%= @property.user.last_name %>
+				</h5>
+				<p><%= @property.user.phone_number %></p>
+			  </div>
+			  <div class="col-lg-12 my-3">
+				<%= form_with scope: :contact, class: "d-flex flex-column justify-content-center" do |contact| %>
+
+					<%= contact.email_field :email %>
+					<%= contact.email_field :email %>
+					<%= contact.submit :submit %>
+
+				<% end %>
+			  </div>
+			</div>
+		</div>
+	  </div>
+  	</div>
+  	<div class="col-12">
+		<%= link_to 'Retour', properties_path, class: "btn btn-primary" %>
+	</div>
   </div>
 </section>
 
 
-
-<p>
-  <strong>Property type:</strong>
-  <%= @property.property_type.name %>
-</p>
-
-<p>
-  <strong>Ad type:</strong>
-  <%= @property.ad_type.name %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @property.title %>
-</p>
-<p>
-  <strong>Area:</strong>
-  <%= @property.area %>
-</p>
-
-<%= link_to 'Edit', edit_property_path(@property) %> |
-<%= link_to 'Back', properties_path %>
-
-
-<% content_for :slide_properties_photo do %>
+<% content_for :slick_properties_photo do %>
   <script>
-      $(document).ready(function(){
-         $('.ils_parlent_de_nous').slick({
-            infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 1,
+	  $(document).ready(function(){
 
-            autoplay: true,
+		$(".slick_properties_photo").slick({
 
-             dots: true,
-  speed: 300,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-        dots: true
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
-  ]
+			dots: true
+			speed: 500
+			// normal options...
+			infinite: false,
 
-          });
-      });
+			// the magic
+			responsive: [{
+
+				breakpoint: 1024,
+				settings: {
+				  slidesToShow: 3,
+				  slidesToScroll: 1,
+				  autoplay: true,
+				  autoplaySpeed: 2000,
+				  dots: true
+				  infinite: true
+				}
+
+			  }, {
+
+				breakpoint: 600,
+				settings: {
+				  slidesToShow: 2,
+				  slidesToScroll: 1,
+				  autoplay: true,
+				  autoplaySpeed: 2000,                  
+				  dots: true
+				}
+
+			  }, {
+
+				breakpoint: 300,
+				settings: "unslick" // destroys slick
+
+			  }]
+		  });
+		 
+	  });
   </script>
+<% end %>
+
+<% content_for :head do %>
+  <meta name="turbolinks-cache-control" content="no-cache">
 <% end %>

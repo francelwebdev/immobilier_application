@@ -10,7 +10,6 @@
 	<div class="container">
 		<%= link_to accueil_path, class: "navbar-brand font-weight-bold text-uppercase d-flex flex-column align-items-center" do %>
 			<div class="m-0 p-0"><i class="fas fa-home fa-lg"></i> Sico</div>
-      <small style="font-size: 1rem;" class="text-lowercase"><em>Immobilier entres particuliers</em></small>
 		<% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -46,11 +45,7 @@
             
           </ul>
 
-        <ul class="navbar-nav ml-auto d-flex align-items-center">   
-          <li class="nav-item mx-2">
-                <%= link_to "Publiez une annonce", new_property_path, class: "btn btn-outline-primary" %>
-            </li>
-
+        <ul class="navbar-nav ml-auto d-flex align-items-center">
           <% if user_signed_in? %>
                 <% if current_user.profile_photo_url.present? %>
                     <li class="nav-item dropdown mx-1">                        
@@ -90,8 +85,10 @@
                 <%= link_to new_user_session_path, class: "nav-link" do %>Connexion
                 <% end %>
               </li>
-            <% end %>           
-
+            <% end %> 
+            <li class="nav-item mx-2">
+                <%= link_to "Publiez une annonce", new_property_path, class: "btn btn-outline-primary" %>
+            </li>
         </ul>
       </div>
 	</div>

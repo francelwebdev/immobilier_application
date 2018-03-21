@@ -18,6 +18,10 @@
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
 // Pour font-awesome
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+@import "slick";
+@import "slick-theme";
