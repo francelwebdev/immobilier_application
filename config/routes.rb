@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
     resources :properties
     namespace :dashboard do
-        get 'mes_annonces', to: 'properties#index', as: "mes-annonces"
+        get 'my_ads', to: 'properties#index', as: "mes-annonces"
         # resources :properties, only: [:index, :show, :edit, :delete]
     end
 

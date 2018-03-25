@@ -2,9 +2,7 @@ class PropertiesController < ApplicationController
   before_action :set_property, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
-  def index
-    @ad_types = AdType.all
-
+  def index   
       if params[:ad_type].present?
         @ad_type_id = AdType.find_by(name: params[:ad_type]).id
         @properties = Property.where("ad_type_id = ?", @ad_type_id).all.order("created_at DESC").page(params[:page]).per(9)
@@ -25,8 +23,6 @@ class PropertiesController < ApplicationController
     @property = current_user.properties.build
     @property_photos = @property.property_photos.build
     @user = @property.build_user
-
-    @ad_types = AdType.all
   end
 
   def edit
