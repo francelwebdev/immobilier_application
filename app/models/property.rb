@@ -6,6 +6,7 @@ class Property < ApplicationRecord
   belongs_to :ad_type
   belongs_to :property_type
   belongs_to :user
+  belongs_to :room
   has_many :property_photos, dependent: :destroy
 
   validates :title, :ad_type_id, :property_type_id, :price, :area, :description, :city, :address, presence: true

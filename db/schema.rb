@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320183459) do
+ActiveRecord::Schema.define(version: 20180325233019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,8 +48,10 @@ ActiveRecord::Schema.define(version: 20180320183459) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.string "slug"
+    t.bigint "room_id"
     t.index ["ad_type_id"], name: "index_properties_on_ad_type_id"
     t.index ["property_type_id"], name: "index_properties_on_property_type_id"
+    t.index ["room_id"], name: "index_properties_on_room_id"
     t.index ["slug"], name: "index_properties_on_slug", unique: true
     t.index ["user_id"], name: "index_properties_on_user_id"
   end
@@ -64,6 +66,12 @@ ActiveRecord::Schema.define(version: 20180320183459) do
 
   create_table "property_types", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -92,4 +100,5 @@ ActiveRecord::Schema.define(version: 20180320183459) do
 
   add_foreign_key "properties", "ad_types"
   add_foreign_key "properties", "property_types"
+  add_foreign_key "properties", "rooms"
 end
