@@ -4,17 +4,23 @@
   <div class="container">
 	<div class="row">
 	  <div class="col-lg-9">
-		<h3 class="font-weight-normal"><%= @property.title.capitalize %>&nbsp; <span class="badge badge-secondary py-2"><%= @property.ad_type.name %></span></h3>
+		<h3><%= @property.title.capitalize %>&nbsp;
+            <% if @property.ad_type.name == "Location" %>
+                <span class="badge badge-secondary py-2">A louer</span>
+    		<% elsif @property.ad_type.name == "Vente" %>
+                <span class="badge badge-secondary py-2">A vendre</span>
+    		<% end %>
+        </h3>
 		<address>
 		  <p><i class="fas fa-map-marker-alt mr-1"></i>&nbsp; <%= @property.address %>, <%= @property.city %></p>
 		</address>
 	  </div>
 	  <div class="col-lg-3">
-	  	<% if @property.ad_type.name == "A louer" %>
+	  	<% if @property.ad_type.name == "Location" %>
 			<p class="h3 text-primary text-lg-right">
                 <%= @property.price %><sup>f</sup></%>/<small>mois</small></sup>
             </p>
-		<% else %>
+		<% elsif @property.ad_type.name == "Vente" %>
 			<p class="h3 text-primary text-lg-right">
                 <%= @property.price %> <small>Fcfa</small></sup>
             </p>
@@ -55,21 +61,17 @@
 	  	<div class="card border-0 mb-4" style="background-color: #FAFAFA;">
 	  		<div class="card-body">
 				<div class="row">
-					<div class="col-6 col-lg-3 text-center">
+					<div class="col-lg-4 text-center">
 						<h6 class="font-weight-bold">Surface</h6>
 						<p><%= @property.area %> m<sup>2</sup></p>
 					</div>
-					<div class="col-6 col-lg-3 text-center">
+					<div class="col-lg-4 text-center">
 						<h6 class="font-weight-bold">Nombres de pièces</h6>
 						<p></p>
 					</div>
-					<div class="col-6 col-lg-3 text-center">
-						<h6 class="font-weight-bold">Nombres de pièces</h6>
-						<p></p>
-					</div>
-					<div class="col-6 col-lg-3 text-center">
-						<h6 class="font-weight-bold">Nombres de pièces</h6>
-						<p></p>
+					<div class="col-lg-4 text-center">
+						<h6 class="font-weight-bold">Caution</h6>
+						<p> mois</p>
 					</div>
 				</div>
 	  		</div>

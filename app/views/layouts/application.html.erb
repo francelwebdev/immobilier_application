@@ -47,7 +47,7 @@
         <!-- Include it if you want to use Video parallax -->
         <script src="https://unpkg.com/jarallax@1.9/dist/jarallax-video.min.js"></script>
 
-        <% if current_page?(accueil_path) %>
+        <% if current_page?(root_path) %>
             <%= yield :annonce_nouvellement_publié %>
             <%= yield :animate_text  %>
         <% else%>
