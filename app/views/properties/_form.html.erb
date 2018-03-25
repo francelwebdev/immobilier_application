@@ -1,104 +1,104 @@
 <%= simple_form_for(@property) do |f| %>
-    <%= f.error_notification %>
-    <p class="h4 font-weight-bold">Information de base</p>
-    <hr>
-    <div class="form-inputs form-row">
-        <div class="col-12">
-            <%= f.input :title, autofocus: true, label: "Titre de l'annonce" %>
-        </div>
-        <div class="col-lg-6">
-            <%= f.input :ad_type_id, collection: @ad_types, prompt: "Sélectionner le type d'annonce", label: "Type d'annonce" %>
-        </div>
-        <!-- <div class="col-lg-6">
-            <%= f.association :ad_type, include_blank: false, label: "Type d'annonce" %>
-        </div> -->
-        <div class="col-lg-6">
-            <%= f.association :property_type, include_blank: false, label: "Type de bien" %>
-        </div>
-        <div class="col-lg-4">
-            <%= f.input :area, required: true, label: "Surface du bien" %>
-        </div>
-        <!-- <div class="col-lg-4">
-            <%= f.input :price, required: true, label: "Nombres de pièces" %>
-        </div> -->
-        <div class="col-lg-4">
-            <%= f.input :price, required: true, label: "Prix" %>
-        </div>
+<%= f.error_notification %>
+<p class="h4 font-weight-bold">Information de base</p>
+<hr>
+<div class="form-inputs form-row">
+    <div class="col-12">
+        <%= f.input :title, autofocus: true, label: "Titre de l'annonce" %>
+    </div>
+    <div class="col-lg-6">
+        <%= f.input :ad_type_id, collection: @ad_types, prompt: "Sélectionner le type d'annonce", label: "Type d'annonce" %>
+    </div>
+    <!-- <div class="col-lg-6">
+    <%= f.association :ad_type, include_blank: false, label: "Type d'annonce" %>
+</div> -->
+<div class="col-lg-6">
+    <%= f.association :property_type, include_blank: false, label: "Type de bien" %>
+</div>
+<div class="col-lg-4">
+    <%= f.input :area, required: true, label: "Surface du bien" %>
+</div>
+<!-- <div class="col-lg-4">
+<%= f.input :price, required: true, label: "Nombres de pièces" %>
+</div> -->
+<div class="col-lg-4">
+    <%= f.input :price, required: true, label: "Prix" %>
+</div>
+</div>
+
+<p class="h4 font-weight-bold">Détail</p>
+<hr>
+<div class="form-inputs form-row">
+    <div class="col-12">
+        <%= f.input :description, required: true, label: "Description du bien", input_html: { rows: 8 } %>
     </div>
 
-    <p class="h4 font-weight-bold">Détail</p>
-    <hr>
-    <div class="form-inputs form-row">
-        <div class="col-12">
-            <%= f.input :description, required: true, label: "Description du bien", input_html: { rows: 8 } %>
-        </div>
+    <p>quelque caracteristique ici</p>
+</div>
 
-        <p>quelque caracteristique ici</p>
+<p class="h4 font-weight-bold">Adresse</p>
+<hr>
+<div class="form-inputs form-row">
+    <div class="col-6">
+        <%= f.input :address, required: true, label: "Adresse du bien" %>
     </div>
-
-    <p class="h4 font-weight-bold">Adresse</p>
-    <hr>
-    <div class="form-inputs form-row">
-        <div class="col-6">
-            <%= f.input :address, required: true, label: "Adresse du bien" %>
-        </div>
-        <div class="col-6">
-            <%= f.input :city, required: true, label: "Ville" %>
-        </div>
+    <div class="col-6">
+        <%= f.input :city, required: true, label: "Ville" %>
     </div>
+</div>
 
-    <!-- <%= f.simple_fields_for :property_photos, include_id: false do |photo_form| %>
-        <p class="h3 mt-4 mb-0">Photos</p>
-        <hr class="mb-5">
-        <div class="form-inputs form-row">
-            <div class="col-12">
-                <%= photo_form.input :photo, as: :file, label: "Photo 1", input_html: {class: "form -control form-control-file" } %>
-            </div>
-            <div class="col-12">
-                <%= photo_form.input :photo, as: :file, label: "Photo 2", input_html: {class: "form -control form-control-file" } %>
-            </div>
-            <div class="col-12">
-                <%= photo_form.input :photo, as: :file, label: "Photo 3", input_html: {class: "form -control form-control-file" } %>
-            </div>
-            <div class="col-12">
-                <%= photo_form.input :photo, as: :file, label: "Photo 4", input_html: {class: "form -control form-control-file" } %>
-            </div>
-            <div class="col-12">
-                <%= photo_form.input :photo, as: :file, label: "Photo 5", input_html: {class: "form -control form-control-file" } %>
-            </div>
-        </div>
-    <% end %> -->
+<!-- <%= f.simple_fields_for :property_photos, include_id: false do |photo_form| %>
+<p class="h3 mt-4 mb-0">Photos</p>
+<hr class="mb-5">
+<div class="form-inputs form-row">
+<div class="col-12">
+<%= photo_form.input :photo, as: :file, label: "Photo 1", input_html: {class: "form -control form-control-file" } %>
+</div>
+<div class="col-12">
+<%= photo_form.input :photo, as: :file, label: "Photo 2", input_html: {class: "form -control form-control-file" } %>
+</div>
+<div class="col-12">
+<%= photo_form.input :photo, as: :file, label: "Photo 3", input_html: {class: "form -control form-control-file" } %>
+</div>
+<div class="col-12">
+<%= photo_form.input :photo, as: :file, label: "Photo 4", input_html: {class: "form -control form-control-file" } %>
+</div>
+<div class="col-12">
+<%= photo_form.input :photo, as: :file, label: "Photo 5", input_html: {class: "form -control form-control-file" } %>
+</div>
+</div>
+<% end %> -->
 
-    <%= f.fields_for :property_photos do |photo_form| %>
-        <p class="h4 font-weight-bold ">Ajouter les photos</p>
-        <hr>
-        <div class="form-inputs form-row">
-            <div class="col-12 form-group">
-                <%= photo_form.label "Photo 1", class: "control-label" %>
-                <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
-            </div>
-            <div class="col-12 form-group">
-                <%= photo_form.label "Photo 2", class: "control-label" %>
-                <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
-            </div>
-            <div class="col-12 form-group">
-                <%= photo_form.label "Photo 3", class: "control-label" %>
-                <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
-            </div>
-            <div class="col-12 form-group">
-                <%= photo_form.label "Photo 4", class: "control-label" %>
-                <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
-            </div>
-            <div class="col-12 form-group">
-                <%= photo_form.label "Photo 5", class: "control-label" %>
-                <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
-            </div>
-        </div>
-    <% end %>
-
-    <div class="form-actions form-row mt-4">
-        <div class="col-12">
-            <%= f.button :submit, "Valider", class: "btn btn-primary btn-lg" %>
-        </div>
+<%= f.fields_for :property_photos do |photo_form| %>
+<p class="h4 font-weight-bold ">Ajouter les photos</p>
+<hr>
+<div class="form-inputs form-row">
+    <div class="col-12 form-group">
+        <%= photo_form.label "Photo 1", class: "control-label" %>
+        <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
     </div>
+    <div class="col-12 form-group">
+        <%= photo_form.label "Photo 2", class: "control-label" %>
+        <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
+    </div>
+    <div class="col-12 form-group">
+        <%= photo_form.label "Photo 3", class: "control-label" %>
+        <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
+    </div>
+    <div class="col-12 form-group">
+        <%= photo_form.label "Photo 4", class: "control-label" %>
+        <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
+    </div>
+    <div class="col-12 form-group">
+        <%= photo_form.label "Photo 5", class: "control-label" %>
+        <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
+    </div>
+</div>
+<% end %>
+
+<div class="form-actions form-row mt-4">
+    <div class="col-12">
+        <%= f.button :submit, "Valider", class: "btn btn-primary btn-lg" %>
+    </div>
+</div>
 <% end %>
