@@ -9,18 +9,18 @@
         <div class="col-lg-6">
             <%= f.input :ad_type_id, collection: @ad_types, prompt: "Sélectionner le type d'annonce", label: "Type d'annonce" %>
         </div>
-        <div class="col-lg-6">
+        <!-- <div class="col-lg-6">
             <%= f.association :ad_type, include_blank: false, label: "Type d'annonce" %>
-        </div>
+        </div> -->
         <div class="col-lg-6">
             <%= f.association :property_type, include_blank: false, label: "Type de bien" %>
         </div>
         <div class="col-lg-4">
             <%= f.input :area, required: true, label: "Surface du bien" %>
         </div>
-        <div class="col-lg-4">
+        <!-- <div class="col-lg-4">
             <%= f.input :price, required: true, label: "Nombres de pièces" %>
-        </div>
+        </div> -->
         <div class="col-lg-4">
             <%= f.input :price, required: true, label: "Prix" %>
         </div>
@@ -28,7 +28,7 @@
 
     <p class="h4 font-weight-bold">Détail</p>
     <hr>
-    <div class="form-inputs form-row">        
+    <div class="form-inputs form-row">
         <div class="col-12">
             <%= f.input :description, required: true, label: "Description du bien", input_html: { rows: 8 } %>
         </div>
