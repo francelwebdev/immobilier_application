@@ -16,8 +16,9 @@ module ImmobilierApplication
     # -- all .rb files in that directory are automatically loaded.
 
 
-    # Mon code
+    # mon code
     # config.i18n.default_locale = :fr
+    # mon code
 
   end
 end
