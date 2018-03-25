@@ -82,6 +82,8 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'popper_js', '~> 1.12', '>= 1.12.9'
 gem 'font-awesome-sass', '~> 5.0', '>= 5.0.6.2'
 
+gem 'bootstrap-datepicker-rails', '~> 1.7', '>= 1.7.1.1'
+
 # Static page
 gem 'high_voltage', '~> 3.0'
 
