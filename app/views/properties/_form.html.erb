@@ -7,16 +7,16 @@
         <%= f.input :title, autofocus: true, label: "Titre de l'annonce" %>
     </div>
     <div class="col-lg-6">
-        <%= f.association :ad_type, prompt: "Sélectionner le type d'annonce", label: "Type d'annonce" %>
+        <%= f.input :ad_type, collection: Property::ADTYPE, prompt: "Sélectionner le type d'annonce", label: "Type d'annonce" %>
     </div>
     <div class="col-lg-6">
-        <%= f.association :property_type, label: "Type de bien", prompt: "Sélectionner le type de bien" %>
+        <%= f.input :ad_type, collection: Property::PROPERTYTYPE, prompt: "Sélectionner le type de bien", label: "Type de bien" %>
     </div>
     <div class="col-lg-6">
         <%= f.input :area, required: true, label: "Surface du bien" %>
     </div>
     <div class="col-lg-6">
-        <%= f.association :room, label_method: :number, value_method: :id, prompt: "Sélectionner le nombres de pièces", label: "Nombres de pièces" %>
+        <%= f.input :room, collection: Property::ROOM, prompt: "Sélectionner le nombres de pièces", label: "Nombres de pièces" %>
     </div>
     <div class="col-lg-6">
         <%= f.input :price, required: true, label: "Prix" %>

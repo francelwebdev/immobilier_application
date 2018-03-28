@@ -21,7 +21,7 @@ class PropertiesController < ApplicationController
         @property = current_user.properties.build
         @property_photos = @property.property_photos.build
         @user = @property.build_user
-        @rooms = Room.all
+        @rooms = Property::ROOM
     end
 
     def edit

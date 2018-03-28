@@ -13,12 +13,12 @@ class ApplicationController < ActionController::Base
 
 	# mon code
 	def tout_les_ad_type
-		@ad_types = AdType.all
+		@ad_types = Property::ADTYPE
 	end
 	# mon code
 	
 	def configure_permitted_parameters
-		devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
+		devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :phone_number])
 		devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone_number, :profile_photo])
 	end
 

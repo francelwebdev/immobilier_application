@@ -30,7 +30,7 @@ box-shadow: 0 10px 20px rgba(0,0,0,.1);
                 </li> -->
                 <% @ad_types.each do |ad_type| %>
                     <li class="nav-item mx-2">
-                        <%= link_to ad_type.name, properties_path(ad_type: ad_type.name), class: "nav-link"  %>
+                        <%= link_to ad_type, properties_path(ad_type: ad_type), class: "nav-link"  %>
                     </li>
                 <% end %>
                 <% if user_signed_in? %>
