@@ -3,14 +3,14 @@ class Property < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-  ADTYPE = ["Location", "Vente"]
-  PROPERTYTYPE = ["Maison", "Appartement", "Boutique", "Villa"]
+  #ADTYPE = ["Location", "Vente"]
+  #PROPERTYTYPE = ["Maison", "Appartement", "Boutique", "Villa"]
   ROOM = ["1 pièce", "2 pièces", "3 pièces", "4 pièces", "5 pièces", "plus de 5 pièces"]
 
   belongs_to :user
   has_many :property_photos, dependent: :destroy
 
-  validates :title, :ad_type_id, :property_type_id, :price, :area, :description, :city, :address, presence: true
+  validates :title, :ad_type_id, :property_type_id, :price, :area, :description, :city, :address, :room, presence: true
   validates :title, uniqueness: {message: "Une autre annonce porte déja le titre qque vous avez renseigné"}
   validates :price, presence: {message: "Le prix doit être renseigné !"}
   validates :area, presence: {message: "La surface du bien doit être renseigné !"}

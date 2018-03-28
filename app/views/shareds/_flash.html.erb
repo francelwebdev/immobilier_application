@@ -1,27 +1,22 @@
-<% flash.each do |name, message| %>
-    <% if name == "alert" %>
-        <div class="py-3 alert alert-danger m-0 text-center alert-dismissible fade show" role="alert">
-          <p class="h6 alert-heading mb-0 font-weight-bold"><%= message %></p>
-          <!-- <p class="mb-0 font-weight-bold"><%= message %></p> -->
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-    <% elsif name == "notice" %>
-        <div class="py-3 alert alert-success m-0 text-center alert-dismissible fade show" role="alert">
-          <p class="h6 alert-heading mb-0 font-weight-bold"><%= message %></p>
-          <!-- <p class="mb-0 font-weight-bold"><%= message %></p> -->
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-    <% elsif name == "warning" %>
-        <div class="py-3 alert alert-warning m-0 text-center alert-dismissible fade show" role="alert">
-          <p class="h6 alert-heading mb-0 font-weight-bold"><%= message %></p>
-          <!-- <p class="mb-0 font-weight-bold"><%= message %></p> -->
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-    <% end %>
+<% if notice %>
+<div class="py-3 alert alert-success m-0 text-center alert-dismissible fade show" role="alert">
+    <p class="h6 alert-heading mb-0 font-weight-bold"><%= notice %></p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+</div>
+<% elsif alert %>
+<div class="py-3 alert alert-danger m-0 text-center alert-dismissible fade show" role="alert">
+  <p class="h6 alert-heading mb-0 font-weight-bold"><%= alert %></p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+</div>
+<% else %>
+<div class="py-3 alert alert-warning m-0 text-center alert-dismissible fade show" role="alert">
+  <p class="h6 alert-heading mb-0 font-weight-bold"><%= warning %></p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+</div>    
 <% end %>

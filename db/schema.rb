@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180328172605) do
+ActiveRecord::Schema.define(version: 20180328172611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,8 +47,10 @@ ActiveRecord::Schema.define(version: 20180328172605) do
     t.integer "user_id"
     t.string "slug"
     t.string "room"
-    t.string "ad_type"
-    t.string "property_type"
+    t.bigint "ad_type_id"
+    t.bigint "property_type_id"
+    t.index ["ad_type_id"], name: "index_properties_on_ad_type_id"
+    t.index ["property_type_id"], name: "index_properties_on_property_type_id"
     t.index ["slug"], name: "index_properties_on_slug", unique: true
     t.index ["user_id"], name: "index_properties_on_user_id"
   end
@@ -89,4 +91,6 @@ ActiveRecord::Schema.define(version: 20180328172605) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "properties", "ad_types"
+  add_foreign_key "properties", "property_types"
 end
