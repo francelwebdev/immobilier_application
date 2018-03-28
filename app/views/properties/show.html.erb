@@ -61,17 +61,21 @@
         <div class="card border-0 mb-4" style="background-color: #FAFAFA;">
            <div class="card-body">
             <div class="row">
-               <div class="col-lg-4 text-center">
+               <div class="col-6 col-lg-3 text-center">
                   <h6 class="font-weight-bold">Surface</h6>
                   <p><%= @property.area %> m<sup>2</sup></p>
               </div>
-              <div class="col-lg-4 text-center">
-                  <h6 class="font-weight-bold">Nombres de pièces</h6>
-                  <p></p>
+              <div class="col-6 col-lg-3 text-center">
+                  <h6 class="font-weight-bold">Nbrs de pièces</h6>
+                  <p><%= @property.room %></p>
               </div>
-              <div class="col-lg-4 text-center">
+              <div class="col-6 col-lg-3 text-center">
                   <h6 class="font-weight-bold">Caution</h6>
-                  <p> mois</p>
+                  <p><%=  %> mois</p>
+              </div>
+              <div class="col-6 col-lg-3 text-center">
+                  <h6 class="font-weight-bold">Disponible</h6>
+                  <p><%= @property.available ? "Oui" : "Non" %></p>
               </div>
           </div>
       </div>
@@ -106,10 +110,10 @@
      <div class="card-body pb-0">
         <p class="h5 mb-4 font-weight-bold text-center">Propriétaire du bien</p>
         <div class="row">
-          <div class="col-lg-4">
+          <div class="col-4">
            <%= image_tag @property.user.profile_photo_url, class: "rounded-circle", size: "80x80" %>
        </div>
-       <div class="col-lg-8 d-flex flex-column justify-content-center">
+       <div class="col-8 d-flex flex-column justify-content-center">
            <p class="text-primary m-0">
               <%= @property.user.first_name %> <%= @property.user.last_name %>
           </p>

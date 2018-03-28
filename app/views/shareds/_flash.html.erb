@@ -1,17 +1,15 @@
-<% flash.each do |name, msg| %>
-<% if name == "notice" %>
+<% if flash[:notice] %>
 <div class="alert alert-success alert-dismissible fade show mb-0 text-center rounded-0" role="alert">
-    <p class="h6 alert-heading"><%= msg %></p>
+    <p class="h6 alert-heading"><%= notice %></p>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<% elsif name == "alert" %>
+<% elsif flash[:alert] %>
 <div class="alert alert-danger alert-dismissible fade show mb-0 text-center rounded-0" role="alert">
-    <p class="h6 alert-heading"><%= msg %></p>
+    <p class="h6 alert-heading"><%= alert %></p>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<% end %>
 <% end %>
