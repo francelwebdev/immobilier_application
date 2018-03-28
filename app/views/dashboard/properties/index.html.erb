@@ -1,10 +1,10 @@
-<% provide :page_title, "Mes annonces"  %>
+<% content_for :page_title, "Mes annonces" %>
 
 <section class="container-fluid py-4" style="background-color: #FAFAFA;">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h3>Mes annonces</h3>
+                <h4>Mes annonces</h4>
             </div>
         </div>
     </div>
@@ -15,53 +15,42 @@
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
                 <% if @my_ads.count > 1 %>
-                    <p><%= @my_ads.count %> annonces publié</p>
+                <p><%= @my_ads.count %> annonces publié</p>
                 <% else %>
-                    <p><%= @my_ads.count %> annonce publié</p>
+                <p><%= @my_ads.count %> annonce publié</p>
                 <% end %>
             </div>
-            <div class="col-lg-10 offset-lg-1">
-                <div class="card bg-primary py-4">
-                    <div class="card-bory">
-                    </div>
-                </div>
-            </div>
-
             <div class="col-lg-10 offset-lg-1">                
                 <ul class="list-unstyled">
                     <% @my_ads.each do |my_ad| %>
-                        <li class="row">
-                            <div class="col-lg-3">
-                                <%= image_tag my_ad.property_photos.first.photo_url, class: "card-img-top", alt: "Photo de lannonce : #{ my_ad.title }" %>
-                            </div>
-                            <div class="col-lg-6">
-                                <h5>
-                                    <%= truncate(strip_tags(my_ad.title.capitalize), length: 25) %>
-                                </h5>
-                                <address class="card-text text-muted">
-                                    <i class="fas fa-map-marker-alt"></i>&nbsp; <%= property.address %>, <%= property.city %>
-                                </address>
-                                <% if property.ad_type.name == "A vendre" %>
-                                    <p>
-                                        <span><%= sprintf("%0.00f", property.price) %><sup>F</sup></span>
-                                    </p>
-                                <% elsif property.ad_type.name == "A louer" %>
-                                    <p>
-                                        <span>
-                                            <%= sprintf("%0.00f", property.price) %><sup>F</sup><small>/mois</small>
-                                        </span>
-                                    </p>
-                                <% end %>
-                            </div>
-                            <div class="col-lg-3">
-                                <ul class="list-unstyled">
-                                    <li><%= link_to "Voir", my_ad %></li>
-                                    <li><%= link_to "Voir", edit_property_path(my_ad) %></li>
-                                    <li><%= link_to 'Suprimer', my_ad, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <hr>
+                    <li class="row">
+                        <div class="col-lg-3">
+                            <%= image_tag my_ad.property_photos.first.photo_url, class: "img-fluid w-100 h-100", alt: "Photo de lannonce : #{ my_ad.title }" %>
+                        </div>
+                        <div class="col-lg-6 py-3 d-flex flex-column justify-content-center">
+                            <h5><%= truncate(strip_tags(my_ad.title.capitalize), length: 25) %></h5>
+                            <address class="">
+                                <i class="fas fa-map-marker-alt"></i>&nbsp; <%= my_ad.address %>, <%= my_ad.city %>
+                            </address>
+                            <% if my_ad.ad_type.title == "A vendre" %>
+                            <p>
+                                <span><%= sprintf("%0.00f", my_ad.price) %><sup>F</sup></span>
+                            </p>
+                            <% elsif my_ad.ad_type.title == "A louer" %>
+                            <p>
+                                <span><%= sprintf("%0.00f", my_ad.price) %><sup>F</sup><small>/mois</small></span>
+                            </p>
+                            <% end %>
+                        </div>
+                        <div class="col-lg-3 d-flex justify-content-center align-items-center">
+                            <ul class="list-unstyled text-center">
+                                <li><%= link_to "Voir", my_ad %></li>
+                                <li><%= link_to "Modifier", edit_property_path(my_ad) %></li>
+                                <li><%= link_to 'Supprimer', my_ad, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <hr>
                     <% end %>
                 </ul>
             </div>

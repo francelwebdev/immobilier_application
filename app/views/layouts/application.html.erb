@@ -1,58 +1,58 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <!-- Required meta tags -->
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <meta name="author" content="Francel AMAMOO">
-        <meta name="description" content="Petite annonce immobilier entre particulier">
+    <meta name="author" content="Francel AMAMOO">
+    <meta name="description" content="Petite annonce immobilier entre particulier">
 
-        <%= favicon_link_tag "" %>
+    <%= favicon_link_tag "" %>
 
-        <title>Sico - <%= content_for?(:page_title) ? yield(:page_title) : "Bienvenue" %></title>
+    <title>Sico - <%= content_for?(:page_title) ? yield(:page_title) : "Bienvenue" %></title>
 
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800|Roboto:400,500,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800|Roboto:400,500,700,900" rel="stylesheet">
 
-        <%= csrf_meta_tags %>
+    <%= csrf_meta_tags %>
 
-        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-        <% if content_for?(:head) %>
-            <%= yield(:head) %>
-        <% end %>
-  </head>
+    <% if content_for?(:head) %>
+    <%= yield(:head) %>
+    <% end %>
+</head>
 
-  <body class="Controller: <%= controller.controller_name  %>, Action: <%= controller.action_name  %>">
+<body class="Controller: <%= controller.controller_name  %>, Action: <%= controller.action_name  %>">
 
-        <%= render "shareds/navbar" %>
-        <%= render 'shareds/flash' %>
-        <p id="notice" class="sr-only"><%= notice %></p>
+    <%= render "shareds/navbar" %>
+    <%= render 'shareds/flash' %>
+    <p id="notice" class="sr-only"><%= notice %></p>
 
-        <main>
-            <%= yield %>
-        </main>
+    <main>
+        <%= yield %>
+    </main>
 
-        <%= render "shareds/contacter_nous"  %>
-        <%= render "shareds/footer" %>
+    <%= render "shareds/contacter_nous"  %>
+    <%= render "shareds/footer" %>
 
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-        <%= cloudinary_js_config %>
+    <%= cloudinary_js_config %>
 
-        <!-- Jarallax -->
-        <script src="https://unpkg.com/jarallax@1.9/dist/jarallax.min.js"></script>
-        <!-- Include it if you want to use Video parallax -->
-        <script src="https://unpkg.com/jarallax@1.9/dist/jarallax-video.min.js"></script>
+    <!-- Jarallax -->
+    <script src="https://unpkg.com/jarallax@1.9/dist/jarallax.min.js"></script>
+    <!-- Include it if you want to use Video parallax -->
+    <script src="https://unpkg.com/jarallax@1.9/dist/jarallax-video.min.js"></script>
 
-        <% if current_page?(root_path) %>
-            <%= yield :annonce_nouvellement_publié %>
-            <%= yield :animate_text  %>
-        <% else%>
-            <%= yield :slick_properties_photo %>
-        <% end %>
+    <% if current_page?(root_path) %>
+    <%= yield :annonce_nouvellement_publié %>
+    <%= yield :animate_text  %>
+    <% else%>
+    <%= yield :slick_properties_photo %>
+    <% end %>
 
-    </body>
+</body>
 </html>

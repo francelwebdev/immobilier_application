@@ -5,9 +5,9 @@
 	<div class="row">
 	  <div class="col-lg-9">
 		<h3><%= @property.title.capitalize %>&nbsp;
-            <% if @property.ad_type.name == "Location" %>
+            <% if @property.ad_type.title == "Location" %>
                 <span class="badge badge-secondary py-2">A louer</span>
-    		<% elsif @property.ad_type.name == "Vente" %>
+    		<% elsif @property.ad_type.title == "Vente" %>
                 <span class="badge badge-secondary py-2">A vendre</span>
     		<% end %>
         </h3>
@@ -16,11 +16,11 @@
 		</address>
 	  </div>
 	  <div class="col-lg-3">
-	  	<% if @property.ad_type.name == "Location" %>
+	  	<% if @property.ad_type.title == "Location" %>
 			<p class="h3 text-primary text-lg-right">
                 <%= @property.price %><sup>f</sup></%>/<small>mois</small></sup>
             </p>
-		<% elsif @property.ad_type.name == "Vente" %>
+		<% elsif @property.ad_type.title == "Vente" %>
 			<p class="h3 text-primary text-lg-right">
                 <%= @property.price %> <small>Fcfa</small></sup>
             </p>
