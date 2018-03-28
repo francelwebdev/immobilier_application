@@ -32,21 +32,31 @@
                             <address class="">
                                 <i class="fas fa-map-marker-alt"></i>&nbsp; <%= my_ad.address %>, <%= my_ad.city %>
                             </address>
-                            <% if my_ad.ad_type.title == "A vendre" %>
+                            <% if my_ad.ad_type.name == "A vendre" %>
                             <p>
                                 <span><%= sprintf("%0.00f", my_ad.price) %><sup>F</sup></span>
                             </p>
-                            <% elsif my_ad.ad_type.title == "A louer" %>
+                            <% elsif my_ad.ad_type.name == "A louer" %>
                             <p>
                                 <span><%= sprintf("%0.00f", my_ad.price) %><sup>F</sup><small>/mois</small></span>
                             </p>
                             <% end %>
                         </div>
                         <div class="col-lg-3 d-flex justify-content-center align-items-center">
-                            <ul class="list-unstyled text-center">
-                                <li><%= link_to "Voir", my_ad %></li>
-                                <li><%= link_to "Modifier", edit_property_path(my_ad) %></li>
-                                <li><%= link_to 'Supprimer', my_ad, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+                            <ul class="nav flex-column">
+                              <li class="nav-item">
+                                <a class="nav-link active" href="#">Active</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                                <%= link_to "Voir", my_ad, class: "nav-link" %>
+                              </li>
+                              <li class="nav-item">
+                                <%= link_to "Modifier", edit_property_path(my_ad), class: "nav-link" %>
+                              </li>
+                              <li class="nav-item">
+                                <%= link_to 'Supprimer', my_ad, method: :delete, data: { confirm: 'Are you sure?' }, class: "nav-link" %>
+                              </li>
                             </ul>
                         </div>
                     </li>

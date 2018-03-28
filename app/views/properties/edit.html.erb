@@ -1,6 +1,25 @@
-<h1>Editing Property</h1>
+<% content_for :title, "Modification de mon annonce" %>
 
-<%= render 'form', property: @property %>
+<section class="container-fluid py-3" style="background-color: #F8F8F8;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3>Modification de mon annonce</h3>
+                <p class="text-warning">(*) Champs obligatoires</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-<%= link_to 'Show', @property %> |
-<%= link_to 'Back', properties_path %>
+<section class="container py-4">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <%= render 'form', property: @property %>
+        </div>
+        <div class="col-lg-10 offset-lg-1 sr-only">
+            <br>
+            <%= link_to 'Show', @property, class: "btn btn-secondary" %>
+            <%= link_to 'Back', properties_path, class: "btn btn-secondary" %>
+        </div>
+    </div>
+</section>

@@ -15,7 +15,7 @@
                             <%= f.input :first_name, required: true, label: "Prénom" %>
                             <%= f.input :last_name, required: true, label: "Nom" %>
                             <%= f.input :phone_number, as: :tel, required: true, label: "Numéro de téléphone" %>
-                            <%= image_tag(current_user.profile_photo_url, size: "100x100", class: "rounded-circle") if current_user.profile_photo.present? %>
+                            <%= image_tag(current_user.profile_photo.url, size: "100x100", class: "rounded-circle") if current_user.profile_photo.present? %>
                             <%= f.input :profile_photo, label: "Photo de profile", as: :file, input_html: { class: 'form-control-file' } %>
                             <%= f.hidden_field :profile_photo_cache %>
                             <%= f.input :email, required: true %>

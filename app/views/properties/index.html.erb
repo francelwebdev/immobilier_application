@@ -15,54 +15,59 @@
     <div class="container">
         <div class="row">
             <% if @properties.present? %>
-                <div class="col-12">
-                    <% if @properties.size > 1 %>
-                        <p><%= @properties.size %> annonces trouvés</p>
-                    <% else %>
-                        <p><%= @properties.size %> annonce trouvé</p>
-                    <% end %>
-                </div>
+            <div class="col-12">
+                <p><%= pluralize(@properties_numbers, "annonce trouvé", "annonces trouvés")  %></p>
 
-                <% @properties.each do |property| %>
+
+                    <!-- <%# if @properties_numbers > 1 %>
+                        <p><%= @properties_numbers %> annonces trouvés</p>
+                    <#% else %>
+                        <p><%= @properties_numbers %> annonce trouvé</p>
+                        <%# end %> -->
+                    </div>
+
+                    <% @properties.each do |property| %>
                     <div class="col-lg-4">
                         <%= link_to property, class: "sans-text-decoration" do %>
-                            <div class="card mb-4 liste-card-recherche text-dark">
-                                <%= image_tag property.property_photos.first.photo_url, class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
+                        <div class="card mb-4 liste-card-recherche text-dark">
+                            <%= image_tag property.property_photos.first.photo_url, class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
+                            <% if property.ad_type.name == "Vente" %>
+                            <span class="position-absolute badge badge-secondary p-2" style="top: 15px; left: 15px;">A vendre</span>
+                            <% elsif property.ad_type.name == "Location" %>
+                            <span class="position-absolute badge badge-secondary p-2" style="top: 15px; left: 15px;">A louer</span>
+                            <% end %>
+                            <div class="card-body p-3">
+                                <h5 class="card-title">
+                                    <%= truncate(strip_tags(property.title.capitalize), length: 25) %>
+                                </h5>
+                                <address class="card-text">
+                                    <i class="fas fa-map-marker-alt"></i>&nbsp; <%= property.address %>, <%= property.city %>
+                                </address>
                                 <% if property.ad_type.name == "Vente" %>
-                                    <span class="position-absolute badge badge-secondary p-2" style="top: 15px; left: 15px;">A vendre</span>
+                                <p class="text-primary m-0 p-0 h3">
+                                    <%= number_with_delimiter(sprintf("%0.00f", property.price)) %><sup>f</sup>
+                                </p>
                                 <% elsif property.ad_type.name == "Location" %>
-                                    <span class="position-absolute badge badge-secondary p-2" style="top: 15px; left: 15px;">A louer</span>
+                                <p class="text-primary m-0 p-0 h3">
+                                    <%= number_with_delimiter(sprintf("%0.00f", property.price)) %><sup>f</sup>/<small>mois</small></sup>
+                                </p>
                                 <% end %>
-                                <div class="card-body p-3">
-                                    <h5 class="card-title">
-                                        <%= truncate(property.title.capitalize, length: 25) %>
-                                    </h5>
-                                    <address class="card-text">
-                                        <i class="fas fa-map-marker-alt"></i>&nbsp; <%= property.address %>, <%= property.city %>
-                                    </address>
-                                    <% if property.ad_type.name == "Vente" %>
-                                        <p class="text-primary m-0 p-0 h3">
-                                            <%= sprintf("%0.00f", property.price) %><sup>F</sup>
-                                        </p>
-                                    <% elsif property.ad_type.name == "Location" %>
-                                        <p class="text-primary m-0 p-0 h3">
-                                            <%= sprintf("%0.00f", property.price) %><sup>F</sup><small>/mois</small>
-                                        </p>
-                                    <% end %>
-                                    <p class="m-0 ">
-                                        <small class="sr-only">Il y a <%= time_ago_in_words(property.created_at) %></small>
-                                    </p>
-                                </div>
+                                <hr>
+                                <p class="m-0 ">
+                                    <small>Publié le <%= property.created_at.strftime("%e %B") %></small>
+                                    <small class="sr-only">Il y a <%= time_ago_in_words(property.created_at) %></small>
+                                </p>
                             </div>
+                        </div>
                         <% end %>
                     </div>
-                <% end %>
-            <% else %>
-                <p>Aucun résultat trouvé !</p>
-            <% end %>
-            <div class="col-12">
-                <p class="m-0"><%= paginate @properties, :theme => 'twitter-bootstrap' %></p>
+                    <% end %>
+                    <% else %>
+                    <p>Aucun résultat trouvé !</p>
+                    <% end %>
+                    <div class="col-12">
+                        <p class="m-0"><%= paginate @properties, :theme => 'twitter-bootstrap' %></p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>

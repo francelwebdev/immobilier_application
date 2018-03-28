@@ -44,58 +44,41 @@
     </div>
 </div>
 
-<!-- <%= f.simple_fields_for :property_photos, include_id: false do |photo_form| %>
+<!-- <%= f.simple_fields_for :property_photos do |photo_form| %>
 <p class="h3 mt-4 mb-0">Photos</p>
-<hr class="mb-5">
+<hr>
 <div class="form-inputs form-row">
-<div class="col-12">
-<%= photo_form.input :photo, as: :file, label: "Photo 1", input_html: {class: "form -control form-control-file" } %>
-</div>
-<div class="col-12">
-<%= photo_form.input :photo, as: :file, label: "Photo 2", input_html: {class: "form -control form-control-file" } %>
-</div>
-<div class="col-12">
-<%= photo_form.input :photo, as: :file, label: "Photo 3", input_html: {class: "form -control form-control-file" } %>
-</div>
-<div class="col-12">
-<%= photo_form.input :photo, as: :file, label: "Photo 4", input_html: {class: "form -control form-control-file" } %>
-</div>
-<div class="col-12">
-<%= photo_form.input :photo, as: :file, label: "Photo 5", input_html: {class: "form -control form-control-file" } %>
-</div>
+    <div class="col-12">
+        <%= photo_form.input :photo, as: :file, label: "Photo 1", input_html: {class: "form -control form-control-file" } %>
+    </div>
+    <div class="col-12">
+        <%= photo_form.input :photo, as: :file, label: "Photo 2", input_html: {class: "form -control form-control-file" } %>
+    </div>
+    <div class="col-12">
+        <%= photo_form.input :photo, as: :file, label: "Photo 3", input_html: {class: "form -control form-control-file" } %>
+    </div>
 </div>
 <% end %> -->
 
 <%= f.fields_for :property_photos do |photo_form| %>
-<p class="h4 font-weight-bold ">Ajouter les photos</p>
+<p class="h4 font-weight-bold ">Photos</p>
 <hr>
 <div class="form-inputs form-row">
     <div class="col-12 form-group">
-        <%= photo_form.label "Photo 1", class: "control-label" %>
-        <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
-    </div>
-    <div class="col-12 form-group">
-        <%= photo_form.label "Photo 2", class: "control-label" %>
-        <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
-    </div>
-    <div class="col-12 form-group">
-        <%= photo_form.label "Photo 3", class: "control-label" %>
-        <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
-    </div>
-    <div class="col-12 form-group">
-        <%= photo_form.label "Photo 4", class: "control-label" %>
-        <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
-    </div>
-    <div class="col-12 form-group">
-        <%= photo_form.label "Photo 5", class: "control-label" %>
-        <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
+        <%= photo_form.label "Photo", class: "control-label" %>
+        <%= image_tag(@property.property_photos.first.photo_url(:large)) if @property.property_photos.first.photo.present? %>
+        <%= photo_form.file_field :photo, class: "form -control form-control-file" %>
     </div>
 </div>
 <% end %>
 
 <div class="form-actions form-row mt-4">
     <div class="col-12">
-        <%= f.button :submit, "Valider", class: "btn btn-primary btn-lg" %>
+        <% if @property.persisted? %>
+        <%= f.button :submit, "Modifier l'annonce", class: "btn btn-primary btn-lg" %>
+        <% else %>
+        <%= f.button :submit, "Ajouter l'annonce", class: "btn btn-primary btn-lg" %>
+        <% end %>
     </div>
 </div>
 <% end %>

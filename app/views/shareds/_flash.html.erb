@@ -1,17 +1,17 @@
 <% flash.each do |name, msg| %>
-<% if name == notice %>
-<div class="py-3 alert alert-success m-0 text-center alert-dismissible fade show" role="alert">
-    <p class="h6 alert-heading mb-0"><%= message %></p>
+<% if name == "notice" %>
+<div class="alert alert-success alert-dismissible fade show mb-0 text-center rounded-0" role="alert">
+    <p class="h6 alert-heading"><%= msg %></p>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<% elsif name == alert %>
-<div class="py-3 alert alert-danger m-0 text-center alert-dismissible fade show" role="alert">
-  <p class="h6 alert-heading mb-0"><%= message %></p>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-</button>
-</div>   
+<% elsif name == "alert" %>
+<div class="alert alert-danger alert-dismissible fade show mb-0 text-center rounded-0" role="alert">
+    <p class="h6 alert-heading"><%= msg %></p>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 <% end %>
 <% end %>
