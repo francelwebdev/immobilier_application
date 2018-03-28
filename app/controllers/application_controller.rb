@@ -2,9 +2,9 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
 
     # mon code
-        before_action :tout_les_ad_type
+    before_action :tout_les_ad_type
     # mon code
-    #
+    
 	before_action :authenticate_user!
 
 	before_action :configure_permitted_parameters, if: :devise_controller?
@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
 	# mon code
 	def tout_les_ad_type
-		@ad_types = Property::ADTYPE
+		@ad_types = AdType.all
 	end
 	# mon code
 	

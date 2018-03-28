@@ -2,7 +2,7 @@
     <%= form_with url: properties_path, method: :get, local: true do |form|  %>
         <div class="form-row px-1">
             <div class="col-md-3 my-1">
-                <%= form.select :property_type, collection: Room::PROPERTYTYPE, include_blank: "Type de bien", class: "form-control form-control-lg", required: true %>
+                <%= form.select :property_type, PropertyType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type de bien" }, { class: "form-control form-control-lg", required: true } %>
             </div>
             <div class="col-md-3 my-1">
                 <%= form.select :ad_type, AdType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type d'annonce" }, { class: "form-control form-control-lg", required: true } %>
