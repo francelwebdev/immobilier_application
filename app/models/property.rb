@@ -8,6 +8,9 @@ class Property < ApplicationRecord
   ROOM = ["1 pièce", "2 pièces", "3 pièces", "4 pièces", "5 pièces", "plus de 5 pièces"]
 
   belongs_to :user
+  belongs_to :ad_type
+  belongs_to :property_type
+
   has_many :property_photos, dependent: :destroy
 
   validates :title, :ad_type_id, :property_type_id, :price, :area, :description, :city, :address, :room, presence: true

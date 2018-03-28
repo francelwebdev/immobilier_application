@@ -4,7 +4,7 @@ class PropertiesController < ApplicationController
 
     def index
         if params[:ad_type].present?
-            @ad_type_id = AdType.find_by(name: params[:ad_type]).id
+            @ad_type_id = AdType.find_by(title: params[:ad_type]).id
             @properties = Property.where("ad_type_id = ?", @ad_type_id).all.order("created_at DESC").page(params[:page]).per(9)
         elsif  params[:property_type].present? and params[:ad_type].present? and params[:city].present?
             @properties = Property.where("property_type_id = ? and ad_type_id = ? and (lower(city) LIKE ? or upper(city) LIKE ?)", params[:property_type].to_i, params[:ad_type].to_i, "%#{params[:city]}%", "%#{params[:city]}%").all.order("created_at DESC").page(params[:page]).per(9)
