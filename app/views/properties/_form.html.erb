@@ -87,11 +87,7 @@
 
 <div class="form-actions form-row mt-4">
     <div class="col-12">
-        <% if @property.persisted? %>
-        <%= f.button :submit, "Modifier l'annonce", class: "btn btn-primary btn-lg" %>
-        <% else %>
-        <%= f.button :submit, "Ajouter l'annonce", class: "btn btn-primary btn-lg" %>
-        <% end %>
+        <%= f.button :submit, @property.new_record? ? "Ajouter l'annonce" : "Modifier l'annonce", class: "btn btn-primary btn-lg" %>
     </div>
 </div>
 <% end %>
