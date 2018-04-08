@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180408211115) do
+ActiveRecord::Schema.define(version: 20180408211120) do
 
   create_table "ad_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20180408211115) do
     t.boolean "available"
     t.string "bedroom"
     t.string "bathroom"
-    t.boolean "published"
+    t.boolean "published", default: false
     t.integer "avance"
     t.index ["ad_type_id"], name: "index_properties_on_ad_type_id"
     t.index ["property_type_id"], name: "index_properties_on_property_type_id"
@@ -66,6 +66,12 @@ ActiveRecord::Schema.define(version: 20180408211115) do
   end
 
   create_table "property_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -88,6 +94,8 @@ ActiveRecord::Schema.define(version: 20180408211115) do
     t.string "last_name"
     t.bigint "phone_number"
     t.string "profile_photo"
+    t.boolean "terms_and_conditions"
+    t.string "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["phone_number"], name: "index_users_on_phone_number", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

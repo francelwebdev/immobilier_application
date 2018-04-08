@@ -1,84 +1,102 @@
 <footer class="container-fluid pt-5 bg-white">
     <div class="container">
         <div class="row py-5">
-            <div class="col-lg-5 my-3 my-lg-0">
-                <h5 class="mb-3 text-uppercase font-weight-bold text-secondary"><i class="fas fa-home fa-lg"></i> Sico</h5>
-                <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima eligendi minus doloremque porro, accusamus odio!</p>
+            <div class="col-lg-4 my-3 my-lg-0">
+                <h3 class="mb-4 text-uppercase font-weight-bold text-dark"><i class="fas fa-home fa-2x"></i> Sico</h3>
+                <p class="text-dark">Nous aidons les personnes et les biens a se trouver plus simplement!</p>
                 <address>
-                    <ul class="list-unstyled">
-                        <li class="my-2">
-                            <a href="" class="text-secondary font-weight-bold">96 61 90 73</a>
-                        </li>
-                        <li class="my-2">
-                            <%= mail_to "francel.webdev@gmail.com", subject: "Demande d'information", class: "text-primary" do %>
-                            francel.webdev@gmail.com
-                            <% end %>
-                        </li>
-                    </ul>
-                </address>
+                 <ul class="list-unstyled">
+                  <li class="my-2">
+                   <a href="" class="text-dark font-weight-bold">96 61 90 73</a>
+               </li>
+               <li class="my-2">
+                   <%= mail_to "francel.webdev@gmail.com", subject: "Demande d'information", class: "text-primary" do %>
+                   francel.webdev@gmail.com
+                   <% end %>
+               </li>
+           </ul>
+       </address>
+   </div>
+   <div class="col-lg-2 my-3 my-lg-0">
+    <h5 class="mb-3 font-weight-bold text-dark">A propos</h5>
+    <ul class="list-unstyled">
+        <li class="my-2">
+            <%= link_to 'Qui sommes-nous', about_us_path, class: "text-dark" %>
+        </li>
+        <li class="my-2">
+            <%= link_to 'Contacter-nous', contact_us_path, class: "text-dark" %>
+        </li>
+        <li class="my-2">
+            <%= link_to "Carriere", root_path, class: "text-dark" %>
+        </li>
+    </ul>
+</div>
+<div class="col-lg-2 my-3 my-lg-0">
+    <h5 class="mb-3 font-weight-bold text-dark">Liens utiles</h5>
+    <ul class="list-unstyled">
+        <li class="my-2">
+            <%= link_to "Offres profesionnels", root_path, class: "text-dark" %>
+        </li>
+        <li class="my-2">
+            <%= link_to "CGU", root_path, class: "text-dark" %>
+        </li>
+        <li class="my-2">
+            <%= link_to "FAQ", root_path, class: "text-dark" %>
+        </li>
+        <li class="my-2">
+            <%= link_to "Blog", root_path, class: "text-dark" %>
+        </li>
+    </ul>
+</div>
+<div class="col-lg-4 my-3 my-md-0">
+    <div class="row">
+        <div class="col-12 mb-4">
+            <h5 class="mb-3 font-weight-bold text-dark">Newsletter</h5>
+            <p class="text-dark"><small>Abonnez-vous à la newsletter et recevrez régulièrement les nouvelles offres gratuitement.</small></p>
+            <%= form_with url: root_path, method: :get do |f| %>
+            <div class="d-flex">
+                <%= f.email_field :email, placeholder: "Votre email", class: "form-control", style: "border-radius: 0px;"  %>
+                <%= f.submit "S'abonné", class: "btn btn-primary", style: "border-radius: 0px;" %>
             </div>
-            <div class="col-lg-2 my-3 my-lg-0">
-                <h5 class="mb-3 font-weight-bold text-secondary">A propos</h5>
-                <ul class="list-unstyled">
-                    <li class="my-2">
-                        <%= link_to 'Qui sommes-nous', about_us_path, class: "text-secondary" %>
-                    </li>
-                    <li class="my-2">
-                        <%= link_to 'Contacter-nous', contact_us_path, class: "text-secondary" %>
-                    </li>
-                    <li class="my-2">
-                        <%= link_to "Carriere", root_path, class: "text-secondary" %>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-lg-2 my-3 my-lg-0">
-                <h5 class="mb-3 font-weight-bold text-secondary">Liens utiles</h5>
-                <ul class="list-unstyled">
-                    <li class="my-2">
-                        <%= link_to "Services Pro", root_path, class: "text-secondary" %>
-                    </li>
-                    <li class="my-2">
-                        <%= link_to "Terms & conditions", root_path, class: "text-secondary" %>
-                    </li>
-                    <li class="my-2">
-                        <%= link_to "FAQ", root_path, class: "text-secondary" %>
-                    </li>
-                    <li class="my-2">
-                        <%= link_to "Blog", root_path, class: "text-secondary" %>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-lg-3 my-3 my-md-0">
-                <h5 class="mb-3 font-weight-bold text-secondary">Newsletter</h5>
-                <%= form_with url: root_path, method: :get do |f| %>
-                <div class="d-flex">
-                    <%= f.email_field :email, placeholder: "Adresse email", class: "form-control", style: "border-radius: 0px;"  %>
-                    <%= f.submit "S'abonné", class: "btn btn-primary", style: "border-radius: 0px;" %>
-                </div>
-                <% end %>
-                <ul class="list-unstyled d-flex mt-4">
-                    <li class="mr-3">
-                        <%= link_to "https://facebook.com", class: "h-50 w-50 p-2", title: "Suivez-nous sur facebook" do %>
-                        <i class="fab fa-facebook-f fa-lg"></i>
-                        <% end %>
-                    </li>
-                    <li>
-                        <%= link_to "https://facebook.com", class: "h-50 w-50 p-2", title: "Suivez-nous sur twitter" do %>
-                        <i class="fab fa-twitter fa-lg"></i>
-                        <% end %>
-                    </li>
-                </ul>
-            </div>
+            <% end %>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <hr>
-            </div>
-        </div>
-        <div class="row py-3">
-            <div class="col-12 text-center text-md-right">
-                <p class="text-center text-muted">&copy; <%= Time.now.year %> Sico. Tous droit réservé.</p>
-            </div>
+        <div class="col-12">
+            <h5 class="mb-3 font-weight-bold text-dark">Suivez-nous sur</h5>
+            <ul class="list-unstyled d-flex mt-4">
+                <li>
+                    <%= link_to "https://facebook.com", class: "p-2", title: "Suivez-nous sur facebook" do %>
+                    <%= image_tag "220199-social-media/svg/facebook.svg", alt: "Liens vers la page facebook de Sico", width: "25px;" %>
+                    <i class="fab fa-facebook-f sr-only"></i>
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to "https://facebook.com", class: "p-2", title: "Suivez-nous sur twitter" do %>
+                    <%= image_tag "220199-social-media/svg/twitter.svg", alt: "Liens vers la page twitter de Sico", width: "25px;" %>
+                    <i class="fab fa-twitter sr-only"></i>
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to "https://google.com", class: "p-2", title: "Suivez-nous sur google+" do %>
+                    <%= image_tag "220199-social-media/svg/google-plus.svg", alt: "Liens vers la page twitter de Sico", width: "25px;" %>
+                    <i class="fab fa-twitter sr-only"></i>
+                    <% end %>
+                </li>
+            </ul>
         </div>
     </div>
+
+</div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <hr>
+    </div>
+</div>
+<div class="row py-3">
+    <div class="col-12 text-center text-md-right">
+        <p class="text-center text-muted">
+            <small>&copy; <%= Time.now.year %> Sico. Tous droit réservé.</p></small>
+        </div>
+    </div>
+</div>
 </footer>

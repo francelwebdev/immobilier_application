@@ -8,19 +8,23 @@ body {
     background-color: #F2F6FF;
   }
   section.besoin_daide {
-    background-image: linear-gradient(-225deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 50%), asset-url("philipp-berndt-173197.jpg") !important;
+    background-image: linear-gradient(-225deg, rgba(0,0,0,0.3) , rgba(0,0,0,0.3) ), asset-url("philipp-berndt-173197.jpg") !important;
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
+      background-repeat: no-repeat;
+    
   }
 }
 
 .jumbotron-welcomes {
   height: 100vh !important;
-  background-image: linear-gradient(-225deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.2) 50%), asset-url("85.jpg") !important;
+  background-image: linear-gradient(-225deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), asset-url("85.jpg") !important;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+      background-repeat: no-repeat;
+  
 }
 
 // .au-survole {
@@ -30,13 +34,7 @@ body {
     //     // box-shadow: 0 16px 20px 0 rgba(216, 216, 216, .75);
     //     box-shadow: rgba(121,121,121,.35) 1px 10px 20px;
     // }
-    .ccm {
-      box-shadow: 0 0 30px 0 rgba(0, 0, 0, .1);
-    }
-    .profile_photo {
-      width: 4rem;
-      height: 3rem;
-    }
+    
 
     .liste-card-rech4rche {
       transition: all 0.3s ease-in;
@@ -60,11 +58,13 @@ body {
     }
 
     .barre-recherche-avance {
-      height: 50vh !important;
+      height: 75vh !important;
       background-image: linear-gradient(-225deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.2) 50%), asset-url("pexels-photo-323780.jpeg") !important;
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
+      background-repeat: no-repeat;
+      
     }
 
     section.banner-contact {
@@ -80,12 +80,15 @@ body {
     }
     .slide-photo {
       height: 80vh !important;
-      background-image: linear-gradient(to bottom, rgba(0, 0, 0, .1) 50%, rgba(0, 0, 0, 0.5)  60%), asset-url("pexels-photo-280232.jpeg") !important;
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
       .slide-quelque-detail {
           bottom: 25px;
       }
     }
+
+
+.footer-facebook-logo {
+  color: #4D6FA9;
+}
+.footer-twitter-logo {
+  color: #65BBF2;
+}

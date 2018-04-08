@@ -34,3 +34,13 @@ fr:
   properties:
     new:
       hint: "ok"
+
+
+
+  # MOn code
+  activerecord:
+    model: "Property"
+
+    attributes:
+      property:
+        title: "Titre"

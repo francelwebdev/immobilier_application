@@ -13,9 +13,8 @@
                             <%= f.input :password, required: false %>
                             <%= f.input :remember_me, inline_label: true, as: :boolean if devise_mapping.rememberable? %>
                           </div>
-
                           <div class="form-actions">
-                            <%= f.button :submit, t(".sign_in"), class: "btn btn-primary btn-block" %>
+                            <%= f.button :submit, t(".sign_in"), class: "btn btn-primary btn-block btn-lg" %>
                           </div>
                         <% end %>
                         <div class="text-center mt-4">

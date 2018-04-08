@@ -106,6 +106,9 @@ gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'kaminari-i18n', '~> 0.5.0'
 
+# will paginate
+# will paginate bootstrap
+
 
 # secret keys
 gem 'figaro', '~> 1.1', '>= 1.1.1'
@@ -126,8 +129,19 @@ gem 'geocoder', '~> 1.4', '>= 1.4.5'
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
 
 
+# gem 'omniauth-facebook'
 
 
+# a tester ce gem
+
+# gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+# gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
+
+# source 'https://rails-assets.org' do
+#   gem "rails-assets-underscore"
+# end
+
+# a tester ce gem
 
 
 # gem 'cancancan', '~> 2.1', '>= 2.1.3'

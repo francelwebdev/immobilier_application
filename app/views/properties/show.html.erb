@@ -1,73 +1,45 @@
 <% content_for :page_title, @property.title.capitalize %>
 
-<section class="position-relative slide-photo">
-    <div class="row m-0 position-absolute w-100 slide-quelque-detail">
-        <div class="col-lg-7 offset-lg-1">
-            <h2 class="text-white font-weight-bold"><%= @property.title.capitalize %></h2>
-            <address>
-                <p class="text-light"><i class="fas fa-map-marker-alt mr-1" aria-hidden="true"></i>&nbsp; <%= @property.address %>, <%= @property.city %></p>
-            </address>
-        </div>
-        <div class="col-lg-3 text-lg-right">
-            <% if @property.ad_type.name == "Vente" %>
-            <p class="h5 font-weight-bold text-light">A vendre</p>
-            <% elsif @property.ad_type.name == "Location" %>
-            <p class="h5 font-weight-bold text-light">A louer</p>
-            <% end %>
-
-            <% if @property.ad_type.name == "Vente" %>
-            <p class="h2 text-primary">
-                <%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>
-            </p>
-            <% elsif @property.ad_type.name == "Location" %>
-            <p class="h2 text-primary">
-                <%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>/<small>mois</small></sup>
-            </p>
-            <% end %>
+<div class="container-fluid px-0">
+    <div class="row">
+        <div class="col-12 slide-photo slider ils_parlent_de_nous mb-0 scroller" data-slick='{"slidesToShow": 1, "slidesToScroll": 1}'>
+            <%#= @property.property_photos.each do |property_photo| %>
+            <%#= image_tag property_photo.photo_url %>
+            <%# end %>
         </div>
     </div>
-</section>
+</div>
 
 <section class="container py-5">
     <div class="row">
         <div class="col-lg-8">
             <div class="row">
-                <div class="col-12">
-                    <div class="card border-0 mb-4 bg-white">
+                <div class="col-12 mb-4">
+                    <div class="card border-0 bg-white">
                         <div class="card-body p-4">
+                            <h4 class="card-title font-weight-bold text-dark">Description</h4>
                             <div class="row">
-                                <div class="col-lg-12 mb-3">
-                                    <h4 class="font-weight-bold text-dark">Description</h4>
-                                </div>
-                                <div class="col-lg-3 text-center">
+                                <div class="col-lg-4 text-center">
                                     <p class="font-weight-bold text-dark h6">Surface</p>
                                     <p><%= @property.area %> m<sup>2</sup></p>
                                 </div>
-                                <div class="col-lg-3 text-center">
+                                <div class="col-lg-4 text-center">
                                     <p class="font-weight-bold text-dark h6">Nbrs de pièces</p>
                                     <p><%= @property.room %></p>
                                 </div>
-                                <div class="col-lg-3 text-center">
+                                <div class="col-lg-4 text-center">
                                     <p class="font-weight-bold text-dark h6">Loyer</p>
                                     <p><%= @property.price %>/<small>mois</small></p>
                                 </div>
-                                <div class="col-lg-3 text-center">
+                                <div class="col-lg-4 text-center">
                                     <p class="font-weight-bold text-dark h6">Dépôt de garantie</p>
                                     <p><%= @property.avance %> mois</p>
                                 </div>
-                                <div class="col-lg-3 text-center">
+                                <div class="col-lg-4 text-center">
                                     <p class="font-weight-bold text-dark h6">Disponible</p>
                                     <p class="text-dark"><%= @property.available ? "Oui" : "Non" %></p>
                                 </div>
-                                <div class="col-lg-3 text-center">
-                                    <p class="font-weight-bold text-dark h6">Surface</p>
-                                    <p><%= @property.area %> m<sup>2</sup></p>
-                                </div>
-                                <div class="col-lg-3 text-center">
-                                    <p class="font-weight-bold text-dark h6">Surface</p>
-                                    <p><%= @property.area %> m<sup>2</sup></p>
-                                </div>
-                                <div class="col-lg-3 text-center">
+                                <div class="col-lg-4 text-center">
                                     <p class="font-weight-bold text-dark h6">Surface</p>
                                     <p><%= @property.area %> m<sup>2</sup></p>
                                 </div>
@@ -114,10 +86,10 @@
                                     <h4 class="font-weight-bold text-dark">Adresse</h4>
                                 </div>
                                 <div class="col-lg-6">
-                                    <p class="font-weight-bold text-dark">Adresse : <span class="text-secondary"><%= @property.address %></span></p>
+                                    <p class="font-weight-bold text-dark">Adresse : <span class="text-dark"><%= @property.address %></span></p>
                                 </div>
                                 <div class="col-lg-6">
-                                    <p class="font-weight-bold text-dark">Ville/Quartier : <span class="text-secondary"><%= @property.address %></span></p>
+                                    <p class="font-weight-bold text-dark">Ville/Quartier : <span class="text-dark"><%= @property.address %></span></p>
                                 </div>
                             </div>
                         </div>
@@ -147,19 +119,41 @@
                         </div>
                     </div>
                 </div>
-
-
-                <div class="col-lg-12">
-                    <%= link_to 'Retour', properties_path, class: "btn btn-primary" %>
-                </div>
-
             </div>
         </div>
 
         <div class="col-lg-4">
-            <div class="rox">
-                <div class="col-lg-12 mb-3">
-                    <div class="card border-0 bg-white mb-3">
+            <div class="row">
+                <% if current_user.role == "Administrateur" and @property.published == true %>
+                <div class="col-lg-12 mb-4">
+                    <div class="card border-0 bg-white">
+                        <div class="card-body">
+                            <h5 class="card-title mb-4 font-weight-bold text-dark">Admin</h5>
+                            <p class="h4">
+                                <span class="badge badge-success p-2 rounded-0">ONLINE</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <% else current_user.role == "Administrateur " and @property.published == false %>
+                <div class="col-lg-12 mb-4">
+                    <div class="card border-0 bg-white">
+                        <div class="card-body">
+                            <h5 class="card-title mb-4 font-weight-bold text-dark">Admin</h5>
+                            <p class="h4">
+                                <span class="badge badge-danger p-2 rounded-0">OFFLINE</span>
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <%= form_with url: property_to_publish_path(@property.id), local: true do |f| %>
+                                <%= f.button :submit, value: "Publish" %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+                <% end %>
+                <div class="col-lg-12 mb-4">
+                    <div class="card border-0 bg-white">
                         <div class="card-body p-4">
                             <h5 class="mb-4 font-weight-bold text-dark">A propos du properiétaire</h5>
                             <div class="row">
@@ -167,7 +161,10 @@
                                     <%= image_tag @property.user.profile_photo_url, class: "rounded-circle", size: "150x150" %>
                                 </div>
                                 <div class="col-lg-12">
-                                    <p class="font-weight-bold text-dark mb-3"><%= @property.user.first_name.capitalize %> <%= @property.user.last_name.upcase %></p>
+                                    <p class="font-weight-bold text-dark mb-3">
+                                        <%= @property.user.first_name.capitalize %>
+                                        <%= @property.user.last_name.upcase %>
+                                    </p>
                                     <address>
                                         <ul class=" list-unstyled">
                                             <li><i class="fas fa-phone" aria-hidden="true"></i>&nbsp; <%= @property.user.phone_number %></li>
@@ -184,11 +181,10 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-12">
+                <div class="col-lg-12 mb-4">
                     <div class="card border-0 bg-white">
                         <div class="card-body p-4">
-                            <h5 class="mb-4 font-weight-bold text-dark">Lui écrire</h5>
+                            <h5 class="card-title mb-4 font-weight-bold text-dark">Lui écrire</h5>
                             <%= simple_form_for :contact do |contact| %>
                             <%= contact.input :client_name, label: false, placeholder: "Nom et prénom"  %>
                             <%= contact.input :client_email, as: :email, label: false, placeholder: "Email"  %>
@@ -197,47 +193,56 @@
                             <%= contact.submit "Envoyer", class: "btn btn-primary" %>
                             <% end %>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-12">
+            <p><%= link_to 'Retour', properties_path, class: "btn btn-primary" %></p>
+        </div>
     </div>
 </section>
 
-
 <% content_for :slick_properties_photo do %>
 <script>
-$(document).ready(function(){
-    $(".slider").slick({
+$(document).ready(function() {
+    $('.ils_parlent_de_nous').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
 
-        // normal options...
-        infinite: false,
+        autoplay: true,
 
-        // the magic
+        dots: true,
+        speed: 300,
         responsive: [{
-
             breakpoint: 1024,
             settings: {
                 slidesToShow: 3,
-                infinite: true
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true
             }
-
         }, {
-
             breakpoint: 600,
             settings: {
                 slidesToShow: 2,
-                dots: true
+                slidesToScroll: 2
             }
-
         }, {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
+        // You can unslick at a given breakpoint now by adding:
+        // settings: "unslick"
+        // instead of a settings object
+    ]
 
-            breakpoint: 300,
-            settings: "unslick" // destroys slick
-
-        }]
-    });
+});
 });
 </script>
 <% end %>

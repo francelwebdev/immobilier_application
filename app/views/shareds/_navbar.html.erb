@@ -1,3 +1,26 @@
+<% content_for :add_property do %>
+<li class="nav-item mx-2">
+    <%= link_to "Publiez une annonce", new_property_path, class: "btn btn-primary font-weight-bold"  %>
+</li>
+<% end %>
+
+<% content_for :dropdown_menu do %>
+<% if user_signed_in? %>
+    <div class="dropdown-menu dropdown-menu-right mt-3" aria-labelledby="navbarDropdown">
+    <h6 class="dropdown-header"><%= current_user.email %></h6>
+    <%= link_to my_properties_properties_path, class: "dropdown-item text-dark" do %>
+    <i class="fas fa-list fa-lg"></i>&nbsp; Mes annonces
+    <% end %>
+    <%= link_to edit_user_registration_path, class: "dropdown-item text-dark" do %>
+    <i class="fas fa-cog fa-lg"></i>&nbsp; Mon compte
+    <% end %>
+    <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item text-dark" do %>
+    <i class="fas fa-sign-out-alt fa-lg"></i>&nbsp; Déconnexion
+    <% end %>
+</div>
+<% end %>
+<% end %>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
 <!--
 box-shadow: 0 2px 10px rgba(0,0,0,.3);
@@ -8,8 +31,8 @@ box-shadow: 0 16px 20px 0 rgba(216, 216, 216, .75);
 box-shadow: 0 10px 20px rgba(0,0,0,.1);
 -->
 <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand text-uppercase font-weight-bold" do %>
-    <i class="fas fa-home fa-lg"></i> Sico
+    <%= link_to root_path, class: "navbar-brand text-uppercase text-dark " do %>
+    <i class="fas fa-home fa-2x"></i> <span class="h3 font-weight-bold">Sico</span></span>
     <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -49,57 +72,23 @@ box-shadow: 0 10px 20px rgba(0,0,0,.1);
                 <% end %>
             </ul>
             <ul class="navbar-nav ml-auto d-flex align-items-center">
-                <% if user_signed_in? and current_user.profile_photo_url.present? %>
-                <li class="nav-item mx-2">
-                    <%= link_to new_property_path, class: "btn btn-primary" do %>
-                    <i class="fas fa-plus"></i> Ajouter un bien
-                    <% end %>
-                </li>
+                <% if user_signed_in? and current_user.profile_photo_url.present? %>                
                 <li class="nav-item dropdown mx-2">
-                    <%= image_tag(current_user.profile_photo_url, size: "25x25", class: "rounded-circle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false") %>
-                    <div class="dropdown-menu dropdown-menu-right mt-3" aria-labelledby="navbarDropdown">
-                        <h6 class="dropdown-header"><%= current_user.email %></h6>
-                        <%= link_to my_properties_properties_path, class: "dropdown-item text-secondary" do %>
-                        <i class="fas fa-list fa-lg"></i>&nbsp; Mes annonces
-                        <% end %>
-                        <%= link_to edit_user_registration_path, class: "dropdown-item text-secondary" do %>
-                        <i class="fas fa-cog fa-lg"></i>&nbsp; Mon compte
-                        <% end %>
-                        <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item text-secondary" do %>
-                        <i class="fas fa-sign-out-alt fa-lg"></i>&nbsp; Déconnexion
-                        <% end %>
-                    </div>
+                    <%= image_tag(current_user.profile_photo_url, size: "40x40", class: "rounded-circle dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false") %>
+                    <%= yield :dropdown_menu  %>
                 </li>
-                <% elsif user_signed_in? and current_user.profile_photo_url.blank? %>
-                <li class="nav-item mx-2">
-                    <%= link_to new_property_path, class: "btn btn-primary" do %>
-                    <i class="fas fa-plus"></i> Ajouter un bien
-                    <% end %>
-                </li>
+                <%= yield :add_property %>
+                <% elsif user_signed_in? and current_user.profile_photo_url.blank? %>               
                 <li class="nav-item dropdown mx-2">
-                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-                    <div class="dropdown-menu dropdown-menu-right mt-2" aria-labelledby="navbarDropdown">
-                        <h6 class="dropdown-header"><%= current_user.email %></h6>
-                        <%= link_to my_properties_properties_path, class: "dropdown-item text-secondary" do %>
-                        <i class="fas fa-list fa-lg"></i>&nbsp; Mes annonces
-                        <% end %>
-                        <%= link_to edit_user_registration_path, class: "dropdown-item text-secondary" do %>
-                        <i class="fas fa-cog fa-lg"></i>&nbsp; Mon compte
-                        <% end %>
-                        <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item text-secondary" do %>
-                        <i class="fas fa-sign-out-alt fa-lg"></i>&nbsp; Déconnexion
-                        <% end %>
-                    </div>
+                    <%= image_tag "http://placehold.it/40x40", class: "rounded-circle ropdown-toggle",  id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" %>
+                    <%= yield :dropdown_menu  %>
                 </li>
+                <%= yield :add_property %>
                 <% else %>
                 <li class="nav-item mx-2">
                     <%= link_to "Connexion", new_user_session_path, class: "nav-link" %>
                 </li>
-                <li class="nav-item mx-2">
-                    <%= link_to new_property_path, class: "btn btn-primary" do %>
-                    <i class="fas fa-plus"></i>&nbsp; Ajouter un bien
-                    <% end %>
-                </li>
+                <%= yield :add_property %>
                 <% end %>
             </ul>
         </div>

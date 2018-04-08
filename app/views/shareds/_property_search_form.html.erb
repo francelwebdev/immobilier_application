@@ -1,51 +1,56 @@
 <% if current_page?(root_path) %>
-    <%= form_with url: properties_path, method: :get, local: true do |form|  %>
-        <div class="form-row px-1">
-            <div class="col-lg-3 my-1">
-                <%= form.select :property_type, PropertyType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type de bien" }, { class: "form-control form-control-lg", required: true } %>
-            </div>
-            <div class="col-lg-3 my-1">
-                <%= form.select :ad_type, AdType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type d'annonce" }, { class: "form-control form-control-lg", required: true } %>
-            </div>
-            <div class="col-lg-4 my-1">
-                <%= form.search_field :city, placeholder: "Dans quel ville où quartier ?", class: 'form-control form-control-lg', required: true %>
-            </div>
-            <div class="col-lg-2 my-1">
-                <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn btn-block btn-lg' %>
-            </div>
-        </div>
-        <% end %>
-
+<%= form_with url: properties_path, method: :get, local: true do |form|  %>
+<div class="form-row px-1">
+    <div class="col-lg-3 my-1">
+        <%= form.select :property_type, PropertyType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type de bien" }, { class: "form-control", required: true } %>
+    </div>
+    <div class="col-lg-3 my-1">
+        <%= form.select :ad_type, AdType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type d'annonce" }, { class: "form-control", required: true } %>
+    </div>
+    <div class="col-lg-4 my-1">
+        <%= form.search_field :city, placeholder: "Ou ?", class: 'form-control', required: true %>
+    </div>
+    <div class="col-lg-2 my-1">
+        <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn btn-block' %>
+    </div>
+</div>
+<% end %>
 <% elsif current_page?(controller: "properties", action: "index")%>
-    <%= form_with url: properties_path, method: :get, local: true do |form|  %>
-        <div class="form-row px-1">
-            <div class="col-lg-3 my-1">
-                <%= form.select :property_type, PropertyType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type de bien" }, { class: "form-control", required: true } %>
-            </div>
-            <div class="col-lg-3 my-1">
-                <%= form.select :ad_type, AdType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type d'annonce" }, { class: "form-control", required: true } %>
-            </div>
-            <div class="col-lg-4 my-1">
-                <%= form.text_field :city, placeholder: "Dans quel ville où quartier ?", class: 'form-control', required: true %>
-            </div>
-            <div class="col-lg-2 my-1">
-                <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn btn-block' %>
-            </div>
-            <div class="col-lg-3 my-1">
-                <%= form.select :property_type, PropertyType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type de bien" }, { class: "form-control", required: true } %>
-            </div>
-            <div class="col-lg-3 my-1">
-                <%= form.select :property_type, PropertyType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type de bien" }, { class: "form-control", required: true } %>
-            </div>
-            <div class="col-lg-3 my-1 d-flex sr-only">
-                <%= form.label :area, "Surface", class: "small m-0"  %>
-                <%= form.range_field :area, { class: "form-control" } %>
-            </div>
-            <div class="col-lg-6 my-1 d-flex align-items-center">
-                <%= form.label :price, "Loyer", class: "small m-0 mr-1" %> : 
-                <%= form.range_field :price, { class: "form-control ml-2" } %>
-            </div>
-        </div>
-    <% end %>
+<%= form_with url: properties_path, method: :get, local: true do |form|  %>
+<div class="form-row px-1">
+    <div class="col-lg-3 my-1">
 
+    </div>
+    <div class="col-lg-3 my-1">
+
+    </div>
+    <div class="col-lg-4 my-1">
+        <%= form.text_field :city, placeholder: "Ou ?", class: 'form-control', required: true %>
+    </div>
+    <div class="col-lg-2 my-1">
+        <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn btn-block' %>
+    </div>
+    <div class="col-lg-3 my-1">
+
+    </div>
+    <div class="col-lg-3 my-1">
+
+    </div>
+    <div class="col-lg-2 my-1">
+        <%= form.number_field :surface_minimum, placeholder: "Surface minimum", class: 'form-control' %>
+    </div>
+    <div class="col-lg-2 my-1">
+        <%= form.number_field :loyer_minimum, placeholder: "Loyer minimum", class: 'form-control' %>
+    </div>
+    <div class="col-lg-2 my-1">
+        <%= form.number_field :loyer_maximum, placeholder: "Loyer maximum", class: 'form-control' %>
+    </div>
+    <div class="col-12 my-1">
+        <p>Plus de filtres</p>                
+    </div>
+    <div class="col-12 my-1">
+
+    </div>
+</div>
+<% end %>
 <% end %>
