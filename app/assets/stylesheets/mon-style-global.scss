@@ -78,12 +78,14 @@ body {
     ul > li > a {
       text-decoration: none !important;
     }
-
     .slide-photo {
-      height: 70vh !important;
-      background-image: linear-gradient(to bottom, rgba(200, 200, 200, 0.5), rgba(75, 75, 75, 0.5) 75%), asset-url("pexels-photo-280232.jpeg") !important;
+      height: 80vh !important;
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, .1) 50%, rgba(0, 0, 0, 0.5)  60%), asset-url("pexels-photo-280232.jpeg") !important;
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
       background-repeat: no-repeat;
+      .slide-quelque-detail {
+          bottom: 25px;
+      }
     }

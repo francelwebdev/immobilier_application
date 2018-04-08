@@ -1,31 +1,29 @@
 <% content_for :page_title, @property.title.capitalize %>
 
-<section class="container-fluid px-0 position-relative slide-photo">
-    <div class="container w-100 position-absolute" style="bottom: 0;">
-        <div class="row">
-            <div class="col-12 d-flex justify-content-between">
-                <h1 class="text-white"><%= @property.title %></h1>
-                <address>
-                    <p><i class="fa fa-marker"></i>&nbsp; <%= @property.address %>, <%= @property.city %></p>
-                </address>
-            </div>
-            <hr>
-            <div class="col-12">
-                <% if @property.ad_type.name == "Vente" %>
-                <span class="badge badge-secondary p-2" style="top: 15px; left: 15px;">A vendre</span>
-                <% elsif @property.ad_type.name == "Location" %>
-                <span class="badge badge-secondary p-2" style="top: 15px; left: 15px;">A louer</span>
-                <% end %>
-                <% if @property.ad_type.name == "Vente" %>
-                <p class="h1 text-primary">
-                    <%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>
-                </p>
-                <% elsif @property.ad_type.name == "Location" %>
-                <p class="h1 text-primary">
-                    <%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>/<small>mois</small></sup>
-                </p>
-                <% end %>
-            </div>
+<section class="position-relative slide-photo">
+    <div class="row m-0 position-absolute w-100 slide-quelque-detail">
+        <div class="col-lg-7 offset-lg-1">
+            <h2 class="text-white font-weight-bold"><%= @property.title.capitalize %></h2>
+            <address>
+                <p class="text-light"><i class="fas fa-map-marker-alt mr-1" aria-hidden="true"></i>&nbsp; <%= @property.address %>, <%= @property.city %></p>
+            </address>
+        </div>
+        <div class="col-lg-3 text-lg-right">
+            <% if @property.ad_type.name == "Vente" %>
+            <p class="h5 font-weight-bold text-light">A vendre</p>
+            <% elsif @property.ad_type.name == "Location" %>
+            <p class="h5 font-weight-bold text-light">A louer</p>
+            <% end %>
+
+            <% if @property.ad_type.name == "Vente" %>
+            <p class="h2 text-primary">
+                <%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>
+            </p>
+            <% elsif @property.ad_type.name == "Location" %>
+            <p class="h2 text-primary">
+                <%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>/<small>mois</small></sup>
+            </p>
+            <% end %>
         </div>
     </div>
 </section>
@@ -210,36 +208,36 @@
 
 <% content_for :slick_properties_photo do %>
 <script>
-    $(document).ready(function(){
-        $(".slider").slick({
+$(document).ready(function(){
+    $(".slider").slick({
 
-  // normal options...
-  infinite: false,
+        // normal options...
+        infinite: false,
 
-  // the magic
-  responsive: [{
+        // the magic
+        responsive: [{
 
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        infinite: true
-    }
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                infinite: true
+            }
 
-}, {
+        }, {
 
-  breakpoint: 600,
-  settings: {
-    slidesToShow: 2,
-    dots: true
-}
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2,
+                dots: true
+            }
 
-}, {
+        }, {
 
-  breakpoint: 300,
-      settings: "unslick" // destroys slick
+            breakpoint: 300,
+            settings: "unslick" // destroys slick
 
-  }]
-});
+        }]
     });
+});
 </script>
 <% end %>
