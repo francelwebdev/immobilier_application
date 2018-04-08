@@ -21,10 +21,10 @@
 				<h5 class="mb-3 font-weight-bold text-secondary">A propos</h5>
 				<ul class="nav flex-column">
 					<li class="nav-item">
-						<%= link_to 'Qui sommes-nous', page_path('about'), class: "nav-link pl-0 py-1 text-muted" %>
+						<%= link_to 'Qui sommes-nous', about_us_path, class: "nav-link pl-0 py-1 text-muted" %>
 					</li>
 					<li class="nav-item">
-						<%= link_to 'Contacter-nous', page_path('contact'), class: "nav-link pl-0 py-1 text-muted" %>
+						<%= link_to 'Contacter-nous', contact_us_path, class: "nav-link pl-0 py-1 text-muted" %>
 					</li>
 
 					<li class="nav-item">
@@ -35,6 +35,9 @@
 			<div class="col-lg-2 my-3 my-lg-0">
 				<h5 class="mb-3 font-weight-bold text-secondary">Liens utiles</h5>
 				<ul class="nav flex-column">
+                    <li class="nav-item">
+                        <%= link_to "Services Pro", root_path, class: "nav-link pl-0 py-1 text-muted" %>
+                    </li>
 					<li class="nav-item">
 						<%= link_to "Terms & conditions", root_path, class: "nav-link pl-0 py-1 text-muted" %>
 					</li>
@@ -48,20 +51,28 @@
 			</div>
 			<div class="col-lg-3 my-3 my-md-0">
 				<h5 class="mb-3 font-weight-bold text-secondary">Newsletter</h5>
-
-				<ul class="nav">
-					<li class="nav-item">
-						<%= link_to "https://facebook.com", title: "Suivez-nous sur facebook", class: "nav-link pl-0 pr-4" do %>
-							<i class="fab fa-facebook-f fa-lg" style="color: #4D6FA9;"></i>
+				<%= form_with url: root_path, method: :get do |f| %>
+                    <div class="form-row">
+                        <div class="col-lg-10 p-0">
+                            <%= f.email_field :email, placeholder: "Adresse email", class: "form-control", style: "border-radius: 0px;"  %>
+                        </div>
+                        <div class="col-lg-2 p-0">
+                            <%= f.submit "Me notifié", class: "btn btn-primary", style: "border-radius: 0px;"  %>
+                        </div>
+                    </div>
+                    <% end %>
+				<ul class="list-unstyled d-flex mt-4">
+					<li class="mr-3">
+						<%= link_to "https://facebook.com", class: "h-50 w-50 p-2", title: "Suivez-nous sur facebook" do %>
+							<i class="fab fa-facebook-f fa-lg"></i>
 						<% end %>
 					</li>
-					<li class="nav-item">
-						<%= link_to "https://facebook.com", title: "Suivez-nous sur twitter", class: "nav-link pl-0 pr-4" do %>
-							<i class="fab fa-twitter fa-lg" style="color: #65BBF2;""></i>
+                    <li>
+						<%= link_to "https://facebook.com", class: "h-50 w-50 p-2", title: "Suivez-nous sur twitter" do %>
+							<i class="fab fa-twitter fa-lg"></i>
 						<% end %>
 					</li>
 				</ul>
-
 			</div>
 		</div>
 		<div class="row">

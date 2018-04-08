@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
     root to: "pages#home"
+    get "about_us", to: "pages#about_us"
+    get "contact_us", to: "pages#contact_us"
+
     devise_for :users
 
     # Pour profile

@@ -6,7 +6,7 @@
             <div class="col-12">
                 <%= render "shareds/property_search_form" %>
             </div>
-            <div class="col-12">                
+            <div class="col-12">
                 <p>Advanced Search</p>
             </div>
         </div>
@@ -66,12 +66,44 @@
             <% if @properties.present? %>
             <section class="col-lg-8">
                 <section class="row">
-                    <div class="col-12">
-                        <div class="card border-0 bg-transparent">
-                            <p><%= pluralize(@properties_numbers, "annonce trouvé", "annonces trouvés") %></p>
-                        </div>
+                    <div class="col-lg-12">
+                        <p><%= pluralize(@properties_numbers, "annonce trouvé", "annonces trouvés") %></p>
                     </div>
                     <% @properties.each do |property| %>
+
+
+                    <div class="card mb-4 liste-card-recherche text-dark d-flex flex-row">
+                        <%= image_tag property.property_photos.first.photo_url, class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
+                        <% if property.ad_type.name == "Vente" %>
+                        <span class="position-absolute badge badge-secondary p-2" style="top: 15px; left: 15px;">A vendre</span>
+                        <% elsif property.ad_type.name == "Location" %>
+                        <span class="position-absolute badge badge-secondary p-2" style="top: 15px; left: 15px;">A louer</span>
+                        <% end %>
+                        <div class="card-body p-3">
+                            <h5 class="card-title font-weight-bold text-secondary">
+                                <%= truncate(strip_tags(property.title.capitalize), length: 25) %>
+                            </h5>
+                            <address class="card-text text-secondary">
+                                <i class="fas fa-map-marker-alt"></i>&nbsp; <%= property.address %>, <%= property.city %>
+                            </address>
+                            <% if property.ad_type.name == "Vente" %>
+                            <p class="text-primary m-0 p-0 h3">
+                                <%= number_with_delimiter(sprintf("%0.00f", property.price)) %><sup>f</sup>
+                            </p>
+                            <% elsif property.ad_type.name == "Location" %>
+                            <p class="text-primary m-0 p-0 h3">
+                                <%= number_with_delimiter(sprintf("%0.00f", property.price)) %><sup>f</sup>/<small>mois</small></sup>
+                            </p>
+                            <% end %>
+                            <hr>
+                            <p class="m-0 ">
+                                <small>Publié le <%= property.created_at.strftime("%e %B") %></small>
+                                <small class="sr-only">Il y a <%= time_ago_in_words(property.created_at) %></small>
+                            </p>
+                        </div>
+                    </div>
+
+
                     <div class="col-lg-6">
                         <%= link_to property, class: "sans-text-decoration" do %>
                         <div class="card mb-4 liste-card-recherche text-dark">

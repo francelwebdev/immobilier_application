@@ -20,11 +20,9 @@
 //= require popper
 //= require bootstrap
 
-//= require jquery.slick
-
-//= require underscore
-//= require gmaps/google
-
 //= require cloudinary
 
 //= require dropzone
+
+//= require underscore
+//= require gmaps/google
