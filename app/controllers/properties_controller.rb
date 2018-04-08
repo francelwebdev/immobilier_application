@@ -3,12 +3,12 @@ class PropertiesController < ApplicationController
     skip_before_action :authenticate_user!, only: [:index, :show]
 
     def index
-        if params[:ad_type].present?
+        if params[:ad_type].present? and params[:property_type].blank? and params[:city].blank?
             @ad_type_id = AdType.find_by(name: params[:ad_type]).id
             @properties = Property.where("ad_type_id = ?", @ad_type_id).all.order("created_at DESC").page(params[:page]).per(9)
             @properties_numbers = @properties.count
         elsif params[:property_type].present? and params[:ad_type].present? and params[:city].present?
-            @properties = Property.where("property_type_id = ? and ad_type_id = ? and (lower(city) LIKE ? or upper(city) LIKE ?)", params[:property_type].to_i, params[:ad_type].to_i, "%#{params[:city]}%", "%#{params[:city]}%").all.order("created_at DESC").page(params[:page]).per(9)
+            @properties = Property.where("property_type_id = ? AND ad_type_id = ? AND city LIKE ?", params[:property_type].to_i, params[:ad_type].to_i, "%#{params[:city]}%").all.order("created_at DESC").page(params[:page]).per(9)
             @properties_numbers = @properties.count
         else
             @properties = Property.all.order("created_at DESC").page(params[:page]).per(9)
@@ -70,6 +70,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-        params.require(:property).permit(:property_type_id, :ad_type_id, :title, :price, :room, :area, :description, :address, :city, :available, property_photos_attributes: [:photo, :property_id])
+        params.require(:property).permit(:property_type_id, :ad_type_id, :title, :price, :room, :area, :description, :bedroom, :bathroom, :address, :city, :available, property_photos_attributes: [:photo, :property_id])
     end
 end

@@ -31,10 +31,17 @@ box-shadow: 0 10px 20px rgba(0,0,0,.1);
                     </div>
                 </li> -->
                 <% @ad_types.each do |ad_type| %>
+                <% if ad_type.name == "Location" %>                
                 <li class="nav-item mx-2">
-                    <%= link_to ad_type.name, properties_path(ad_type: ad_type.name), class: "nav-link"  %>
+                    <%= link_to "A louer", properties_path(ad_type: ad_type.name), class: "nav-link" %>
+                </li>
+                <% else %>
+                <li class="nav-item mx-2">
+                    <%= link_to "A Vendre", properties_path(ad_type: ad_type.name), class: "nav-link" %>
                 </li>
                 <% end %>
+                <% end %>
+
                 <% if user_signed_in? %>
                 <li class="nav-item mx-2">
                     <%= link_to "Mes biens", my_properties_properties_path, class: "nav-link"  %>

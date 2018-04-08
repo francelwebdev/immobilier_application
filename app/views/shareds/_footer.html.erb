@@ -5,46 +5,33 @@
 				<h5 class="mb-3 text-uppercase font-weight-bold"><i class="fas fa-home fa-lg"></i> Sico</h5>
 				<p></p>
 			</div>
-			<div class="col-lg-6 my-3 my-lg-0">
+			<div class="col-lg-3 my-3 my-lg-0">
 				<h5 class="mb-3 font-weight-bold">Liens utiles</h5>
-				<div class="row">
-					<div class="col-lg-6">
-						<ul class="nav flex-column">
-							<li class="nav-item">
-								<%= link_to 'Qui sommes-nous', page_path('about'), class: "nav-link pl-0 py-1 text-muted" %>
-							</li>
-							<li class="nav-item">
-								<%= link_to 'Contacter-nous', page_path('about'), class: "nav-link pl-0 py-1 text-muted" %>
-							</li>
-							<li class="nav-item">
-								<%= link_to "Tarifs", root_path, class: "nav-link pl-0 py-1 text-muted" %>
-							</li>
-							<li class="nav-item">
-								<%= link_to "Conditions générales d'utilisation", root_path, class: "nav-link pl-0 py-1 text-muted" %>
-							</li>
-
-							<li class="nav-item">
-								<%= link_to "Politique de confidentialité", root_path, class: "nav-link pl-0 py-1 text-muted" %>
-							</li>
-						</ul>
-					</div>
-					<div class="col-lg-6">
-						<ul class="nav flex-column">
-							<li class="nav-item">
-								<%= link_to "FAQ", root_path, class: "nav-link pl-0 py-1 text-muted" %>
-							</li>
-							<li class="nav-item">
-								<%= link_to "Blog", root_path, class: "nav-link pl-0 py-1 text-muted" %>
-							</li>
-							<li class="nav-item">
-								<%= link_to "Comment ça marche ?", root_path, class: "nav-link pl-0 py-1 text-muted" %>
-							</li>
-							<li class="nav-item">
-								<%= link_to "Contact", root_path, class: "nav-link pl-0 py-1 text-muted" %>
-							</li>
-						</ul>
-					</div>
-				</div>
+				<ul class="nav flex-column">
+					<li class="nav-item">
+						<%= link_to 'Qui sommes-nous', page_path('about'), class: "nav-link pl-0 py-1 text-muted" %>
+					</li>
+					<li class="nav-item">
+						<%= link_to 'Contacter-nous', page_path('about'), class: "nav-link pl-0 py-1 text-muted" %>
+					</li>
+					<li class="nav-item">
+						<%= link_to "FAQ", root_path, class: "nav-link pl-0 py-1 text-muted" %>
+					</li>
+					<li class="nav-item">
+						<%= link_to "Blog", root_path, class: "nav-link pl-0 py-1 text-muted" %>
+					</li>
+					<li class="nav-item">
+						<%= link_to "Conditions d'utilisation", root_path, class: "nav-link pl-0 py-1 text-muted" %>
+					</li>
+				</ul>
+			</div>
+			<div class="col-lg-3 my-3 my-lg-0">
+				<h5 class="mb-3 font-weight-bold">Services Pro</h5>
+				<ul class="nav flex-column">
+					<li class="nav-item">
+						<%= link_to "Tarifs", root_path, class: "nav-link pl-0 py-1 text-muted" %>
+					</li>
+				</ul>
 			</div>
 			<div class="col-lg-3 my-3 my-md-0">
 				<h5 class="mb-3 font-weight-bold">Contact</h5>

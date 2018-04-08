@@ -6,34 +6,49 @@
     <div class="col-12">
         <%= f.input :title, autofocus: true, label: "Titre de l'annonce" %>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-4">
         <%= f.association :ad_type, label: "Type d'annonce", include_blank: false %>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-4">
         <%= f.association :property_type, label: "Type de bien", include_blank: false %>
     </div>
-    <div class="col-lg-6">
-        <%= f.input :area, required: true, label: "Surface du bien" %>
+    <div class="col-lg-4">
+        <%= f.input :area, required: true, label: "Surface en m2" %>
     </div>
-    <div class="col-lg-6">
-        <%= f.input :room, collection: Property::ROOM, label: "Nombres de pièces", include_blank: false %>
+    <div class="col-lg-4">
+        <%= f.input :room, collection: Property::ROOM, label: "Nombres de pièce (optionel)", include_blank: false %>
     </div>
-    <div class="col-lg-6">
-        <%= f.input :price, required: true, label: "Prix" %>
+    <div class="col-lg-4">
+        <%= f.input :bedroom, collection: Property::BEDROOM, label: "Nombres de chambre (optionel)", include_blank: false %>
     </div>
-    <div class="col-lg-6">
-        <%= f.input :available, collection: [['1', 'Oui'], ['0', 'Non']], label_method: :second, value_method: :first, label: "Le bien est disponible maintenant ?", include_blank: false %>
+    <div class="col-lg-4">
+        <%= f.input :bathroom, collection: Property::BATHROOM, label: "Nombres de salle de bain (optionel)", include_blank: false %>
+    </div>
+    <div class="col-lg-4">
+        <%= f.input :price, required: true, label: "Loyer mensuel" %>
+    </div>
+    <div class="col-lg-4">
+        <%= f.input :price, required: true, label: "Avance" %>
+    </div>
+    <div class="col-lg-4">
+        <%= f.input :available, collection: [['1', 'Oui'], ['0', 'Non']], label_method: :second, value_method: :first, label: "Ddisponible maintenant ?", include_blank: false %>
     </div>
 </div>
 
-<p class="h4 font-weight-bold">Détail</p>
+<p class="h4 font-weight-bold">Description</p>
 <hr>
 <div class="form-inputs form-row">
     <div class="col-12">
         <%= f.input :description, required: true, label: "Description du bien", input_html: { rows: 8 } %>
     </div>
+</div>
 
-    <p>quelque caracteristique ici</p>
+<p class="h4 font-weight-bold">Détails</p>
+<hr>
+<div class="form-inputs form-row">
+    <div class="col-12">
+        
+    </div>
 </div>
 
 <p class="h4 font-weight-bold">Adresse</p>
