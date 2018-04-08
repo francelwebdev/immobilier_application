@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     # get "profile/:full_name", to: "profiles#show", as: "user_profile"
 
     resources :properties
-    namespace :dashboard do
-        get 'my_ads', to: 'properties#index', as: "mes-annonces"
-        # resources :properties, only: [:index, :show, :edit, :delete]
+    namespace :my_properties do
+      get 'properties', to: 'properties#index'
+      # resources :properties, only: [:index, :show, :edit, :delete]
     end
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
