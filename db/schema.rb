@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180408211113) do
+ActiveRecord::Schema.define(version: 20180408211115) do
 
   create_table "ad_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20180408211113) do
     t.boolean "available"
     t.string "bedroom"
     t.string "bathroom"
+    t.boolean "published"
+    t.integer "avance"
     t.index ["ad_type_id"], name: "index_properties_on_ad_type_id"
     t.index ["property_type_id"], name: "index_properties_on_property_type_id"
     t.index ["slug"], name: "index_properties_on_slug", unique: true

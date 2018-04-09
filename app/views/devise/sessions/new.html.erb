@@ -1,12 +1,10 @@
 <% content_for :page_title, "Connexion utilisateur" %>
 
-<%= render "shareds/haut-page-connexion" %>
-
 <section class="container-fluid py-4">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
-                <div class="card">
+                <div class="card border-0 bg-transparent">
                     <div class="card-body">
                         <h2 class="card-title text-center font-weight-normal"><%= t(".sign_in") %></h2>
                         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

@@ -1,64 +1,66 @@
 <%= simple_form_for(@property) do |f| %>
 <%= f.error_notification %>
-<p class="h4 font-weight-bold">Information de base</p>
-<hr>
-<div class="form-inputs form-row">
-    <div class="col-12">
-        <%= f.input :title, autofocus: true, label: "Titre de l'annonce" %>
-    </div>
-    <div class="col-lg-4">
-        <%= f.association :ad_type, label: "Type d'annonce", include_blank: false %>
-    </div>
-    <div class="col-lg-4">
-        <%= f.association :property_type, label: "Type de bien", include_blank: false %>
-    </div>
-    <div class="col-lg-4">
-        <%= f.input :area, required: true, label: "Surface en m2" %>
-    </div>
-    <div class="col-lg-4">
-        <%= f.input :room, collection: Property::ROOM, label: "Nombres de pièce (optionel)", include_blank: false %>
-    </div>
-    <div class="col-lg-4">
-        <%= f.input :bedroom, collection: Property::BEDROOM, label: "Nombres de chambre (optionel)", include_blank: false %>
-    </div>
-    <div class="col-lg-4">
-        <%= f.input :bathroom, collection: Property::BATHROOM, label: "Nombres de salle de bain (optionel)", include_blank: false %>
-    </div>
-    <div class="col-lg-4">
-        <%= f.input :price, required: true, label: "Loyer mensuel" %>
-    </div>
-    <div class="col-lg-4">
-        <%= f.input :price, required: true, label: "Avance" %>
-    </div>
-    <div class="col-lg-4">
-        <%= f.input :available, collection: [['1', 'Oui'], ['0', 'Non']], label_method: :second, value_method: :first, label: "Ddisponible maintenant ?", include_blank: false %>
-    </div>
-</div>
-
-<p class="h4 font-weight-bold">Description</p>
-<hr>
-<div class="form-inputs form-row">
-    <div class="col-12">
-        <%= f.input :description, required: true, label: "Description du bien", input_html: { rows: 8 } %>
+<div class="card bg-white border-0 mb-4">
+    <div class="form-inputs form-row card-body p-5">
+        <div class="col-12">
+            <p class="h4 font-weight-bold text-secondary mb-4">Description du bien</p>
+        </div>
+        <div class="col-12">
+            <%= f.input :title, autofocus: true, required: true, label: "Titre", placeholder: "Bureau de 25m2 à louer à Akpakpa au 1er étage" %>
+        </div>
+        <div class="col-12">
+            <%= f.input :description, required: true, label: "Description", placeholder: "Description", input_html: { rows: 5 } %>
+        </div>
+        <div class="col-lg-4">
+            <%= f.association :ad_type, label: "Type d'annonce", include_blank: false %>
+        </div>
+        <div class="col-lg-4">
+            <%= f.association :property_type, label: "Type de bien", include_blank: false %>
+        </div>
+        <div class="col-lg-4">
+            <%= f.input :area, required: true, label: "Surface", placeholder: "25" %>
+        </div>
+        <div class="col-lg-4">
+            <%= f.input :room, collection: Property::ROOM, label: "Nombres de pièce", include_blank: false %>
+        </div>
+        <div class="col-lg-4">
+            <%= f.input :bedroom, collection: Property::BEDROOM, label: "Nombres de chambre", include_blank: false %>
+        </div>
+        <div class="col-lg-4">
+            <%= f.input :bathroom, collection: Property::BATHROOM, label: "Nombres de salle de bain", include_blank: false %>
+        </div>
+        <div class="col-lg-4">
+            <%= f.input :price, required: true, label: "Loyer mensuel", placeholder: "45000" %>
+        </div>
+        <div class="col-lg-4">
+            <%= f.input :avance, required: true, label: "Avance", placeholder: "3" %>
+        </div>
+        <div class="col-lg-4">
+            <%= f.input :available, collection: [['1', 'Oui'], ['0', 'Non']], label_method: :second, value_method: :first, label: "Ddisponible maintenant ?", include_blank: false %>
+        </div>
     </div>
 </div>
 
-<p class="h4 font-weight-bold">Détails</p>
-<hr>
-<div class="form-inputs form-row">
-    <div class="col-12">
-        
+<div class="card bg-white border-0 mb-4">
+    <div class="form-inputs form-row card-body p-5">
+        <div class="col-12">
+            <p class="h4 font-weight-bold text-secondary mb-4">Détails du bien</p>
+        </div>
+
     </div>
 </div>
 
-<p class="h4 font-weight-bold">Adresse</p>
-<hr>
-<div class="form-inputs form-row">
-    <div class="col-6">
-        <%= f.input :address, required: true, label: "Adresse du bien" %>
-    </div>
-    <div class="col-6">
-        <%= f.input :city, required: true, label: "Ville" %>
+<div class="card bg-white border-0 mb-4">
+    <div class="form-inputs form-row card-body p-5">
+        <div class="col-12">
+            <p class="h4 font-weight-bold text-secondary mb-4">Adresse du bien</p>
+        </div>
+        <div class="col-lg-6">
+            <%= f.input :address, required: true, label: "Adresse", placeholder: "Ex: 9 Av du renouveau" %>
+        </div>
+        <div class="col-lg-6">
+            <%= f.input :city, required: true, label: "Ville ou Quartier", placeholder: "Ex: Fidjrossè, Fifadji, Zogbo, Godomey" %>
+        </div>
     </div>
 </div>
 
@@ -79,23 +81,26 @@
 <% end %> -->
 
 <%= f.fields_for :property_photos do |photo_form| %>
-<p class="h4 font-weight-bold ">Photos</p>
-<hr>
-<div class="form-inputs form-row">
-    <div class="col-12 form-group">
-        <%= photo_form.label "Photo", class: "control-label" %>
-        <%= image_tag(@property.property_photos.first.photo_url(:large)) if @property.property_photos.first.photo.present? %>
-        <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
-    </div>
-    <div class="col-12 form-group">
-        <%= photo_form.label "Photo", class: "control-label" %>
-        <%= image_tag(@property.property_photos.first.photo_url(:large)) if @property.property_photos.first.photo.present? %>
-        <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
-    </div>
-    <div class="col-12 form-group">
-        <%= photo_form.label "Photo", class: "control-label" %>
-        <%= image_tag(@property.property_photos.first.photo_url(:large)) if @property.property_photos.first.photo.present? %>
-        <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
+<div class="card bg-white border-0 mb-4">
+    <div class="form-inputs form-row card-body p-5">
+        <div class="col-12">
+            <p class="h4 font-weight-bold mb-4">Photos</p>
+        </div>
+        <div class="col-12 form-group">
+            <%= photo_form.label "Photo", class: "control-label" %>
+            <%= image_tag(@property.property_photos.first.photo_url(:large)) if @property.property_photos.first.photo.present? %>
+            <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
+        </div>
+        <div class="col-12 form-group">
+            <%= photo_form.label "Photo", class: "control-label" %>
+            <%= image_tag(@property.property_photos.first.photo_url(:large)) if @property.property_photos.first.photo.present? %>
+            <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
+        </div>
+        <div class="col-12 form-group">
+            <%= photo_form.label "Photo", class: "control-label" %>
+            <%= image_tag(@property.property_photos.first.photo_url(:large)) if @property.property_photos.first.photo.present? %>
+            <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form -control form-control-file" %>
+        </div>
     </div>
 </div>
 <% end %>

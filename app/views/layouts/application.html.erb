@@ -25,13 +25,11 @@
     <% end %>
 </head>
 
-<body class="Controller: <%= controller.controller_name  %>, Action: <%= controller.action_name  %>">
-
+<body class="<%= controller.controller_name %> - <%= controller.action_name %>">
     <%= render "shareds/navbar" %>
     <%= render 'shareds/flash' %>
-    <p id="notice" class="sr-only"><%= notice %></p>
 
-    <main>
+    <main style="background-color: #F2F6FF;">
         <%= yield %>
     </main>
 
@@ -49,20 +47,7 @@
     <!-- Include it if you want to use Video parallax -->
     <script src="https://unpkg.com/jarallax@1.9/dist/jarallax-video.min.js"></script>
 
-    <% if current_page?(root_path) %>
-    <%= yield :annonce_nouvellement_publié %>
-    <%= yield :animate_text  %>
-    <% else%>
-    <%= yield :slick_properties_photo %>
 
-    <script>
-        $(function() {
-          if($.fn.cloudinary_fileupload !== undefined) {
-            $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
-        }
-    });
-</script>
-<% end %>
 
 </body>
 </html>

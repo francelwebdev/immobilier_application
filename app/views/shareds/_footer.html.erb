@@ -1,18 +1,42 @@
-<footer class="container-fluid" style="background-color: #FCFCFC;">
+<footer class="container-fluid pt-5 bg-white">
 	<div class="container">
 		<div class="row py-5">
-			<div class="col-lg-3 my-3 my-lg-0">
-				<h5 class="mb-3 text-uppercase font-weight-bold"><i class="fas fa-home fa-lg"></i> Sico</h5>
-				<p></p>
+			<div class="col-lg-5 my-3 my-lg-0">
+				<h5 class="mb-3 text-uppercase font-weight-bold text-secondary"><i class="fas fa-home fa-lg"></i> Sico</h5>
+				<p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima eligendi minus doloremque porro, accusamus odio!</p>
+				<address>
+					<ul class="nav flex-column">
+						<li class="nav-item">
+							<a href="" class="nav-link pl-0 py-1 text-secondary font-weight-bold">96 61 90 73</a>
+						</li>
+						<li class="nav-item">
+							<%= mail_to "francel.webdev@gmail.com", subject: "Demande d'information", class: "nav-link pl-0 py-1 text-primary" do %>
+							francel.webdev@gmail.com
+							<% end %>
+						</li>
+					</ul>
+				</address>
 			</div>
-			<div class="col-lg-3 my-3 my-lg-0">
-				<h5 class="mb-3 font-weight-bold">Liens utiles</h5>
+			<div class="col-lg-2 my-3 my-lg-0">
+				<h5 class="mb-3 font-weight-bold text-secondary">A propos</h5>
 				<ul class="nav flex-column">
 					<li class="nav-item">
 						<%= link_to 'Qui sommes-nous', page_path('about'), class: "nav-link pl-0 py-1 text-muted" %>
 					</li>
 					<li class="nav-item">
-						<%= link_to 'Contacter-nous', page_path('about'), class: "nav-link pl-0 py-1 text-muted" %>
+						<%= link_to 'Contacter-nous', page_path('contact'), class: "nav-link pl-0 py-1 text-muted" %>
+					</li>
+
+					<li class="nav-item">
+						<%= link_to "Carriere", root_path, class: "nav-link pl-0 py-1 text-muted" %>
+					</li>
+				</ul>
+			</div>
+			<div class="col-lg-2 my-3 my-lg-0">
+				<h5 class="mb-3 font-weight-bold text-secondary">Liens utiles</h5>
+				<ul class="nav flex-column">
+					<li class="nav-item">
+						<%= link_to "Terms & conditions", root_path, class: "nav-link pl-0 py-1 text-muted" %>
 					</li>
 					<li class="nav-item">
 						<%= link_to "FAQ", root_path, class: "nav-link pl-0 py-1 text-muted" %>
@@ -20,40 +44,10 @@
 					<li class="nav-item">
 						<%= link_to "Blog", root_path, class: "nav-link pl-0 py-1 text-muted" %>
 					</li>
-					<li class="nav-item">
-						<%= link_to "Conditions d'utilisation", root_path, class: "nav-link pl-0 py-1 text-muted" %>
-					</li>
-				</ul>
-			</div>
-			<div class="col-lg-3 my-3 my-lg-0">
-				<h5 class="mb-3 font-weight-bold">Services Pro</h5>
-				<ul class="nav flex-column">
-					<li class="nav-item">
-						<%= link_to "Tarifs", root_path, class: "nav-link pl-0 py-1 text-muted" %>
-					</li>
 				</ul>
 			</div>
 			<div class="col-lg-3 my-3 my-md-0">
-				<h5 class="mb-3 font-weight-bold">Contact</h5>
-				<address>
-					<ul class="nav flex-column">
-						<li class="nav-item">
-							<a href="" class="nav-link pl-0 py-1 text-muted">
-								<i class="fas fa-map-marker-alt mr-1" aria-hidden="true"></i>&nbsp; Cococodji, Bénin
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="" class="nav-link pl-0 py-1 text-muted">
-								<i class="fas fa-mobile mr-1" aria-hidden="true"></i>&nbsp; 96 61 90 73
-							</a>
-						</li>
-						<li class="nav-item">
-							<%= mail_to "francel.webdev@gmail.com", subject: "Demande d'information", class: "nav-link pl-0 py-1 text-muted" do %>
-								<i class="fas fa-envelope mr-1" aria-hidden="true"></i>&nbsp; francel.webdev@gmail.com
-							<% end %>
-						</li>
-					</ul>
-				</address>
+				<h5 class="mb-3 font-weight-bold text-secondary">Newsletter</h5>
 
 				<ul class="nav">
 					<li class="nav-item">

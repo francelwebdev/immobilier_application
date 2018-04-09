@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center mb-4">
-                <h3>Annonce nouvellement publié</h3>
+                <h3>Les biens en vedettes</h3>
             </div>
             <div class="col-12">
                 <div class="row annonce_nouvellement_publié">
@@ -55,130 +55,37 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4 mx-1">
-                        <div class="card mb-4">
-                            <img class="card-img-top" src="https://picsum.photos/200/150/?random" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-text">Appartement</h5>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                    </div>
-                                    <small class="text-muted">9 mins</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4 mx-1">
-                        <div class="card mb-4">
-                            <img class="card-img-top" src="https://picsum.photos/200/150/?random" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-text">Appartement</h5>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                    </div>
-                                    <small class="text-muted">9 mins</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4 mx-1">
-                        <div class="card mb-4">
-                            <img class="card-img-top" src="https://picsum.photos/200/150/?random" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-text">Appartement</h5>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                    </div>
-                                    <small class="text-muted">9 mins</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="container-fluid py-5" id="comment-ca-marche" style="background-color: #FCFCFC;">
+<section class="container-fluid py-5 bg-white" id="comment-ca-marche">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center mb-4">
                 <h2>Comment ça marche</h2>
             </div>
             <div class="col-lg-4 text-center mb-4">
-                <p><%= image_tag "511120-characters-and-numbers/svg/009-one.svg", class: "img-fluid w-25"  %></p>
+                <p class="mb-3"><%= image_tag "511120-characters-and-numbers/svg/009-one.svg", class: "img-fluid w-25"  %></p>
                 <!-- <p><span class="display-3 rounded-circle px-4 py-2" style="box-shadow: 0 2px 11px 0 rgba(0,0,0,.29);">1</span></p> -->
-                <p>Faîtes une recherche et choisissez celle qui vous correcpond parmis les résultats de recherche</p>
+                <p class="h6 font-weight-bold text-secondary mb-3">Faîtes une recherche</p>
+                <p class="text-secondary small">Plus 2000 annonces dans différents villes du Bénin</p>
             </div>
             <div class="col-lg-4 text-center mb-4">
-                <p><%= image_tag "511120-characters-and-numbers/svg/008-two.svg", class: "img-fluid w-25"  %></p>
-                <p>Régardez les photos et lisez les détails puis contactez le propriétaire pour convenir d'une visite</p>
+                <p class="mb-3"><%= image_tag "511120-characters-and-numbers/svg/008-two.svg", class: "img-fluid w-25"  %></p>
+                <p class="h6 font-weight-bold text-secondary mb-3">Choissisez celui qui vous correcpond</p>
+                <p class="small text-secondary">Choisissez celle qui vous correcpond parmis les résultats de recherche.</p>
             </div>
             <div class="col-lg-4 text-center mb-4">
-                <p><%= image_tag "511120-characters-and-numbers/svg/007-three.svg", class: "img-fluid w-25"  %></p>
-                <p>Visitez le bien choisir, payer l'avance et prenez les clefs si le bien correspond à ce que vous cherchiez</p>
+                <p class="mb-3"><%= image_tag "511120-characters-and-numbers/svg/007-three.svg", class: "img-fluid w-25"  %></p>
+                <p class="h6 font-weight-bold text-secondary mb-3">Prenez les clefs</p>
+                <p class="small text-secondary">Contactez le propriétaire ou l'agent pour visiter le bien puis régler l'avance et prenez les clefs.</p>
             </div>
         </div>
     </div>
 </section>
-
-<section class="container-fluid py-5 bg-light sr-only">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center mb-4">
-                <h3>Quel bien immobilier cherchez-vous ?</h3>
-            </div>
-            <div class="col-md-3 text-center">
-                <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-                <h2>Maison</h2>
-                <p></p>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">A vendre</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">A Louer</button>
-                </div>
-                <p class="sr-only"><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div>
-            <div class="col-md-3 text-center">
-                <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-                <h2>Appartement</h2>
-                <p></p>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">A vendre</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">A Louer</button>
-                </div>
-                <p class="sr-only"><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div>
-            <div class="col-md-3 text-center">
-                <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-                <h2>Bureau</h2>
-                <p></p>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">A vendre</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">A Louer</button>
-                </div>
-                <p class="sr-only"><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div>
-            <div class="col-md-3 text-center">
-                <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-                <h2>Commerce</h2>
-                <p></p>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">A vendre</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">A Louer</button>
-                </div>
-                <p class="sr-only"><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div>
-        </div>
-    </div>
-</section>
-
 
 <section class="container-fluid sr-only">
     <div class="container">
@@ -201,74 +108,40 @@
     </div>
 </section>
 
-
-<!-- 
-<div class="col-lg-10 offset-lg-1">  
-<li class="row">
-<div class="col-lg-3">
-</div>
-<div class="col-lg-6">
-</div>
-<div class="col-lg-3">
-</div>
-</li>
-</div>
- -->
-
-<section class="container-fluid sr-only" style="background-color: #FcFcFc;">
+<section class="container-fluid sr-only bg-white">
     <div class="container">
         <div class="row py-5">
             <div class="col-12 text-center mb-4">
-                <h2>Blog</h2>
+                <h2>Quelques agences immobiliers</h2>
             </div>
-            <div class="col-lg-4">
-                <div class="card mb-4">
-                    <%= image_tag "philipp-berndt-173197.jpg", class: "card-img-top img-fluid" %>
-                    <div class="card-body">
-                        <h5 class="card-text font-weight-bold"><a href="" title="" class="text-dark">8 Tips to Help You Finding New Home</a></h5>
-                        <p>Nam nisl lacus, dignissim ac tristique ut, scelerisque eu massa. Vestibulum ligula nunc, rutrum in malesuada vitae.</p>
-                        <p class="d-flex justify-content-end"><a href="" title="" class="btn btn-link font-weight-bold">Lire l'article<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></a></p>
-                    </div>
-                </div>
+            <div class="col-lg-4 mb-4">
+                <a href="" title="">
+
+
+                </a>
             </div>
-            <div class="col-lg-4">
-                <div class="card mb-4">
-                    <%= image_tag "philipp-berndt-173197.jpg", class: "card-img-top img-fluid" %>
-                    <div class="card-body">
-                        <h5 class="card-text font-weight-bold"><a href="" title="" class="text-dark">8 Tips to Help You Finding New Home</a></h5>
-                        <p>Nam nisl lacus, dignissim ac tristique ut, scelerisque eu massa. Vestibulum ligula nunc, rutrum in malesuada vitae.</p>
-                        <p class="d-flex justify-content-end"><a href="" title="" class="btn btn-link font-weight-bold">Lire l'article<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card mb-4">
-                    <%= image_tag "philipp-berndt-173197.jpg", class: "card-img-top img-fluid" %>
-                    <div class="card-body">
-                        <h5 class="card-text font-weight-bold"><a href="" title="" class="text-dark">8 Tips to Help You Finding New Home</a></h5>
-                        <p>Nam nisl lacus, dignissim ac tristique ut, scelerisque eu massa. Vestibulum ligula nunc, rutrum in malesuada vitae.</p>
-                        <p class="d-flex justify-content-end"><a href="" title="" class="btn btn-link font-weight-bold">Lire l'article<i class="fa fa-angle-right ml-2" aria-hidden="true"></i></a></p>
-                    </div>
-                </div>
+            <div class="col-lg-8">
+                <a href="" title="">
+
+                </a>
             </div>
         </div>
     </div>
 </section>
 
-
 <% content_for :annonce_nouvellement_publié do %>
-        <script>
-                $(document).ready(function(){
-                     $('.annonce_nouvellement_publié').slick({
-                                            infinite: true,
-                                            slidesToShow: 3,
-                                            slidesToScroll: 1,
+<script>
+    $(document).ready(function(){
+       $('.annonce_nouvellement_publié').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
 
-                                            autoplay: true,
+        autoplay: true,
 
-                                             dots: true,
-    speed: 300,
-    responsive: [
+        dots: true,
+        speed: 300,
+        responsive: [
         {
             breakpoint: 1024,
             settings: {
@@ -295,16 +168,16 @@
         // You can unslick at a given breakpoint now by adding:
         // settings: "unslick "
         // instead of a settings object
-    ]
+        ]
 
-                                        });
-                });
-        </script>
+    });
+   });
+</script>
 <% end %>
 
 <% content_for :animate_text do %>
-    <script>
-       $("#js-rotating").Morphext({
+<script>
+ $("#js-rotating").Morphext({
     animation: "fadeIn", // Overrides default "bounceIn"
     separator: "|", // Overrides default ","
     speed: 3000, // Overrides default 2000
@@ -312,14 +185,14 @@
         // Overrides default empty function
     }
 });
-    </script>
+</script>
 
-    <script>
-            $("#js-rotating").Morphext({
-                animation: "rotateIn",
-                complete: function () {
-                    console.log("This is called after a phrase is animated in! Current phrase index: " + this.index);
-                }
-            });
-        </script>
+<script>
+    $("#js-rotating").Morphext({
+        animation: "rotateIn",
+        complete: function () {
+            console.log("This is called after a phrase is animated in! Current phrase index: " + this.index);
+        }
+    });
+</script>
 <% end %>

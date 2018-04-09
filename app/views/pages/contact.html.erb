@@ -1,0 +1,72 @@
+<section class="container-fluid banner-contact d-flex justify-content-center align-items-center">
+    <div class="container">
+        <riv class="row">
+            <div class="col-lg-12 text-center">
+                <h1>Contact</h1>
+            </div>
+        </riv>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="row py-3">
+        <div class="col-lg-5">
+            <h4 class="font-weight-bold text-dark mb-5">Contactez-nous</h4>
+            <address >
+                <div class="mb-4">
+                    <h5 class="text-dark">Adresse</h5>
+                    <p>Cococodji, Bénin</p>
+                </div>
+                <div class="mb-4">
+                    <h5 class="text-dark">Téléphone</h5>
+                    <p>96 61 90 73</p>
+                </div>
+                <div class="mb-4">
+                    <h5 class="text-dark">Email</h5>
+                    <p><%= mail_to "francel.webdev@gmail.com", "francel.webdev@gmail.com", subject: "Demande d'information", class: "nav-link pl-0 py-1 text-muted" %></p>
+                </div>
+            </address>
+        </div>
+        <div class="col-lg-7">
+            <div class="card">
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid bg-white py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 class="font-weight-bold text-dark mb-5">Ecrivez-nous</h4>
+                <%= simple_form_for :contact do |contact_form| %>
+                    <div class="form-row">
+                        <div class="col-lg-4">
+                            <%= contact_form.input :first_name_and_last_name, autofocus: true, required: true, label: "Prénom et nom" %>
+                        </div>
+                        <div class="col-lg-4">
+                            <%= contact_form.input :email, as: :email, required: true, label: "Email" %>
+                        </div>
+                        <div class="col-lg-4">
+                            <%= contact_form.input :telephone, as: :tel, required: true, label: "Téléphone" %>
+                        </div>
+                        <div class="col-lg-12">
+                            <%= contact_form.input :sujet, required: true, label: "Sujet" %>
+                        </div>
+                        <div class="col-lg-12">
+                            <%= contact_form.input :message, as: :text, required: true, label: "Message", input_html: { rows: 5 } %>
+                        </div>
+                        <div class="form-actions form-row mt-4">
+                            <div class="col-12">
+                                <%= contact_form.button :submit, "Envoyer", class: "btn btn-primary btn-lg" %>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</section>
