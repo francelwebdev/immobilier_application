@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'my_profiles/edit'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -27,8 +28,7 @@ Rails.application.routes.draw do
     resources :properties
 
     scope "/dashboard" do
-      get 'my_properties/index'
-      resource :my_profiles, only: [:show, :edit]
-
+      get "my_properties", to: 'my_properties#index'
+      resource :my_profiles, only: [:edit, :update]
     end
   end

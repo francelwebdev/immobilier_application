@@ -1,26 +1,32 @@
 <% content_for :page_title, "Mes biens" %>
 
-<section class="container-fluid py-4" style="background-color: #FAFAFA;">
+<section class="container-fluid py-5 my_property-page-banner d-flex flex-column justify-content-center">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h4>Mes annonces</h4>
+        <riv class="row">
+            <div class="col-lg-12 text-center">
+                <h1 class="text-white">Mes biens</h1>
             </div>
-        </div>
+        </riv>
     </div>
 </section>
 
-<section class="container-fluid py-4">
+<section class="container-fluid py-5">
     <div class="container">
         <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-                <% if @my_properties.count > 1 %>
-                <p><%= @my_properties.count %> annonces publié</p>
-                <% else %>
-                <p><%= @my_properties.count %> annonce publié</p>
-                <% end %>
+            <div class="col-lg-4 mb-4">
+                <%= render "shareds/dashboard_sidebar_menu" %>
             </div>
-            <div class="col-lg-10 offset-lg-1">
+           
+            <div class="col-lg-8">
+                <div class="row">
+                     <div class="col-12">
+                        <% if @my_properties.count > 1 %>
+                        <p><%= @my_properties.count %> annonces publié</p>
+                        <% else %>
+                        <p><%= @my_properties.count %> annonce publié</p>
+                        <% end %>
+                    </div>
+                </div>
                 <ul class="list-unstyled">
                     <% @my_properties.each do |my_property| %>
                     <li class="row">

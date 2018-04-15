@@ -139,3 +139,13 @@ body {
             background-repeat: no-repeat;
             background-origin: content-box;
         }
+
+        .my_property-page-banner {
+            height: 50vh !important;
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), asset-url("philipp-berndt-173197.jpg") !important;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-origin: content-box;
+        }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180415163107) do
+ActiveRecord::Schema.define(version: 20180415163945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,13 @@ ActiveRecord::Schema.define(version: 20180415163107) do
     t.string "name"
   end
 
+  create_table "user_groups", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_user_groups_on_name", unique: true
+  end
+
   create_table "user_profiles", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -102,6 +109,12 @@ ActiveRecord::Schema.define(version: 20180415163107) do
     t.index ["address"], name: "index_user_profiles_on_address", unique: true
     t.index ["profile_photo"], name: "index_user_profiles_on_profile_photo", unique: true
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
+  end
+
+  create_table "user_roles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

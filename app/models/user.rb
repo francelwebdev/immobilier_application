@@ -11,6 +11,8 @@ class User < ApplicationRecord
 
     has_one :user_profile, dependent: :destroy
 
+    belongs_to :user_role, dependent: :destroy
+
     after_create :creation_profile_vierge
 
     has_many :properties, dependent: :destroy

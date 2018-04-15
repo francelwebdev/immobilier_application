@@ -8,7 +8,7 @@
 <% if user_signed_in? %>
     <div class="dropdown-menu dropdown-menu-right mt-3" aria-labelledby="navbarDropdown">
     <h6 class="dropdown-header">Content de vous revoir <%= current_user.username %> !</h6>
-    <%= link_to my_properties_properties_path, class: "dropdown-item text-dark" do %>
+    <%= link_to my_properties_path, class: "dropdown-item text-dark" do %>
     <i class="fas fa-list fa-lg"></i>&nbsp; Mes annonces
     <% end %>
     <%= link_to edit_user_registration_path, class: "dropdown-item text-dark" do %>
@@ -67,7 +67,7 @@ box-shadow: 0 10px 20px rgba(0,0,0,.1);
 
                 <% if user_signed_in? %>
                 <li class="nav-item mx-2">
-                    <%= link_to "Mes biens", my_properties_properties_path, class: "nav-link"  %>
+                    <%= link_to "Mes biens", my_properties_path, class: "nav-link"  %>
                 </li>
                 <% end %>
             </ul>

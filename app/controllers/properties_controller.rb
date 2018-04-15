@@ -89,9 +89,7 @@ class PropertiesController < ApplicationController
                     @property.property_photos.create!(photo: photo, property_id: @property.id)
                 end
             end
-        # La propriété a été créée avec succès. En attente de publication par un administrateur.'
-            redirect_to @property, notice: "
-L'annonce a été créée avec succès, en attente de publication par un administrateur."
+            redirect_to @property, notice: "L'annonce a été créée avec succès, en attente de publication par un administrateur."
         else
             render :new
         end
@@ -99,7 +97,6 @@ L'annonce a été créée avec succès, en attente de publication par un adminis
 
     def update
         if @property.update(property_params)
-            # La propriété a bien été mise à jour. En attente de republication par un administrateur.'
             redirect_to @property, notice: "L'annonce a bien été mise à jour, en attente de republication par un administrateur."
         else
             render :edit

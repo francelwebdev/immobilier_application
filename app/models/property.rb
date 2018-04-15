@@ -10,12 +10,15 @@ class Property < ApplicationRecord
 
 
     belongs_to :user
+    belongs_to :user_profile
     belongs_to :ad_type
     belongs_to :property_type
 
     has_many :property_photos, dependent: :destroy
 
     accepts_nested_attributes_for :property_photos, allow_destroy: true
+    accepts_nested_attributes_for :user_profile, allow_destroy: true
+
 
     scope :published, -> { where(published: true) }
 end
