@@ -9,10 +9,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
-
-# Use mysql as the database for Active Record
-# gem 'mysql2', '>= 0.3.18', '< 0.5'
-
+# Use postgresql as the database for Active Record
+# gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -61,6 +59,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #---------- MES GEMS ------#
 #--------------------------#
 
+gem 'bootsnap', '~> 1.3'
+
 group :development do
   gem 'pry-rails', '~> 0.3.6'
 
@@ -75,9 +75,7 @@ group :development do
 end
 
 group :production do
-  gem 'mysql2', '>= 0.3.18', '< 0.5'
-
-  gem 'pg', '~> 0.18'
+  gem 'pg'
 end
 
 # Design
@@ -119,7 +117,7 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem 'dropzonejs-rails'
 
-# gem 'gibbon'
+gem 'gibbon', '~> 3.2'
 
 
 gem 'autoprefixer-rails', '~> 8.0'
@@ -129,22 +127,29 @@ gem 'geocoder', '~> 1.4', '>= 1.4.5'
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
 
 
+gem 'owlcarousel-rails', '~> 1.1', '>= 1.1.3.3'
+
+
 # gem 'omniauth-facebook'
 
 
 # a tester ce gem
 
-# gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
-# gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
-
-# source 'https://rails-assets.org' do
-#   gem "rails-assets-underscore"
-# end
-
-# a tester ce gem
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.47'
+gem 'jquery-datetimepicker', '~> 1.1'
 
 
 # gem 'cancancan', '~> 2.1', '>= 2.1.3'
 # gem 'pundit', '~> 1.1'
 
-# gem 'typedJS', '~> 0.0.2'
+gem 'typedJS', '~> 0.0.2'
+
+gem 'typedjs-rails', '~> 1.0', '>= 1.0.4'
+
+
+
+gem 'sweetalert-rails', '~> 1.1', '>= 1.1.3'
+gem 'sweet-alert-confirm', '~> 0.4.1'
+
+
+gem 'magnific-popup-rails', '~> 1.1'
