@@ -34,7 +34,12 @@
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <% if current_page?(root_path) %>
+        <%= yield :value_proposition_text_typed %>    
+    <% end %>
+    
     <%= yield(:owl_carousel)  %>
+
 
     <!-- a ajouter jquery file upload ici -->
 

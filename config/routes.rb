@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get "profesionnal/benefits", to: "pages#benefits_for_profesionnal"
 
+  get "pricing_plan", to: "pages#pricing_plan"
+
   resources :newsletters, only: [:create]
 
   post 'properties/:id/publish' => 'properties#publish', as: "property_to_publish"

@@ -22,6 +22,7 @@
 
 //= require owl.carousel
 
+//= require typed
 
 //= require cloudinary
 

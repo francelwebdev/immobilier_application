@@ -128,3 +128,19 @@
         </div>
     </div>
 </section>
+
+
+<% content_for :value_proposition_text_typed  do %>
+<script>
+    $(function(){
+        $(".element").typed({
+            strings: ["Une maison", "Un appartement", "Un bureau", "Une boutique"],
+            typeSpeed: 50,
+            backSpeed: 25,
+            backDelay: 500,
+            startDelay: 1000,
+            loop: true,
+        });
+    });
+</script>
+<% end %>

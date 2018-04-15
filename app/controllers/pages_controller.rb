@@ -24,4 +24,8 @@ class PagesController < ApplicationController
     def benefits_for_profesionnal
 
     end
+
+    def pricing_plan
+        
+    end
 end

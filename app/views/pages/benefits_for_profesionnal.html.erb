@@ -46,16 +46,18 @@
                         <%= image_tag "174239-communication/svg/internet.svg", class: "img-fluid mx-auto"  %>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-12">
-                <p class="text-center">
-                    <%= link_to new_user_registration_path, class: "btn btn-primary btn-lg" do %>
-                    Créer un compte
-                    <% end %>
-                </p>
-            </div>
+            </div>            
         </section>
     </section>
 </section>
 
+<section class="container-fluid py-5 bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h3 class="mb-3">Prêt à promouvoir vos offres et services immobilier avec <span class="font-weight-bold">Sico</span> ?</h3>
+                <p><%= link_to "Inscrivez vous", new_user_registration_path, class: "btn btn-primary btn-lg"  %></p>
+            </div>
+        </div>
+    </div>
+</section>
