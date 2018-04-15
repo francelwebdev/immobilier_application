@@ -92,3 +92,16 @@ body {
 .footer-twitter-logo {
   color: #65BBF2;
 }
+
+
+nav div.container-fluid div.collapse ul li div.dropdown-menu::after {
+    content: "";
+position: absolute;
+top: 100%;
+left: 40px;
+border-top: 15px solid black;
+    border-top-color: black;
+border-top-color: #fff;
+border-left: 15px solid transparent;
+border-right: 15px solid transparent;
+}

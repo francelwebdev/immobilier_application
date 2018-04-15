@@ -11,7 +11,16 @@
                         <%= f.error_notification %>
 
                         <div class="form-inputs">
-                          <%= f.input :role, collection: User::ROLE, as: :radio_buttons, required: true, label: "Je suis un " %>
+
+                          <div class="form-check form-check-inline">
+                          <%= f.input :role, collection: User::ROLE, as: :radio_buttons, required: true, label: "Je suis un ", input_html: { class: "form-check-input" }, input_label: { class: "form-check-label" } %>
+                          </div>
+
+                          <div class="custom-control custom-radio custom-control-inline">
+                          <%= f.input :role, collection: User::ROLE, as: :radio_buttons, required: true, label: "Je suis un ", input_html: { class: "custom-control-input" }, input_label: { class: "custom-control-label" } %>
+                          </div>
+
+
                           <%= f.input :first_name, required: true, label: "Prénom" %>
                           <%= f.input :last_name, required: true, label: "Nom" %>
                           <%= f.input :phone_number, as: :tel, label: "Nunéro de téléphone" %>

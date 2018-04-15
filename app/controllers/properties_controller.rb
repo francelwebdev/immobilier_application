@@ -53,7 +53,8 @@ class PropertiesController < ApplicationController
                     @property.property_photos.create!(photo: photo, property_id: @property.id)
                 end
             end
-            redirect_to @property, notice: 'Property was successfully created. En attente de publication par un administrateur.'
+            redirect_to @property, notice: '
+La propriété a été créée avec succès. En attente de publication par un administrateur.'
         else
             render :new
         end
@@ -61,7 +62,7 @@ class PropertiesController < ApplicationController
 
     def update
         if @property.update(property_params)
-            redirect_to @property, notice: 'Property was successfully updated. En attente de republication par un administrateur.'
+            redirect_to @property, notice: 'La propriété a bien été mise à jour. En attente de republication par un administrateur.'
         else
             render :edit
         end
@@ -69,7 +70,8 @@ class PropertiesController < ApplicationController
 
     def destroy
         @property.destroy
-        redirect_to properties_url, notice: 'Property was successfully destroyed.'
+        redirect_to properties_url, notice: '
+La propriété a été détruite avec succès.'
     end
 
     private

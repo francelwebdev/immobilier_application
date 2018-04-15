@@ -128,7 +128,7 @@ gem 'geocoder', '~> 1.4', '>= 1.4.5'
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
 
 
-gem 'owlcarousel-rails', '~> 1.1', '>= 1.1.3.3'
+gem 'owlcarousel-rails', github: 'acrogenesis/owlcarousel-rails', branch: 'master'
 
 
 # gem 'omniauth-facebook'

@@ -2,12 +2,19 @@
 
 <div class="container-fluid px-0">
     <div class="row">
-        <div class="col-12 slide-photo slider ils_parlent_de_nous mb-0 scroller" data-slick='{"slidesToShow": 1, "slidesToScroll": 1}'>
-            <%#= @property.property_photos.each do |property_photo| %>
-            <%#= image_tag property_photo.photo_url %>
-            <%# end %>
-        </div>
-    </div>
+
+        <div class="owl-carousel owl-theme">
+          <div><img src="http://via.placeholder.com/350x150"></div>
+          <div><img src="http://via.placeholder.com/350x150"></div>
+          <div><img src="http://via.placeholder.com/350x150"></div>
+          <div><img src="http://via.placeholder.com/350x150"></div>
+          <div><img src="http://via.placeholder.com/350x150"></div>
+          <div><img src="http://via.placeholder.com/350x150"></div>
+          <div><img src="http://via.placeholder.com/350x150"></div>
+          ...
+      </div>
+
+  </div>
 </div>
 
 <section class="container py-5">
@@ -146,7 +153,7 @@
                         </div>
                         <div class="card-body">
                             <%= form_with url: property_to_publish_path(@property.id), local: true do |f| %>
-                                <%= f.button :submit, value: "Publish" %>
+                            <%= f.button :submit, value: "Publish" %>
                             <% end %>
                         </div>
                     </div>
@@ -204,45 +211,27 @@
     </div>
 </section>
 
-<% content_for :slick_properties_photo do %>
+
+<% content_for :owl_carousel do %>
 <script>
-$(document).ready(function() {
-    $('.ils_parlent_de_nous').slick({
-        infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 1,
 
-        autoplay: true,
-
-        dots: true,
-        speed: 300,
-        responsive: [{
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                infinite: true,
-                dots: true
-            }
-        }, {
-            breakpoint: 600,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-            }
-        }, {
-            breakpoint: 480,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:3
+            },
+            1000:{
+                items:5
             }
         }
-        // You can unslick at a given breakpoint now by adding:
-        // settings: "unslick"
-        // instead of a settings object
-    ]
+    })
 
-});
-});
+
 </script>
 <% end %>
