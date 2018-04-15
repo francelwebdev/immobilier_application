@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   get "contact_us", to: "pages#contact_us"
 
-  get "profesionnal/benefit", to: "pages#benefit_for_profesionnal"
+  get "profesionnal/benefits", to: "pages#benefits_for_profesionnal"
 
-  resources :newsletters, only: [:create]  
+  resources :newsletters, only: [:create]
 
   post 'properties/:id/publish' => 'properties#publish', as: "property_to_publish"
 

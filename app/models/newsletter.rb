@@ -5,13 +5,17 @@ class Newsletter < ApplicationRecord
     before_save :downcase_email
     after_save :subscribe 
 
+    
+
+    private
+
     def downcase_email
         self.email_address = email_address.downcase      
     end
 
     def subscribe
         gibbon = Gibbon::Request.new(api_key: Rails.application.application.mailchimp_api_key)
-        list_id = Rails.application.application.list_id
+        list_id = Rails.application.application.mailchimp_list_id_key
         begin 
       gibbon.lists(list_id).members.create( 
       body: { 

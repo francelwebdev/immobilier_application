@@ -1,107 +1,142 @@
 // Mon style global
 
+// font-family: 'Roboto', sans-serif;
+// font-family: 'Open Sans', sans-serif;
+
 body {
-  * {
-    font-family: 'Open Sans', sans-serif;
-  }
-  main {
-    background-color: #F2F6FF;
-  }
-  section.besoin_daide {
-    background-image: linear-gradient(-225deg, rgba(0,0,0,0.3) , rgba(0,0,0,0.3) ), asset-url("philipp-berndt-173197.jpg") !important;
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
-      background-repeat: no-repeat;
-    
-  }
+    * {
+        font-family: 'Roboto', sans-serif;
+    }
+    main {
+        // background-color: #F2F6FF;
+    }
+    section.besoin_daide {
+        background-image: linear-gradient(-225deg, rgba(0,0,0,0.3) , rgba(0,0,0,0.3) ), asset-url("philipp-berndt-173197.jpg") !important;
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-origin: border-box;
+    }
 }
 
 .jumbotron-welcomes {
-  height: 100vh !important;
-  background-image: linear-gradient(-225deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), asset-url("85.jpg") !important;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-      background-repeat: no-repeat;
-  
+    height: 100vh !important;
+    background-image: linear-gradient(-225deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), asset-url("246297-P3J4XD-884.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-origin: border-box;
 }
 
 // .au-survole {
-  //     transition: all 0.5s ease-out;
-  // }
-  // .au-survole-ccm:hover {
-    //     // box-shadow: 0 16px 20px 0 rgba(216, 216, 216, .75);
-    //     box-shadow: rgba(121,121,121,.35) 1px 10px 20px;
+    //     transition: all 0.5s ease-out;
     // }
-    
-
-    .liste-card-rech4rche {
-      transition: all 0.3s ease-in;
-    }
-
-    .liste-card-recherche:hover {
-      box-shadow: 0 10px 20px rgba(0,0,0,.1);
-      transition: all 0.3s ease-in;
-    }
-
-    .card-photo-property {
-
-    }
+    // .au-survole-ccm:hover {
+        //     // box-shadow: 0 16px 20px 0 rgba(216, 216, 216, .75);
+        //     box-shadow: rgba(121,121,121,.35) 1px 10px 20px;
+        // }
 
 
-    // font-family: 'Roboto', sans-serif;
-    // font-family: 'Open Sans', sans-serif;
+        .liste-card-rech4rche {
+            transition: all 0.3s ease-in;
+        }
 
-    .sans-text-decoration:hover {
-      text-decoration: none;
-    }
+        .liste-card-recherche:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,.1);
+            transition: all 0.3s ease-in;
+        }
 
-    .barre-recherche-avance {
-      height: 75vh !important;
-      background-image: linear-gradient(-225deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.2) 50%), asset-url("pexels-photo-323780.jpeg") !important;
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      
-    }
+        .card-photo-property {
+            transition: 0.5s, ease;
+        }
 
-    section.banner-contact {
-      height: 50vh;
-    }
+        .index-list-item:hover {
 
-    input, .btn, button, textarea, select, a.btn {
-      border-radius: 0px !important;
-    }
-
-    ul > li > a {
-      text-decoration: none !important;
-    }
-    .slide-photo {
-      height: 80vh !important;
-      .slide-quelque-detail {
-          bottom: 25px;
-      }
-    }
+        }
+        .index-list-item:hover {
+            text-decoration: none;
+            transition: 0.5s, ease;
+            .list-item {
+                border-right: 8px solid #007BFF;
+                transition: 0.5s, ease;
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+            }
+        }
 
 
-.footer-facebook-logo {
-  color: #4D6FA9;
-}
-.footer-twitter-logo {
-  color: #65BBF2;
-}
+        .sans-text-decoration:hover {
+            text-decoration: none;
+        }
+
+        .barre-recherche-avance {
+            height: 75vh !important;
+            background-image: linear-gradient(-225deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.2) 50%), asset-url("246297-P3J4XD-884.jpg") !important;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+
+            background-origin: border-box, content-box;
+        }
+
+        section.banner-contact {
+            height: 50vh;
+        }
+
+        input, .btn, button, textarea, select, a.btn {
+            border-radius: 0px !important;
+        }
+
+        ul > li > a {
+            text-decoration: none !important;
+        }
+
+        .property-photos-carousel {
+            height: 70vh !important;
+        }
+
+        // List design
+        .box-shadow {
+            box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+        }
+        .h-250 {
+            height: 250px;
+        }
+        @media (min-width: 768px) {
+            .h-md-250 {
+                height: 250px;
+            }
+        }
+        .card-img-right {
+            height: 100%;
+            width: 48%;
+            border-radius: 0 3px 3px 0;
+        }
+        .flex-auto {
+            flex: 0 0 auto;
+        }
+        // List design
 
 
-nav div.container-fluid div.collapse ul li div.dropdown-menu::after {
-    content: "";
-position: absolute;
-top: 100%;
-left: 40px;
-border-top: 15px solid black;
-    border-top-color: black;
-border-top-color: #fff;
-border-left: 15px solid transparent;
-border-right: 15px solid transparent;
-}
+        .contact-page-banner, .add-property-page-banner {
+            height: 50vh !important;
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), asset-url("philipp-berndt-173197.jpg") !important;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-origin: border-box, content-box;
+        }
+
+        .profesionnal-benefits-page-banner {
+            height: 50vh !important;
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), asset-url("85.jpg") !important;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-origin: border-box, content-box;
+        }

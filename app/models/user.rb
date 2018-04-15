@@ -6,8 +6,9 @@ class User < ApplicationRecord
 
 
   validates :role, :first_name, :last_name, :phone_number, :terms_and_conditions, presence: true
+  validates :phone_number, uniqueness: { message: "Le numéros de téléphone existe déja !" }
 
-  ROLE = ["Particulier", "Profesionnel"]
+  ROLE = ["Un particulier"]
 
   has_one :user_role
 
