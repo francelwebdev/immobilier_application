@@ -14,5 +14,11 @@ module ImmobilierApplication
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+
+    # Mon code
+    config.i18n.default_locale = :de
+    # Mon code
+    
   end
 end
