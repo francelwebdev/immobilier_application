@@ -20,6 +20,9 @@
 //= require bootstrap
 
 
+//= require owl.carousel
+
+
 //= require cloudinary
 
 //= require dropzone

@@ -17,7 +17,7 @@ module ImmobilierApplication
 
 
     # Mon code
-    config.i18n.default_locale = :de
+    config.i18n.default_locale = :fr
     # Mon code
     
   end

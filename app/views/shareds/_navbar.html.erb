@@ -6,7 +6,7 @@
 
 <% content_for :dropdown_menu do %>
 <% if user_signed_in? %>
-    <div class="dropdown-menu dropdown-menu-right mt-3" aria-labelledby="navbarDropdown">
+    <div class="dropdown-menu dropdown-menu-right mt-3 position-relative" aria-labelledby="navbarDropdown">
     <h6 class="dropdown-header"><%= current_user.email %></h6>
     <%= link_to my_properties_properties_path, class: "dropdown-item text-dark" do %>
     <i class="fas fa-list fa-lg"></i>&nbsp; Mes annonces

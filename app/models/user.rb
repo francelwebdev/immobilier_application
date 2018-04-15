@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable
 
+
+  validates :role, :first_name, :last_name, :phone_number, :terms_and_conditions, presence: true
+
   ROLE = ["Particulier", "Profesionnel"]
 
   has_one :user_role

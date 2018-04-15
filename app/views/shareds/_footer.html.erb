@@ -53,9 +53,10 @@
         <div class="col-12 mb-4">
             <h5 class="mb-3 font-weight-bold text-dark">Newsletter</h5>
             <p class="text-dark"><small>Abonnez-vous à la newsletter et recevrez régulièrement les nouvelles offres gratuitement.</small></p>
-            <%= form_with url: root_path, method: :get do |f| %>
+            <%= simple_form_for @newsletter do |f| %>
             <div class="d-flex">
-                <%= f.email_field :email, placeholder: "Votre email", class: "form-control", style: "border-radius: 0px;"  %>
+                <%= f.input :email_address, as: :email, label: false, wrapper: false, placeholder: "Votre email", class: "form-control", autocomplete: true, style: "border-radius: 0px;"  %>
+                <small><%= @newsletter.errors[:email_address].first if @newsletter.errors.any? %></small>
                 <%= f.submit "S'abonné", class: "btn btn-primary", style: "border-radius: 0px;" %>
             </div>
             <% end %>
