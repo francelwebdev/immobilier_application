@@ -72,13 +72,13 @@ box-shadow: 0 10px 20px rgba(0,0,0,.1);
                 <% end %>
             </ul>
             <ul class="navbar-nav ml-auto d-flex align-items-center">
-                <% if user_signed_in? and current_user.profile_photo_url.present? %>
+                <% if user_signed_in? and current_user.user_profile.profile_photo_url.present? %>
                 <li class="nav-item dropdown mx-2">
-                    <%= image_tag(current_user.profile_photo_url, size: "40x40", class: "rounded-circle dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false") %>
+                    <%= image_tag(current_user.user_profile.profile_photo_url, size: "40x40", class: "rounded-circle dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false") %>
                     <%= yield :dropdown_menu  %>
                 </li>
                 <%= yield :add_property %>
-                <% elsif user_signed_in? and current_user.profile_photo_url.blank? %>
+                <% elsif user_signed_in? and current_user.user_profile.profile_photo_url.blank? %>
                 <li class="nav-item dropdown mx-2">
                     <%= image_tag "gravatar2.png", class: "rounded-circle ropdown-toggle",  id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" %>
                     <%= yield :dropdown_menu  %>

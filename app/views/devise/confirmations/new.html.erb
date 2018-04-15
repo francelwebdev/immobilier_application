@@ -1,14 +1,12 @@
 <% content_for :page_title, "Confimation de compte" %>
 
-<%= render "shareds/haut-page-confimations" %>
-
 <section class="container-fluid py-4">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
-                <div class="card">
+                <div class="card border-0 bg-transparent">
                     <div class="card-body">
-                        <h2><%= t(".resend_confirmation_instructions") %></h2>
+                        <h2 class="card-title text-center font-weight-normal"><%= t(".resend_confirmation_instructions") %></h2>
 
                         <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
                         <%= f.error_notification %>
@@ -19,15 +17,12 @@
                         </div>
 
                         <div class="form-actions">
-                            <%= f.button :submit, t(".resend_confirmation_instructions") %>
+                            <%= f.button :submit, t(".resend_confirmation_instructions"), class: "btn btn-primary btn-block btn-lg" %>
                         </div>
                         <% end %>
-
-                        <%= render "devise/shared/links" %>
-
-                        <% content_for :page_title, "Connexion utilisateur" %>
-
-                        <%= render "shareds/haut-page-connexion" %>
+                        <div class="text-center mt-4">
+                            <%= render "devise/shared/links" %>
+                        </div>
                     <div>
                 <div>
             <div>
