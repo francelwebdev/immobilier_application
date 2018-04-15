@@ -5,14 +5,12 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :trackable, :validatable
 
 
-  validates :role, :first_name, :last_name, :phone_number, :terms_and_conditions, presence: true
-  validates :phone_number, uniqueness: { message: "Le numéros de téléphone existe déja !" }
+  validates :role, :username, :terms_and_conditions, presence: true
+  validates :username, uniqueness: { message: "Le nom d'utilisateur existe déja !" }
 
   ROLE = ["Un particulier"]
 
-  has_one :user_role
+  has_one :user_profile
 
   has_many :properties, dependent: :destroy
-
-  mount_uploader :profile_photo, ProfilePhotoUploader
 end

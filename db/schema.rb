@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180415130008) do
+ActiveRecord::Schema.define(version: 20180415163107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,9 @@ ActiveRecord::Schema.define(version: 20180415130008) do
     t.text "description"
     t.string "address"
     t.string "city"
+    t.string "photo1"
+    t.string "photo2"
+    t.string "photo3"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false
@@ -87,10 +90,18 @@ ActiveRecord::Schema.define(version: 20180415130008) do
     t.string "name"
   end
 
-  create_table "user_roles", force: :cascade do |t|
-    t.string "name"
+  create_table "user_profiles", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.bigint "phone_number"
+    t.string "profile_photo"
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["address"], name: "index_user_profiles_on_address", unique: true
+    t.index ["profile_photo"], name: "index_user_profiles_on_profile_photo", unique: true
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -104,19 +115,21 @@ ActiveRecord::Schema.define(version: 20180415130008) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.bigint "phone_number"
-    t.string "profile_photo"
     t.boolean "terms_and_conditions"
     t.string "role"
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["phone_number"], name: "index_users_on_phone_number", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "properties", "ad_types"
   add_foreign_key "properties", "property_types"
+  add_foreign_key "user_profiles", "users"
 end
