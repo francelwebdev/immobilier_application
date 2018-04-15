@@ -1,8 +1,6 @@
 class CreateProperties < ActiveRecord::Migration[5.1]
   def change
     create_table :properties do |t|
-      # t.references :property_type, foreign_key: true
-      # t.references :ad_type, foreign_key: true
       t.string :title
       t.decimal :price, precision: 8, scale: 2
       t.integer :area, limit: 4

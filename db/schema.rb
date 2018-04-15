@@ -10,10 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180408213656) do
+ActiveRecord::Schema.define(version: 20180415130008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ad_types", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.string "first_name"
@@ -63,6 +67,10 @@ ActiveRecord::Schema.define(version: 20180408213656) do
     t.string "bathroom"
     t.boolean "published", default: false
     t.integer "avance"
+    t.bigint "property_type_id"
+    t.bigint "ad_type_id"
+    t.index ["ad_type_id"], name: "index_properties_on_ad_type_id"
+    t.index ["property_type_id"], name: "index_properties_on_property_type_id"
     t.index ["slug"], name: "index_properties_on_slug", unique: true
     t.index ["user_id"], name: "index_properties_on_user_id"
   end
@@ -73,6 +81,10 @@ ActiveRecord::Schema.define(version: 20180408213656) do
     t.integer "property_id"
     t.string "photo"
     t.index ["property_id"], name: "index_property_photos_on_property_id"
+  end
+
+  create_table "property_types", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "user_roles", force: :cascade do |t|
@@ -105,4 +117,6 @@ ActiveRecord::Schema.define(version: 20180408213656) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "properties", "ad_types"
+  add_foreign_key "properties", "property_types"
 end
