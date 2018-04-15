@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: "pages#home"
@@ -24,7 +25,10 @@ Rails.application.routes.draw do
     # get "profile/:full_name", to: "profiles#show", as: "user_profile"
 
     resources :properties
-    namespace :my_properties do
-      get 'properties', to: 'properties#index'
+
+    scope "/dashboard" do
+      get 'my_properties/index'
+      resource :my_profiles, only: [:show, :edit]
+
     end
-end
+  end
