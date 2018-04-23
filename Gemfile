@@ -71,8 +71,6 @@ group :development do
   gem 'better_errors', '~> 2.4'
   gem 'binding_of_caller', '~> 0.8.0'
   gem 'pry-byebug', '~> 3.6'
-  gem 'meta_request', '~> 0.6.0'
-  gem 'hirb', '~> 0.7.3'
 end
 
 # Design
@@ -100,6 +98,7 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'cloudinary', '~> 1.9', '>= 1.9.1'
 gem 'gibbon', '~> 3.2'
 gem 'autoprefixer-rails', '~> 8.3'
+# gem 'mailjet', '~> 1.5', '>= 1.5.4'
 
 gem 'owlcarousel-rails', github: 'acrogenesis/owlcarousel-rails', branch: 'master'
 # gem 'omniauth-facebook'

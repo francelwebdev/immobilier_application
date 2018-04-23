@@ -1,40 +1,37 @@
 <% content_for :page_title, "Inscription utilisateur" %>
 
 <section class="container-fluid py-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-3">
-                <div class="card border-0 bg-transparent">
-                    <div class="card-body">
-                      <h2 class="card-title text-center"><%= t(".sign_up") %></h2>
-                      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                      <%= f.error_notification %>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="card border-0 bg-transparent">
+          <div class="card-body">
+            <h2 class="card-title text-center"><%= t(".sign_up") %></h2>
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= f.error_notification %>
 
-                      <div class="form-inputs">
-                        <%= f.association :user_group, label: "Je suis un" %>
-                        <%= f.input :first_name, required: true, label: "Prénom" %>
-                        <%= f.input :last_name, required: true, label: "Nom" %>
-                        <%= f.input :email, required: true %>
-                        <%= f.input :password, required: true %>
-                        <%= f.input :password_confirmation, required: true %>
-                    </div>
-
-                    <div class="form-inputs d-flex">
-                      <%= f.input :terms_and_conditions, label: false %>
-                      <p class="ml-2">En cochant cette case, vous accepter les <%= link_to "conditions générales d'utilisation", "" %> du site.</p>
-                  </div>
-                  <div class="form-actions">
-                      <%= f.button :submit, t(".sign_up"), class: "btn btn-primary btn-block btn-lg" %>
-                  </div>
-                  <% end %>
-
-                  <div class="text-center mt-4">
-                    <%= render "devise/shared/links" %>
-                </div>
-
+            <div class="form-inputs">
+              <%= f.association :user_group, autofocus: true, include_blank: false, label: "Je suis un" %>
+              <%= f.input :email, required: true %>
+              <%= f.input :password, required: true %>
+              <%= f.input :password_confirmation, required: true %>
             </div>
+
+            <div class="form-inputs d-flex">
+              <%= f.input :terms_and_conditions, label: false %>
+              <p class="ml-2">En cochant cette case, vous accepter les <%= link_to "conditions générales d'utilisation" %> du site.</p>
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, t(".sign_up"), class: "btn btn-primary btn-block btn-lg" %>
+            </div>
+            <% end %>
+
+            <div class="text-center mt-4">
+              <%= render "devise/shared/links" %>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</div>
+  </div>
 </section>

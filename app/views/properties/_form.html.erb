@@ -66,59 +66,38 @@
     </div>
 </div>
 
-<%= f.fields_for :property_photos do |photo_form| %>
 <div class="card bg-white border-0 mb-4">
     <div class="form-inputs form-row card-body p-5">
         <div class="col-12">
             <p class="h4 font-weight-bold mb-4">Photos</p>
-            <p class="text-info"><small>Les annonces les plus consulutées sont celles qui presentent des photos de bonne qualité, n'hésitez pas a ajouter les photos des différents pièces afin que les locataires potentiels puissent se projeter.</small></p>
+            <p class="text-info">Les annonces les plus consulutées sont celles qui presentent des photos de bonne qualité, n'hésitez pas a ajouter les photos des différents pièces afin que les locataires potentiels puissent se projeter.</p>
         </div>
         <div class="col-12 form-group">
             <div class="custom-file">
-                <%= image_tag(@property.property_photos.first.photo_url(:large)) if @property.property_photos.first.photo.present? %>
-
-                <%= photo_form.label "Photo 1", class: "control-label custom-file-label" %>
-
-                <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form-control form-control-file custom-file-input" %>
-            </div>
-        </div>
-        <div class="col-12 form-group">
-            <div class="custom-file">
-                <%= image_tag(@property.property_photos.first.photo_url(:large)) if @property.property_photos.first.photo.present? %>
-
-                <%= photo_form.label "Photo 2", class: "control-label custom-file-label" %>
-
-                <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form-control form-control-file custom-file-input" %>
-            </div>
-        </div>
-        <div class="col-12 form-group">
-            <div class="custom-file">
-                <%= image_tag(@property.property_photos.first.photo_url(:large)) if @property.property_photos.first.photo.present? %>
-
-                <%= photo_form.label "Photo 3", class: "control-label custom-file-label" %>
-
-                <%= photo_form.file_field :photo, name: "property_photos[photo][]", class: "form-control form-control-file custom-file-input" %>
+                <%= f.input :property_photos, as: :file, multiple: true, class: "form-control form-control-file custom-file-input" %>
             </div>
         </div>
     </div>
 </div>
-<% end %>
 
-<% if user_signed_in? and current_user.role == "Un particulier" and current_user.user_profile.first_name.blank? and current_user.user_profile.last_name.blank? and current_user.user_profile.phone_number.blank? %>
-<%= f.fields_for :user_profile do |photo_form| %>
+<% if user_signed_in? and current_user.first_name.blank? and current_user.last_name.blank? and current_user.phone_number.blank? and current_user.address.blank?%>
+<%= f.simple_fields_for :user do |user_contact_form| %>
 <div class="card bg-white border-0 mb-4">
     <div class="form-inputs form-row card-body p-5">
         <div class="col-12">
             <p class="h4 font-weight-bold mb-4">Information de contact</p>
         </div>
         <div class="col-lg-6">
-           <%= f.input :first_name, required: true, label: "Prénom" %>
+           <%= user_contact_form.input :first_name, required: true, label: "Prénom" %>
         </div>
         <div class="col-lg-6">
-           <%= f.input :last_name, required: true, label: "Nom" %>
+           <%= user_contact_form.input :last_name, required: true, label: "Nom" %>
         </div>
         <div class="col-lg-6">
-           <%= f.input :phone_number, as: :tel, required: true, label: "Numéros de téléphone"%>
+           <%= user_contact_form.input :phone_number, as: :tel, required: true, label: "Numéros de téléphone"%>
+        </div>
+        <div class="col-lg-6">
+           <%= user_contact_form.input :address, required: true, label: "Adresse"%>
         </div>
     </div>
 </div>

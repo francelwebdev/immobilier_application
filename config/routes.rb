@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     resources :properties
     scope "/dashboard" do
         get "my_properties", to: 'my_properties#index'
-        get 'my_profiles/edit'
         resource :my_profiles, only: [:edit, :update]
     end
     

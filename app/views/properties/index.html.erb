@@ -96,7 +96,7 @@
                     <div class="col-lg-6">
                         <%= link_to property, class: "sans-text-decoration" do %>
                         <div class="card mb-4 liste-card-recherche text-dark">
-                            <%= image_tag property.property_photos.first.photo_url, class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
+                            <%= image_tag property.photos.first, class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
 
                             <% if property.ad_type.name == "Vente" %>
                             <p class="h4">

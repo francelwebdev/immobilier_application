@@ -1,10 +1,10 @@
 <% content_for :page_title, @property.title.capitalize %>
 
-<% if @property_photos.present? %>
+<% if @property.property_photos.attached? %>
 <section class="property-photos-carousel">
     <div class="owl-carousel owl-theme">
-        <% @property_photos.each do |property_photo| %>
-            <div class="item"><%= image_tag property_photo.photo.url, size: "25x25" %></div>
+        <% @property.property_photos.each do |photo| %>
+            <div class="item"><%= image_tag photo, size: "25x25" %></div>
         <% end %>
 
         <%# <div class="owl-carousel owl-theme">
@@ -178,7 +178,7 @@
                             <h5 class="mb-4 font-weight-bold text-dark">A propos du properiétaire</h5>
                             <div class="row">
                                 <div class="col-lg-12 text-center mb-3">
-                                    <%= image_tag @property.user.profile_photo_url, class: "rounded-circle", size: "150x150" %>
+                                    <%= image_tag @property.user.profile_photo, class: "rounded-circle", size: "150x150" %>
                                 </div>
                                 <div class="col-lg-12">
                                     <p class="font-weight-bold text-dark mb-3">

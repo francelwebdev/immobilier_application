@@ -70,12 +70,10 @@ class PropertiesController < ApplicationController
     end
 
     def show
-        @property_photos = @property.property_photos
     end
 
     def new
         @property = current_user.properties.build
-        @property_photos = @property.property_photos.build
     end
 
     def edit
@@ -84,10 +82,9 @@ class PropertiesController < ApplicationController
     def create
         @property = current_user.properties.build(property_params)
         if @property.save
-            if params[:property_photos][:photo].present?
-                params[:property_photos][:photo].each do |photo|
-                    @property.property_photos.create!(photo: photo, property_id: @property.id)
-                end
+            if params[:user_attributes].present?                
+                @current_user = User.find(current_user.id)
+                @current_user.update(user_attributes: [:first_name, :last_name, :phone_number, :address])
             end
             redirect_to @property, notice: "L'annonce a été créée avec succès, en attente de publication par un administrateur."
         else
@@ -117,6 +114,6 @@ L'annonce a été détruite avec succès."
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-        params.require(:property).permit(:property_type_id, :ad_type_id, :title, :price, :room, :area, :description, :bedroom, :bathroom, :address, :city, :available, :avance, property_photos_attributes: [:photo, :property_id])
+        params.require(:property).permit(:property_type_id, :ad_type_id, :title, :price, :room, :area, :description, :bedroom, :bathroom, :address, :city, :available, :avance, property_photos: [], user_attributes: [:first_name, :last_name, :phone_number, :address])
     end
 end

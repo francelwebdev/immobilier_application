@@ -7,7 +7,8 @@
 <% content_for :dropdown_menu do %>
 <% if user_signed_in? %>
     <div class="dropdown-menu dropdown-menu-right mt-3" aria-labelledby="navbarDropdown">
-    <h6 class="dropdown-header">Content de vous revoir <%= current_user.first_name %> !</h6>
+    <h6 class="dropdown-header"><%= current_user.first_name %> <%= current_user.last_name %></h6>
+    <div class="dropdown-divider"></div>
     <%= link_to my_properties_path, class: "dropdown-item text-dark" do %>
     <i class="fas fa-list fa-lg"></i>&nbsp; Mes annonces
     <% end %>
@@ -74,7 +75,7 @@ box-shadow: 0 10px 20px rgba(0,0,0,.1);
             <ul class="navbar-nav ml-auto d-flex align-items-center">
                 <% if user_signed_in? and current_user.profile_photo.attached? %>
                 <li class="nav-item dropdown mx-2">
-                    <%= image_tag(current_user.profile_photo_url, size: "40x40", class: "rounded-circle dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false") %>
+                    <%= image_tag(current_user.profile_photo.variant(resize: "40x40"), class: "rounded-circle dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false") %>
                     <%= yield :dropdown_menu  %>
                 </li>
                 <%= yield :add_property %>

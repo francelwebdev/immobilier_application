@@ -31,7 +31,7 @@
                     <% @my_properties.each do |my_property| %>
                     <li class="row">
                         <div class="col-lg-3">
-                            <%= image_tag my_property.property_photos.first.photo_url, class: "img-fluid w-100 h-100", alt: "Photo de lannonce : #{ my_property.title }" %>
+                            <%= image_tag my_property.property_photos.first, class: "img-fluid w-100 h-100", alt: "Photo de lannonce : #{ my_property.title }" %>
                         </div>
                         <div class="col-lg-6 py-3 d-flex flex-column justify-content-center">
                             <h5><%= truncate(strip_tags(my_property.title.capitalize), length: 25) %></h5>

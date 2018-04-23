@@ -3,9 +3,7 @@ class Newsletter < ApplicationRecord
     validates :email_address, uniqueness: { message: "L'adresse email existe déja !" }
 
     before_save :downcase_email
-    after_save :subscribe 
-
-    
+    after_save :subscribe     
 
     private
 
