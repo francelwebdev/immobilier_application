@@ -1,28 +1,23 @@
 <% content_for :add_property do %>
 <li class="nav-item mx-2">
-    <%= link_to "Ajouter un bien", new_property_path, class: "btn btn-primary"  %>
+    <%= link_to "Publier une annonce", new_property_path, class: "btn btn-primary"  %>
 </li>
 <% end %>
 
 <% content_for :dropdown_menu do %>
 <% if user_signed_in? %>
-    <div class="dropdown-menu dropdown-menu-right mt-3" aria-labelledby="navbarDropdown">
+<div class="dropdown-menu dropdown-menu-right mt-3" aria-labelledby="navbarDropdown">
     <h6 class="dropdown-header"><%= current_user.first_name %> <%= current_user.last_name %></h6>
     <div class="dropdown-divider"></div>
-    <%= link_to my_properties_path, class: "dropdown-item text-dark" do %>
-    <i class="fas fa-list fa-lg"></i>&nbsp; Mes annonces
-    <% end %>
-    <%= link_to edit_user_registration_path, class: "dropdown-item text-dark" do %>
-    <i class="fas fa-cog fa-lg"></i>&nbsp; Mon compte
-    <% end %>
-    <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item text-dark" do %>
-    <i class="fas fa-sign-out-alt fa-lg"></i>&nbsp; Déconnexion
-    <% end %>
+    <%= link_to " Mes biens", my_properties_path, class: "dropdown-item text-dark" %>
+    <%= link_to "Mon profile", edit_user_registration_path, class: "dropdown-item text-dark" %>
+    <div class="dropdown-divider"></div>
+    <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item text-dark" %>
 </div>
 <% end %>
 <% end %>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
 <!--
 box-shadow: 0 2px 10px rgba(0,0,0,.3);
 box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px 0px, rgba(0, 0, 0, 0.2) 0px 2px 20px 0px;
@@ -31,69 +26,65 @@ box-shadow: 0 0 40px 0 rgba(0,0,0,0.1);
 box-shadow: 0 16px 20px 0 rgba(216, 216, 216, .75);
 box-shadow: 0 10px 20px rgba(0,0,0,.1);
 -->
-<div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand text-uppercase text-dark " do %>
-    <i class="fas fa-home fa-2x"></i> <span class="h3 font-weight-bold">Sico</span></span>
+<%= link_to root_path, class: "navbar-brand text-uppercase text-dark font-weight-bold" do %>
+<span class="h3 font-weight-bold">SICO</span>
+<% end %>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav ml-auto d-flex align-items-center">
+        <li class="nav-item active mx-2">
+            <%= link_to root_path, class: "nav-link" do %>
+            Accueil <span class="sr-only">(current)</span>
+            <% end %>
+        </li>
+<!-- <li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type de bien</a>
+<div class="dropdown-menu" aria-labelledby="dropdown01">
+<a class="dropdown-item" href="#">Action</a>
+<a class="dropdown-item" href="#">Another action</a>
+<a class="dropdown-item" href="#">Something else here</a>
+</div>
+</li> -->
+<% @ad_types.each do |ad_type| %>
+<% if ad_type.name == "Location" %>
+<li class="nav-item mx-2">
+    <%= link_to "A louer", properties_path(ad_type: ad_type.name), class: "nav-link" %>
+</li>
+<% else %>
+<li class="nav-item mx-2">
+    <%= link_to "A vendre", properties_path(ad_type: ad_type.name), class: "nav-link" %>
+</li>
+<% end %>
+<% end %>
+
+<% if user_signed_in? %>
+<li class="nav-item mx-2">
+    <%= link_to "Mes biens", my_properties_path, class: "nav-link"  %>
+</li>
+<% end %>
+</ul>
+<ul class="navbar-nav ml-auto d-flex align-items-center">
+    <% if user_signed_in? and current_user.profile_photo.attached? %>
+    <li class="nav-item dropdown mx-2">
+        <%= image_tag(current_user.profile_photo, size: "40x40", class: "rounded-circle dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false") %>
+        <%= yield :dropdown_menu %>
+    </li>
+    <%= yield :add_property %>
+    <% elsif user_signed_in? and !current_user.profile_photo.attached? %>
+    <li class="nav-item dropdown mx-2">
+        <%= image_tag "148705-essential-collection/svg/user-3.svg", class: "img-fluid dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" %>
+        <%= yield :dropdown_menu %>
+    </li>
+    <%= yield :add_property %>
+    <% else %>
+    <li class="nav-item mx-2">
+        <%= link_to "Connexion", new_user_session_path, class: "nav-link" %>
+    </li>
+    <%= yield :add_property %>
     <% end %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav ml-auto d-flex align-items-center">
-            <li class="nav-item active">
-                <%= link_to root_path, class: "nav-link mx-2" do  %>
-                Accueil <span class="sr-only">(current)</span>
-                <% end %>
-            </li>
-                <!-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type de bien</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li> -->
-                <% @ad_types.each do |ad_type| %>
-                <% if ad_type.name == "Location" %>
-                <li class="nav-item mx-2">
-                    <%= link_to "A louer", properties_path(ad_type: ad_type.name), class: "nav-link" %>
-                </li>
-                <% else %>
-                <li class="nav-item mx-2">
-                    <%= link_to "A Vendre", properties_path(ad_type: ad_type.name), class: "nav-link" %>
-                </li>
-                <% end %>
-                <% end %>
-
-                <% if user_signed_in? %>
-                <li class="nav-item mx-2">
-                    <%= link_to "Mes biens", my_properties_path, class: "nav-link"  %>
-                </li>
-                <% end %>
-            </ul>
-            <ul class="navbar-nav ml-auto d-flex align-items-center">
-                <% if user_signed_in? and current_user.profile_photo.attached? %>
-                <li class="nav-item dropdown mx-2">
-                    <%= image_tag(current_user.profile_photo, size: "40x40", class: "rounded-circle dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false") %>
-                    <%= yield :dropdown_menu  %>
-                </li>
-                <%= yield :add_property %>
-                <% elsif user_signed_in? and !current_user.profile_photo.attached? %>
-                <li class="nav-item dropdown mx-2">
-                    <%= image_tag "gravatar2.png", class: "rounded-circle ropdown-toggle",  id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" %>
-                    <%= yield :dropdown_menu  %>
-                </li>
-                <%= yield :add_property %>
-                <% else %>
-                <li class="nav-item mx-2">
-                    <%= link_to "Connexion", new_user_session_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item mx-2">
-                    <a href="#call_to_action_for_agent" class="btn btn-primary">Vous êtes un agent immobilier ?</a>
-                </li>
-                <% end %>
-            </ul>
-        </div>
-    </div>
+</ul>
+</div>
 </nav>

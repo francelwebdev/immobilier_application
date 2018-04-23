@@ -1,15 +1,8 @@
 // Mon style global
 
-// font-family: 'Roboto', sans-serif;
-// font-family: 'Lato', sans-serif;
-
 body {
-    * {
-        // font-family: 'Roboto', sans-serif;
-        font-family: 'Lato', sans-serif;
-    }
     main {
-        // background-color: #F2F6FF;
+        background-color: #F2F6FF;
     }
     section.besoin_daide {
         background-image: linear-gradient(-225deg, rgba(0,0,0,0.3) , rgba(0,0,0,0.3) ), asset-url("philipp-berndt-173197.jpg") !important;
@@ -21,7 +14,7 @@ body {
     }
 }
 
-.jumbotron-welcomes {
+.jumbotron-welcome {
     height: 100vh !important;
     background-image: linear-gradient(-225deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), asset-url("246297-P3J4XD-884.jpg") !important;
     background-size: cover;

@@ -9,7 +9,7 @@ class PagesController < ApplicationController
 
     end
 
-    def contact_us
+    def contact
 
     end
 
@@ -21,11 +21,12 @@ class PagesController < ApplicationController
 
     end
 
-    def benefits_for_agent
+    def benefits_for_agency
 
     end
 
     def pricing_plan
-        
+
     end
+
 end

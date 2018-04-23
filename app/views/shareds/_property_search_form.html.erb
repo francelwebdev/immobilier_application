@@ -11,7 +11,9 @@
         <%= form.search_field :city, placeholder: "Ou ?", class: 'form-control form-control-lg', required: true %>
     </div>
     <div class="col-lg-2 my-1">
-        <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn btn-block btn-lg' %>
+        <%= form.submit name: nil, class: 'btn btn-primary btn-block btn-lg' do %>
+        <i class="fas fa-search fa-lg"></i>
+        <% end %>
     </div>
 </div>
 <% end %>
@@ -46,7 +48,7 @@
         <%= form.number_field :loyer_maximum, placeholder: "Loyer maximum", class: 'form-control' %>
     </div>
     <div class="col-12 my-1">
-        <p>Plus de filtres</p>                
+        <p>Plus de filtres</p>
     </div>
     <div class="col-12 my-1">
 

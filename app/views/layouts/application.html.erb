@@ -14,8 +14,6 @@
 
     <title>Sico - <%= content_for?(:page_title) ? yield(:page_title) : "Bienvenue" %></title>
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Roboto:400,500,700,900" rel="stylesheet">
-
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -25,7 +23,7 @@
     <%= render "shareds/navbar" %>
     <%= render 'shareds/flash' %>
 
-    <main class="bg-light">
+    <main>
         <%= yield %>
     </main>
 
@@ -37,7 +35,7 @@
     <% if current_page?(root_path) %>
     <%= yield :value_proposition_text_typed %>
     <% end %>
-    
+
     <%= yield(:owl_carousel) %>
 </body>
 </html>
