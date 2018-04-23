@@ -12,6 +12,7 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require_tree .
 
 //= require jquery3
 //= require jquery_ujs
@@ -19,10 +20,5 @@
 //= require popper
 //= require bootstrap
 
-//= require owl.carousel
-
 //= require typed
-
-//= require cloudinary
-
-//= require_tree .
+//= require owl.carousel

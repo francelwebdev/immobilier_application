@@ -10,15 +10,15 @@ class Property < ApplicationRecord
 
     belongs_to :property_type
 
-    has_one_attached :property_photo
-
     scope :published, -> { where(published: true) }
 
+    has_many_attached :photos
+    
     after_destroy :suprimer_les_photos
 
     private
 
     def suprimer_les_photos
-        self.property_photo.purge
+        self.photos.purge_later
     end
 end

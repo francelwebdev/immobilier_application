@@ -100,6 +100,8 @@ gem 'gibbon', '~> 3.2'
 gem 'autoprefixer-rails', '~> 8.3'
 # gem 'mailjet', '~> 1.5', '>= 1.5.4'
 
+# gem "aws-sdk-s3", require: false
+
 gem 'owlcarousel-rails', github: 'acrogenesis/owlcarousel-rails', branch: 'master'
 # gem 'omniauth-facebook'
 # gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.47'

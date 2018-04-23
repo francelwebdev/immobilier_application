@@ -1,4 +1,4 @@
-<section class="container-fluid add-property-page-banner d-flex flex-column justify-content-center">
+<section class="add-property-page-banner d-flex flex-column justify-content-center">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
@@ -8,15 +8,13 @@
     </div>
 </section>
 
-<section class="container py-4">
+<section class="container py-5">
     <div class="row">
-        <div class="col-lg-10 offset-lg-1">
+        <div class="col-lg-10 offset-lg-1 mb-3">
             <p class="text-danger">(*) Champs obligatoires</p>
-
             <%= render 'form', property: @property %>
         </div>
         <div class="col-lg-10 offset-lg-1 sr-only">
-            <br>
             <%= link_to 'Back', properties_path, class: "btn btn-secondary" %>
         </div>
     </div>

@@ -8,6 +8,8 @@ class User < ApplicationRecord
     validates :phone_number, uniqueness: true
 
     after_destroy :suprimer_les_photos
+
+    belongs_to :advertiser_type
     
     has_many :properties, dependent: :destroy
         
@@ -16,6 +18,6 @@ class User < ApplicationRecord
     private
 
     def suprimer_les_photos
-        self.profile_photo.purge
+        self.profile_photo.purge_later
     end
 end

@@ -1,3 +1,18 @@
+<% if @property.property_photo.attached? %>
+<section class="property-photos-carousel">
+    <div class="owl-carousel owl-theme">
+        <% @property.property_photo.each do |photo| %>
+            <div class="item"><%= image_tag photo, size: "25x25" %></div>
+        <% end %>
+    </div>
+</section>
+<% else %>
+<section class="container-fluid d-flex align-items-center text-center">
+    <p>ANNONCE SASNS PHOTOs</p>
+</section>
+<% end %>
+
+
 <!--
 MY VALUE PROPOSITION
 

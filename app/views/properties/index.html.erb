@@ -96,26 +96,18 @@
                     <div class="col-lg-6">
                         <%= link_to property, class: "sans-text-decoration" do %>
                         <div class="card mb-4 liste-card-recherche text-dark">
-                            <%= image_tag property.property_photo, class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
+                            <%= image_tag property.photos.first, class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
                             <% if property.ad_type.name == "Vente" %>
-                            <p class="h4">
-                                <span class="position-absolute badge badge-secondary p-2 rounded-0" style="top: 15px; left: 0px;">A vendre</span>
-                            </p>
+                                <span class="position-absolute badge badge-secondary p-2" style="top: 10px; left: 10px;">A vendre</span>
                             <% elsif property.ad_type.name == "Location" %>
-                            <p class="h4">
-                                <span class="position-absolute badge badge-secondary p-2 rounded-0" style="top: 15px; left: 0px;">A louer</span>
-                            </p>
+                                <span class="position-absolute badge badge-secondary p-2" style="top: 10px; left: 10px;">A louer</span>
                             <% end %>
 
                             <% if user_signed_in? %>
-                            <% if current_user.admin? %>
-                            <p class="h4">
-                                <span class="position-absolute badge badge-success p-2 rounded-0" style="top: 15px; right: 0px;">ONLINE</span>
-                            </p>
-                            <% else %>
-                            <p class="h4">
-                                <span class="position-absolute badge badge-danger p-2 rounded-0" style="top: 15px; right: 0px;">OFFLINE</span>
-                            </p>
+                            <% if current_user.admin? and property.published %>
+                                <span class="position-absolute badge badge-success p-2" style="top: 10px; right: 10px;">En ligne</span>
+                            <% elsif current_user.admin? and !property.published %>
+                                <span class="position-absolute badge badge-danger p-2" style="top: 10px; right: 10px;">Hors ligne</span>
                             <% end %>                            
                             <% end %>
 

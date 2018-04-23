@@ -1,23 +1,22 @@
 <% content_for :title, "Modification de mon annonce" %>
 
-<section class="container-fluid py-3" style="background-color: #F8F8F8;">
+<section class="py-3" style="background-color: #F8F8F8;">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <h3>Modification de mon annonce</h3>
-                <p class="text-warning">(*) Champs obligatoires</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="container py-4">
+<section class="container py-5">
     <div class="row">
-        <div class="col-lg-8 offset-lg-2">
+        <div class="col-lg-10 offset-lg-1 mb-3">
+            <p class="text-danger">(*) Champs obligatoires</p>
             <%= render 'form', property: @property %>
         </div>
         <div class="col-lg-10 offset-lg-1 sr-only">
-            <br>
             <%= link_to 'Show', @property, class: "btn btn-secondary" %>
             <%= link_to 'Back', properties_path, class: "btn btn-secondary" %>
         </div>

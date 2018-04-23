@@ -18,14 +18,14 @@
             </div>           
             <div class="col-lg-8">
                 <div class="row">
-                 <div class="col-12">
+                   <div class="col-12">
                     <p><%= pluralize(@my_properties_numbers, "annonces publié", "annonces publiés") %></p>
                 </div>
                 <ul class="list-unstyled col-12">
                     <% @my_properties.each do |my_property| %>
                     <li class="row d-flex align-items-center">
                         <div class="col-lg-3">
-                            <%= image_tag my_property.property_photo, class: "img-fluid w-100 h-100", alt: "Photo de lannonce : #{ my_property.title }" %>
+                            <%= image_tag my_property.photos.first, class: "img-fluid w-100 h-100", alt: "Photo de lannonce : #{ my_property.title }" %>
                         </div>
                         <div class="col-lg-6 py-3 d-flex flex-column justify-content-center">
                             <h5><%= truncate(strip_tags(my_property.title.capitalize), length: 25) %></h5>
@@ -43,21 +43,24 @@
                             <% end %>
                         </div>
                         <div class="col-lg-3">
-                            <ul class="nav d-flex">
-                              <li class="nav-item">
-                                <%= link_to "Modifier", edit_property_path(my_property), class: "nav-link" %>
-                            </li>
-                            <li class="nav-item">
-                                <%= link_to 'Supprimer', my_property_path(my_property.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "nav-link" %>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <hr>
-                <% end %>
-            </ul>
-        </div>                
+                            <ul class="list-unstyled text-center">
+                                <li>
+                                    <%= link_to 'Voir', my_property, class: "" %>
+                                </li>
+                                <li>
+                                    <%= link_to "Modifier", edit_property_path(my_property), class: "" %>
+                                </li>
+                                <li>
+                                    <%= link_to 'Supprimer', my_property_path(my_property.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "" %>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <hr>
+                    <% end %>
+                </ul>
+            </div>                
+        </div>
     </div>
-</div>
 </div>
 </section>
