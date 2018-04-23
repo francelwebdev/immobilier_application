@@ -21,7 +21,7 @@ class PagesController < ApplicationController
 
     end
 
-    def benefits_for_profesionnal
+    def benefits_for_agent
 
     end
 

@@ -11,7 +11,10 @@
             <%= f.error_notification %>
 
             <div class="form-inputs">
-              <%= f.association :user_group, autofocus: true, include_blank: false, label: "Je suis un" %>
+              <%= f.input :first_name, autofocus: true, required: true, label: "Prénom" %>
+              <%= f.input :last_name, required: true, label: "Nom" %>
+              <%= f.input :phone_number, as: :tel, required: true, label: "Numéros de téléphone" %>
+
               <%= f.input :email, required: true %>
               <%= f.input :password, required: true %>
               <%= f.input :password_confirmation, required: true %>
@@ -19,7 +22,7 @@
 
             <div class="form-inputs d-flex">
               <%= f.input :terms_and_conditions, label: false %>
-              <p class="ml-2">En cochant cette case, vous accepter les <%= link_to "conditions générales d'utilisation" %> du site.</p>
+              <p class="ml-2">J'accepte les <%= link_to "conditions générales d'utilisation" %> du site.</p>
             </div>
             <div class="form-actions">
               <%= f.button :submit, t(".sign_up"), class: "btn btn-primary btn-block btn-lg" %>

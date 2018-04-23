@@ -15,8 +15,9 @@
               <%= f.input :last_name, required: true, label: "Nom" %>
               <%= f.input :phone_number, as: :tel, required: true, label: "Numéros de téléphone" %>
               <%= f.input :address, required: true, label: "Adresse" %>
+              <%= f.input :about_me, required: true, label: "À propos de moi", input_html: { rows: 5 } %>
               <%= image_tag current_user.profile_photo, size: "250x250", class: "rounded-circle mb-4" if current_user.profile_photo.attached? %>
-              <%= f.input :profile_photo, required: true, label: "Photo de profile" %>              
+              <%= f.input :profile_photo, required: true, label: "Photo de profile" %>
               <%= f.input :email, required: true %>
 
               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

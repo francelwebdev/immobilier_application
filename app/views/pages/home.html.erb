@@ -2,10 +2,10 @@
 
 <%= render "shareds/jumbotron" %>
 
-<section class="py-5 sr-only">
+<section class="container-fluid py-5 sr-only">
     <div class="container">
         <div class="row">
-            <div class="col-12 text-center mb-4">
+            <div class="col-lg-12 text-center mb-5">
                 <h3>Annonces en vedette</h3>
             </div>
             <div class="col-12">
@@ -61,69 +61,87 @@
     </div>
 </section>
 
-<section class="py-5 bg-white" id="comment-ca-marche">
+<section class="container-fluid py-5 bg-white" id="comment-ca-marche">
     <div class="container">
         <div class="row">
-            <div class="col-12 text-center mb-4">
-                <h2>Comment ça marche</h2>
+            <div class="col-lg-12 text-center mb-5">
+                <h1>Comment ça marche</h1>
             </div>
-            <div class="col-lg-4 text-center mb-4">
+            <div class="col-lg-4 text-center mb-5">
                 <p class="mb-3"><%= image_tag "179347-control/svg/number-1.svg", class: "w-25"  %></p>
                 <!-- <p><span class="display-3 rounded-circle px-4 py-2" style="box-shadow: 0 2px 11px 0 rgba(0,0,0,.29);">1</span></p> -->
-                <h4 class="text-dark mb-3">Faîtes une recherche</h4>
-                <p class="text-dark">Plus 2000 annonces dans différents communes et quartiers du Bénin</p>
+                <p class="mb-3 h3">Faîtes une recherche</p>
+                <p>Plus 2000 annonces dans différents communes et quartiers du Bénin</p>
             </div>
-            <div class="col-lg-4 text-center mb-4">
+            <div class="col-lg-4 text-center mb-5">
                 <p class="mb-3"><%= image_tag "179347-control/svg/number-2.svg", class: "w-25"  %></p>
-                <h4 class="text-dark mb-3">Faîtes un choix</h4>
-                <p class="text-dark">Choisissez le bien qui correcpond à vos besoins parmis les résultats de recherche.</p>
+                <p class="mb-3 h3">Faîtes un choix</p>
+                <p>Choisissez le bien qui correcpond à vos besoins parmis les résultats de recherche.</p>
             </div>
-            <div class="col-lg-4 text-center mb-4">
+            <div class="col-lg-4 text-center mb-5">
                 <p class="mb-3"><%= image_tag "179347-control/svg/number-3.svg", class: "w-25"  %></p>
-                <h4 class="text-dark mb-3">Louer-le et prenez les clefs</h4>
-                <p class="text-dark">Contactez le propriétaire pour visiter le bien puis régler l'avance et prenez les clefs.</p>
+                <p class="mb-3 h3">Allez prendre les clefs</p>
+                <p>Contactez le propriétaire pour visiter le bien puis régler l'avance et prenez les clefs.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="sr-only">
+<section class="container-fluid py-5 sr-only">
     <div class="container">
-        <div class="row py-5">
-            <div class="col-12 text-center mb-4">
-                <h2>Villes les plus consultés</h2>
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2>Communes/Quartiers les plus consultés</h2>
             </div>
-            <div class="col-lg-4 mb-4">
-                <a href="" title="">
-
-
-                </a>
+            <div class="col-lg-8 mb-5">
+                <%= link_to root_path, class: "sans-text-decoration" do %>
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h2 class="card-title mb-0">Cotonou</h2>
+                            <p class="lead">N* de biens</p>
+                        </div>
+                    </div>
+                <% end %>
             </div>
-            <div class="col-lg-8">
-                <a href="" title="">
-
-                </a>
+            <div class="col-lg-4 mb-5">
+                <%= link_to root_path, class: "sans-text-decoration" do %>
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h2 class="card-title mb-0">Cotonou</h2>
+                            <p class="lead">N* de biens</p>
+                        </div>
+                    </div>
+                <% end %>
             </div>
+            <div class="col-lg-4 mb-5">
+                <%= link_to root_path, class: "sans-text-decoration" do %>
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h2 class="card-title mb-0">Cotonou</h2>
+                            <p class="lead">N* de biens</p>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+            <div class="col-lg-8 mb-5">
+                <%= link_to root_path, class: "sans-text-decoration" do %>
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h2 class="card-title mb-0">Cotonou</h2>
+                            <p class="lead">N* de biens</p>
+                        </div>
+                    </div>
+                <% end %>
+            </div>            
         </div>
     </div>
 </section>
 
-<section class="sr-only bg-white">
+<section class="container-fluid py-5 sr-only bg-white">
     <div class="container">
-        <div class="row py-5">
-            <div class="col-12 text-center mb-4">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-4">
                 <h2>Quelques agences immobiliers</h2>
-            </div>
-            <div class="col-lg-4 mb-4">
-                <a href="" title="">
-
-
-                </a>
-            </div>
-            <div class="col-lg-8">
-                <a href="" title="">
-
-                </a>
             </div>
         </div>
     </div>
@@ -134,7 +152,7 @@
 <script>
     $(function(){
         $(".element").typed({
-            strings: ["Une chambre", "Une maison", "Un appartement", "Un bureau", "Une boutique"],
+            strings: ["Une chambre", "Une maison", "Un appartement", "Un bureau", "Une boutique", "Un terrain"],
             typeSpeed: 50,
             backSpeed: 25,
             backDelay: 500,

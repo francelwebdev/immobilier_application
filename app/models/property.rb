@@ -1,5 +1,4 @@
 class Property < ApplicationRecord
-
     extend FriendlyId
     friendly_id :title, use: :slugged
 

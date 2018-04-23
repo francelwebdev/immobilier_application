@@ -1,4 +1,4 @@
-class RemoveRoleFromUsers < ActiveRecord::Migration[5.1]
+class RemoveRoleFromUsers < ActiveRecord::Migration[5.2]
   def change
     remove_column :users, :role, :string
   end

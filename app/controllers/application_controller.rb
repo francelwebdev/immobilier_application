@@ -9,11 +9,11 @@ class ApplicationController < ActionController::Base
 
     before_action :configure_permitted_parameters, if: :devise_controller?
 
-    protected	
+    protected
 
 	def configure_permitted_parameters
-		devise_parameter_sanitizer.permit(:sign_up, keys: [:user_group_id, :terms_and_conditions])
-		devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone_number, :address, :profile_photo])
+		devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :phone_number, :terms_and_conditions])
+		devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone_number, :address, :about_me, :profile_photo])
 	end
 
 

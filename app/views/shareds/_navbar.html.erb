@@ -1,6 +1,6 @@
 <% content_for :add_property do %>
 <li class="nav-item mx-2">
-    <%= link_to "Publiez une annonce", new_property_path, class: "btn btn-outline-primary"  %>
+    <%= link_to "Ajouter un bien", new_property_path, class: "btn btn-primary"  %>
 </li>
 <% end %>
 
@@ -75,7 +75,7 @@ box-shadow: 0 10px 20px rgba(0,0,0,.1);
             <ul class="navbar-nav ml-auto d-flex align-items-center">
                 <% if user_signed_in? and current_user.profile_photo.attached? %>
                 <li class="nav-item dropdown mx-2">
-                    <%= image_tag(current_user.profile_photo.variant(resize: "40x40"), class: "rounded-circle dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false") %>
+                    <%= image_tag(current_user.profile_photo, size: "40x40", class: "rounded-circle dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false") %>
                     <%= yield :dropdown_menu  %>
                 </li>
                 <%= yield :add_property %>
@@ -89,7 +89,9 @@ box-shadow: 0 10px 20px rgba(0,0,0,.1);
                 <li class="nav-item mx-2">
                     <%= link_to "Connexion", new_user_session_path, class: "nav-link" %>
                 </li>
-                <%= yield :add_property %>
+                <li class="nav-item mx-2">
+                    <a href="#call_to_action_for_agent" class="btn btn-primary">Vous êtes un agent immobilier ?</a>
+                </li>
                 <% end %>
             </ul>
         </div>

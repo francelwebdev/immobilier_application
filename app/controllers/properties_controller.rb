@@ -10,24 +10,8 @@ class PropertiesController < ApplicationController
 
     def index
         if user_signed_in? and current_user.role == "Administrateur"
-            if params[:ad_type].present? and params[:property_type].blank? and params[:city].blank?
-                @ad_type_id = AdType.find_by(name: params[:ad_type]).id
-                @properties = Property.where("ad_type_id = ?", @ad_type_id).all.order("created_at DESC").page(params[:page]).per(6)
-                @properties_numbers = @properties.count
-            elsif params[:property_type].present? and params[:ad_type].blank? and params[:city].blank?
-                @property_type_id = PropertyType.find_by(name: params[:property_type]).id
-                @properties = Property.where("property_type_id = ?", @property_type_id).all.order("created_at DESC").published.page(params[:page]).per(6)
-                @properties_numbers = @properties.count
-            elsif params[:city].present? and params[:property_type].blank? and params[:ad_type].blank?
-                @properties = Property.where("city LIKE ? AND address LIKE ?", "%#{params[:city]}%", "%#{params[:city]}%").all.order("created_at DESC").page(params[:page]).per(6)
-                @properties_numbers = @properties.count
-            elsif params[:property_type].present? and params[:ad_type].present? and params[:city].present?
-                @properties = Property.where("property_type_id = ? AND ad_type_id = ? AND city LIKE ?", params[:property_type].to_i, params[:ad_type].to_i, "%#{params[:city]}%").all.order("created_at DESC").page(params[:page]).per(6)
-                @properties_numbers = @properties.count
-            else
-                @properties = Property.all.order("created_at DESC").page(params[:page]).per(9)
-                @properties_numbers = @properties.count
-            end
+            @properties = Property.all.order("created_at DESC").page(params[:page]).per(9)
+            @properties_numbers = @properties.count
         elsif user_signed_in? and current_user.role != "Administrateur"
             if params[:ad_type].present? and params[:property_type].blank? and params[:city].blank?
                 @ad_type_id = AdType.find_by(name: params[:ad_type]).id
@@ -82,10 +66,10 @@ class PropertiesController < ApplicationController
     def create
         @property = current_user.properties.build(property_params)
         if @property.save
-            if params[:user_attributes].present?                
-                @current_user = User.find(current_user.id)
-                @current_user.update(user_attributes: [:first_name, :last_name, :phone_number, :address])
-            end
+            # if params[:user_attributes].present?
+            #     @current_user = User.find(current_user.id)
+            #     @current_user.update(user_attributes)
+            # end
             redirect_to @property, notice: "L'annonce a été créée avec succès, en attente de publication par un administrateur."
         else
             render :new
@@ -102,8 +86,7 @@ class PropertiesController < ApplicationController
 
     def destroy
         @property.destroy
-        redirect_to properties_url, notice: "
-L'annonce a été détruite avec succès."
+        redirect_to properties_url, notice: "L'annonce a été détruite avec succès."
     end
 
     private

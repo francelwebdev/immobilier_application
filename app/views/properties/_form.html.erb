@@ -18,10 +18,10 @@
             <%= f.association :property_type, label: "Type de bien", include_blank: false %>
         </div>
         <div class="col-lg-4">
-            <%= f.input :area, required: true, label: "Surface", placeholder: "25" %>
+            <%= f.input :area, required: true, label: "Surface du bien", placeholder: "25" %>
         </div>
         <div class="col-lg-4">
-            <%= f.input :room, collection: Property::ROOM, label: "Nombres de pièce", include_blank: false %>
+            <%= f.input :room, collection: Property::ROOM, label: "Nombres de pièces", include_blank: false %>
         </div>
         <div class="col-lg-4">
             <%= f.input :bedroom, collection: Property::BEDROOM, label: "Nombres de chambre", include_blank: false %>
@@ -52,7 +52,7 @@
 <div class="card bg-white border-0 mb-4">
     <div class="form-inputs form-row card-body p-5">
         <div class="col-12">
-            <p class="h4 font-weight-bold text-dark mb-4">Adresse du bien</p>
+            <p class="h4 font-weight-bold text-dark mb-4">Localisation</p>
         </div>
         <div class="col-lg-6">
             <%= f.input :address, required: true, label: "Adresse", placeholder: "Ex: 9 Av du renouveau" %>
@@ -96,12 +96,9 @@
         <div class="col-lg-6">
            <%= user_contact_form.input :phone_number, as: :tel, required: true, label: "Numéros de téléphone"%>
         </div>
-        <div class="col-lg-6">
-           <%= user_contact_form.input :address, required: true, label: "Adresse"%>
-        </div>
     </div>
 </div>
-<% end %>    
+<% end %>
 <% end %>
 
 <div class="form-actions form-row mt-4">

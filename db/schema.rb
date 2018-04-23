@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_23_155746) do
+ActiveRecord::Schema.define(version: 2018_04_23_204700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,12 +108,6 @@ ActiveRecord::Schema.define(version: 2018_04_23_155746) do
     t.string "name"
   end
 
-  create_table "user_groups", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -136,15 +130,11 @@ ActiveRecord::Schema.define(version: 2018_04_23_155746) do
     t.string "last_name"
     t.bigint "phone_number"
     t.string "address"
-    t.bigint "user_group_id"
-    t.string "role"
+    t.text "about_me"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["role"], name: "index_users_on_role", unique: true
-    t.index ["user_group_id"], name: "index_users_on_user_group_id"
   end
 
   add_foreign_key "properties", "ad_types"
   add_foreign_key "properties", "property_types"
-  add_foreign_key "users", "user_groups"
 end
