@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -76,9 +76,9 @@ group :development do
 end
 
 # Design
-gem 'bootstrap', '~> 4.1'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'popper_js', '~> 1.12', '>= 1.12.9'
+gem 'bootstrap', '~> 4.1'
 gem 'font-awesome-sass', '~> 5.0', '>= 5.0.9'
 gem 'bootstrap-datepicker-rails', '~> 1.8', '>= 1.8.0.1'
 
@@ -86,61 +86,33 @@ gem 'bootstrap-datepicker-rails', '~> 1.8', '>= 1.8.0.1'
 gem 'simple_form', '~> 4.0'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'devise-i18n', '~> 1.6'
-
 gem 'jquery-slick-rails'
-
 gem 'friendly_id', '~> 5.2', '>= 5.2.3'
 
 # Pagination
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'kaminari-i18n', '~> 0.5.0'
-
-# will paginate
-# will paginate bootstrap
-
-
 gem 'rolify', '~> 5.2'
-
 
 # secret keys
 gem 'figaro', '~> 1.1', '>= 1.1.1'
-
-# File upload
-gem 'mini_magick', '~> 4.8'
-gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 gem 'cloudinary', '~> 1.9', '>= 1.9.1'
-# gem 'dropzonejs-rails'
-
 gem 'gibbon', '~> 3.2'
-
-
 gem 'autoprefixer-rails', '~> 8.3'
+
+gem 'owlcarousel-rails', github: 'acrogenesis/owlcarousel-rails', branch: 'master'
+# gem 'omniauth-facebook'
+# gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.47'
+gem 'cancancan', '~> 2.2'
+gem 'typedJS', '~> 0.0.2'
+gem 'sweetalert-rails', '~> 1.1', '>= 1.1.3'
+gem 'sweet-alert-confirm', '~> 0.4.1'
+gem 'magnific-popup-rails', '~> 1.1'
 
 # Géolocalisation
 # gem 'geocoder', '~> 1.4', '>= 1.4.7'
 # gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
 
-
-gem 'owlcarousel-rails', github: 'acrogenesis/owlcarousel-rails', branch: 'master'
-
-
-# gem 'omniauth-facebook'
-
-
-# gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.47'
-
-
-gem 'cancancan', '~> 2.2'
-
-gem 'typedJS', '~> 0.0.2'
-
-gem 'typedjs-rails', '~> 1.0', '>= 1.0.4'
-
-
-
-gem 'sweetalert-rails', '~> 1.1', '>= 1.1.3'
-gem 'sweet-alert-confirm', '~> 0.4.1'
-
-
-gem 'magnific-popup-rails', '~> 1.1'
+# will paginate
+# will paginate bootstrap

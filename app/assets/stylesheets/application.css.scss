@@ -12,15 +12,12 @@
  *
  *= require_tree .
 
-
  *= require owl.carousel
 *= require owl.theme
 
 *= require blink
 
  *= require_self
-
- *= require dropzone/dropzone
  */
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.

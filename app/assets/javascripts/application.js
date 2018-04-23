@@ -19,14 +19,10 @@
 //= require popper
 //= require bootstrap
 
-
 //= require owl.carousel
 
 //= require typed
 
 //= require cloudinary
-
-//= require dropzone
-
 
 //= require_tree .
