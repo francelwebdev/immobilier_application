@@ -66,10 +66,6 @@ class PropertiesController < ApplicationController
     def create
         @property = current_user.properties.build(property_params)
         if @property.save
-            # if params[:user_attributes].present?
-            #     @current_user = User.find(current_user.id)
-            #     @current_user.update(user_attributes)
-            # end
             redirect_to @property, notice: "L'annonce a été créée avec succès, en attente de publication par un administrateur."
         else
             render :new
@@ -97,6 +93,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-        params.require(:property).permit(:property_type_id, :ad_type_id, :title, :price, :room, :area, :description, :bedroom, :bathroom, :address, :city, :available, :avance, property_photos: [], user_attributes: [:first_name, :last_name, :phone_number, :address])
+        params.require(:property).permit(:property_type_id, :ad_type_id, :title, :price, :room, :area, :description, :bedroom, :bathroom, :address, :city, :available, :avance, property_photos: [])
     end
 end

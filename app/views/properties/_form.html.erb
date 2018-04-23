@@ -6,7 +6,7 @@
             <p class="h4 font-weight-bold text-dark mb-4">Description du bien</p>
         </div>
         <div class="col-12">
-            <%= f.input :title, autofocus: true, required: true, label: "Titre", placeholder: "Bureau de 25m2 à louer à Akpakpa au 1er étage" %>
+            <%= f.input :title, autofocus: true, required: true, label: "Titre de l'annonce", placeholder: "Bureau de 25m2 à louer à Akpakpa au 1er étage" %>
         </div>
         <div class="col-12">
             <%= f.input :description, required: true, label: "Description", placeholder: "Description", input_html: { rows: 5 } %>
@@ -22,12 +22,6 @@
         </div>
         <div class="col-lg-4">
             <%= f.input :room, collection: Property::ROOM, label: "Nombres de pièces", include_blank: false %>
-        </div>
-        <div class="col-lg-4">
-            <%= f.input :bedroom, collection: Property::BEDROOM, label: "Nombres de chambre", include_blank: false %>
-        </div>
-        <div class="col-lg-4">
-            <%= f.input :bathroom, collection: Property::BATHROOM, label: "Nombres de salle de bain", include_blank: false %>
         </div>
         <div class="col-lg-4">
             <%= f.input :price, required: true, label: "Loyer mensuel", placeholder: "45000" %>
@@ -58,9 +52,6 @@
             <%= f.input :address, required: true, label: "Adresse", placeholder: "Ex: 9 Av du renouveau" %>
         </div>
         <div class="col-lg-6">
-            <%= f.input :city, required: true, label: "Quartier", placeholder: "Ex: Fidjrossè, Fifadji, Zogbo, Godomey" %>
-        </div>
-        <div class="col-lg-6">
             <%= f.input :city, required: true, label: "Commune ou Quartier", placeholder: "Ex: Fidjrossè, Fifadji, Zogbo, Godomey" %>
         </div>
     </div>
@@ -70,7 +61,7 @@
     <div class="form-inputs form-row card-body p-5">
         <div class="col-12">
             <p class="h4 font-weight-bold mb-4">Photos</p>
-            <p class="text-info">Les annonces les plus consulutées sont celles qui presentent des photos de bonne qualité, n'hésitez pas a ajouter les photos des différents pièces afin que les locataires potentiels puissent se projeter.</p>
+            <p class="text-info">Une annonce avec photo est 7 fois plus consultée qu'une annonce sans photo. Ajouter les photos des différents pièces et de bonne qualité afin d'attirer plus d'acheteurs ou locataires potentiels.</p>
         </div>
         <div class="col-12 form-group">
             <div class="custom-file">
@@ -80,6 +71,7 @@
     </div>
 </div>
 
+<!-- 
 <% if user_signed_in? and current_user.first_name.blank? and current_user.last_name.blank? and current_user.phone_number.blank? and current_user.address.blank?%>
 <%= f.simple_fields_for :user do |user_contact_form| %>
 <div class="card bg-white border-0 mb-4">
@@ -100,6 +92,7 @@
 </div>
 <% end %>
 <% end %>
+-->
 
 <div class="form-actions form-row mt-4">
     <div class="col-12">
