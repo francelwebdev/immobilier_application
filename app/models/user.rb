@@ -7,15 +7,15 @@ class User < ApplicationRecord
     validates :role, :username, :terms_and_conditions, presence: true
     validates :username, uniqueness: { message: "Le nom d'utilisateur existe déja !" }
 
-    ROLE = ["Un particulier"]
-
     has_one :user_profile, dependent: :destroy
 
-    belongs_to :user_role, dependent: :destroy
+    belongs_to :user_group, dependent: :destroy
+
+    has_many :properties, dependent: :destroy
 
     after_create :creation_profile_vierge
 
-    has_many :properties, dependent: :destroy
+    private
 
     def creation_profile_vierge
         self.create_user_profile!

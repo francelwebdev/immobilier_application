@@ -8,7 +8,6 @@ class Property < ApplicationRecord
     BEDROOM = ["1 chambre", "2 chambres", "3 chambres", "plus de 3 chambres"]
     BATHROOM = ["1 salle de bain", "2 salle de bain", "3 salle de bain", "plus de 3 salle de bain"]
 
-
     belongs_to :user
     belongs_to :user_profile
     belongs_to :ad_type

@@ -11,10 +11,8 @@
                       <%= f.error_notification %>
 
                       <div class="form-inputs">
-                      <%= f.association :user_role, label: "Je suis un ?", include_blank: false %>
-
-                        <%= f.input :role, required: true, autofocus: true, collection: User::ROLE, label: "Je suis" %>
-                        <%= f.input :username, required: true, label: "Nom d(utilisateur" %>
+                        <%= f.association :user_group, label: "Je suis un" %>
+                        <%= f.input :username, required: true, label: "Nom d'utilisateur" %>
                         <%= f.input :email, required: true %>
                         <%= f.input :password, required: true %>
                         <%= f.input :password_confirmation, required: true %>
