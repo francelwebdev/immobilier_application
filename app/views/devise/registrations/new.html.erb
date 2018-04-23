@@ -12,7 +12,8 @@
 
                       <div class="form-inputs">
                         <%= f.association :user_group, label: "Je suis un" %>
-                        <%= f.input :username, required: true, label: "Nom d'utilisateur" %>
+                        <%= f.input :first_name, required: true, label: "Prénom" %>
+                        <%= f.input :last_name, required: true, label: "Nom" %>
                         <%= f.input :email, required: true %>
                         <%= f.input :password, required: true %>
                         <%= f.input :password_confirmation, required: true %>

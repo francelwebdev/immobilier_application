@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-
     <!-- Required meta tags -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <meta name="author" content="Francel AMAMOO">
     <meta name="description" content="Petite annonce immobilier entre particulier">
@@ -21,7 +21,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
 
-<body class="<%= controller.controller_name %> - <%= controller.action_name %>">
+<body class="<%= controller.controller_name %>/<%= controller.action_name %>">
     <%= render "shareds/navbar" %>
     <%= render 'shareds/flash' %>
 
@@ -35,22 +35,19 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <% if current_page?(root_path) %>
-        <%= yield :value_proposition_text_typed %>    
+    <%= yield :value_proposition_text_typed %>
     <% end %>
     
-    <%= yield(:owl_carousel)  %>
-
-
-    <!-- a ajouter jquery file upload ici -->
+    <%= yield(:owl_carousel) %>
 
     <%= cloudinary_js_config %>
 
-<script>
-    $(function() {
-      if($.fn.cloudinary_fileupload !== undefined) {
-        $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
-    }
-});
+    <script>
+        $(function() {
+          if($.fn.cloudinary_fileupload !== undefined) {
+            $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+        }
+    });
 </script>
 
 </body>

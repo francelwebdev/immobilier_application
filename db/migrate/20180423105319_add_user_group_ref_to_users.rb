@@ -1,4 +1,4 @@
-class AddUserGroupRefToUsers < ActiveRecord::Migration[5.1]
+class AddUserGroupRefToUsers < ActiveRecord::Migration[5.2]
   def change
     add_reference :users, :user_group, foreign_key: true
   end

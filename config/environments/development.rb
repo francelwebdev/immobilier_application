@@ -60,6 +60,10 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Mon code
+
+  # Store files locally.
+  config.active_storage.service = :local
+
   # Pour tester les email en development avec maildev.
   
   config.action_mailer.perform_deliveries = true
