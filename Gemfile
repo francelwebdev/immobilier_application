@@ -6,7 +6,7 @@ ruby '2.5.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
 # Use postgresql as the database for Active Record
-# gem 'pg', '>= 0.18', '< 2.0'
+gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -67,34 +67,20 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #--------------------------#
 
 group :development do
-  gem 'sqlite3'
-
   gem 'pry-rails', '~> 0.3.6'
-
   gem 'better_errors', '~> 2.4'
   gem 'binding_of_caller', '~> 0.8.0'
   gem 'pry-byebug', '~> 3.6'
-  gem 'meta_request', '~> 0.5.0'
+  gem 'meta_request', '~> 0.6.0'
   gem 'hirb', '~> 0.7.3'
-
-  #guard
-  #
-end
-
-group :production do
-  gem 'pg', '>= 0.18', '< 2.0'
 end
 
 # Design
-gem 'bootstrap', '~> 4.0'
-gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'bootstrap', '~> 4.1'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'popper_js', '~> 1.12', '>= 1.12.9'
-gem 'font-awesome-sass', '~> 5.0', '>= 5.0.6.2'
-
-gem 'bootstrap-datepicker-rails', '~> 1.7', '>= 1.7.1.1'
-
-# Static page
-gem 'high_voltage', '~> 3.0'
+gem 'font-awesome-sass', '~> 5.0', '>= 5.0.9'
+gem 'bootstrap-datepicker-rails', '~> 1.8', '>= 1.8.0.1'
 
 # Design form and auth
 gem 'simple_form', '~> 4.0'
@@ -102,7 +88,6 @@ gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'devise-i18n', '~> 1.6'
 
 gem 'jquery-slick-rails'
-
 
 gem 'friendly_id', '~> 5.2', '>= 5.2.3'
 
@@ -115,23 +100,26 @@ gem 'kaminari-i18n', '~> 0.5.0'
 # will paginate bootstrap
 
 
+gem 'rolify', '~> 5.2'
+
+
 # secret keys
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 # File upload
-gem "mini_magick"
-gem 'carrierwave'
-gem 'cloudinary'
-gem 'dropzonejs-rails'
+gem 'mini_magick', '~> 4.8'
+gem 'carrierwave', '~> 1.2', '>= 1.2.2'
+gem 'cloudinary', '~> 1.9', '>= 1.9.1'
+# gem 'dropzonejs-rails'
 
 gem 'gibbon', '~> 3.2'
 
 
-gem 'autoprefixer-rails', '~> 8.0'
+gem 'autoprefixer-rails', '~> 8.3'
 
 # Géolocalisation
-gem 'geocoder', '~> 1.4', '>= 1.4.5'
-gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
+# gem 'geocoder', '~> 1.4', '>= 1.4.7'
+# gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
 
 
 gem 'owlcarousel-rails', github: 'acrogenesis/owlcarousel-rails', branch: 'master'
@@ -140,14 +128,10 @@ gem 'owlcarousel-rails', github: 'acrogenesis/owlcarousel-rails', branch: 'maste
 # gem 'omniauth-facebook'
 
 
-# a tester ce gem
-
-gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.47'
-gem 'jquery-datetimepicker', '~> 1.1'
+# gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.47'
 
 
-# gem 'cancancan', '~> 2.1', '>= 2.1.3'
-# gem 'pundit', '~> 1.1'
+gem 'cancancan', '~> 2.2'
 
 gem 'typedJS', '~> 0.0.2'
 
