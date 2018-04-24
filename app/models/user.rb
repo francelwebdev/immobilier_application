@@ -13,8 +13,6 @@ class User < ApplicationRecord
         
     has_one_attached :profile_photo
 
-    EXPERIENCE = ["1 an", "2 ans", "3 ans", "4 ans", "5 ans", "plus de 5 ans"]
-
     private
 
     def suprimer_les_photos

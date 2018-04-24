@@ -1,36 +1,32 @@
+<section class="container py-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card border-0">
+                <div class="card-body">
 
-<section class="container-fluid py-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-3">
-                <div class="card">
-                    <div class="card-body">
+                  <h2 class="card-title text-center"><%= t(".change_your_password") %></h2>
 
-                      <h2 class="card-title text-center"><%= t(".change_your_password") %></h2>
+                  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+                    <%= f.error_notification %>
 
-                      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-                        <%= f.error_notification %>
+                    <%= f.input :reset_password_token, as: :hidden %>
+                    <%= f.full_error :reset_password_token %>
 
-                        <%= f.input :reset_password_token, as: :hidden %>
-                        <%= f.full_error :reset_password_token %>
-
-                        <div class="form-inputs">
-                          <%= f.input :password, label: t(".new_password"), required: true, autofocus: true %>
-                          <%= f.input :password_confirmation, label: t(".confirm_new_password"), required: true %>
-                        </div>
-
-                        <div class="form-actions">
-                          <%= f.button :submit, t(".change_my_password"), class: "btn btn-primary btn-block" %>
-                        </div>
-                      <% end %>
-
-                      <div class="text-center mt-4">
-                        <%= render "devise/shared/links" %>
-                      </div>
-
+                    <div class="form-inputs">
+                      <%= f.input :password, label: t(".new_password"), required: true, autofocus: true %>
+                      <%= f.input :password_confirmation, label: t(".confirm_new_password"), required: true %>
                     </div>
-                </div>
 
+                    <div class="form-actions">
+                      <%= f.button :submit, t(".change_my_password"), class: "btn btn-primary btn-block" %>
+                    </div>
+                  <% end %>
+
+                  <div class="text-center mt-4">
+                    <%= render "devise/shared/links" %>
+                  </div>
+
+                </div>
             </div>
         </div>
     </div>

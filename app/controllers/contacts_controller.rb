@@ -1,28 +1,22 @@
 class ContactsController < ApplicationController
-
-    def process_form
-        flash[:notice] = "Received request from #{params[:contact][:name]}"
-redirect_to root_path
-    end
+  skip_before_action :authenticate_user!
 
   def new
     @contact = Contact.new
   end
 
   def create
-    @contact = Contact.new(secure_params)
-if @contact.valid?
-# TODO send message
-flash[:notice] = "Message sent from #{@contact.name}."
-redirect_to root_path
-else
-render :new
-end
+    @contact = Contact.new(contact_params)
+    if @contact.valid?
+      redirect_to home_page_path, notice: "Message envoyé avec succès, nous vous contacterons dans les plus brefs délai."
+    else
+      render :new
+    end
   end
 
-
   private
-def secure_params
-params.require(:contact).permit(:name, :email, :content)
-end
+
+  def contact_params
+    params.require(:contact).permit(:first_name, :last_name, :phone_number, :email_address, :message)
+  end
 end

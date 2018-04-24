@@ -2,9 +2,8 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
 
     # mon code
+    before_action :tout_les_ad_types, :tout_les_property_types, :newsletter
     before_action :authenticate_user!
-    before_action :tout_les_ad_types, :tout_les_property_types
-    before_action :newsletter
     # mon code
 
     before_action :configure_permitted_parameters, if: :devise_controller?
@@ -13,7 +12,7 @@ class ApplicationController < ActionController::Base
 
 	def configure_permitted_parameters
 		devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :phone_number, :terms_and_conditions])
-		devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone_number, :address, :about_me, :profile_photo])
+		devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone_number, :profile_photo])
 	end
 
 

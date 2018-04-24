@@ -27,12 +27,12 @@
         <%= yield %>
     </main>
 
-    <%= render "shareds/call_to_action_for_agent"  %>
+    <%= render "shareds/call_to_action_for_agency" if !current_page?(agency_benefits_path) %>
     <%= render "shareds/footer" %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <% if current_page?(root_path) %>
+    <% if current_page?(home_page_path) %>
     <%= yield :value_proposition_text_typed %>
     <% end %>
 

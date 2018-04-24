@@ -5,14 +5,6 @@ class PagesController < ApplicationController
 
     end
 
-    def about_us
-
-    end
-
-    def contact
-
-    end
-
     def faq
 
     end
@@ -25,7 +17,7 @@ class PagesController < ApplicationController
 
     end
 
-    def pricing_plan
+    def pricing
 
     end
 

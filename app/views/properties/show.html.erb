@@ -1,11 +1,13 @@
 <% content_for :page_title, @property.title.capitalize %>
 
-<% if @property.property_photos.attached? %>
+<% if @property.property_photo.attached? %>
 <section class="property-photos-carousel">
     <div class="owl-carousel owl-theme">
-        <% @property.property_photos.each do |photo| %>
-            <div class="item"><%= image_tag photo, size: "25x25" %></div>
-        <% end %>
+        <%# @property.property_photo.each do |photo| %>
+            <!-- <div class="item"><%#= image_tag photo, size: "25x25" %></div> -->
+        <%# end %>
+
+        <div class="item"><%= image_tag @property.property_photo, size: "25x25" %></div>
 
         <%# <div class="owl-carousel owl-theme">
         <div><img src="http://via.placeholder.com/350x150"></div>
@@ -20,8 +22,8 @@
     </div>
 </section>
 <% else %>
-<section class="container-fluid d-flex justify-content-center align-items-center">
-    <p class="text-center">ANNONCE SASNS PHOTOs</p>
+<section class="container-fluid d-flex align-items-center text-center">
+    <p>ANNONCE SASNS PHOTOs</p>
 </section>
 <% end %>
 
@@ -142,35 +144,36 @@
         <div class="col-lg-4">
             <div class="row">
 
-                <% if user_signed_in? && current_user.role == "Administrateur" && @property.published == true %>
-                <div class="col-lg-12 mb-4">
-                    <div class="card border-0 bg-white">
-                        <div class="card-body">
-                            <h5 class="card-title mb-4 font-weight-bold text-dark">Admin</h5>
-                            <p class="h4">
-                                <span class="badge badge-success p-2 rounded-0">ONLINE</span>
-                            </p>
+                <% if user_signed_in? %>
+                    <% if current_user.admin? && @property.published == true %>
+                        <div class="col-lg-12 mb-4">
+                            <div class="card border-0 bg-white">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-4 font-weight-bold text-dark">Admin</h5>
+                                    <p class="h4">
+                                        <span class="badge badge-success p-2 rounded-0">ONLINE</span>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <% elsif user_signed_in? && current_user.role == "Administrateur " && @property.published == false %>
-                <div class="col-lg-12 mb-4">
-                    <div class="card border-0 bg-white">
-                        <div class="card-body">
-                            <h5 class="card-title mb-4 font-weight-bold text-dark">Admin</h5>
-                            <p class="h4">
-                                <span class="badge badge-danger p-2 rounded-0">OFFLINE</span>
-                            </p>
+                    <% elsif current_user.admin? && @property.published == false %>
+                        <div class="col-lg-12 mb-4">
+                            <div class="card border-0 bg-white">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-4 font-weight-bold text-dark">Admin</h5>
+                                    <p class="h4">
+                                        <span class="badge badge-danger p-2 rounded-0">OFFLINE</span>
+                                    </p>
+                                </div>
+                                <div class="card-body">
+                                    <%= form_with url: property_to_publish_path(@property.id), local: true do |f| %>
+                                    <%= f.button :submit, value: "Publish" %>
+                                    <% end %>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <%= form_with url: property_to_publish_path(@property.id), local: true do |f| %>
-                            <%= f.button :submit, value: "Publish" %>
-                            <% end %>
-                        </div>
-                    </div>
-                </div>
+                    <% end %>                    
                 <% end %>
-
 
                 <div class="col-lg-12 mb-4">
                     <div class="card border-0 bg-white">
