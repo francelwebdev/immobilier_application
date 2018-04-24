@@ -15,15 +15,13 @@
         <div class="row">
             <div class="col-lg-4 mb-4">
                 <%= render "shareds/dashboard_sidebar_menu" %>
-            </div>
-           
+            </div>           
             <div class="col-lg-8">
                 <div class="row">
-                     <div class="col-12">
-                        <p><%= pluralize(@my_properties_numbers, "annonces publié", "annonces publiés") %></p>
-                    </div>
+                 <div class="col-12">
+                    <p><%= pluralize(@my_properties_numbers, "annonces publié", "annonces publiés") %></p>
                 </div>
-                <ul class="list-unstyled">
+                <ul class="list-unstyled col-12">
                     <% @my_properties.each do |my_property| %>
                     <li class="row d-flex align-items-center">
                         <div class="col-lg-3">
@@ -48,17 +46,18 @@
                             <ul class="nav d-flex">
                               <li class="nav-item">
                                 <%= link_to "Modifier", edit_property_path(my_property), class: "nav-link" %>
-                              </li>
-                              <li class="nav-item">
+                            </li>
+                            <li class="nav-item">
                                 <%= link_to 'Supprimer', my_property_path(my_property.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "nav-link" %>
-                              </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <hr>
-                    <% end %>
-                </ul>
-            </div>
-        </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <hr>
+                <% end %>
+            </ul>
+        </div>                
     </div>
+</div>
+</div>
 </section>
