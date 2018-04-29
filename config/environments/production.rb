@@ -93,8 +93,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Mon code
-  # Store files on Amazon S3.
-  config.active_storage.service = :amazon
+
+  config.active_storage.service = :cloudinary
 
   # Pour Gmail
   config.action_mailer.default_url_options = { :host => "sicoapp.herokuapp.com" }

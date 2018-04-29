@@ -93,18 +93,17 @@ gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'kaminari-i18n', '~> 0.5.0'
 gem 'rolify', '~> 5.2'
 
-# secret keys
-gem 'figaro', '~> 1.1', '>= 1.1.1'
-gem 'cloudinary', '~> 1.9', '>= 1.9.1'
+gem 'cloudinary', require: false
+gem 'activestorage-cloudinary-service'
+
 gem 'gibbon', '~> 3.2'
 gem 'autoprefixer-rails', '~> 8.3'
-# gem 'mailjet', '~> 1.5', '>= 1.5.4'
-
-# gem "aws-sdk-s3", require: false
 
 gem 'owlcarousel-rails', github: 'acrogenesis/owlcarousel-rails', branch: 'master'
-# gem 'omniauth-facebook'
-# gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.47'
+
+gem 'omniauth-facebook'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.47'
+
 gem 'cancancan', '~> 2.2'
 gem 'typedJS', '~> 0.0.2'
 gem 'sweetalert-rails', '~> 1.1', '>= 1.1.3'
