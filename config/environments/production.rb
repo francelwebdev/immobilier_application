@@ -95,5 +95,41 @@ Rails.application.configure do
   # Mon code
   # Store files on Amazon S3.
   config.active_storage.service = :amazon
+
+  # Pour Gmail
+  config.action_mailer.default_url_options = { :host => "sicoapp.herokuapp.com" }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true 
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'sicoapp.herokuapp.com',
+    user_name:            '<username>',
+    password:             '<password>',
+    authentication:       'plain',
+    enable_starttls_auto: true
+
+    :user_name => ENV['GMAIL_SMTP_USER'],
+    :password => ENV['GMAIL_SMTP_PASSWORD'],
+  }
+
+
+  # Pour mandrill
+#   config.action_mailer.default_url_options = { :host => 'lemarinplus1.herokuapp.com' }
+#   config.action_mailer.delivery_method = :smtp
+#   config.action_mailer.smtp_settings = {
+#   address: 'smtp.mandrillapp.com',
+#   port: 587,
+#   domain: 'lemarinplus1.herokuapp.com',
+#   user_name: ENV['MANDRILL_SMTP_Username'],
+#   password: ENV['MANDRILL_SMTP_Password'],
+#   :authentication       => 'plain',
+#   :enable_starttls_auto => true
+# }
+#   config.action_mailer.perform_deliveries = true
+#   config.action_mailer.raise_delivery_errors = true
+#   config.action_mailer.default :charset => 'utf-8'
   # Mon code
 end

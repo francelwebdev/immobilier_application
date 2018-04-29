@@ -8,6 +8,7 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     if @contact.valid?
+      UserMailer.contact_email(@contact).deliver_now
       redirect_to home_page_path, notice: "Message envoyé avec succès, nous vous contacterons dans les plus brefs délai."
     else
       render :new

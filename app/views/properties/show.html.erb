@@ -145,8 +145,9 @@
                             <p><span class="badge badge-danger p-2">Annonce hors ligne</span></p>
 
                             <!-- Mise en ligne de l'annonce par un admin -->
-                            <%= form_with url: publish_property_path(@property.id), local: true do |f| %>
-                            <%= f.button :submit, name: "Mettre en ligne", value: "Publish", class: "btn btn-success" %>
+
+                            <%= simple_form_for :publish, url: publish_property_path(@property.id) do |f| %>
+                            <%= f.button :submit, value: "Mettre en ligne", class: "btn btn-success" %>
                             <% end %>
                         </div>
                     </div>
@@ -157,28 +158,26 @@
                 <div class="col-lg-12 mb-4">
                     <div class="card border-0 bg-white">
                         <div class="card-body p-4">
-                            <h5 class="mb-4 font-weight-bold text-dark">A propos du properiétaire</h5>
+                            <h5 class="mb-4 font-weight-bold">A propos du properiétaire</h5>
                             <div class="row">
                                 <% if @property.user.profile_photo.attached? %>
-                                    <div class="col-lg-12 text-center mb-3">
+                                    <div class="col-lg-12 mb-3">
                                         <%= image_tag @property.user.profile_photo, class: "rounded-circle", size: "150x150" if @property.user.profile_photo.attached? %>
                                     </div>
                                 <% else %>
-                                    <div class="col-lg-12 text-center mb-3">
+                                    <div class="col-lg-12 mb-3">
                                         <%= image_tag "148705-essential-collection/svg/user-3.svg", class: "rounded-circle", size: "150x150" %>
                                     </div>
                                 <% end %>
                                 <div class="col-lg-12">
-                                    <p class="font-weight-bold text-dark mb-3">
+                                    <p class="font-weight-bold mb-3">
                                         <%= @property.user.first_name.capitalize %>
                                         <%= @property.user.last_name.upcase %>
                                     </p>
                                     <address>
-                                        <ul class=" list-unstyled">
-                                            <li><i class="fas fa-phone" aria-hidden="true"></i>&nbsp; <%= @property.user.phone_number %></li>
-                                            <li><i class="fas fa-envelope-0"></i>&nbsp: </li>
-                                            <li></li>
-                                            <li></li>
+                                        <ul class="list-unstyled">
+                                            <li class="my-2"><i class="fas fa-phone" aria-hidden="true"></i>&nbsp; <%= @property.user.phone_number %></li>
+                                            <li class="my-2"><i class="fas fa-envelope-0"></i>&nbsp: <%= @property.user.email %></li>
                                         </ul>
                                     </address>
                                     <p class="m-0">
