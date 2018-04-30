@@ -1,11 +1,17 @@
 <% content_for :page_title, @property.title.capitalize %>
 
+<% content_for :owl_carousel_cdn_link do %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<% end %>
+
 <% if @property.photos.attached? %>
-    <section class="owl-carousel property-photos-carousel">
-        <% @property.photos.each do |photo| %>
-            <div class="item"><%= image_tag photo, size: "100x100" %></div>
-        <% end %>
-    </section>
+<div class="owl-carousel owl-theme" style="height: 75vh !important">
+    <% @property.photos.each do |photo| %>
+        <%= photo.inspect  %>
+        <div class="item"><%= image_tag photo, size: "400" %></div>
+    <% end %>
+</div>
 <% else %>
 <section class="container-fluid d-flex align-items-center text-center">
     <p>PAS DE PHOTOS</p>
@@ -211,23 +217,29 @@
     </div>
 </section>
 
-<% content_for :owl_carousel do %>
+<% content_for :owl_carousel_cdn_script do %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<% end %>
+
+<% content_for :owl_carousel_script do %>
 <script>
-    $('.owl-carousel').owlCarousel({
-        loop:true,
-        margin:10,
-        nav:true,
-        responsive:{
-            0:{
-                items:1
-            },
-            600:{
-                items:3
-            },
-            1000:{
-                items:5
-            }
+$('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    loop: true,
+    center: true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:2
+        },
+        1000:{
+            items:2
         }
-    })
+    }
+})
 </script>
 <% end %>

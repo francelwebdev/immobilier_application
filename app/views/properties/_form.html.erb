@@ -65,8 +65,18 @@
         </div>
         <div class="col-12 form-group">
             <div class="custom-file">
-                <%= image_tag @property.photos, size: "400x300" if @property.photos.attached? %>
-                <%= f.input :photos, input_html: { name: "property[photos][]" }, as: :file, multiple: true, class: "form-control form-control-file custom-file-input" %>
+                <%#= image_tag @property.photos[0], size: "400x300" if @property.photos.attached? %>
+                <%= f.input :photos, as: :file, multiple: true, class: "form-control form-control-file custom-file-input" %>
+            </div>
+        </div>
+        <div class="col-12 form-group">
+            <div class="custom-file">
+                <%= f.input :photos, as: :file, multiple: true, class: "form-control form-control-file custom-file-input" %>
+            </div>
+        </div>
+        <div class="col-12 form-group">
+            <div class="custom-file">
+                <%= f.input :photos, as: :file, multiple: true, class: "form-control form-control-file custom-file-input" %>
             </div>
         </div>
     </div>

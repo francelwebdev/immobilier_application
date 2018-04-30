@@ -9,10 +9,5 @@ class UserMailer < ApplicationMailer
     @greeting = "Hi"
 
     mail to: "to@example.org"
-  end
-
-  def contact_email(contact)
-    @contact = contact
-    mail to: "francel.webdev@gmail.com", subject: "Nouveau message d'un utilisateur ou visiteur dépuis SICO Immobilier", from: @contact.email_address
-  end
+  end  
 end

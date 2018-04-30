@@ -5,8 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-
     <meta name="author" content="Francel AMAMOO">
     <meta name="description" content="Petite annonce immobilier entre particulier">
 
@@ -18,15 +16,14 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <%= yield :owl_carousel_cdn_link %>
 </head>
 
 <body class="<%= controller.controller_name %>/<%= controller.action_name %>">
     <%= render "shareds/navbar" %>
-    <%= render 'shareds/flash' %>
 
     <main>
+        <%= render 'shareds/flash' %>
         <%= yield %>
     </main>
 
@@ -35,12 +32,12 @@
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
     <% if current_page?(home_page_path) %>
     <%= yield :value_proposition_text_typed %>
     <% end %>
 
-    <%= yield(:owl_carousel) %>
+    <%= yield :owl_carousel_cdn_script %>
+
+    <%= yield(:owl_carousel_script) %>
 </body>
 </html>
