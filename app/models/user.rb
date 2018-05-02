@@ -18,6 +18,6 @@ class User < ApplicationRecord
     private
 
     def suprimer_les_photos
-        self.profile_photo.purge_later
+        self.profile_photo.purge
     end
 end

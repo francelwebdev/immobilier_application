@@ -21,4 +21,3 @@
 //= require bootstrap
 
 //= require typed
-//= require owl.carousel

@@ -14,8 +14,8 @@ body {
     }
 }
 
-.jumbotron-welcome {
-    height: 100vh !important;
+.jumbotron-accueil {
+    height: 75vh !important;
     background-image: linear-gradient(-225deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), asset-url("246297-P3J4XD-884.jpg") !important;
     background-size: cover;
     background-position: center;
@@ -131,6 +131,16 @@ body {
         }
 
         .my_property-page-banner {
+            height: 50vh !important;
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), asset-url("philipp-berndt-173197.jpg") !important;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-origin: content-box;
+        }
+        
+        .property-show-page-banner {
             height: 50vh !important;
             background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), asset-url("philipp-berndt-173197.jpg") !important;
             background-size: cover;
