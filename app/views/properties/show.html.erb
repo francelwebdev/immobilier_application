@@ -1,21 +1,28 @@
 <% content_for :page_title, @property.title.capitalize %>
 
-<% content_for :owl_carousel_cdn_link do %>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<% content_for :slick_cdn_link do %>
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/>
 <% end %>
 
 <% if @property.photos.attached? %>
-<div class="owl-carousel owl-theme" style="height: 75vh !important">
-    <% @property.photos.each do |photo| %>
-        <%= photo.inspect  %>
-        <div class="item"><%= image_tag photo, size: "400" %></div>
-    <% end %>
-</div>
+
+<section class="container-fluid" style="height: 75vh !important">
+    <div class="center">
+        <div class="card mx-1">
+            <%= image_tag photo, size: "400" %>
+        </div>
+    </div>
+</section>
+
 <% else %>
+
 <section class="container-fluid d-flex align-items-center text-center">
     <p>PAS DE PHOTOS</p>
 </section>
+
 <% end %>
 
 <section class="container py-5">
@@ -217,29 +224,40 @@
     </div>
 </section>
 
-<% content_for :owl_carousel_cdn_script do %>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<% content_for :slick_cdn_script do %>
+    <script src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
 <% end %>
 
-<% content_for :owl_carousel_script do %>
+<% content_for :slick_script do %>
 <script>
-$('.owl-carousel').owlCarousel({
-    loop:true,
-    margin:10,
-    nav:true,
-    loop: true,
-    center: true,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:2
-        },
-        1000:{
-            items:2
-        }
-    }
-})
-</script>
+            $(document).ready(function(){
+                $('.center').slick({
+                dots: true,
+                autoplay: true,
+                centerMode: true,
+                centerPadding: '60px',
+                slidesToShow: 3,
+                responsive: [
+                {
+                breakpoint: 768,
+                settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '40px',
+                slidesToShow: 3
+                }
+                },
+                {
+                breakpoint: 480,
+                settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '40px',
+                slidesToShow: 1
+                }
+                }
+                ]
+                });
+            });
+        </script>
 <% end %>

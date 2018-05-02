@@ -16,7 +16,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-    <%= yield :owl_carousel_cdn_link %>
+    <%= yield :slick_cdn_link %>
 </head>
 
 <body class="<%= controller.controller_name %>/<%= controller.action_name %>">
@@ -36,8 +36,8 @@
     <%= yield :value_proposition_text_typed %>
     <% end %>
 
-    <%= yield :owl_carousel_cdn_script %>
+    <%= yield :slick_cdn_script %>
 
-    <%= yield(:owl_carousel_script) %>
+    <%= yield(:slick_script) %>
 </body>
 </html>
