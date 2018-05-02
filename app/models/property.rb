@@ -13,7 +13,7 @@ class Property < ApplicationRecord
     scope :published, -> { where(published: true) }
 
     has_many_attached :photos
-    
+
     after_destroy :suprimer_les_photos
 
     private

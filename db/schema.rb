@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_02_153347) do
+ActiveRecord::Schema.define(version: 2018_05_02_194227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,9 @@ ActiveRecord::Schema.define(version: 2018_05_02_153347) do
 
   create_table "ad_types", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_ad_types_on_name", unique: true
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -69,6 +72,8 @@ ActiveRecord::Schema.define(version: 2018_05_02_153347) do
     t.text "buyer_message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "newsletters", force: :cascade do |t|
@@ -102,16 +107,11 @@ ActiveRecord::Schema.define(version: 2018_05_02_153347) do
     t.index ["user_id"], name: "index_properties_on_user_id"
   end
 
-  create_table "property_photos", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "property_id"
-    t.string "photo"
-    t.index ["property_id"], name: "index_property_photos_on_property_id"
-  end
-
   create_table "property_types", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_property_types_on_name", unique: true
   end
 
   create_table "user_groups", force: :cascade do |t|
@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(version: 2018_05_02_153347) do
     t.index ["user_group_id"], name: "index_users_on_user_group_id"
   end
 
+  add_foreign_key "messages", "users"
   add_foreign_key "properties", "ad_types"
   add_foreign_key "properties", "property_types"
   add_foreign_key "users", "user_groups"

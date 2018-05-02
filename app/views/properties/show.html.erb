@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="col-lg-4 text-center">
                                     <p class="font-weight-bold text-dark h6">Loyer</p>
-                                    <p><%= @property.price %>/<small>mois</small></p>
+                                    <p><%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>/<small>mois</small></sup></p>
                                 </div>
                                 <div class="col-lg-4 text-center">
                                     <p class="font-weight-bold text-dark h6">Dépôt de garantie</p>
@@ -176,7 +176,6 @@
 
         <div class="col-lg-4">
             <div class="row">
-
                 <% if user_signed_in? %>
                 <% if current_user.admin? && @property.published? %>
                 <div class="col-lg-12 mb-4">
@@ -208,9 +207,9 @@
                 <div class="col-lg-12 mb-4">
                     <div class="card border-0 bg-white">
                         <div class="card-body p-4">
-                            <% if @property.user.advertiser_type == "Propriétaire" %>
+                            <% if @property.user.user_group.name == "Propriétaire" %>
                             <h5 class="mb-4 font-weight-bold">A propos du properiétaire</h5>
-                            <% else %>
+                            <% elsif @property.user.user_group.name == "Agence" %>
                             <h5 class="mb-4 font-weight-bold">A propos de l'agence</h5>
                             <% end %>
                             <div class="row">
@@ -246,7 +245,7 @@
                     <div class="card border-0 bg-white">
                         <div class="card-body p-4">
                             <h5 class="card-title mb-4 font-weight-bold text-dark">Envoyer un message</h5>
-                            <%= simple_form_for @seller_message do |contact| %>
+                            <%= simple_form_for @send_message_to_seller do |contact| %>
                             <%= contact.input :buyer_full_name, label: false, placeholder: "Nom et prénom"  %>
                             <%= contact.input :buyer_email, as: :email, label: false, placeholder: "Email"  %>
                             <%= contact.input :buyer_phone_number, as: :tel, label: false, placeholder: "Numéros de téléphone"  %>

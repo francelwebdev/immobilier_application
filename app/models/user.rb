@@ -10,11 +10,11 @@ class User < ApplicationRecord
     after_destroy :suprimer_les_photos
 
     belongs_to :user_group
-    
+
     has_many :properties, dependent: :destroy
 
     has_many :messages
-        
+
     has_one_attached :profile_photo
 
     private

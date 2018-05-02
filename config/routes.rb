@@ -1,5 +1,5 @@
-Rails.application.routes.draw do    
-  
+Rails.application.routes.draw do
+
     root to: "pages#home", as: "home_page"
 
     get "about_us", to: "pages#about_us", as: "about_us"
@@ -16,9 +16,9 @@ Rails.application.routes.draw do
 
     devise_for :users
 
-    resources :properties do
-        post "properties/send_message_to_seller"
-    end
+    resources :properties
+
+    resources :messages
 
     resources :contacts, only: [:new, :create]
 
@@ -27,6 +27,6 @@ Rails.application.routes.draw do
     scope "/dashboard" do
         resources :my_properties
     end
-    
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

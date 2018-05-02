@@ -1,6 +1,6 @@
 <% content_for :add_property do %>
 <li class="nav-item mx-2">
-    <%= link_to "Publier une annonce", new_property_path, class: "btn btn-primary"  %>
+    <%= link_to "Ajouter un bien", new_property_path, class: "btn btn-primary"  %>
 </li>
 <% end %>
 
@@ -56,6 +56,10 @@ box-shadow: 0 10px 20px rgba(0,0,0,.1);
 <li class="nav-item mx-2">
     <%= link_to "Mes biens", my_properties_path, class: "nav-link"  %>
 </li>
+<% elsif !user_signed_in? or (user_signed_in? and current_user.user_group.name == "Agence") %>
+<li class="nav-item mx-2 sr-only">
+    <%= link_to "Offre agence", agency_benefits_path, class: "nav-link"  %>
+</li>
 <% end %>
 </ul>
 
@@ -73,7 +77,7 @@ box-shadow: 0 10px 20px rgba(0,0,0,.1);
                 <%= image_tag "148705-essential-collection/svg/user-3.svg", size: "40x40", class: "dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" %>
                 <%= yield :dropdown_menu %>
             </li>
-        <% end %> 
+        <% end %>
     <% else %>
         <li class="nav-item mx-2">
             <%= link_to "Connexion", new_user_session_path, class: "nav-link" %>

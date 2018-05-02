@@ -63,8 +63,8 @@ class PropertiesController < ApplicationController
     end
 
     def show
-        @seller = @property.user.id
-        @send_message_to_seller = @seller.build_message
+        @seller = @property.user
+        @send_message_to_seller = @seller.messages.build
     end
 
     def new
