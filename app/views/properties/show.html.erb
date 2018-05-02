@@ -6,21 +6,19 @@
 <% end %>
 
 <% if @property.photos.attached? %>
-
-<section class="container-fluid" style="height: 75vh !important">
+<% @property.photos.each do |photo| %>
+<section style="height: 75vh !important">
     <div class="center">
-        <div class="card mx-1">
-            <%= image_tag photo, size: "400" %>
+        <div class="card">
+            <%= image_tag photo, size: "300x300" %>
         </div>
     </div>
 </section>
-
+<% end %>
 <% else %>
-
 <section class="container-fluid d-flex align-items-center text-center">
     <p>PAS DE PHOTOS</p>
 </section>
-
 <% end %>
 
 <section class="container py-5">
@@ -172,13 +170,13 @@
                             <h5 class="mb-4 font-weight-bold">A propos du properiétaire</h5>
                             <div class="row">
                                 <% if @property.user.profile_photo.attached? %>
-                                    <div class="col-lg-12 mb-3">
-                                        <%= image_tag @property.user.profile_photo, class: "rounded-circle", size: "150x150" if @property.user.profile_photo.attached? %>
-                                    </div>
+                                <div class="col-lg-12 mb-3">
+                                    <%= image_tag @property.user.profile_photo, class: "rounded-circle", size: "150x150" if @property.user.profile_photo.attached? %>
+                                </div>
                                 <% else %>
-                                    <div class="col-lg-12 mb-3">
-                                        <%= image_tag "148705-essential-collection/svg/user-3.svg", class: "rounded-circle", size: "150x150" %>
-                                    </div>
+                                <div class="col-lg-12 mb-3">
+                                    <%= image_tag "148705-essential-collection/svg/user-3.svg", class: "rounded-circle", size: "150x150" %>
+                                </div>
                                 <% end %>
                                 <div class="col-lg-12">
                                     <p class="font-weight-bold mb-3">
@@ -228,34 +226,30 @@
 
 <% content_for :slick_script do %>
 <script>
-            $(document).ready(function(){
-                $('.center').slick({
-                dots: true,
-                autoplay: true,
-                centerMode: true,
-                centerPadding: '60px',
-                slidesToShow: 3,
-                responsive: [
-                {
-                breakpoint: 768,
-                settings: {
-                arrows: false,
-                centerMode: true,
-                centerPadding: '40px',
-                slidesToShow: 3
-                }
-                },
-                {
-                breakpoint: 480,
-                settings: {
-                arrows: false,
-                centerMode: true,
-                centerPadding: '40px',
-                slidesToShow: 1
-                }
-                }
-                ]
-                });
-            });
-        </script>
+    $('.center').slick({
+      centerMode: true,
+      centerPadding: '60px',
+      slidesToShow: 3,
+      responsive: [
+      {
+          breakpoint: 768,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 3
+        }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+    }
+}
+]
+});
+</script>
 <% end %>
