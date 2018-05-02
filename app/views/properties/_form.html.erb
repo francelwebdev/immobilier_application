@@ -6,7 +6,7 @@
             <p class="h4 font-weight-bold text-dark mb-4">Description du bien</p>
         </div>
         <div class="col-lg-6">
-            <%= f.association :ad_type, autofocus: true, label: "Type d'annonce", include_blank: false %>
+            <%= f.association :ad_type, autofocus: true, label: "Je veux", include_blank: false %>
         </div>
         <div class="col-lg-6">
             <%= f.association :property_type, label: "Type de bien", include_blank: false %>
@@ -19,10 +19,10 @@
         </div>
         <div class="col-lg-6">
             <%= f.input :room, collection: Property::ROOM, label: "Nombres de pièces", include_blank: false %>
-        </div>    
+        </div>
         <div class="col-lg-6">
             <%= f.input :area, required: true, label: "Surface du bien", placeholder: "25" %>
-        </div>        
+        </div>
         <div class="col-lg-4">
             <%= f.input :price, required: true, label: "Loyer mensuel", placeholder: "45000" %>
         </div>
@@ -66,23 +66,13 @@
         <div class="col-12 form-group">
             <div class="custom-file">
                 <%#= image_tag @property.photos[0], size: "400x300" if @property.photos.attached? %>
-                <%= f.input :photos, as: :file, multiple: true, class: "form-control form-control-file custom-file-input" %>
-            </div>
-        </div>
-        <div class="col-12 form-group">
-            <div class="custom-file">
-                <%= f.input :photos, as: :file, multiple: true, class: "form-control form-control-file custom-file-input" %>
-            </div>
-        </div>
-        <div class="col-12 form-group">
-            <div class="custom-file">
-                <%= f.input :photos, as: :file, multiple: true, class: "form-control form-control-file custom-file-input" %>
+                <%= f.input :photos, as: :file, wrapper: :vertical_file_input, input_html: { name: "property[photos][]"}, multiple: true, direct_upload: true, class: "form-control form-control-file custom-file-input" %>
             </div>
         </div>
     </div>
 </div>
 
-<!-- 
+<!--
 <% if user_signed_in? and current_user.first_name.blank? and current_user.last_name.blank? and current_user.phone_number.blank? and current_user.address.blank?%>
 <%= f.simple_fields_for :user do |user_contact_form| %>
 <div class="card bg-white border-0 mb-4">

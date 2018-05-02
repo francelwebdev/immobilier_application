@@ -13,4 +13,10 @@ class ContactsMailer < ApplicationMailer
     @contact_infos = contact_infos
     mail to: "francel.webdev@gmail.com", subject: "Nouveau message dépuis SICO Immobilier", from: @contact_infos.email_address
   end
+
+  def contact_seller(contact_infos)
+    @contact_infos = contact_infos
+
+    mail to: "", subject: "Un nouveau message pour votre annonce : "
+  end
 end

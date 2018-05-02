@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-lg-10">
                     <h2><%= @property.title.capitalize %></h2>
-                    <p><i class="fas fa-map-marker-alt"></i>&nbsp; 
+                    <p><i class="fas fa-map-marker-alt"></i>&nbsp;
                         <%= @property.address %>, <%= @property.city %></p>
                 </div>
                 <div class="col-lg-2">
@@ -63,7 +63,7 @@
                         <p>PAS DE PHOTOS</p>
                         </div>
                         <% end %>
-                    </div>                    
+                    </div>
                 </div>
 
                 <div class="col-12 mb-4">
@@ -202,13 +202,17 @@
                         </div>
                     </div>
                 </div>
-                <% end %>                    
+                <% end %>
                 <% end %>
 
                 <div class="col-lg-12 mb-4">
                     <div class="card border-0 bg-white">
                         <div class="card-body p-4">
+                            <% if @property.user.advertiser_type == "Propriétaire" %>
                             <h5 class="mb-4 font-weight-bold">A propos du properiétaire</h5>
+                            <% else %>
+                            <h5 class="mb-4 font-weight-bold">A propos de l'agence</h5>
+                            <% end %>
                             <div class="row">
                                 <% if @property.user.profile_photo.attached? %>
                                 <div class="col-lg-12 mb-3">
@@ -241,12 +245,12 @@
                 <div class="col-lg-12 mb-4">
                     <div class="card border-0 bg-white">
                         <div class="card-body p-4">
-                            <h5 class="card-title mb-4 font-weight-bold text-dark">Lui écrire</h5>
-                            <%= simple_form_for :contact do |contact| %>
-                            <%= contact.input :client_name, label: false, placeholder: "Nom et prénom"  %>
-                            <%= contact.input :client_email, as: :email, label: false, placeholder: "Email"  %>
-                            <%= contact.input :client_phone_number, as: :tel, label: false, placeholder: "Numéros de téléphone"  %>
-                            <%= contact.input :message, label: false, placeholder: "Message", as: :text, input_html: {rows: 4}  %>
+                            <h5 class="card-title mb-4 font-weight-bold text-dark">Envoyer un message</h5>
+                            <%= simple_form_for @seller_message do |contact| %>
+                            <%= contact.input :buyer_full_name, label: false, placeholder: "Nom et prénom"  %>
+                            <%= contact.input :buyer_email, as: :email, label: false, placeholder: "Email"  %>
+                            <%= contact.input :buyer_phone_number, as: :tel, label: false, placeholder: "Numéros de téléphone"  %>
+                            <%= contact.input :buyer_message, label: false, placeholder: "Message", as: :text, input_html: {rows: 4}  %>
                             <%= contact.submit "Envoyer", class: "btn btn-primary" %>
                             <% end %>
                         </div>

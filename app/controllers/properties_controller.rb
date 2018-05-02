@@ -2,6 +2,11 @@ class PropertiesController < ApplicationController
     before_action :set_property, only: [:show, :edit, :update, :destroy]
     skip_before_action :authenticate_user!, only: [:index, :show]
 
+    def send_message_to_seller
+        @seller = @property.user.id
+        @send_message_to_seller = @seller.messages.build(seller_message_params)
+    end
+
     def publish
         @property_to_publish = Property.find(params[:id])
         @property_to_publish.update published: true
@@ -11,7 +16,7 @@ class PropertiesController < ApplicationController
     def index
         if user_signed_in?
             if current_user.admin?
-                @properties = Property.all.order("created_at DESC").page(params[:page]).per(9)
+                @properties = Property.all.with_attached_photos.order("created_at DESC").page(params[:page]).per(9)
                 @properties_numbers = @properties.count
             else
                 if params[:property_type].present? and params[:ad_type].present? and params[:city].present?
@@ -24,7 +29,7 @@ class PropertiesController < ApplicationController
                 elsif params[:ad_type].present? and params[:property_type].blank? and params[:city].blank?
                     @ad_type_id = AdType.find_by(name: params[:ad_type]).id
                     @properties = Property.where("ad_type_id = ?", @ad_type_id).all.order("created_at DESC").published.page(params[:page]).per(6)
-                    @properties_numbers = @properties.count                    
+                    @properties_numbers = @properties.count
 
                 elsif params[:city].present? and params[:property_type].blank? and params[:ad_type].blank?
                     @properties = Property.where("city LIKE ? AND address LIKE ?", "%#{params[:city]}%", "%#{params[:city]}%").all.order("created_at DESC").published.page(params[:page]).per(6)
@@ -45,7 +50,7 @@ class PropertiesController < ApplicationController
             elsif params[:ad_type].present? and params[:property_type].blank? and params[:city].blank?
                 @ad_type_id = AdType.find_by(name: params[:ad_type]).id
                 @properties = Property.where("ad_type_id = ?", @ad_type_id).all.order("created_at DESC").published.page(params[:page]).per(6)
-                @properties_numbers = @properties.count                    
+                @properties_numbers = @properties.count
 
             elsif params[:city].present? and params[:property_type].blank? and params[:ad_type].blank?
                 @properties = Property.where("city LIKE ? AND address LIKE ?", "%#{params[:city]}%", "%#{params[:city]}%").all.order("created_at DESC").published.page(params[:page]).per(6)
@@ -58,7 +63,8 @@ class PropertiesController < ApplicationController
     end
 
     def show
-
+        @seller = @property.user.id
+        @send_message_to_seller = @seller.build_message
     end
 
     def new
@@ -66,7 +72,7 @@ class PropertiesController < ApplicationController
     end
 
     def edit
-        
+
     end
 
     def create
@@ -100,5 +106,9 @@ class PropertiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
         params.require(:property).permit(:property_type_id, :ad_type_id, :title, :price, :room, :area, :description, :address, :city, :available, :avance, { photos: [] })
+    end
+
+    def seller_message_params
+        params.require(:message).permit(:buyer_full_name, :buyer_email, :buyer_phone_number, :buyer_message)
     end
 end

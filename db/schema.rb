@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_24_014338) do
+ActiveRecord::Schema.define(version: 2018_05_02_153347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,13 +40,6 @@ ActiveRecord::Schema.define(version: 2018_04_24_014338) do
     t.string "name"
   end
 
-  create_table "advertiser_types", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_advertiser_types_on_name", unique: true
-  end
-
   create_table "contacts", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -67,6 +60,15 @@ ActiveRecord::Schema.define(version: 2018_04_24_014338) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "buyer_full_name"
+    t.string "buyer_email"
+    t.bigint "buyer_phone_number"
+    t.text "buyer_message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "newsletters", force: :cascade do |t|
@@ -112,6 +114,13 @@ ActiveRecord::Schema.define(version: 2018_04_24_014338) do
     t.string "name"
   end
 
+  create_table "user_groups", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_user_groups_on_name", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -134,13 +143,13 @@ ActiveRecord::Schema.define(version: 2018_04_24_014338) do
     t.string "last_name"
     t.bigint "phone_number"
     t.boolean "admin", default: false
-    t.bigint "advertiser_type_id"
-    t.index ["advertiser_type_id"], name: "index_users_on_advertiser_type_id"
+    t.bigint "user_group_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["user_group_id"], name: "index_users_on_user_group_id"
   end
 
   add_foreign_key "properties", "ad_types"
   add_foreign_key "properties", "property_types"
-  add_foreign_key "users", "advertiser_types"
+  add_foreign_key "users", "user_groups"
 end
