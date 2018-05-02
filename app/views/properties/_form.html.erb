@@ -69,6 +69,12 @@
                 <%= f.input :photos, as: :file, wrapper: :vertical_file_input, input_html: { name: "property[photos][]"}, multiple: true, direct_upload: true, class: "form-control form-control-file custom-file-input" %>
             </div>
         </div>
+        <div class="col-12 form-group">
+            <div class="custom-file">
+                <%#= image_tag @property.photos[0], size: "400x300" if @property.photos.attached? %>
+                <%= f.input :photos, as: :file, wrapper: :vertical_file_input, input_html: { name: "property[photos][]"}, multiple: true, direct_upload: true, class: "form-control form-control-file custom-file-input" %>
+            </div>
+        </div>
     </div>
 </div>
 

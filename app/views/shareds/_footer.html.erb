@@ -22,7 +22,7 @@
                         <%= link_to 'A propos de nous', about_us_path, class: "text-dark" %>
                     </li>
                     <li class="my-2">
-                        <%= link_to 'Contactez nous', contactez_nous_path, class: "text-dark" %>
+                        <%= link_to 'Contactez nous', contact_us_path, class: "text-dark" %>
                     </li>
                     <li class="my-2">
                         <%= link_to "Nos services", home_page_path, class: "text-dark" %>
@@ -39,7 +39,7 @@
                         <%= link_to "Blog", home_page_path, class: "text-dark" %>
                     </li>
                     <li class="my-2">
-                        <%= link_to "CGU", home_page_path, class: "text-dark" %>
+                        <%= link_to "Condition d'utilisation", home_page_path, class: "text-dark" %>
                     </li>
                     <li class="my-2">
                         <%= link_to "Politique de confidentialité", home_page_path, class: "text-dark" %>
@@ -56,8 +56,8 @@
                         <p class="text-dark"><small>Abonnez-vous à la newletter pour être averti des nouvautés.</small></p>
                         <%= simple_form_for @newsletter do |f| %>
                         <div class="d-flex">
-                            <%= f.input :email_address, as: :email, label: false, wrapper: false, placeholder: "Votre email", class: "form-control", autocomplete: true, style: "border-radius: 0px;"  %>
-                            <small><%= @newsletter.errors[:email_address].first if @newsletter.errors.any? %></small>
+                            <%= f.input :email, as: :email, label: false, wrapper: false, placeholder: "Votre email", class: "form-control", autocomplete: true, style: "border-radius: 0px;"  %>
+                            <small><%= @newsletter.errors[:email].first if @newsletter.errors.any? %></small>
                             <%= f.submit "S'abonné", class: "btn btn-primary", style: "border-radius: 0px;" %>
                         </div>
                         <% end %>

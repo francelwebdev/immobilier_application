@@ -2,21 +2,21 @@ Rails.application.routes.draw do
 
     root to: "pages#home", as: "home_page"
 
-    get "about_us", to: "pages#about_us", as: "about_us"
+    get "a_propos_de_nous", to: "pages#about_us", as: "about_us"
+
+    get "contactez_nous", to: "pages#contact_us", as: "contact_us"
+
+    get "foire_aux_questions", to: "pages#faq", as: "faq"
+
+    get "nos_tarifs", to: "pages#pricing", as: "pricing"
 
     get "agency/benefits", to: "pages#benefits_for_agency", as: "agency_benefits"
-
-    get "pricing", to: "pages#pricing", as: "pricing"
-
-    get "faq", to: "pages#faq", as: "faq"
-
-    get "contactez_nous", to: "pages#contact_us", as: "contactez_nous"
 
     get "terms_and_conditions", to: "pages#terms_and_conditions", as: "terms_and_conditions"
 
     post 'properties/:id/publish', to: 'properties#publish', as: "publish_property"
 
-    post 'owner/:id', to: 'messages#send_message', as: "send_message"
+    post 'send_message_to_owner', to: 'messages#send_message_to_owner', as: "send_message_to_owner"
 
     devise_for :users
 
