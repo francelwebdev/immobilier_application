@@ -50,19 +50,21 @@
             <div class="row">
                 <div class="col-lg-12 mb-4">
                     <div class="card border-0 bg-white">
-                        <% if @property.photos.attached? %>
-                        <% @property.photos.each do |photo| %>
                         <div class="card-body p-4">
-                            <div class="center">
-                                <div><%= image_tag photo, class: "w-100 h-100" %></div>
+                            <% if @property.photos.attached? %>
+                            <% @property.photos.each do |photo| %>
+                            <div class="carousel-item active">
+                                <%= image_tag photo, class: "w-100 h-100" %>
                             </div>
+
+
+                            <% end %>
+                            <% else %>
+                            <div class="card-body p-4">
+                            <p>PAS DE PHOTOS</p>
+                            </div>
+                            <% end %>
                         </div>
-                        <% end %>
-                        <% else %>
-                        <div class="card-body p-4">
-                        <p>PAS DE PHOTOS</p>
-                        </div>
-                        <% end %>
                     </div>
                 </div>
 
@@ -194,7 +196,6 @@
                             <p><span class="badge badge-danger p-2">Annonce hors ligne</span></p>
 
                             <!-- Mise en ligne de l'annonce par un admin -->
-
                             <%= simple_form_for :publish, url: publish_property_path(@property.id) do |f| %>
                             <%= f.button :submit, value: "Mettre en ligne", class: "btn btn-success" %>
                             <% end %>
@@ -245,12 +246,12 @@
                     <div class="card border-0 bg-white">
                         <div class="card-body p-4">
                             <h5 class="card-title mb-4 font-weight-bold text-dark">Envoyer un message</h5>
-                            <%= simple_form_for @send_message_to_seller do |contact| %>
-                            <%= contact.input :buyer_full_name, label: false, placeholder: "Nom et prénom"  %>
-                            <%= contact.input :buyer_email, as: :email, label: false, placeholder: "Email"  %>
-                            <%= contact.input :buyer_phone_number, as: :tel, label: false, placeholder: "Numéros de téléphone"  %>
-                            <%= contact.input :buyer_message, label: false, placeholder: "Message", as: :text, input_html: {rows: 4}  %>
-                            <%= contact.submit "Envoyer", class: "btn btn-primary" %>
+                            <%= simple_form_for @message, url: send_message_path(@property.user.id) do |msg| %>
+                            <%= msg.input :buyer_full_name, label: false, placeholder: "Nom et prénom"  %>
+                            <%= msg.input :buyer_email, as: :email, label: false, placeholder: "Email"  %>
+                            <%= msg.input :buyer_phone_number, as: :tel, label: false, placeholder: "Numéros de téléphone"  %>
+                            <%= msg.input :buyer_message, label: false, placeholder: "Message", as: :text, input_html: {rows: 4}  %>
+                            <%= msg.submit "Envoyer", class: "btn btn-primary" %>
                             <% end %>
                         </div>
                     </div>

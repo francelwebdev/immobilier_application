@@ -5,6 +5,10 @@ class PagesController < ApplicationController
 
     end
 
+    def contact_us
+        @contact = Contact.new
+    end
+
     def faq
 
     end
@@ -14,6 +18,10 @@ class PagesController < ApplicationController
     end
 
     def benefits_for_agency
+
+    end
+
+    def benefits_for_owner
 
     end
 

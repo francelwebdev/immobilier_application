@@ -1,4 +1,4 @@
-<% content_for :page_title, "Nous contacter" %>
+<% content_for :page_title, "Contactez nous" %>
 
 <section class="container-fluid py-5 contact-page-banner d-flex flex-column justify-content-center">
     <div class="container">
@@ -55,7 +55,7 @@
                             <%= f.input :last_name, required: true, label: "Nom" %>
                         </div>
                         <div class="col-lg-6">
-                            <%= f.input :email_address, as: :email, required: true, label: "Adresse email" %>
+                            <%= f.input :email, as: :email, required: true, label: "Adresse email" %>
                         </div>
                         <div class="col-lg-6">
                             <%= f.input :phone_number, as: :tel, required: true, label: "Numeros de téléphone" %>

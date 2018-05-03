@@ -10,17 +10,21 @@ Rails.application.routes.draw do
 
     get "faq", to: "pages#faq", as: "faq"
 
+    get "contactez_nous", to: "pages#contact_us", as: "contactez_nous"
+
     get "terms_and_conditions", to: "pages#terms_and_conditions", as: "terms_and_conditions"
 
     post 'properties/:id/publish', to: 'properties#publish', as: "publish_property"
+
+    post 'owner/:id', to: 'messages#send_message', as: "send_message"
 
     devise_for :users
 
     resources :properties
 
-    resources :messages
+    resources :messages, only: [:create]
 
-    resources :contacts, only: [:new, :create]
+    resources :contacts, only: [:create]
 
     resources :newsletters, only: [:create]
 

@@ -73,7 +73,6 @@ group :development do
   gem 'pry-byebug', '~> 3.6'
 end
 
-
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'popper_js', '~> 1.12', '>= 1.12.9'
 gem 'bootstrap', '~> 4.1'
@@ -81,13 +80,11 @@ gem 'font-awesome-sass', '~> 5.0', '>= 5.0.9'
 gem 'bootstrap-datepicker-rails', '~> 1.8', '>= 1.8.0.1'
 gem 'autoprefixer-rails', '~> 8.3'
 
-
 gem 'simple_form', '~> 4.0'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'devise-i18n', '~> 1.6'
 gem 'jquery-slick-rails'
 gem 'friendly_id', '~> 5.2', '>= 5.2.3'
-
 
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
