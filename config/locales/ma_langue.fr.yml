@@ -1,7 +1,9 @@
 fr:
+  shareds:
+
   simple_form:
-    "yes": 'Yes'
-    "no": 'No'
+    "yes": 'Oui'
+    "no": 'Non'
     required:
       text: 'required'
       mark: '*'
@@ -9,7 +11,7 @@ fr:
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'
     error_notification:
-      default_message: "Please review the problems below:"
+      default_message: "SVP, Please review the problems below:"
     # Examples
     # labels:
     #   defaults:
@@ -29,19 +31,39 @@ fr:
     # prompts:
     #   defaults:
     #     age: 'Select your age'
-  
 
-  properties:
-    new:
-      hint: "ok"
-
-
-
-  # MOn code
   activerecord:
-    model: "Property"
-
+    models:
+      property: "Bien"
     attributes:
       property:
         title: "Titre"
         price: "Loyer"
+        area: "Surface"
+        description: "Description"
+        address: "Adresse"
+        city: "Commune"
+        room: "Pièce"
+        available: "Disponible ?"
+        avance: "Avance"
+        property_type: "Type de bien"
+        ad_type: "Type d'annonce"
+        etage: "Etage"
+
+
+    errors:
+      messages:
+        blank: "ne doit pas être vide"
+
+
+  date:
+    formats:
+      default: "%d-%m-%Y"
+
+  # :monday
+  # :tuesday
+  # :wednesday
+  # :thursday
+  # :friday
+  # :saturday
+  # :sunday

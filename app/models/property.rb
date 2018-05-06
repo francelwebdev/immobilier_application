@@ -10,9 +10,7 @@ class Property < ApplicationRecord
 
     belongs_to :user
 
-    validates :price, :area, :description, :address, :city, :room, :available, :avance, :property_type, :ad_type, :feature, :etage, presence: true
-
-    validates :title, presence: { message: "ne doit pas être vide." }
+    validates :price, :area, :description, :address, :city, :room, :available, :avance, :property_type, :ad_type, :feature, :etage, :title, presence: true
 
     scope :published, -> { where(published: true) }
     scope :unpublished, -> { where(published: false) }

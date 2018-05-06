@@ -32,11 +32,11 @@
                             <address class="">
                                 <i class="fas fa-map-marker-alt"></i>&nbsp; <%= my_property.address %>, <%= my_property.city %>
                             </address>
-                            <% if my_property.ad_type.name == "A vendre" %>
+                            <% if my_property.ad_type == "A vendre" %>
                             <p>
                                 <span><%= sprintf("%0.00f", my_property.price) %><sup>F</sup></span>
                             </p>
-                            <% elsif my_property.ad_type.name == "A louer" %>
+                            <% elsif my_property.ad_type == "A louer" %>
                             <p>
                                 <span><%= sprintf("%0.00f", my_property.price) %><sup>F</sup><small>/mois</small></span>
                             </p>

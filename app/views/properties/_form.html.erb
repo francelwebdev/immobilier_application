@@ -33,7 +33,7 @@
             <%= f.input :property_type, collection: Property::PROPERTYTYPE, prompt: "Sélectionner le type de bien", label: "Type de bien" %>
         </div>
         <div class="col-12">
-            <%= f.input :title, label: "Titre de l'annonce" %>
+            <%= f.input :title, label: "Titre de l'annonce", error: t(".blank") %>
         </div>
         <div class="col-12">
             <%= f.input :description, label: "Description du bien", input_html: { rows: 10 } %>

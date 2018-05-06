@@ -1,33 +1,39 @@
 Rails.application.routes.draw do
-    root to: "pages#home", as: "home_page"
 
-    get "a_propos_de_nous", to: "pages#about_us", as: "about_us"
 
-    get "contactez_nous", to: "pages#contact_us", as: "contact_us"
+    scope "(:locale)", locale: /fr/ do
 
-    get "foire_aux_questions", to: "pages#faq", as: "faq"
+        root to: "pages#home", as: "home_page"
 
-    get "nos_tarifs", to: "pages#pricing", as: "pricing"
+        get "a_propos_de_nous", to: "pages#about_us", as: "about_us"
 
-    get "agency/benefits", to: "pages#benefits_for_agency", as: "agency_benefits"
+        get "contactez_nous", to: "pages#contact_us", as: "contact_us"
 
-    get "terms_and_conditions", to: "pages#terms_and_conditions", as: "terms_and_conditions"
+        get "foire_aux_questions", to: "pages#faq", as: "faq"
 
-    post 'properties/:id/publish', to: 'properties#publish', as: "publish_property"
+        get "nos_tarifs", to: "pages#pricing", as: "pricing"
 
-    devise_for :users
-    
-    resources :properties
+        get "agency/benefits", to: "pages#benefits_for_agency", as: "agency_benefits"
 
-    resources :messages, only: [:create]
+        get "terms_and_conditions", to: "pages#terms_and_conditions", as: "terms_and_conditions"
 
-    resources :contacts, only: [:create]
+        post 'properties/:id/publish', to: 'properties#publish', as: "publish_property"
 
-    resources :newsletters, only: [:create]
+        devise_for :users
+        
+        resources :properties
 
-    scope "/dashboard" do
-        resources :my_properties
+        resources :messages, only: [:create]
+
+        resources :contacts, only: [:create]
+
+        resources :newsletters, only: [:create]
+
+        scope "/dashboard" do
+            resources :my_properties
+        end
+   
     end
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
