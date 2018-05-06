@@ -22,12 +22,12 @@
                     </p>
                 </div>
                 <div class="col-lg-2">
-                    <% if @property.ad_type.name == "Vente" %>
+                    <% if @property.ad_type == "Vente" %>
                     <p class="h3 font-weight-bold">A vendre</p>
                     <p class="text-primary h2">
                         <%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>
                     </p>
-                    <% elsif @property.ad_type.name == "Location" %>
+                    <% elsif @property.ad_type == "Location" %>
                     <p class="h3 font-weight-bold">A louer</p>
                     <p class="text-primary h2">
                         <%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>/<small>mois</small></sup>

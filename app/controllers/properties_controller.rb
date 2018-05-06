@@ -34,7 +34,18 @@ class PropertiesController < ApplicationController
                 end
             end
         else
-            if params[:property_type].present? and params[:ad_type].present? and params[:city].blank? and params[:room].blank? and params[:surface_minimum].blank? and params[:loyer_minimum].blank? and params[:loyer_maximum].blank?
+            if params[:property_type].present? and params[:ad_type].blank? and params[:city].blank?
+                @properties = Property.where("property_type = ?", params[:property_type]).all.order("created_at DESC").published.page(params[:page]).per(6)
+                @properties_numbers = @properties.count
+            elsif params[:property_type].present? and params[:ad_type].present? and params[:city].blank?
+                @properties = Property.where("property_type = ? AND ad_type = ?", params[:property_type], params[:ad_type]).all.order("created_at DESC").published.page(params[:page]).per(6)
+                @properties_numbers = @properties.count
+            elsif params[:property_type].present? and params[:ad_type].present? and params[:city].present?
+                @properties = Property.where("property_type = ? AND ad_type = ? city = ?", params[:property_type], params[:ad_type], params[:city]).all.order("created_at DESC").published.page(params[:page]).per(6)
+                @properties_numbers = @properties.count
+
+
+            elsif params[:property_type].present? and params[:ad_type].present? and params[:city].blank? and params[:room].blank? and params[:surface_minimum].blank? and params[:loyer_minimum].blank? and params[:loyer_maximum].blank?
                 @properties = Property.where("property_type_id = ? AND ad_type_id = ?", params[:property_type].to_i, params[:ad_type].to_i).all.order("created_at DESC").published.page(params[:page]).per(6)
                 @properties_numbers = @properties.count
             elsif params[:property_type].present? and params[:ad_type].present? and params[:city].present? and params[:room].blank? and params[:surface_minimum].blank? and params[:loyer_minimum].blank? and params[:loyer_maximum].blank?
@@ -115,6 +126,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-        params.require(:property).permit(:property_type_id, :ad_type_id, :title, :price, :room, :area, :etage, { feature: [] }, :description, :address, :city, :available, :avance, { photos: [] })
+        params.require(:property).permit(:property_type, :ad_type, :title, :price, :room, :area, :etage, { feature: [] }, :description, :address, :city, :available, :avance, { photos: [] })
     end
 end

@@ -20,11 +20,11 @@ class ApplicationController < ActionController::Base
 
     # mon code
     def tout_les_ad_types
-        @ad_types = AdType.all
+        @ad_types = Property::ADTYPE
     end
 
     def tout_les_property_types
-        @property_types = PropertyType.all
+        @property_types = Property::PROPERTYTYPE
     end
 
     def newsletter

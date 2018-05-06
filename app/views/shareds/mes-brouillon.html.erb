@@ -1,585 +1,162 @@
+<% if current_page?(home_page_path) %>
+<%= simple_form_for "", url: properties_path, method: :get do |f| %>
+<div class="row px-1">
+    <div class="col-lg-3 px-1">
+        <%= f.input :property_type, collection: Property::PROPERTYTYPE, required: true, input_html: { class: "form-control form-control-lg" }, label: false, wrapper: false %>
+    </div>
+    <div class="col-lg-3 px-1">
+        <%= f.input :ad_type, collection: Property::ADTYPE, required: true, input_html: { class: "form-control form-control-lg" }, label: false, wrapper: false %>
+    </div>
+    <div class="col-lg-4 px-1">
+        <%= f.input :city, placeholder: "Ou ? Example: Zogbo, Fifadji, etc...", input_html: { class: "form-control form-control-lg" }, label: false, wrapper: false %>
+    </div>
+    <div class="col-lg-2 px-1">
+        <%= f.button :submit, "Rechercher", name: nil, class: 'btn btn-primary btn-block btn-lg' %>
+    </div>
+</div>
+
+<% end %>
+
+<%= form_with url: properties_path, method: :get, local: true do |form| %>
+<div class="form-row px-1">
+    <div class="col-lg-3 my-1">
+        <%= form.select :property_type, PropertyType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type de bien" }, { class: "form-control form-control-lg", required: true } %>
+    </div>
+    <div class="col-lg-3 my-1">
+        <%= form.select :ad_type, AdType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type d'annonce" }, { class: "form-control form-control-lg", required: true } %>
+    </div>
+    <div class="col-lg-4 my-1">
+        <%= form.search_field :city, placeholder: "Ou ? Example: Zogbo, Fifadji, etc...", class: 'form-control form-control-lg' %>
+    </div>
+    <div class="col-lg-2 my-1">
+        <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn-block btn-lg' %>
+    </div>
+</div>
+<% end %>
+<% elsif current_page?(controller: "properties", action: "index")%>
+<%= form_with url: properties_path, method: :get, local: true do |form| %>
+<div class="form-row px-1">
+    <div class="col-lg-4 my-1">
+        <%= form.select :property_type, PropertyType.all.collect { |p| [ p.name, p.id ] }, { prompt: "Type de bien" }, { class: "form-control", required: true } %>
+    </div>
+    <div class="col-lg-4 my-1">
+        <%= form.select :ad_type, AdType.all.collect { |p| [ p.name, p.id ] }, { prompt: "Type d'annonce" }, { class: "form-control", required: true } %>
+    </div>
+    <div class="col-lg-4 my-1">
+        <%= form.text_field :city, placeholder: "Ou ? Example: Zogbo, Fifadji, Ste Rita etc...", class: 'form-control' %>
+    </div>
+    <div class="col-lg-3 my-1">
+        <%= form.select :room, Property::ROOM, { prompt: "Nombres de pièce" }, class: "form-control" %>
+    </div>    
+    <div class="col-lg-2 my-1">
+        <%= form.number_field :loyer_minimum, placeholder: "Loyer minimum", class: 'form-control' %>
+    </div>
+    <div class="col-lg-2 my-1">
+        <%= form.number_field :loyer_maximum, placeholder: "Loyer maximum", class: 'form-control' %>
+    </div>
+    <div class="col-lg-2 my-1">
+        <%= form.number_field :surface_minimum, placeholder: "Surface minimum", class: 'form-control' %>
+    </div>
+    <div class="col-lg-3 my-1">
+        <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn btn-block' %>
+    </div>
+</div>
+<% end %>
+<% end %>
+
+
+
 create_table "properties", force: :cascade do |t|
-  t.string "title"
-  t.decimal "price", precision: 10, scale: 2
-  t.integer "area"
-  t.text "description"
-  t.string "address"
-  t.string "city"
-  t.float "latitude"
-  t.float "longitude"
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  t.integer "user_id"
-  t.string "slug"
-  t.string "room"
-  t.boolean "available"
-  t.boolean "published", default: false
-  t.integer "avance"
-  t.bigint "property_type_id"
-  t.bigint "ad_type_id"
-  t.string "feature", array: true
-  t.string "etage"
-  t.string "travaux"
-  t.datetime "published_at"
-  t.index ["ad_type_id"], name: "index_properties_on_ad_type_id"
-  t.index ["property_type_id"], name: "index_properties_on_property_type_id"
-  t.index ["slug"], name: "index_properties_on_slug", unique: true
-  t.index ["user_id"], name: "index_properties_on_user_id"
-end
+    t.string "title"
+    t.decimal "price", precision: 10, scale: 2
+    t.integer "area"
+    t.text "description"
+    t.string "address"
+    t.string "city"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.string "slug"
+    t.string "room"
+    t.boolean "available"
+    t.boolean "published", default: false
+    t.integer "avance"
+    t.string "feature", array: true
+    t.string "etage"
+    t.string "travaux"
+    t.datetime "published_at"
+    t.string "commune"
+    t.string "property_type"
+    t.string "ad_type"
+    t.index ["slug"], name: "index_properties_on_slug", unique: true
+    t.index ["user_id"], name: "index_properties_on_user_id"
+  end
 
 
 
-
-
-
-elsif params[:ad_type].present? and params[:property_type].blank? and params[:city].blank?
+  def index
+        if user_signed_in?
+            if current_user.admin?
+                @properties = Property.all.order("created_at DESC").page(params[:page]).per(6)
+                @properties_numbers = @properties.count
+            else
+                if params[:property_type].present? and params[:ad_type].present? and params[:city].present?
+                    @properties = Property.where("property_type_id = ? AND ad_type_id = ? AND city LIKE ?", params[:property_type].to_i, params[:ad_type].to_i, "%#{params[:city]}%").all.order("created_at DESC").published.page(params[:page]).per(6)
+                    @properties_numbers = @properties.count
+                elsif params[:property_type].present? and params[:ad_type].present? and params[:city].blank?
+                    @properties = Property.where("property_type_id = ? AND ad_type_id = ?", params[:property_type].to_i, params[:ad_type].to_i).all.order("created_at DESC").published.page(params[:page]).per(6)
+                    @properties_numbers = @properties.count
+                elsif params[:property_type].present?
+                    @property_type_id = PropertyType.find_by(name: params[:property_type]).id
+                    @properties = Property.where("property_type_id = ?", @property_type_id).all.order("created_at DESC").published.page(params[:page]).per(6)
+                    @properties_numbers = @properties.count
+                elsif params[:ad_type].present?
                     @ad_type_id = AdType.find_by(name: params[:ad_type]).id
                     @properties = Property.where("ad_type_id = ?", @ad_type_id).all.order("created_at DESC").published.page(params[:page]).per(6)
                     @properties_numbers = @properties.count
-
-
-
-
-
-                    <% if user_signed_in? and current_user.first_name.blank? and current_user.last_name.blank? and current_user.phone_number.blank? and current_user.address.blank?%>
-<%= f.simple_fields_for :user do |user_contact_form| %>
-<div class="card bg-white border-0 mb-4">
-    <div class="form-inputs form-row card-body p-5">
-        <div class="col-12">
-            <p class="h4 font-weight-bold mb-4">Information de contact</p>
-        </div>
-        <div class="col-lg-6">
-           <%= user_contact_form.input :first_name, required: true, label: "Prénom" %>
-        </div>
-        <div class="col-lg-6">
-           <%= user_contact_form.input :last_name, required: true, label: "Nom" %>
-        </div>
-        <div class="col-lg-6">
-           <%= user_contact_form.input :phone_number, as: :tel, required: true, label: "Numéros de téléphone"%>
-        </div>
-    </div>
-</div>
-<% end %>
-<% end %>
-
-
-
-<% if @property.property_photo.attached? %>
-<section class="property-photos-carousel">
-    <div class="owl-carousel owl-theme">
-        <% @property.property_photo.each do |photo| %>
-            <div class="item"><%= image_tag photo, size: "25x25" %></div>
-        <% end %>
-    </div>
-</section>
-<% else %>
-<section class="container-fluid d-flex align-items-center text-center">
-    <p>ANNONCE SASNS PHOTOs</p>
-</section>
-<% end %>
-
-
-<!--
-MY VALUE PROPOSITION
-
-<h1 class="text-white text-center mb-4 font-weight-bold">Le moyen le plus simple de trouver un bien immobilier qui correspond a vos besoins sans perdre le temps à en visiter plusieurs.</h1>
-
-<p class="lead text-white">Economiser du temp et de l'argent pour trouver <span id="js-rotating">l'appartement, la chambre ou le bureaux</span> qui vous correspondent avant d'en décider de la visiter</p>
-
-<h2 class="text-white">Ça vaut le coup d'économiser les frais d'un agent immobilier</h2>
-<p class="lead text-white">Trouvez une <span id="js-rotating">Maison, Parcelle, Terrain, Appartement ou Commerce</span> sans intermédiaire</p>
-
-faites des économies en vendant ou en louant vous même votre bien
-
-<h2 class="text-white">Vous cherchez une chambre ou une boutique à louer ?</h2>
-<p class="lead text-white">Trouvez le maintenant sur <strong>SICO</strong> <span id="js-rotating"></span> et contacter directement le propriétaire pour visiter</p>
--->
-
-
-<%= simple_form_for(@property) do |f| %>
-<%= f.error_notification %>
-
-<h2>Information sur le bien</h2>
-<hr class="mb-5">
-
-<div class="form-inputs">
-  <div class="form-row">
-    <div class="col-12">
-      <%= f.input :title, label: "Titre de l'annonce" %>
-    </div>
-    <div class="col-lg-6">
-      <%= f.association :type_of_transaction, label: "Type de transaction" %>
-    </div>
-    <div class="col-lg-6">
-      <%= f.association :type_of_property, label: "Type de bien immobilier" %>
-    </div>
-    <div class="col-lg-4">
-      <%= f.input :price, label: "Prix" %>
-    </div>
-    <div class="col-lg-4">
-      <%= f.input :area, label: "Surface" %>
-    </div>
-    <div class="col-lg-4">
-      <%= f.input :area, label: "Nombres de pièce" %>
-    </div>
-    <div class="col-12">
-      <%= f.input :description, label: "Description", input_html: { rows: 10 } %>
-    </div>
-    <div class="col-6">
-      <%= f.input :address, label: "Adresse" %>
-    </div>
-    <div class="col-6">
-      <%= f.input :city, label: "Ville" %>
-    </div>
-  </div>
-</div>
-
-<h2>Ajouter les photos du bien</h2>
-<hr class="mb-5">
-
-<div class="form-inputs">
-
-  <%= f.input :image1_url, label: "Image1", as: :file %>
-  <%= f.input :image2_url, label: "Image2", as: :file %>
-  <%= f.input :image3_url, label: "Image3", as: :file %>
-
-</div>
-
-
-<h2>Information de contact</h2>
-<hr class="mb-5">
-
-<%= f.simple_fields_for :profile do |profile_form| %>
-
-<div class="form-inputs">
-  <div class="form-row">
-
-    <div class="col-lg-4">
-      <%= profile_form.input :first_name, label: "Nom" %>
-    </div>
-    <div class="col-lg-4">
-      <%= profile_form.input :last_name, label: "Prénom" %>
-    </div>
-    <div class="col-lg-4">
-      <%= profile_form.input :phone_number, label: "Numéros de contact" %>
-    </div>
-
-  </div>
-</div>
-
-<% end %>
-
-<div class="form-actions">
-  <%= f.button :submit, "Ajouter mon bien", class: "btn btn-primary btn-lg" %>
-</div>
-
-<% end %>
-
-
-<p>Vos coordonnées</p>
-
-
-
-<%= form_with url: recherche_path, method: :get, local: true, class: "px-2", role: "search" do |f|  %>
-<div class="row">
-  <div class="col-md-5 px-0">
-    <div class="form-group">
-      <%= f.text_field :mot_cle, class: "form-control form-control-lg supri-bordu", placeholder: "Nom d'un médecin, clinique ou spécialité" %>
-    </div>
-  </div>
-  <div class="col-md-5 px-0">
-    <div class="form-group">
-      <%= f.text_field :lieu, class: "form-control form-control-lg supri-bordu", placeholder: "Nom de votre ville ou quartier" %>
-    </div>
-  </div>
-  <div class="col-md-2 px-0">
-    <div class="form-group">
-      <%= f.submit "Rechercher", class: "btn btn-primary btn-lg btn btn-block supri-bordu" %>
-    </div>
-  </div>
-</div>
-<% end %>
-
-
-
-<!-- <div class="container sr-only">
-<form class="form-signin">
-<h2 class="form-signin-heading">Please sign in</h2>
-<label for="inputEmail" class="sr-only">Email address</label>
-<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-<label for="inputPassword" class="sr-only">Password</label>
-<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-<div class="checkbox">
-<label>
-<input type="checkbox" value="remember-me"> Remember me
-</label>
-</div>
-<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-</form>
-</div>
-
-
-<section class="container-fluid" style="background-color: #3799ff;">
-<div class="container-fluid">
-<div class="row py-3">
-<div class="col-12 text-center">
-<h2 class="text-light">Déposer une annonce</h2>
-</div>
-</div>
-</div>
-</section>
-
-<section>
-<div class="container">
-<div class="row py-5">
-<div class="col-lg-8 offset-lg-2 ">
-<p>
-<span class="font-weight-bold">Info :</span> Les champs précédé du signe ( * ) doivent être renseigné ! </p>
-
-<%= simple_form_for :ad do |f| %>
-<div class="card mb-4">
-<div class="card-header bg-primary">
-<p class="text-light font-weight-bold mb-0">Votre annonce</p>
-</div>
-<div class="card-body">
-
-<%= f.association :category, label: "Catégorie", prompt: "--- Sélectionner une catégorie ---" %>
-
-<%= f.association :ad_type, as: :radio_buttons, label: "Type d'annonce" %>
-
-<%= f.association :seller_type, as: :radio_buttons, label: "Vous êtes un" %>
-
-<%= f.input :title, label: "Titre de l'annonce" %>
-
-<%= f.input :description, as: :text, label: "Description de l'annonce", input_html: { rows: 10 }  %>
-<%= f.input :price, as: :integer, label: "Prix"  %>
-
-<p>
-<small>
-<strong>Photos : </strong>Une annonce avec photo est 8 fois plus consultée qu'une annonce sans photo.</small>
-</p>
-
-<%= f.input :photo_one, as: :file, wrapper: :horizontal_file_input, label: "Photo 1" %>
-<%= f.input :photo_two, as: :file, wrapper: :horizontal_file_input, label: "Photo 2" %>
-<%= f.input :photo_three, as: :file, wrapper: :horizontal_file_input, label: "Photo 3" %>
-</div>
-</div>
-
-<div class="card mb-4">
-<div class="card-header bg-primary">
-<p class="text-light font-weight-bold mb-0">Localisation</p>
-</div>
-<div class="card-body">
-<%= f.input :ad_adress, label: "Adresse", placeholder: "Saisissez le lieu ou se trouve l'objet" %>
-</div>
-</div>
-
-<div class="card mb-4">
-<div class="card-header bg-primary">
-<p class="text-light font-weight-bold mb-0">Vos informations</p>
-</div>
-<div class="card-body">
-<%= f.input :seller_name, label: "Nom"  %>
-
-<%= f.input :seller_email, as: :email, placeholder: 'utilisateur@domaine.com', label: "Email"  %>
-
-<%= f.input :seller_phone_number, as: :tel, label: "Numéro de téléphone", input_html: { maxlength: 8 }  %>
-</div>
-</div>
-
-<%= f.button :submit, "Valider l'annonce", class: "btn btn-primary" %>
-<% end %>
-</div>
-</div>
-</div>
-</section> -->
-
-
-
-
-
-
-
-<!-- PRICING DESIGN PAGE -->
-
-
-<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-  <h1 class="display-4">Pricing</h1>
-  <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It's built with default Bootstrap components and utilities with little customization.</p>
-</div>
-
-
-<div class="container">
-  <div class="card-deck mb-3 text-center">
-    <div class="card mb-4 box-shadow">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Free</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>10 users included</li>
-          <li>2 GB of storage</li>
-          <li>Email support</li>
-          <li>Help center access</li>
-        </ul>
-        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
-      </div>
-    </div>
-    <div class="card mb-4 box-shadow">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Pro</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>20 users included</li>
-          <li>10 GB of storage</li>
-          <li>Priority email support</li>
-          <li>Help center access</li>
-        </ul>
-        <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button>
-      </div>
-    </div>
-    <div class="card mb-4 box-shadow">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Enterprise</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>30 users included</li>
-          <li>15 GB of storage</li>
-          <li>Phone and email support</li>
-          <li>Help center access</li>
-        </ul>
-        <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button>
-      </div>
-    </div>
-  </div>
-
-
-  html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-html {
-font-size: 16px;
-}
-}
-
-.container {
-max-width: 960px;
-}
-
-.pricing-header {
-max-width: 700px;
-}
-
-.card-deck .card {
-min-width: 220px;
-}
-
-.border-top { border-top: 1px solid #e5e5e5; }
-.border-bottom { border-bottom: 1px solid #e5e5e5; }
-
-.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
-
-
-
-
-
-listing Design
-
-<div class="row mb-2">
-  <div class="col-md-6">
-    <div class="card flex-md-row mb-4 box-shadow h-md-250">
-      <div class="card-body d-flex flex-column align-items-start">
-        <strong class="d-inline-block mb-2 text-primary">World</strong>
-        <h3 class="mb-0">
-          <a class="text-dark" href="#">Featured post</a>
-        </h3>
-        <div class="mb-1 text-muted">Nov 12</div>
-        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-        <a href="#">Continue reading</a>
-      </div>
-      <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<%# list design %>
-<div class="col-lg-12">
-  <div class="card flex-md-row mb-4 box-shadow h-md-250">
-    <%= image_tag property.property_photos.first.photo_url, class: "card-img-right flex-auto d-none d-lg-block", alt: "Photo de #{ property.title }" %>
-
-    <% if property.ad_type.name == "Vente" %>
-    <p class="h4">
-      <span class="position-absolute badge badge-secondary p-2 rounded-0" style="top: 15px; left: 0px;">A vendre</span>
-    </p>
-    <% elsif property.ad_type.name == "Location" %>
-    <p class="h4">
-      <span class="position-absolute badge badge-secondary p-2 rounded-0" style="top: 15px; left: 0px;">A louer</span>
-    </p>
-    <% end %>
-
-    <% if user_signed_in? and current_user.role == "Administrateur" %>
-    <% if property.published? %>
-    <p class="h4">
-      <span class="position-absolute badge badge-success p-2 rounded-0" style="top: 15px; left: 255px;">ONLINE</span>
-    </p>
-    <% else %>
-    <p class="h4">
-      <span class="position-absolute badge badge-danger p-2 rounded-0" style="top: 15px; left: 255px;">OFFLINE</span>
-    </p>
-    <% end%>
-    <% end %>
-
-    <div class="card-body d-flex flex-column align-items-start">
-      <h4 class="card-title font-weight-bold text-dark">
-        <%= truncate(strip_tags(property.title.capitalize), length: 25) %>
-      </h4>
-      <% if property.ad_type.name == "Vente" %>
-      <p class="text-primary m-0 p-0 h3">
-        <%= number_with_delimiter(sprintf("%0.00f", property.price)) %><sup>f</sup>
-      </p>
-      <% elsif property.ad_type.name == "Location" %>
-      <p class="text-primary m-0 p-0 h3">
-        <%= number_with_delimiter(sprintf("%0.00f", property.price)) %><sup>f</sup>/<small>mois</small></sup>
-      </p>
-      <% end %>
-      <hr>
-      <p class="m-0 ">
-        <small>Publié le <%= property.created_at.strftime("%e %B") %></small>
-        <small class="sr-only">Il y a <%= time_ago_in_words(property.created_at) %></small>
-      </p>
-    </div>
-  </div>
-</div>
-
-
-
-
-<%# Grid design %>
-<div class="col-lg-6">
-  <%= link_to property, class: "sans-text-decoration" do %>
-  <div class="card mb-4 liste-card-recherche text-dark">
-    <%= image_tag property.property_photos.first.photo_url, class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
-    <% if property.ad_type.name == "Vente" %>
-    <p class="h4">
-      <span class="position-absolute badge badge-secondary p-2 rounded-0" style="top: 15px; left: 0px;">A vendre</span>
-    </p>
-    <% elsif property.ad_type.name == "Location" %>
-    <p class="h4">
-      <span class="position-absolute badge badge-secondary p-2 rounded-0" style="top: 15px; left: 0px;">A louer</span>
-    </p>
-    <% end %>
-
-    <% if user_signed_in? and current_user.role == "Administrateur" %>
-    <% if property.published? %>
-    <p class="h4">
-      <span class="position-absolute badge badge-success p-2 rounded-0" style="top: 15px; right: 0px;">ONLINE</span>
-    </p>
-    <% else %>
-    <p class="h4">
-      <span class="position-absolute badge badge-danger p-2 rounded-0" style="top: 15px; right: 0px;">OFFLINE</span>
-    </p>
-    <% end%>
-    <% end %>
-
-    <div class="card-body p-3">
-      <h5 class="card-title font-weight-bold text-dark">
-        <%= truncate(strip_tags(property.title.capitalize), length: 25) %>
-      </h5>
-      <address class="card-text text-dark">
-        <i class="fas fa-map-marker-alt"></i>&nbsp; <%= property.address %>, <%= property.city %>
-      </address>
-      <% if property.ad_type.name == "Vente" %>
-      <p class="text-primary m-0 p-0 h3">
-        <%= number_with_delimiter(sprintf("%0.00f", property.price)) %><sup>f</sup>
-      </p>
-      <% elsif property.ad_type.name == "Location" %>
-      <p class="text-primary m-0 p-0 h3">
-        <%= number_with_delimiter(sprintf("%0.00f", property.price)) %><sup>f</sup>/<small>mois</small></sup>
-      </p>
-      <% end %>
-      <hr>
-      <p class="m-0 ">
-        <small>Publié le <%= property.created_at.strftime("%e %B") %></small>
-        <small class="sr-only">Il y a <%= time_ago_in_words(property.created_at) %></small>
-      </p>
-    </div>
-  </div>
-  <% end %>
-</div>
-
-
-
-<%# list design %>
-                    <%= link_to property, class: "sans-text-decoration index-list-item mb-4" do %>
-                    <div class="col-lg-12 pr-0 list-item">
-                        <div class="card flex-md-row box-shadow h-md-250">
-                            <%= image_tag property.property_photos.first.photo_url, class: "card-img-right flex-auto d-none d-lg-block", alt: "Photo de #{ property.title }" %>
-
-                            <% if property.ad_type.name == "Vente" %>
-                            <p class="h4">
-                                <span class="position-absolute badge badge-secondary  h6 font-weiht-normal rounded-2" style="top: 15px; left: 0px;">A vendre</span>
-                            </p>
-                            <% elsif property.ad_type.name == "Location" %>
-                            <p class="h4">
-                                <span class="position-absolute badge badge-secondary h6 font-weiht-normal  rounded-0" style="top: 15px; left: 0px;">A louer</span>
-                            </p>
-                            <% end %>
-
-                            <% if user_signed_in? and current_user.role == "Administrateur" %>
-                            <% if property.published? %>
-                            <p class="h4">
-                                <span class="position-absolute badge badge-success p-2 rounded-0" style="top: 15px; left: 255px;">ONLINE</span>
-                            </p>
-                            <% else %>
-                            <p class="h4">
-                                <span class="position-absolute badge badge-danger p-2 rounded-0" style="top: 15px; left: 255px;">OFFLINE</span>
-                            </p>
-                            <% end%>
-                            <% end %>
-
-                            <div class="card-body d-flex flex-column align-items-start justify-content-between">
-                                <h5 class="card-title text-dark">
-                                    <%= truncate(strip_tags(property.title.capitalize), length: 25) %>
-                                </h5>
-                                <address class="card-text text-secondary mb-3">
-                                    <i class="fas fa-map-marker-alt"></i>&nbsp; <%= property.address %>, <%= property.city %>
-                                </address>
-                                <% if property.ad_type.name == "Vente" %>
-                                <p class="text-primary m-0 p-0 h3">
-                                    <%= number_with_delimiter(sprintf("%0.00f", property.price)) %><sup>f</sup>
-                                </p>
-                                <% elsif property.ad_type.name == "Location" %>
-                                <p class="text-primary m-0 p-0 h3">
-                                    <%= number_with_delimiter(sprintf("%0.00f", property.price)) %><sup>f</sup>/<small>mois</small></sup>
-                                </p>
-                                <% end %>
-                                <p class="m-0 text-secondary">
-                                    <small>Publié le <%= property.created_at.strftime("%e %B") %></small>
-                                    <small class="sr-only">Il y a <%= time_ago_in_words(property.created_at) %></small>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                else
+                    @properties = Property.all.order("created_at DESC").published.page(params[:page]).per(6)
+                    @properties_numbers = @properties.count
+                end
+            end
+        else
+            if params[:property_type].present? and params[:ad_type].present? and params[:city].blank? and params[:room].blank? and params[:surface_minimum].blank? and params[:loyer_minimum].blank? and params[:loyer_maximum].blank?
+                @properties = Property.where("property_type_id = ? AND ad_type_id = ?", params[:property_type].to_i, params[:ad_type].to_i).all.order("created_at DESC").published.page(params[:page]).per(6)
+                @properties_numbers = @properties.count
+            elsif params[:property_type].present? and params[:ad_type].present? and params[:city].present? and params[:room].blank? and params[:surface_minimum].blank? and params[:loyer_minimum].blank? and params[:loyer_maximum].blank?
+                @properties = Property.where("property_type_id = ? AND ad_type_id = ? AND city LIKE ?", params[:property_type].to_i, params[:ad_type].to_i, "%#{params[:city]}%").all.order("created_at DESC").published.page(params[:page]).per(6)
+                @properties_numbers = @properties.count
+
+
+
+            elsif params[:property_type].present? and params[:ad_type].present? and params[:city].present? and params[:room].blank? and params[:surface_minimum].present? and params[:loyer_minimum].present? and params[:loyer_maximum].present?
+                @properties = Property.where("property_type_id = ? AND ad_type_id = ? AND city LIKE ? AND area >= ? AND price BETWEEN #{params[:loyer_minimum].to_i} AND #{params[:loyer_maximum].to_i}", params[:property_type].to_i, params[:ad_type].to_i, "%#{params[:city]}%", params[:surface_minimum].to_i).all.order("created_at DESC").published.page(params[:page]).per(6)
+                @properties_numbers = @properties.count
+
+            elsif params[:property_type].present? and params[:ad_type].present? and params[:city].present? and params[:room].blank? and params[:surface_minimum].present? and params[:loyer_minimum].blank? and params[:loyer_maximum].blank?
+                @properties = Property.where("property_type_id = ? AND ad_type_id = ? AND city LIKE ? AND area >= ?", params[:property_type].to_i, params[:ad_type].to_i, "%#{params[:city]}%", params[:surface_minimum].to_i).all.order("created_at DESC").published.page(params[:page]).per(6)
+                @properties_numbers = @properties.count
+
+            elsif params[:property_type].present? and params[:ad_type].present? and params[:city].present? and params[:room].blank? and params[:surface_minimum].blank? and params[:loyer_minimum].present? and params[:loyer_maximum].present?
+                @properties = Property.where("property_type_id = ? AND ad_type_id = ? AND city LIKE ? AND price BETWEEN #{params[:loyer_minimum].to_i} AND #{params[:loyer_maximum].to_i}", params[:property_type].to_i, params[:ad_type].to_i, "%#{params[:city]}%").all.order("created_at DESC").published.page(params[:page]).per(6)
+                @properties_numbers = @properties.count
+
+            elsif params[:property_type].present? and params[:ad_type].present? and params[:city].blank?
+                @properties = Property.where("property_type_id = ? AND ad_type_id = ?", params[:property_type].to_i, params[:ad_type].to_i).all.order("created_at DESC").published.page(params[:page]).per(6)
+                @properties_numbers = @properties.count
+            elsif params[:property_type].present?
+                @property_type_id = PropertyType.find_by(name: params[:property_type]).id
+                @properties = Property.where("property_type_id = ?", @property_type_id).all.order("created_at DESC").published.page(params[:page]).per(6)
+                @properties_numbers = @properties.count
+            elsif params[:ad_type].present?
+                @ad_type_id = AdType.find_by(name: params[:ad_type]).id
+                @properties = Property.where("ad_type_id = ?", @ad_type_id).all.order("created_at DESC").published.page(params[:page]).per(6)
+                @properties_numbers = @properties.count
+            else
+                @properties = Property.all.order("created_at DESC").published.page(params[:page]).per(6)
+                @properties_numbers = @properties.count
+            end
+        end
+    end

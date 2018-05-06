@@ -1,4 +1,4 @@
-<%= simple_form_for(@property, html: { class: "" }) do |f| %>
+<%= simple_form_for(@property, html: { class: "", multipart: true }) do |f| %>
 
 <%= f.error_notification %>
 
@@ -20,11 +20,17 @@
         <div class="col-12">
             <p class="h4 font-weight-bold text-dark mb-4">Description du bien</p>
         </div>
-        <div class="col-lg-6">
-            <%= f.association :ad_type, autofocus: true, label: "Type d'annonce" %>
+        <div class="col-lg-6 sr-only">
+            <%#= f.association :ad_type, autofocus: true, label: "Type d'annonce" %>
+        </div>
+        <div class="col-lg-6 sr-only">
+            <%#= f.association :property_type, label: "Type de bien" %>
         </div>
         <div class="col-lg-6">
-            <%= f.association :property_type, label: "Type de bien" %>
+            <%= f.input :ad_type, collection: Property::ADTYPE, prompt: "Sélectionner le type d'annonce", label: "Type d'annonce" %>
+        </div>
+        <div class="col-lg-6">
+            <%= f.input :property_type, collection: Property::PROPERTYTYPE, prompt: "Sélectionner le type de bien", label: "Type de bien" %>
         </div>
         <div class="col-12">
             <%= f.input :title, label: "Titre de l'annonce" %>
@@ -33,22 +39,22 @@
             <%= f.input :description, label: "Description du bien", input_html: { rows: 10 } %>
         </div>
         <div class="col-lg-6">
-            <%= f.input :room, collection: Property::ROOM, label: "Nombres de pièces" %>
+            <%= f.input :room, collection: Property::ROOM, prompt: "Sélectionner le nombres de pièce", label: "Nombres de pièces" %>
         </div>
         <div class="col-lg-6">
              <%= f.input :area, label: "Surface du bien", hint: "En m2", hint_html: { class: "small" }  %>
+        </div>        
+        <div class="col-lg-6">
+            <%= f.input :available, collection: [["Oui", true], ["Non", false]], prompt: "Le bien est disponible maintenant ?", label: "Disponible" %>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-6">
+            <%= f.input :etage, collection: Property::ETAGE, prompt: "Le bien se trouve à quel étage", label: "Etage" %>
+        </div>
+        <div class="col-lg-6">
             <%= f.input :price, required: true, label: "Loyer", hint: "Par mois", hint_html: { class: "small" } %>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-6">
             <%= f.input :avance, required: true, label: "Avance", hint: "Nombres de mois", hint_html: { class: "small" } %>
-        </div>
-        <div class="col-lg-3">
-            <%= f.input :available, collection: [["Oui", true], ["Non", false]], label: "Disponible maintenant ?" %>
-        </div>
-        <div class="col-lg-3">
-            <%= f.input :etage, collection: Property::ETAGE, label: "Etage" %>
         </div>
     </div>
 </div>

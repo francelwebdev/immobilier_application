@@ -25,8 +25,8 @@
                                 <ul class="list-unstyled">
                                     <% @property_types.each do |property_type| %>
                                     <li class="my-2">
-                                        <%= link_to properties_path(property_type: property_type.name), class: "text-dark" do %>
-                                        <i class="fas fa-arrow-right"></i>&nbsp; <%= property_type.name %>
+                                        <%= link_to properties_path(property_type: property_type), class: "text-dark" do %>
+                                        <i class="fas fa-arrow-right"></i>&nbsp; <%= property_type %>
                                         <% end %>
                                     </li>
                                     <% end %>
@@ -41,8 +41,8 @@
                                 <ul class="list-unstyled">
                                     <% @ad_types.each do |ad_type| %>
                                     <li class="my-2">
-                                        <%= link_to properties_path(ad_type: ad_type.name), class: "text-dark" do %>
-                                        <i class="fas fa-arrow-right"></i>&nbsp; <%= ad_type.name %>
+                                        <%= link_to properties_path(ad_type: ad_type), class: "text-dark" do %>
+                                        <i class="fas fa-arrow-right"></i>&nbsp; <%= ad_type %>
                                         <% end %>
                                     </li>
                                     <% end %>
@@ -100,9 +100,9 @@
                         <%= link_to property, class: "sans-text-decoration" do %>
                         <div class="card mb-4 liste-card-recherche text-dark">
                             <%= image_tag property.photos.first, class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
-                            <% if property.ad_type.name == "Vente" %>
+                            <% if property.ad_type == "Vente" %>
                                 <span class="position-absolute badge badge-secondary p-2" style="top: 10px; left: 10px;">A vendre</span>
-                            <% elsif property.ad_type.name == "Location" %>
+                            <% elsif property.ad_type == "Location" %>
                                 <span class="position-absolute badge badge-secondary p-2" style="top: 10px; left: 10px;">A louer</span>
                             <% end %>
 
@@ -121,11 +121,11 @@
                                 <address class="card-text text-dark">
                                     <i class="fas fa-map-marker-alt"></i>&nbsp; <%= property.address %>, <%= property.city %>
                                 </address>
-                                <% if property.ad_type.name == "Vente" %>
+                                <% if property.ad_type == "Vente" %>
                                 <p class="text-primary m-0 p-0 h3">
                                     <%= number_with_delimiter(sprintf("%0.00f", property.price)) %><sup>f</sup>
                                 </p>
-                                <% elsif property.ad_type.name == "Location" %>
+                                <% elsif property.ad_type == "Location" %>
                                 <p class="text-primary m-0 p-0 h3">
                                     <%= number_with_delimiter(sprintf("%0.00f", property.price)) %><sup>f</sup>/<small>mois</small></sup>
                                 </p>
