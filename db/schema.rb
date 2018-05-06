@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_06_182328) do
+ActiveRecord::Schema.define(version: 2018_05_06_184802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 2018_05_06_182328) do
     t.string "commune"
     t.string "property_type"
     t.string "ad_type"
+    t.datetime "expiration_date"
     t.index ["slug"], name: "index_properties_on_slug", unique: true
     t.index ["user_id"], name: "index_properties_on_user_id"
   end

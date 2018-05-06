@@ -5,7 +5,7 @@
 <% if @property.errors.any? %>
     <div class="alert alert-danger" role="alert">
         <h3 class="alert-heading">
-            <%= pluralize(@property.errors.count, "erreur", "erreurs") %> prohibited this article from being saved :
+            <%= pluralize(@property.errors.count, "erreur", "erreurs") %> prohibited this product from being saved :
         </h3>
         <ul>
             <% @property.errors.full_messages.each do |msg| %>
@@ -21,10 +21,10 @@
             <p class="h4 font-weight-bold text-dark mb-4">Description du bien</p>
         </div>
         <div class="col-lg-6">
-            <%= f.input :ad_type, collection: Property::ADTYPE, prompt: "Sélectionner le type d'annonce", autofocus: true %>
+            <%= f.input :ad_type, collection: Property::AD_TYPE, prompt: "Sélectionner le type d'annonce", autofocus: true %>
         </div>
         <div class="col-lg-6">
-            <%= f.input :property_type, collection: Property::PROPERTYTYPE, prompt: "Sélectionner le type de bien" %>
+            <%= f.input :property_type, collection: Property::PROPERTY_TYPE, prompt: "Sélectionner le type de bien" %>
         </div>
         <div class="col-12">
             <%= f.input :title %>
@@ -48,7 +48,7 @@
             <%= f.input :price, required: true %>
         </div>
         <div class="col-lg-6">
-            <%= f.input :avance, required: true %>
+            <%= f.input :avance, required: true, input_html: { min: 1, max: 3 } %>
         </div>
     </div>
 </div>

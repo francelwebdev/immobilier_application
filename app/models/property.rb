@@ -1,12 +1,12 @@
 class Property < ApplicationRecord
     extend FriendlyId
-    friendly_id :title, use: :slugged    
+    friendly_id :title, use: :slugged
 
-    ROOM = ["1 pièce", "2 pièces", "3 pièces", "plus de 3 pièces"]
-    FEATURE = ["Electricité", "Eau", "WC", "Internet", "Commerces à proximité"]
+    ROOM = ["1 pièce", "2 pièces", "3 pièces", "4 pièces", "5 pièces", "plus de 5 pièces"]
+    FEATURE = ["Electricité", "Eau", "WC", "Internet"]
     ETAGE = ["Rez-de-chaussée", "1er étage", "2ème étage", "3ème étage", "4ème étage", "5ème étage"]
-    ADTYPE = ["Location"]
-    PROPERTYTYPE = ["Appartement", "Maison", "Bureau", "Boutique", "Villa"]
+    AD_TYPE = ["Location"]
+    PROPERTY_TYPE = ["Appartement", "Maison", "Bureau", "Commerce", "Villa", "Sanitaire"]
 
     belongs_to :user
 
@@ -27,7 +27,8 @@ class Property < ApplicationRecord
     end
 
     def suprimer_si_annonce_expire
-         expiration = 3.minute.since(self.published_at)
-        self.update published: false if self.published_at > expiration
+        if self.expiration_date.past?
+            Property.find(self.id).delete
+        end
     end
 end

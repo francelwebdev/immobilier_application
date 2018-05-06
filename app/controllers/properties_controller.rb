@@ -4,15 +4,17 @@ class PropertiesController < ApplicationController
 
     def publish
         @property_to_publish = Property.find(params[:id])
-        @property_to_publish.update published: true, published_at: Time.now
+        @property_to_publish.update published: true, published_at: Time.now, expiration_date: 1.week.from_now
         redirect_to @property_to_publish, notice: 'Annonce mise en ligne, OK'
     end
 
-    def index
-        puts "====================="
-        
-        puts "====================="
+    def deactivate
+        @property_to_deactivate = Property.find(params[:id])
+        @property_to_deactivate.update published: false
+        redirect_to @property_to_deactivate, notice: 'Annonce désactiver, OK'
+    end
 
+    def index
         if params[:property_type].present? and params[:ad_type].blank? and params[:city].blank?
             @properties = Property.where("property_type = :property_type", { property_type: params[:property_type] }).published.all.order("created_at DESC").page(params[:page]).per(6)
             @properties_numbers = @properties.count
@@ -32,6 +34,9 @@ class PropertiesController < ApplicationController
         elsif params[:property_type].blank? and params[:ad_type].blank? and params[:city].present?
             @properties = Property.where("city = :city", { city: params[:city] }).published.all.order("created_at DESC").page(params[:page]).per(6)
             @properties_numbers = @properties.count
+
+
+            
 
         else
             @properties = Property.all.order("created_at DESC").published.page(params[:page]).per(6)

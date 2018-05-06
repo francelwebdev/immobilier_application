@@ -4,19 +4,21 @@ Rails.application.routes.draw do
 
         root to: "pages#home", as: "home_page"
 
-        get "a_propos_de_nous", to: "pages#about_us", as: "about_us"
+        get "about_us", to: "pages#about_us", as: "about_us"
 
-        get "contactez_nous", to: "pages#contact_us", as: "contact_us"
+        get "contact_us", to: "pages#contact_us", as: "contact_us"
 
-        get "foire_aux_questions", to: "pages#faq", as: "faq"
+        get "faq", to: "pages#faq", as: "faq"
 
-        get "nos_tarifs", to: "pages#pricing", as: "pricing"
+        get "pricing", to: "pages#pricing", as: "pricing"
 
         get "agency/benefits", to: "pages#benefits_for_agency", as: "agency_benefits"
 
         get "terms_and_conditions", to: "pages#terms_and_conditions", as: "terms_and_conditions"
 
         post 'properties/:id/publish', to: 'properties#publish', as: "publish_property"
+
+        post 'properties/:id/deactivate', to: 'properties#deactivate', as: "deactivate_property"
 
         devise_for :users
         
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
         resources :newsletters, only: [:create]
 
         scope "/dashboard" do
-            resources :my_properties
+            resources :my_properties, only: [:index, :edit, :destroy]
         end
    
     end

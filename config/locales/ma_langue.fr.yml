@@ -56,9 +56,13 @@ fr:
         blank: "ne doit pas être vide"
 
 
+
   date:
     formats:
       default: "%d-%m-%Y"
+      short: "%b %d"
+      long: "%B %d, %Y"
+      time: '%H:%M'
 
   # :monday
   # :tuesday

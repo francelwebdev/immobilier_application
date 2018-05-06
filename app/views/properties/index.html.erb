@@ -99,7 +99,11 @@
                     <div class="col-lg-6 mb-4">
                         <%= link_to property, class: "sans-text-decoration" do %>
                         <div class="card liste-card-recherche text-dark">
-                            <%= image_tag property.photos.first, class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
+                            <% if property.photos.attached? %>
+                                <%= image_tag property.photos.first, class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
+                            <% else %>
+                                <p>ANNONCE SANS PHOTO</p>
+                            <% end %>
                             <% if property.ad_type == "Vente" %>
                                 <span class="position-absolute badge badge-secondary p-2" style="top: 10px; left: 10px;">A vendre</span>
                             <% elsif property.ad_type == "Location" %>

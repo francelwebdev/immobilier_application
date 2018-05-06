@@ -7,7 +7,8 @@ class ContactsController < ApplicationController
       ContactsMailer.contact_us(@contact).deliver_now
       redirect_to home_page_path, notice: "Message envoyé avec succès, nous vous contacterons dans les plus brefs délai."
     else
-      render
+      flash.now[:alert] = "Le message n'a pas été envoyé, car le formulaire n'a pas été bien remplir."
+      render "pages/contact_us"
     end
   end
 

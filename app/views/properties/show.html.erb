@@ -128,11 +128,8 @@
                                 <div class="col-lg-12">
                                     <p class="font-weight-bold">Adresse précise : <span class="font-weight-normal"><%= @property.address %></span></p>
                                 </div>
-                                <div class="col-lg-6">
-                                    <p class="font-weight-bold">Quartier : <span class="font-weight-normal"><%= @property.address %></span></p>
-                                </div>
-                                <div class="col-lg-6">
-                                    <p class="font-weight-bold">Commune : <span class="font-weight-normal"><%= @property.commune %></span></p>
+                                <div class="col-lg-12">
+                                    <p class="font-weight-bold">Quartier, Ville ou Commune : <span class="font-weight-normal"><%= @property.city %></span></p>
                                 </div>
                             </div>
                         </div>
@@ -168,7 +165,10 @@
                             <p class="h2"><span class="badge badge-success p-2 ">Annonce en ligne</span></p>
                             <p>Ajouté le : <%= @property.created_at %></p>
                             <p>Mise en ligne le : <%= @property.published_at %></p>
+                            <p>Expire le : <%= @property.expiration_date %></p>
 
+                            <!-- Désactivation de l'annonce par un admin -->
+                            <%= button_to "Mettre hors ligne", deactivate_property_path(@property.id), class: "btn btn-danger btn-lg" %>
                         </div>
                     </div>
                 </div>
@@ -178,13 +178,12 @@
                         <div class="card-body p-4">
                             <h5 class="card-title mb-4 font-weight-bold">Zone administrateur</h5>
                             <p class="h2"><span class="badge badge-danger p-2">Annonce hors ligne</span></p>
+                            <p>Ajouté le : <%= @property.created_at %></p>
+                            <p>Mise en ligne le : <%= @property.published_at %></p>
+                            <p>Expire le : <%= @property.expiration_date %></p>
 
                             <!-- Mise en ligne de l'annonce par un admin -->
-                            <%#= button_to("Mettre en ligne", url: publish_property_path(@property.id)) %>                            
-
-                            <%= simple_form_for :publish, url: publish_property_path(@property.id) do |f| %>
-                            <%= f.button :submit, value: "Mettre en ligne", class: "btn btn-success" %>
-                            <% end %>
+                            <%= button_to "Mettre en ligne", publish_property_path(@property.id), class: "btn btn-success btn-lg" %>
                         </div>
                     </div>
                 </div>
