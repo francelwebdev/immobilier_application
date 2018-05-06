@@ -44,3 +44,4 @@ fr:
     attributes:
       property:
         title: "Titre"
+        price: "Loyer"

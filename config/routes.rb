@@ -15,8 +15,6 @@ Rails.application.routes.draw do
 
     post 'properties/:id/publish', to: 'properties#publish', as: "publish_property"
 
-    post 'send_message_to_owner/:owner_id/send_message_to_owner', to: 'messages#send_message_to_owner', as: "send_message_to_owner"
-
     devise_for :users
     
     resources :properties

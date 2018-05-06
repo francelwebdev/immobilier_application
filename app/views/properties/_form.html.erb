@@ -1,39 +1,54 @@
-<%= simple_form_for(@property) do |f| %>
+<%= simple_form_for(@property, html: { class: "" }) do |f| %>
+
 <%= f.error_notification %>
+
+<% if @property.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+        <h3 class="alert-heading">
+            <%= pluralize(@property.errors.count, "erreur", "erreurs") %> prohibited this article from being saved :
+        </h3>
+        <ul>
+            <% @property.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>    
+<% end %>
+
 <div class="card bg-white border-0 mb-4">
     <div class=" row card-body p-5">
         <div class="col-12">
             <p class="h4 font-weight-bold text-dark mb-4">Description du bien</p>
         </div>
         <div class="col-lg-6">
-            <%= f.association :ad_type, autofocus: true, label: "Type d'annonce", include_blank: false %>
+            <%= f.association :ad_type, autofocus: true, label: "Type d'annonce" %>
         </div>
         <div class="col-lg-6">
-            <%= f.association :property_type, label: "Type de bien", include_blank: false %>
+            <%= f.association :property_type, label: "Type de bien" %>
         </div>
         <div class="col-12">
-            <%= f.input :title, required: true, label: "Titre de l'annonce", placeholder: "Appartement agréable de 25m2." %>
+            <%= f.input :title, label: "Titre de l'annonce" %>
         </div>
         <div class="col-12">
-            <%= f.input :description, required: true, label: "Description du bien", placeholder: "A Zogbo, à proximité de la pharmacie, nous proposons une chambre de 30m2 louée meublée. Il comprend séjour, cuisine, chambre, salle de bain. Disponible maintenant. Nous ecrire pour plus de détail.", input_html: { rows: 8 } %>
+            <%= f.input :description, label: "Description du bien", input_html: { rows: 10 } %>
         </div>
         <div class="col-lg-6">
-            <%= f.input :room, collection: Property::ROOM, label: "Nombres de pièces", include_blank: false %>
+            <%= f.input :room, collection: Property::ROOM, label: "Nombres de pièces" %>
         </div>
         <div class="col-lg-6">
-            <%= f.input :area, required: true, label: "Surface du bien", placeholder: "25" %>
+             <%= f.input :area, label: "Surface du bien", hint: "En m2", hint_html: { class: "small" }  %>
         </div>
         <div class="col-lg-3">
-            <%= f.input :price, required: true, label: "Loyer mensuel", placeholder: "45000" %>
+            <%= f.input :price, required: true, label: "Loyer", hint: "Par mois", hint_html: { class: "small" } %>
         </div>
         <div class="col-lg-3">
-            <%= f.input :avance, required: true, label: "Avance", placeholder: "3" %>
+            <%= f.input :avance, required: true, label: "Avance", hint: "Nombres de mois", hint_html: { class: "small" } %>
         </div>
         <div class="col-lg-3">
-            <%= f.input :available, collection: [["Oui", true], ["Non", false]], label: "Disponible maintenant ?", include_blank: false %>
+            <%= f.input :available, collection: [["Oui", true], ["Non", false]], label: "Disponible maintenant ?" %>
         </div>
         <div class="col-lg-3">
-            <%= f.input :etage, collection: Property::ETAGE, label: "Etage", include_blank: false %>
+            <%= f.input :etage, collection: Property::ETAGE, label: "Etage" %>
         </div>
     </div>
 </div>
@@ -72,7 +87,7 @@
             </div>
             <div class="col-12">
                 <%= image_tag @property.photos[0], size: "400x400" if @property.photos[0].present? %>
-                <%= f.input :photos, label: "Photo 1", input_html: { name: "property[photos][]", class: "form-control-file"}, multiple: true, direct_upload: true %>
+                <%= f.input :photos, label: "Photo 1", input_html: { name: "property[photos][]", class: "form-control-file"}, multiple: true, direct_upload: true, wrapper: :vertical_file_input %>
             </div>
             <div class="col-12">
                 <%= image_tag @property.photos[1], size: "400x400" if @property.photos[1].present? %>

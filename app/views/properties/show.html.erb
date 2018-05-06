@@ -173,6 +173,8 @@
                             <p class="h2"><span class="badge badge-danger p-2">Annonce hors ligne</span></p>
 
                             <!-- Mise en ligne de l'annonce par un admin -->
+                            <%= button_to("Mettre en ligne", url: publish_property_path(@property.id)) %>                            
+
                             <%= simple_form_for :publish, url: publish_property_path(@property.id) do |f| %>
                             <%= f.button :submit, value: "Mettre en ligne", class: "btn btn-success" %>
                             <% end %>
@@ -220,7 +222,8 @@
                     <div class="card border-0 bg-white">
                         <div class="card-body p-4">
                             <h5 class="card-title mb-4 font-weight-bold">Envoyer un message</h5>
-                            <%= simple_form_for @message, url: send_message_to_owner_path(@property.user.id) do |msg| %>
+                            <%= simple_form_for @message do |msg| %>
+                            <%= msg.input :user_id, as: :hidden, value: @property.user.id %>
                             <%= msg.input :buyer_full_name, label: false, placeholder: "Nom et prénom", required: true %>
                             <%= msg.input :buyer_email, as: :email, label: false, placeholder: "Email", required: true %>
                             <%= msg.input :buyer_phone_number, as: :tel, label: false, placeholder: "Numéros de téléphone", required: true %>

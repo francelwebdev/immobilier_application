@@ -1,3 +1,37 @@
+create_table "properties", force: :cascade do |t|
+  t.string "title"
+  t.decimal "price", precision: 10, scale: 2
+  t.integer "area"
+  t.text "description"
+  t.string "address"
+  t.string "city"
+  t.float "latitude"
+  t.float "longitude"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.integer "user_id"
+  t.string "slug"
+  t.string "room"
+  t.boolean "available"
+  t.boolean "published", default: false
+  t.integer "avance"
+  t.bigint "property_type_id"
+  t.bigint "ad_type_id"
+  t.string "feature", array: true
+  t.string "etage"
+  t.string "travaux"
+  t.datetime "published_at"
+  t.index ["ad_type_id"], name: "index_properties_on_ad_type_id"
+  t.index ["property_type_id"], name: "index_properties_on_property_type_id"
+  t.index ["slug"], name: "index_properties_on_slug", unique: true
+  t.index ["user_id"], name: "index_properties_on_user_id"
+end
+
+
+
+
+
+
 elsif params[:ad_type].present? and params[:property_type].blank? and params[:city].blank?
                     @ad_type_id = AdType.find_by(name: params[:ad_type]).id
                     @properties = Property.where("ad_type_id = ?", @ad_type_id).all.order("created_at DESC").published.page(params[:page]).per(6)

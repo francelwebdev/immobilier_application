@@ -1,11 +1,11 @@
 class MessagesController < ApplicationController
     skip_before_action :authenticate_user!
 
-	def send_message_to_owner
-		@owner = User.find(params[:owner_id])
-		@message = @owner.messages.build(message_params)
+	def create
+		@user = User.find(params[:user_id])
+		@message = @user.messages.build(message_params)
 		if @message.valid?
-	    	MessagesMailer.send_message_to_owner(@owner, @message).deliver_now
+	    	MessagesMailer.send_message_to_owner(@user, @message).deliver_now
             redirect_to(request.referrer, notice: "Message envoyé avec succès")
         else
             redirect_to(request.referrer, alert: "Le message n'a pas été envoyé, car le formulaire n'a pas été bien remplir.")
@@ -15,6 +15,6 @@ class MessagesController < ApplicationController
 	private
 
 	def message_params
-		params.require(:message).permit(:user_id, :buyer_full_name, :buyer_phone_number, :buyer_email, :buyer_message)
+		params.require(:message).permit(:user_id, :customer_full_name, :customer_phone_number, :customer_email, :customer_message)
 	end
 end

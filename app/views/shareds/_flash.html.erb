@@ -1,15 +1,9 @@
 <% if flash[:notice] %>
-<div class="alert alert-success alert-dismissible fade show mb-0 text-center rounded-0 py-3" role="alert">
-    <p class="h6 alert-heading mb-0"><%= notice %></p>
-    <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
+<div class="alert alert-success mb-0 rounded-0" role="alert">
+    <p class="alert-heading text-center"><%= notice %></p>
 </div>
 <% elsif flash[:alert] %>
-<div class="alert alert-danger alert-dismissible fade show mb-0 text-center rounded-0 py-3" role="alert">
-    <p class="h6 alert-heading mb-0"><%= alert %></p>
-    <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
+<div class="alert alert-danger mb-0 rounded-0" role="alert">
+    <p class="alert-heading text-center"><%= alert %></p>
 </div>
 <% end %>

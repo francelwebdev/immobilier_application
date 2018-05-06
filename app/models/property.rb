@@ -1,6 +1,6 @@
 class Property < ApplicationRecord
     extend FriendlyId
-    friendly_id :title, use: :slugged
+    friendly_id :title, use: :slugged    
 
     ROOM = ["1 pièce", "2 pièces", "3 pièces", "plus de 3 pièces"]
     FEATURE = ["Electricité", "Eau", "WC", "Internet", "Commerces à proximité"]
@@ -12,9 +12,12 @@ class Property < ApplicationRecord
 
     belongs_to :property_type
 
+    validates :price, :area, :description, :address, :city, :room, :available, :published, :avance, :property_type_id, :ad_type_id, :feature, :etage, presence: true
+
+    validates :title, presence: { message: "ne doit pas être vide." }
+
     scope :published, -> { where(published: true) }
     scope :unpublished, -> { where(published: false) }
-
 
     has_many_attached :photos
 

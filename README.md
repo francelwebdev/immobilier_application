@@ -1,3 +1,8 @@
+Mon application web de petite annonce entre particulier créer avec le framework d'application web Ruby On Rails basé sur le langage de programmation Ruby.
+
+==============================
+
+
 # README
 
 This README would normally document whatever steps are necessary to get the
