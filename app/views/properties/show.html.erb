@@ -66,39 +66,39 @@
                     <div class="card border-0 bg-white">
                         <div class="card-body p-4">
                             <h4 class="card-title font-weight-bold mb-4">Description</h4>
-                            <div class="row">
-                                <div class="col-6 col-lg-3 text-center">
+                            <div class="row mb-3">
+                                <div class="col-6 col-lg-3 text-center mb-2">
                                     <p class="font-weight-bold text-dark h6">Surface</p>
                                     <p><%= @property.area %> m<sup>2</sup></p>
                                 </div>
-                                <div class="col-6 col-lg-3 text-center">
+                                <div class="col-6 col-lg-3 text-center mb-2">
                                     <p class="font-weight-bold text-dark h6">Nbrs de pièces</p>
                                     <p><%= @property.room %></p>
                                 </div>
-                                <div class="col-6 col-lg-3 text-center">
+                                <div class="col-6 col-lg-3 text-center mb-2">
                                     <p class="font-weight-bold text-dark h6">Loyer</p>
                                     <p>
                                         <%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>/<small>mois</small></sup>
                                     </p>
                                 </div>
-                                <div class="col-6 col-lg-3 text-center">
+                                <div class="col-6 col-lg-3 text-center mb-2">
                                     <p class="font-weight-bold text-dark h6">Avance</p>
                                     <p><%= @property.avance %> mois</p>
                                 </div>
-                                <div class="col-6 col-lg-3 text-center">
+                                <div class="col-6 col-lg-3 text-center mb-2">
                                     <p class="font-weight-bold text-dark h6">Disponible</p>
                                     <p class="text-dark">
                                         <%= @property.available ? "Oui" : "Non" %>
                                     </p>
-                                    <div class="col-6 col-lg-3 text-center">
-                                        <p class="font-weight-bold text-dark h6">Etage</p>
-                                        <p class="text-dark"><%= @property.etage %></p>
-                                    </div>
-                                    <div class="col-12 mt-3">
-                                        <p><%= @property.description %></p>
-                                    </div>
+                                </div>
+                                <div class="col-6 col-lg-3 text-center mb-2">
+                                    <p class="font-weight-bold text-dark h6">Etage</p>
+                                    <p class="text-dark"><%= @property.etage %></p>
                                 </div>
                             </div>
+
+                            <p><%= @property.description %></p>
+
                         </div>
                     </div>
                 </div>

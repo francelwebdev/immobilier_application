@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-lg-4 mb-4">
                 <%= render "shareds/dashboard_sidebar_menu" %>
-            </div>           
+            </div>
             <div class="col-lg-8">
                 <div class="row">
                    <div class="col-12">
@@ -44,13 +44,13 @@
                         </div>
                         <div class="col-lg-3">
                             <ul class="list-unstyled text-center">
-                                <li>
+                                <li class="my-2">
                                     <%= link_to 'Voir', my_property, class: "" %>
                                 </li>
-                                <li>
+                                <li class="my-2">
                                     <%= link_to "Modifier", edit_property_path(my_property), class: "" %>
                                 </li>
-                                <li>
+                                <li class="sr-only">
                                     <%= link_to 'Supprimer', my_property_path(my_property.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "" %>
                                 </li>
                             </ul>
@@ -59,7 +59,7 @@
                     <hr>
                     <% end %>
                 </ul>
-            </div>                
+            </div>
         </div>
     </div>
 </div>
