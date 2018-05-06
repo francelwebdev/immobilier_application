@@ -12,7 +12,7 @@ class Property < ApplicationRecord
 
     belongs_to :property_type
 
-    validates :price, :area, :description, :address, :city, :room, :available, :published, :avance, :property_type_id, :ad_type_id, :feature, :etage, presence: true
+    validates :price, :area, :description, :address, :city, :room, :available, :avance, :property_type_id, :ad_type_id, :feature, :etage, presence: true
 
     validates :title, presence: { message: "ne doit pas être vide." }
 

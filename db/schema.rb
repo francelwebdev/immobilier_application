@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_06_165721) do
+ActiveRecord::Schema.define(version: 2018_05_06_182322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,10 +66,10 @@ ActiveRecord::Schema.define(version: 2018_05_06_165721) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string "buyer_full_name"
-    t.string "buyer_email"
-    t.bigint "buyer_phone_number"
-    t.text "buyer_message"
+    t.string "customer_full_name"
+    t.string "customer_email"
+    t.bigint "customer_phone_number"
+    t.text "customer_message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 2018_05_06_165721) do
     t.string "etage"
     t.string "travaux"
     t.datetime "published_at"
+    t.string "commune"
     t.index ["ad_type_id"], name: "index_properties_on_ad_type_id"
     t.index ["property_type_id"], name: "index_properties_on_property_type_id"
     t.index ["slug"], name: "index_properties_on_slug", unique: true

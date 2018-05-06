@@ -85,21 +85,21 @@
                 <p class="h4 font-weight-bold mb-4">Photos</p>
                 <p class="text-info">Une annonce avec photo est 7 fois plus consultée qu'une annonce sans photo. <br> Ajouter les photos des différents pièces et de bonne qualité afin d'attirer plus d'acheteurs ou locataires potentiels.</p>
             </div>
-            <div class="col-12">
-                <%= image_tag @property.photos[0], size: "400x400" if @property.photos[0].present? %>
+            <div class="col-12 mb-3">
                 <%= f.input :photos, label: "Photo 1", input_html: { name: "property[photos][]", class: "form-control-file"}, multiple: true, direct_upload: true, wrapper: :vertical_file_input %>
+                <%= image_tag @property.photos[0], size: "400x400" if @property.photos[0].present? %>
             </div>
-            <div class="col-12">
-                <%= image_tag @property.photos[1], size: "400x400" if @property.photos[1].present? %>
+            <div class="col-12 mb-3">
                 <%= f.input :photos, label: "Photo 2", input_html: { name: "property[photos][]", class: "form-control-file"}, multiple: true, direct_upload: true %>
+                <%= image_tag @property.photos[1], size: "400x400" if @property.photos[1].present? %>
             </div>
-            <div class="col-12">
-                <%= image_tag @property.photos[2], size: "400x400" if @property.photos[2].present? %>
+            <div class="col-12 mb-3">
                 <%= f.input :photos, label: "Photo 3", input_html: { name: "property[photos][]", class: "form-control-file"}, multiple: true, direct_upload: true %>
+                <%= image_tag @property.photos[2], size: "400x400" if @property.photos[2].present? %>
             </div>
-            <div class="col-12">
-                <%= image_tag @property.photos[3], size: "400x400" if @property.photos[3].present? %>
+            <div class="col-12 mb-3">
                 <%= f.input :photos, label: "Photo 4", input_html: { name: "property[photos][]", class: "form-control-file"}, multiple: true, direct_upload: true %>
+                <%= image_tag @property.photos[3], size: "400x400" if @property.photos[3].present? %>
             </div>
         </div>
     </div>

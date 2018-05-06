@@ -121,11 +121,14 @@
                         <div class="card-body p-4">
                             <h4 class="card-title font-weight-bold mb-4">Localisation</h4>
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <p class="font-weight-bold">Adresse : <span class="font-weight-normal"><%= @property.address %></span></p>
+                                <div class="col-lg-12">
+                                    <p class="font-weight-bold">Adresse précise : <span class="font-weight-normal"><%= @property.address %></span></p>
                                 </div>
                                 <div class="col-lg-6">
-                                    <p class="font-weight-bold">Ville/Quartier : <span class="font-weight-normal"><%= @property.address %></span></p>
+                                    <p class="font-weight-bold">Quartier : <span class="font-weight-normal"><%= @property.address %></span></p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <p class="font-weight-bold">Commune : <span class="font-weight-normal"><%= @property.commune %></span></p>
                                 </div>
                             </div>
                         </div>
@@ -173,7 +176,7 @@
                             <p class="h2"><span class="badge badge-danger p-2">Annonce hors ligne</span></p>
 
                             <!-- Mise en ligne de l'annonce par un admin -->
-                            <%= button_to("Mettre en ligne", url: publish_property_path(@property.id)) %>                            
+                            <%#= button_to("Mettre en ligne", url: publish_property_path(@property.id)) %>                            
 
                             <%= simple_form_for :publish, url: publish_property_path(@property.id) do |f| %>
                             <%= f.button :submit, value: "Mettre en ligne", class: "btn btn-success" %>
@@ -198,7 +201,7 @@
                                     <%= image_tag @property.user.profile_photo, class: "", size: "200x200" if @property.user.profile_photo.attached? %>
                                 </div>
                                 <% else %>
-                                <div class="col-lg-12 mb-3 text-center">
+                                <div class="col-lg-12 mb-3">
                                     <%= image_tag "148705-essential-collection/svg/user-3.svg", class: "", size: "200x200" %>
                                 </div>
                                 <% end %>
@@ -224,10 +227,10 @@
                             <h5 class="card-title mb-4 font-weight-bold">Envoyer un message</h5>
                             <%= simple_form_for @message do |msg| %>
                             <%= msg.input :user_id, as: :hidden, value: @property.user.id %>
-                            <%= msg.input :buyer_full_name, label: false, placeholder: "Nom et prénom", required: true %>
-                            <%= msg.input :buyer_email, as: :email, label: false, placeholder: "Email", required: true %>
-                            <%= msg.input :buyer_phone_number, as: :tel, label: false, placeholder: "Numéros de téléphone", required: true %>
-                            <%= msg.input :buyer_message, label: false, placeholder: "Message", as: :text, input_html: {rows: 4}, required: true %>
+                            <%= msg.input :customer_full_name, label: false, placeholder: "Prénom et NOM" %>
+                            <%= msg.input :customer_email, as: :email, label: false, placeholder: "Email" %>
+                            <%= msg.input :customer_phone_number, as: :tel, label: false, placeholder: "Numéros de téléphone" %>
+                            <%= msg.input :customer_message, label: false, placeholder: "Message", input_html: {rows: 5} %>
                             <%= msg.submit "Envoyer", class: "btn btn-primary" %>
                             <% end %>
                         </div>

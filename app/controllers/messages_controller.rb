@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
     skip_before_action :authenticate_user!
 
 	def create
-		@user = User.find(params[:user_id])
+		@user = User.find(params[:message][:user_id])
 		@message = @user.messages.build(message_params)
 		if @message.valid?
 	    	MessagesMailer.send_message_to_owner(@user, @message).deliver_now

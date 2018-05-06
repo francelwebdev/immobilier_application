@@ -5,15 +5,15 @@ class MessagesMailer < ApplicationMailer
   #
   #   en.messages_mailer.send_message_to_owner.subject
   #
-  def send_message_to_owner(ower_id, message_infos)
+  def send_message_to_owner(user, message)
     # @greeting = "Hi"
     #
     # mail to: "to@example.org"
 
-    @owner = ower_id
-    @message_infos = message_infos
+    @user = user
+    @message = message
 
-    mail to: @owner.email, subject: "Un nouveau message pour votre annonce", from: @message_infos.buyer_email
+    mail to: @user.email, subject: "Un nouveau message pour votre annonce", from: @message.customer_email
   end
 
 end
