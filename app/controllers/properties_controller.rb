@@ -1,7 +1,7 @@
 class PropertiesController < ApplicationController
     before_action :set_property, only: [:show, :edit, :update, :destroy]
     skip_before_action :authenticate_user!, only: [:index, :show]
-    
+
     def publish
         @property_to_publish = Property.find(params[:id])
         @property_to_publish.update published: true
@@ -100,5 +100,5 @@ class PropertiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
         params.require(:property).permit(:property_type_id, :ad_type_id, :title, :price, :room, :area, :description, :address, :city, :available, :avance, { photos: [] })
-    end    
+    end
 end

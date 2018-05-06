@@ -15,7 +15,7 @@
             <%= f.input :title, required: true, label: "Titre de l'annonce", placeholder: "Bureau de 25m2 à louer à Akpakpa au 1er étage" %>
         </div>
         <div class="col-12">
-            <%= f.input :description, required: true, label: "Description du bien", placeholder: "Description", input_html: { rows: 5 } %>
+            <%= f.input :description, required: true, label: "Description du bien", placeholder: "Description du bien", input_html: { rows: 8 } %>
         </div>
         <div class="col-lg-6">
             <%= f.input :room, collection: Property::ROOM, label: "Nombres de pièces", include_blank: false %>
@@ -65,13 +65,19 @@
         </div>
         <div class="col-12 form-group">
             <div class="custom-file">
-                <%#= image_tag @property.photos[0], size: "400x300" if @property.photos.attached? %>
+                <%= image_tag @property.photos[0], size: "400x300" if @property.photos.attached? %>
                 <%= f.input :photos, as: :file, wrapper: :vertical_file_input, input_html: { name: "property[photos][]"}, multiple: true, direct_upload: true, class: "form-control form-control-file custom-file-input" %>
             </div>
         </div>
         <div class="col-12 form-group">
             <div class="custom-file">
-                <%#= image_tag @property.photos[0], size: "400x300" if @property.photos.attached? %>
+                <%= image_tag @property.photos[1], size: "400x300" if @property.photos.attached? %>
+                <%= f.input :photos, as: :file, wrapper: :vertical_file_input, input_html: { name: "property[photos][]"}, multiple: true, direct_upload: true, class: "form-control form-control-file custom-file-input" %>
+            </div>
+        </div>
+        <div class="col-12 form-group">
+            <div class="custom-file">
+                <%= image_tag @property.photos[2], size: "400x300" if @property.photos.attached? %>
                 <%= f.input :photos, as: :file, wrapper: :vertical_file_input, input_html: { name: "property[photos][]"}, multiple: true, direct_upload: true, class: "form-control form-control-file custom-file-input" %>
             </div>
         </div>

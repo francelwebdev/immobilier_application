@@ -149,3 +149,7 @@ section.call_to_action_for_owner {
     background-repeat: no-repeat;
     background-origin: content-box;
 }
+
+.slick-arrow::before {
+    background-color: gray;
+}

@@ -4,42 +4,28 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <meta name="author" content="Francel AMAMOO">
-    <meta name="description" content="Petite annonce immobilier entre particulier">
-
-    <%= favicon_link_tag "" %>
-
+    <meta name="description" content="Petite annonce immobilier au Bénin">
+    <%= favicon_link_tag "148705-essential-collection/svg/home-1.svg" %>
     <title>Sico - <%= content_for?(:page_title) ? yield(:page_title) : "Bienvenue" %></title>
-
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-    <%= yield :slick_cdn_link %>
 </head>
 
-<body class="<%= controller.controller_name %>/<%= controller.action_name %>">
+<body class="<%= controller.controller_name %>/<%= controller.action_name %> aos-all" id="transcroller-body">
     <%= render "shareds/navbar" %>
-
     <main>
         <%= render 'shareds/flash' %>
         <%= yield %>
     </main>
-
-    <%#= render "shareds/call_to_action_for_agency" if !current_page?(agency_benefits_path) %>
+    <!-- <%= render "shareds/call_to_action_for_agency" if !current_page?(agency_benefits_path) %> -->
     <%= render "shareds/call_to_action_for_owner" %>
-
     <%= render "shareds/footer" %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <% if current_page?(home_page_path) %>
+    <!-- <% if current_page?(home_page_path) %>
     <%= yield :value_proposition_text_typed %>
-    <% end %>
-
-    <%= yield :slick_cdn_script %>
-
-    <%= yield(:slick_script) %>
+    <% end %> -->
 </body>
 </html>

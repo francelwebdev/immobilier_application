@@ -1,12 +1,5 @@
 <% content_for :page_title, @property.title.capitalize %>
 
-<% content_for :slick_cdn_link do %>
-<!-- Add the slick-theme.css if you want default styling -->
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.9.0/slick/slick.css" />
-<!-- Add the slick-theme.css if you want default styling -->
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.9.0/slick/slick-theme.css" />
-<% end %>
-
 <section class="container-fluid py-5 property-show-page-banner d-flex align-items-center">
     <div class="container">
         <riv class="row">
@@ -56,69 +49,62 @@
                     <div class="card border-0 bg-white">
                         <div class="card-body p-4">
                         <% if @property.photos.attached? %>
+                            <div class="single-item responsive center">
                             <% @property.photos.each do |photo| %>
-                            <div class="carousel-item active">
-                            <%= image_tag photo, class: "w-100 h-100" %>
-                        </div>
-
-
-                        <% end %>
+                                <div>
+                                    <%= image_tag photo, class: "w-100 h-100" %>
+                                </div>
+                            <% end %>
+                            </div>
                         <% else %>
-                        <div class="card-body p-4">
-                            <p>PAS DE PHOTOS</p>
-                        </div>
+                        <%= image_tag "https://picsum.photos/200/150/?random" %>
                         <% end %>
+                        </div>
                     </div>
                 </div>
-            </div>
 
             <div class="col-12 mb-4">
                 <div class="card border-0 bg-white">
                     <div class="card-body p-4">
                         <h4 class="card-title font-weight-bold text-dark">Description</h4>
                         <div class="row">
-                            <div class="col-lg-4 text-center">
+                            <div class="col-lg-3 text-center">
                                 <p class="font-weight-bold text-dark h6">Surface</p>
                                 <p>
                                 <%= @property.area %> m<sup>2</sup></p>
                             </div>
-                            <div class="col-lg-4 text-center">
+                            <div class="col-lg-3 text-center">
                                 <p class="font-weight-bold text-dark h6">Nbrs de pièces</p>
                                 <p>
                                 <%= @property.room %>
                             </p>
                         </div>
-                        <div class="col-lg-4 text-center">
+                        <div class="col-lg-3 text-center">
                             <p class="font-weight-bold text-dark h6">Loyer</p>
                             <p>
                             <%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>/<small>mois</small></sup>
                         </p>
                     </div>
-                    <div class="col-lg-4 text-center">
+                    <div class="col-lg-3 text-center">
                         <p class="font-weight-bold text-dark h6">Avance</p>
                         <p>
                         <%= @property.avance %> mois</p>
                     </div>
-                    <div class="col-lg-4 text-center">
+                    <div class="col-lg-3 text-center">
                         <p class="font-weight-bold text-dark h6">Disponible</p>
                         <p class="text-dark">
                         <%= @property.available ? "Oui" : "Non" %>
                     </p>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <p class="font-weight-bold text-dark h6">Surface</p>
-                    <p>
-                    <%= @property.area %> m<sup>2</sup></p>
                 </div>
                 <div class="col-12 mt-3">
                     <p>
                     <%= @property.description %>
                 </p>
             </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-</div>
+        </div>
 
 <div class="col-lg-12">
     <div class="card border-0 mb-4 bg-white">
@@ -278,45 +264,3 @@
 </div>
 </div>
 </section>
-
-<% content_for :slick_cdn_script do %>
-<script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.9.0/slick/slick.min.js"></script>
-<% end %>
-
-<% content_for :slick_script do %>
-<script>
-$(document).ready(function() {
-
-    $('.center').slick({
-
-        infinite: true,
-        dots: true,
-        slidesToScroll: 1,
-        speed: 300,
-
-
-        centerMode: true,
-        centerPadding: '60px',
-        slidesToShow: 1,
-        responsive: [{
-            breakpoint: 768,
-            settings: {
-                arrows: false,
-                centerMode: true,
-                centerPadding: '40px',
-                slidesToShow: 3
-            }
-        }, {
-            breakpoint: 480,
-            settings: {
-                arrows: false,
-                centerMode: true,
-                centerPadding: '40px',
-                slidesToShow: 1
-            }
-        }]
-    });
-
-});
-</script>
-<% end %>
