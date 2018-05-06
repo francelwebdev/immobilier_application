@@ -111,21 +111,13 @@
         <div class="card-body p-4">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="font-weight-bold text-dark">Features</h4>
+                    <h4 class="font-weight-bold text-dark">Services du bien</h4>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-12">
                     <ul class="list-unstyled">
-                        <li></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4">
-                    <ul class="list-unstyled">
-                        <li></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4">
-                    <ul class="list-unstyled">
-                        <li></li>
+                        <% @property.property_feature.each do |feature| %>
+                            <li><%= feature %></li>
+                        <% end %>
                     </ul>
                 </div>
             </div>

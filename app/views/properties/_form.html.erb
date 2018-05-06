@@ -18,7 +18,7 @@
             <%= f.input :description, required: true, label: "Description du bien", placeholder: "Description du bien", input_html: { rows: 8 } %>
         </div>
         <div class="col-lg-6">
-            <%= f.input :room, collection: Property::ROOM, label: "Nombres de pièces", include_blank: false %>
+            <%= f.input :room, collection: ["1 pièce", "2 pièces", "3 pièces", "plus de 3 pièces"], label: "Nombres de pièces", include_blank: false %>
         </div>
         <div class="col-lg-6">
             <%= f.input :area, required: true, label: "Surface du bien", placeholder: "25" %>
@@ -39,6 +39,9 @@
     <div class="form-inputs form-row card-body p-5">
         <div class="col-12">
             <p class="h4 font-weight-bold text-dark mb-4">Caractéristiques du bien</p>
+        </div>
+        <div class="col-12">
+            <%= f.input :feature, as: :check_boxes, collection: ["Electricité", "Eau"], label: false, wrapper: :vertical_radio_and_checkboxes %>
         </div>
     </div>
 </div>
