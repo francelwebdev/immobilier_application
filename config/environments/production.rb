@@ -97,25 +97,6 @@ Rails.application.configure do
 
   # Pour l'envoie d'email en prodduction. 
 
-  # Pour Gmail
-  # config.action_mailer.default_url_options = { :host => "sicoapp.herokuapp.com" }
-  # config.action_mailer.perform_deliveries = true
-  # config.action_mailer.raise_delivery_errors = true 
-
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   address:              'smtp.gmail.com',
-  #   port:                 587,
-  #   domain:               'sicoapp.herokuapp.com',
-  #   user_name:            '<username>',
-  #   password:             '<password>',
-  #   authentication:       'plain',
-  #   enable_starttls_auto: true
-
-  #   :user_name => ENV['GMAIL_SMTP_USER'],
-  #   :password => ENV['GMAIL_SMTP_PASSWORD'],
-  # }
-
   # Pour mandrill
   config.action_mailer.default_url_options = { :host => 'sicoapp.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp

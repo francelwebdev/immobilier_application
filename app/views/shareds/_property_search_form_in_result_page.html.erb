@@ -13,13 +13,13 @@
         <%= f.input :room, collection: Property::ROOM, prompt: "Nombres de pièce", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
     </div>    
     <div class="col-lg-2 px-1 mb-2">
-        <%= f.input :loyer_minimum, placeholder: "Loyer minimum", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+        <%= f.input :loyer_minimum, as: :decimal, placeholder: "Loyer minimum", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
     </div>
     <div class="col-lg-2 px-1 mb-2">
-        <%= f.input :loyer_maximum, placeholder: "Loyer maximum", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+        <%= f.input :loyer_maximum, as: :decimal, placeholder: "Loyer maximum", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
     </div>
     <div class="col-lg-2 px-1 mb-2">
-        <%= f.input :surface_minimum, placeholder: "Surface minimum", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+        <%= f.input :surface_minimum, as: :integer, placeholder: "Surface minimum", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
     </div>
     <div class="col-lg-2 px-1 mb-2">
         <%= f.button :submit, "Rechercher", name: nil, class: 'btn btn-primary btn-block btn-lg' %>

@@ -14,19 +14,23 @@ class PropertiesController < ApplicationController
         puts "====================="
 
         if params[:property_type].present? and params[:ad_type].blank? and params[:city].blank?
-            @properties = Property.where("property_type = :property_type", {property_type: params[:property_type]}).all.order("created_at DESC").published.page(params[:page]).per(6)
+            @properties = Property.where("property_type = :property_type", { property_type: params[:property_type] }).published.all.order("created_at DESC").page(params[:page]).per(6)
             @properties_numbers = @properties.count
+
         elsif params[:property_type].present? and params[:ad_type].present? and params[:city].blank?
-            @properties = Property.where("property_type = ? AND ad_type = ?", params[:property_type], params[:ad_type]).all.order("created_at DESC").published.page(params[:page]).per(6)
+            @properties = Property.where("property_type = :property_type AND ad_type = :ad_type", { property_type: params[:property_type], ad_type: params[:ad_type] }).published.all.order("created_at DESC").page(params[:page]).per(6)
             @properties_numbers = @properties.count
+
         elsif params[:property_type].present? and params[:ad_type].present? and params[:city].present?
-            @properties = Property.where("property_type = ? AND ad_type = ? city = ?", params[:property_type], params[:ad_type], params[:city]).all.order("created_at DESC").published.page(params[:page]).per(6)
+            @properties = Property.where("property_type = :property_type AND ad_type = :ad_type AND city = :city", { property_type: params[:property_type], ad_type: params[:ad_type], city: params[:city] }).published.all.order("created_at DESC").page(params[:page]).per(6)
             @properties_numbers = @properties.count
+
         elsif params[:property_type].blank? and params[:ad_type].present? and params[:city].blank?
-            @properties = Property.where("ad_type = ?", params[:ad_type]).all.order("created_at DESC").published.page(params[:page]).per(6)
+            @properties = Property.where("ad_type = :ad_type", { ad_type: params[:ad_type] }).published.all.order("created_at DESC").page(params[:page]).per(6)
             @properties_numbers = @properties.count
+
         elsif params[:property_type].blank? and params[:ad_type].blank? and params[:city].present?
-            @properties = Property.where("city = ?", params[:city]).all.order("created_at DESC").published.page(params[:page]).per(6)
+            @properties = Property.where("city = :city", { city: params[:city] }).published.all.order("created_at DESC").page(params[:page]).per(6)
             @properties_numbers = @properties.count
 
         else
