@@ -74,8 +74,8 @@ class PropertiesController < ApplicationController
     end
 
     def show
-    	@owner = @property.user
-    	@message = @owner.messages.build
+        @owner = @property.user
+        @message = @owner.messages.build
     end
 
     def new

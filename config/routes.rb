@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
     root to: "pages#home", as: "home_page"
 
     get "a_propos_de_nous", to: "pages#about_us", as: "about_us"
@@ -19,7 +18,7 @@ Rails.application.routes.draw do
     post 'send_message_to_owner/:owner_id/send_message_to_owner', to: 'messages#send_message_to_owner', as: "send_message_to_owner"
 
     devise_for :users
-
+    
     resources :properties
 
     resources :messages, only: [:create]
