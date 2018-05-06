@@ -12,25 +12,28 @@
             <%= f.association :property_type, label: "Type de bien", include_blank: false %>
         </div>
         <div class="col-12">
-            <%= f.input :title, required: true, label: "Titre de l'annonce", placeholder: "Bureau de 25m2 à louer à Akpakpa au 1er étage" %>
+            <%= f.input :title, required: true, label: "Titre de l'annonce", placeholder: "Appartement agréable de 25m2." %>
         </div>
         <div class="col-12">
-            <%= f.input :description, required: true, label: "Description du bien", placeholder: "Description du bien", input_html: { rows: 8 } %>
+            <%= f.input :description, required: true, label: "Description du bien", placeholder: "A Zogbo, à proximité de la pharmacie, nous proposons une chambre de 30m2 louée meublée. Il comprend séjour, cuisine, chambre, salle de bain. Disponible maintenant. Nous ecrire pour plus de détail.", input_html: { rows: 8 } %>
         </div>
         <div class="col-lg-6">
-            <%= f.input :room, collection: ["1 pièce", "2 pièces", "3 pièces", "plus de 3 pièces"], label: "Nombres de pièces", include_blank: false %>
+            <%= f.input :room, collection: Property::ROOM, label: "Nombres de pièces", include_blank: false %>
         </div>
         <div class="col-lg-6">
             <%= f.input :area, required: true, label: "Surface du bien", placeholder: "25" %>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
             <%= f.input :price, required: true, label: "Loyer mensuel", placeholder: "45000" %>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
             <%= f.input :avance, required: true, label: "Avance", placeholder: "3" %>
         </div>
-        <div class="col-lg-4">
-            <%= f.input :available, collection: [['1', 'Oui'], ['0', 'Non']], label_method: :second, value_method: :first, label: "Ddisponible maintenant ?", include_blank: false %>
+        <div class="col-lg-3">
+            <%= f.input :available, collection: ["Oui", "Non"], label: "Ddisponible maintenant ?", include_blank: false %>
+        </div>
+        <div class="col-lg-3">
+            <%= f.input :room, collection: Property::ETAGE, label: "Etage", include_blank: false %>
         </div>
     </div>
 </div>
@@ -41,7 +44,7 @@
             <p class="h4 font-weight-bold text-dark mb-4">Caractéristiques du bien</p>
         </div>
         <div class="col-12">
-            <%= f.input :feature, as: :check_boxes, collection: ["Electricité", "Eau"], label: false, wrapper: :vertical_radio_and_checkboxes %>
+            <%= f.input :feature, as: :check_boxes, collection: Property::FEATURE, label: false, wrapper: :vertical_radio_and_checkboxes %>
         </div>
     </div>
 </div>
@@ -68,47 +71,30 @@
         </div>
         <div class="col-12 form-group">
             <div class="custom-file">
-                <%= image_tag @property.photos[0], size: "400x300" if @property.photos.attached? %>
+                <%= image_tag @property.photos[0], size: "400x300" if @property.photos[0].present? %>
                 <%= f.input :photos, as: :file, wrapper: :vertical_file_input, input_html: { name: "property[photos][]"}, multiple: true, direct_upload: true, class: "form-control form-control-file custom-file-input" %>
             </div>
         </div>
         <div class="col-12 form-group">
             <div class="custom-file">
-                <%= image_tag @property.photos[1], size: "400x300" if @property.photos.attached? %>
+                <%= image_tag @property.photos[1], size: "400x300" if @property.photos[1].present? %>
                 <%= f.input :photos, as: :file, wrapper: :vertical_file_input, input_html: { name: "property[photos][]"}, multiple: true, direct_upload: true, class: "form-control form-control-file custom-file-input" %>
             </div>
         </div>
         <div class="col-12 form-group">
             <div class="custom-file">
-                <%= image_tag @property.photos[2], size: "400x300" if @property.photos.attached? %>
+                <%= image_tag @property.photos[2], size: "400x300" if @property.photos[2].present? %>
+                <%= f.input :photos, as: :file, wrapper: :vertical_file_input, input_html: { name: "property[photos][]"}, multiple: true, direct_upload: true, class: "form-control form-control-file custom-file-input" %>
+            </div>
+        </div>
+        <div class="col-12 form-group">
+            <div class="custom-file">
+                <%= image_tag @property.photos[3], size: "400x300" if @property.photos[3].present? %>
                 <%= f.input :photos, as: :file, wrapper: :vertical_file_input, input_html: { name: "property[photos][]"}, multiple: true, direct_upload: true, class: "form-control form-control-file custom-file-input" %>
             </div>
         </div>
     </div>
 </div>
-
-<!--
-<% if user_signed_in? and current_user.first_name.blank? and current_user.last_name.blank? and current_user.phone_number.blank? and current_user.address.blank?%>
-<%= f.simple_fields_for :user do |user_contact_form| %>
-<div class="card bg-white border-0 mb-4">
-    <div class="form-inputs form-row card-body p-5">
-        <div class="col-12">
-            <p class="h4 font-weight-bold mb-4">Information de contact</p>
-        </div>
-        <div class="col-lg-6">
-           <%= user_contact_form.input :first_name, required: true, label: "Prénom" %>
-        </div>
-        <div class="col-lg-6">
-           <%= user_contact_form.input :last_name, required: true, label: "Nom" %>
-        </div>
-        <div class="col-lg-6">
-           <%= user_contact_form.input :phone_number, as: :tel, required: true, label: "Numéros de téléphone"%>
-        </div>
-    </div>
-</div>
-<% end %>
-<% end %>
--->
 
 <div class="form-actions form-row mt-4">
     <div class="col-12">

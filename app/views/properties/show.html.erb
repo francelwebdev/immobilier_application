@@ -1,44 +1,42 @@
 <% content_for :page_title, @property.title.capitalize %>
 
-<section class="container-fluid py-5 property-show-page-banner d-flex align-items-center">
+<section class="container-fluid mb-4 property-show-page-banner d-flex align-items-center">
     <div class="container">
         <riv class="row">
-            <div class="col-lg-12 text-center">
-                <h1 class="text-white">Détails du bien</h1>
+            <div class="col-lg-12">
+                <h1 class="text-white text-center">Détails du bien</h1>
             </div>
         </riv>
     </div>
 </section>
 
-<section class="container pt-5 pb-2">
+<section class="container">
     <div class="row">
-        <div class="col-lg-12" style="border-bottom: 1px solid #dee2e6 !important;">
+        <div class="col-lg-12" style="border-bottom: 2px solid #dee2e6 !important;">
             <div class="row">
                 <div class="col-lg-10">
-                    <h2>
-                    <%= @property.title.capitalize %>
-                </h2>
-                <p><i class="fas fa-map-marker-alt"></i>&nbsp;
-                <%= @property.address %>,
-                <%= @property.city %>
-            </p>
+                    <h2><%= @property.title.capitalize %></h2>
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i>&nbsp;
+                        <%= @property.address %>, <%= @property.city %>
+                    </p>
+                </div>
+                <div class="col-lg-2">
+                    <% if @property.ad_type.name == "Vente" %>
+                    <p class="h3 font-weight-bold">A vendre</p>
+                    <p class="text-primary h2">
+                        <%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>
+                    </p>
+                    <% elsif @property.ad_type.name == "Location" %>
+                    <p class="h3 font-weight-bold">A louer</p>
+                    <p class="text-primary h2">
+                        <%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>/<small>mois</small></sup>
+                    </p>
+                    <% end %>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-2">
-        <% if @property.ad_type.name == "Vente" %>
-        <p class="mb-0 font-weight-bold">A vendre</p>
-        <p class="text-primary h2">
-        <%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>
-    </p>
-    <% elsif @property.ad_type.name == "Location" %>
-    <p class="mb-0 font-weight-bold">A louer</p>
-    <p class="text-primary h2">
-    <%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>/<small>mois</small></sup>
-</p>
-<% end %>
-</div>
-</div>
-</div>
-</div>
+    </div>
 </section>
 
 <section class="container py-5">
@@ -48,211 +46,195 @@
                 <div class="col-lg-12 mb-4">
                     <div class="card border-0 bg-white">
                         <div class="card-body p-4">
-                        <% if @property.photos.attached? %>
-                            <div class="single-item responsive center">
-                            <% @property.photos.each do |photo| %>
+                            <h4 class="card-title font-weight-bold mb-4">Photos</h4>
+                            <% if @property.photos.attached? %>
+                            <div class="single-item">
+                                <% @property.photos.each do |photo| %>
                                 <div>
                                     <%= image_tag photo, class: "w-100 h-100" %>
                                 </div>
+                                <% end %>
+                            </div>
+                            <% else %>
+                            <p class="text-center">ANNONCE SANS PHOTO</p>
                             <% end %>
-                            </div>
-                        <% else %>
-                        <%= image_tag "https://picsum.photos/200/150/?random" %>
-                        <% end %>
                         </div>
                     </div>
                 </div>
 
-            <div class="col-12 mb-4">
-                <div class="card border-0 bg-white">
-                    <div class="card-body p-4">
-                        <h4 class="card-title font-weight-bold text-dark">Description</h4>
-                        <div class="row">
-                            <div class="col-lg-3 text-center">
-                                <p class="font-weight-bold text-dark h6">Surface</p>
-                                <p>
-                                <%= @property.area %> m<sup>2</sup></p>
+                <div class="col-lg-12 mb-4">
+                    <div class="card border-0 bg-white">
+                        <div class="card-body p-4">
+                            <h4 class="card-title font-weight-bold mb-4">Description</h4>
+                            <div class="row">
+                                <div class="col-6 col-lg-3 text-center">
+                                    <p class="font-weight-bold text-dark h6">Surface</p>
+                                    <p><%= @property.area %> m<sup>2</sup></p>
+                                </div>
+                                <div class="col-6 col-lg-3 text-center">
+                                    <p class="font-weight-bold text-dark h6">Nbrs de pièces</p>
+                                    <p><%= @property.room %></p>
+                                </div>
+                                <div class="col-6 col-lg-3 text-center">
+                                    <p class="font-weight-bold text-dark h6">Loyer</p>
+                                    <p>
+                                        <%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>/<small>mois</small></sup>
+                                    </p>
+                                </div>
+                                <div class="col-6 col-lg-3 text-center">
+                                    <p class="font-weight-bold text-dark h6">Avance</p>
+                                    <p><%= @property.avance %> mois</p>
+                                </div>
+                                <div class="col-6 col-lg-3 text-center">
+                                    <p class="font-weight-bold text-dark h6">Disponible</p>
+                                    <p class="text-dark">
+                                        <%= @property.available ? "Oui" : "Non" %>
+                                    </p>
+                                    <div class="col-6 col-lg-3 text-center">
+                                        <p class="font-weight-bold text-dark h6">Etage</p>
+                                        <p class="text-dark"><%= @property.etage %></p>
+                                    </div>
+                                    <div class="col-12 mt-3">
+                                        <p><%= @property.description %></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-lg-3 text-center">
-                                <p class="font-weight-bold text-dark h6">Nbrs de pièces</p>
-                                <p>
-                                <%= @property.room %>
-                            </p>
                         </div>
-                        <div class="col-lg-3 text-center">
-                            <p class="font-weight-bold text-dark h6">Loyer</p>
-                            <p>
-                            <%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>/<small>mois</small></sup>
-                        </p>
                     </div>
-                    <div class="col-lg-3 text-center">
-                        <p class="font-weight-bold text-dark h6">Avance</p>
-                        <p>
-                        <%= @property.avance %> mois</p>
+                </div>
+
+                <div class="col-lg-12 mb-4">
+                    <div class="card border-0 bg-white">
+                        <div class="card-body p-4">
+                            <h4 class="card-title font-weight-bold mb-4">Services</h4>
+                            <ul class="list-unstyled list-inline">
+                                <% @property.feature.each do |feature| %>
+                                <li class="list-inline-item"><%= feature %></li>
+                                <% end %>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="col-lg-3 text-center">
-                        <p class="font-weight-bold text-dark h6">Disponible</p>
-                        <p class="text-dark">
-                        <%= @property.available ? "Oui" : "Non" %>
-                    </p>
                 </div>
-                <div class="col-12 mt-3">
-                    <p>
-                    <%= @property.description %>
-                </p>
-            </div>
-                </div>
-            </div>
-        </div>
-        </div>
 
-<div class="col-lg-12">
-    <div class="card border-0 mb-4 bg-white">
-        <div class="card-body p-4">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h4 class="font-weight-bold text-dark">Services du bien</h4>
+                <div class="col-lg-12 mb-4">
+                    <div class="card border-0 bg-white">
+                        <div class="card-body p-4">
+                            <h4 class="card-title font-weight-bold mb-4">Localisation</h4>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <p class="font-weight-bold">Adresse : <span class="font-weight-normal"><%= @property.address %></span></p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <p class="font-weight-bold">Ville/Quartier : <span class="font-weight-normal"><%= @property.address %></span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-12">
-                    <ul class="list-unstyled">
-                        <% @property.property_feature.each do |feature| %>
-                            <li><%= feature %></li>
-                        <% end %>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="col-lg-12">
-    <div class="card border-0 mb-4 bg-white">
-        <div class="card-body p-4">
-            <div class="row">
-                <div class="col-lg-12 mb-3">
-                    <h4 class="font-weight-bold text-dark">Adresse</h4>
+                <div class="col-lg-12 mb-4 sr-only">
+                    <div class="card border-0 bg-white">
+                        <div class="card-body p-4">
+                            <h4 class="card-title font-weight-bold mb-4">Plan</h4>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <p class="font-weight-bold text-dark">Adresse : <span class="text-dark"><%= @property.address %></span></p>
-                </div>
-                <div class="col-lg-6">
-                    <p class="font-weight-bold text-dark">Ville/Quartier : <span class="text-dark"><%= @property.address %></span></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="col-lg-12 sr-only">
-    <div class="card border-0 mb-4 bg-white">
-        <div class="card-body p-4">
-            <div class="row">
-                <div class="col-lg-12 mb-3">
-                    <h4 class="font-weight-bold text-dark">Plan</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="col-lg-12 sr-only">
-    <div class="card border-0 mb-4 bg-white">
-        <div class="card-body p-4">
-            <div class="row">
-                <div class="col-lg-12 mb-3">
-                    <h4 class="font-weight-bold text-dark">Vidéo</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-</div>
-
-<div class="col-lg-4">
-    <div class="row">
-    <% if user_signed_in? %>
-        <% if current_user.admin? && @property.published? %>
-        <div class="col-lg-12 mb-4">
-            <div class="card border-0 bg-white">
-                <div class="card-body">
-                    <h5 class="card-title mb-4 font-weight-bold text-dark">Admin</h5>
-                    <p><span class="badge badge-success p-2 ">En ligne</span></p>
-                </div>
-            </div>
-        </div>
-        <% elsif current_user.admin? && !@property.published? %>
-        <div class="col-lg-12 mb-4">
-            <div class="card border-0 bg-white">
-                <div class="card-body">
-                    <h5 class="card-title mb-4 font-weight-bold text-dark">Admin</h5>
-                    <p><span class="badge badge-danger p-2">Annonce hors ligne</span></p>
-
-                    <!-- Mise en ligne de l'annonce par un admin -->
-                    <%= simple_form_for :publish, url: publish_property_path(@property.id) do |f| %>
-                        <%= f.button :submit, value: "Mettre en ligne", class: "btn btn-success" %>
-                        <% end %>
+                <div class="col-lg-12 mb-4 sr-only">
+                    <div class="card border-0 bg-white">
+                        <div class="card-body p-4">
+                            <h4 class="card-title font-weight-bold mb-4">Vidéo</h4>
+                        </div>
                     </div>
                 </div>
             </div>
-            <% end %>
-            <% end %>
+        </div>
 
-            <div class="col-lg-12 mb-4">
-                <div class="card border-0 bg-white">
-                    <div class="card-body p-4 text-center">
-                    <% if @property.user.user_group.name == "Propriétaire" %>
-                    <h5 class="mb-4 font-weight-bold">Contacter le properiétaire</h5>
-                    <% elsif @property.user.user_group.name == "Agence" %>
-                    <h5 class="mb-4 font-weight-bold">Contacter le properiétaire</h5>
-                    <% end %>
-                    <div class="row">
-                    <% if @property.user.profile_photo.attached? %>
-                    <div class="col-lg-12 mb-3 text-center">
-                    <%= image_tag @property.user.profile_photo, class: "rounded-circle", size: "150x150" if @property.user.profile_photo.attached? %>
+        <div class="col-lg-4">
+            <div class="row">
+                <% if user_signed_in? && current_user.admin? %>
+                <% if @property.published? %>
+                <div class="col-lg-12 mb-4">
+                    <div class="card border-0 bg-white">
+                        <div class="card-body p-4">
+                            <h5 class="card-title mb-4 font-weight-bold">Zone administrateur</h5>
+                            <p class="h2"><span class="badge badge-success p-2 ">Annonce en ligne</span></p>
+                            <p>Ajouté le : <%= @property.created_at %></p>
+                            <p>Mise en ligne le : <%= @property.published_at %></p>
+
+                        </div>
+                    </div>
                 </div>
                 <% else %>
-                <div class="col-lg-12 mb-3 text-center">
-                <%= image_tag "148705-essential-collection/svg/user-3.svg", class: "rounded-circle", size: "150x150" %>
-            </div>
-            <% end %>
-            <div class="col-lg-12 text-center">
-                <p class="font-weight-bold mb-3">
-                <%= @property.user.first_name.capitalize %> <%= @property.user.last_name.upcase %>
-            </p>
-            <address class="text-center">
-                <ul class="list-unstyled">
-                    <li class="my-2"><i class="fas fa-phone" aria-hidden="true"></i>&nbsp; <%= @property.user.phone_number %></li>
-                    <li class="my-2"><i class="fas fa-envelope"></i>&nbsp; <%= mail_to @property.user.email %></li>
-                </ul>
-            </address>
-        </div>
-    </div>
-</div>
-</div>
-</div>
-<div class="col-lg-12 mb-4">
-    <div class="card border-0 bg-white">
-        <div class="card-body p-4">
-            <h5 class="card-title mb-4 font-weight-bold text-dark">Envoyer un message</h5>
-            <%= simple_form_for @message, url: send_message_to_owner_path do |msg| %>
-                <%= msg.input :user_id, as: :hidden, input_html: { value: "#{@property.user.id}"}, required: true %>
-                <%= msg.input :buyer_full_name, label: false, placeholder: "Nom et prénom", required: true %>
-                <%= msg.input :buyer_email, as: :email, label: false, placeholder: "Email", required: true %>
-                <%= msg.input :buyer_phone_number, as: :tel, label: false, placeholder: "Numéros de téléphone", required: true %>
-                <%= msg.input :buyer_message, label: false, placeholder: "Message", as: :text, input_html: {rows: 4}, required: true %>
-                <%= msg.submit "Envoyer", class: "btn btn-primary" %>
-                <% end %>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
+                <div class="col-lg-12 mb-4">
+                    <div class="card border-0 bg-white">
+                        <div class="card-body p-4">
+                            <h5 class="card-title mb-4 font-weight-bold">Zone administrateur</h5>
+                            <p class="h2"><span class="badge badge-danger p-2">Annonce hors ligne</span></p>
 
-<div class="col-lg-12">
-    <p>
-    <%= link_to 'Retour', properties_path, class: "btn btn-primary" %>
-</p>
-</div>
-</div>
+                            <!-- Mise en ligne de l'annonce par un admin -->
+                            <%= simple_form_for :publish, url: publish_property_path(@property.id) do |f| %>
+                            <%= f.button :submit, value: "Mettre en ligne", class: "btn btn-success" %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+                <% end %>
+                <% end %>
+
+                <div class="col-lg-12 mb-4">
+                    <div class="card border-0 bg-white">
+                        <div class="card-body p-4">
+                            <% if @property.user.user_group.name == "Propriétaire" %>
+                            <h5 class="mb-4 font-weight-bold">Contacter le properiétaire</h5>
+                            <% elsif @property.user.user_group.name == "Agence" %>
+                            <h5 class="mb-4 font-weight-bold">Contacter l'agence'</h5>
+                            <% end %>
+                            <div class="row">
+                                <% if @property.user.profile_photo.attached? %>
+                                <div class="col-lg-12 mb-3">
+                                    <%= image_tag @property.user.profile_photo, class: "", size: "200x200" if @property.user.profile_photo.attached? %>
+                                </div>
+                                <% else %>
+                                <div class="col-lg-12 mb-3 text-center">
+                                    <%= image_tag "148705-essential-collection/svg/user-3.svg", class: "", size: "200x200" %>
+                                </div>
+                                <% end %>
+                                <div class="col-lg-12">
+                                    <p class="font-weight-bold mb-3 h5">
+                                        <%= @property.user.first_name.capitalize %> <%= @property.user.last_name.upcase %>
+                                    </p>
+                                    <address>
+                                        <ul class="list-unstyled">
+                                            <li class="my-2"><i class="fas fa-phone" aria-hidden="true"></i>&nbsp; <%= @property.user.phone_number %></li>
+                                            <li class="my-2"><i class="fas fa-envelope"></i>&nbsp; <%= mail_to @property.user.email %></li>
+                                        </ul>
+                                    </address>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 mb-4">
+                    <div class="card border-0 bg-white">
+                        <div class="card-body p-4">
+                            <h5 class="card-title mb-4 font-weight-bold">Envoyer un message</h5>
+                            <%= simple_form_for @message, url: send_message_to_owner_path(@property.user.id) do |msg| %>
+                            <%= msg.input :buyer_full_name, label: false, placeholder: "Nom et prénom", required: true %>
+                            <%= msg.input :buyer_email, as: :email, label: false, placeholder: "Email", required: true %>
+                            <%= msg.input :buyer_phone_number, as: :tel, label: false, placeholder: "Numéros de téléphone", required: true %>
+                            <%= msg.input :buyer_message, label: false, placeholder: "Message", as: :text, input_html: {rows: 4}, required: true %>
+                            <%= msg.submit "Envoyer", class: "btn btn-primary" %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <p><%= link_to 'Retour', properties_path, class: "btn btn-primary" %></p>
+        </div>
+    </div>
 </section>

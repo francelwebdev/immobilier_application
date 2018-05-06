@@ -7,7 +7,7 @@ main {
 
 .jumbotron-accueil {
     height: 75vh !important;
-    background-image: linear-gradient(-225deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), asset-url("246297-P3J4XD-884.jpg") !important;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5) ), asset-url("pexels-photo-259950.jpeg") !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -25,12 +25,12 @@ section.call_to_action_for_agency {
 }
 
 .liste-card-rech4rche {
-    transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in-out;
 }
 
 .liste-card-recherche:hover {
     box-shadow: 0 10px 20px rgba(0,0,0,.1);
-    transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in-out;
 }
 
 .card-photo-property {
@@ -58,7 +58,7 @@ section.call_to_action_for_agency {
 
 .barre-recherche-avance {
     height: 75vh !important;
-    background-image: linear-gradient(-225deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.2) 50%), asset-url("246297-P3J4XD-884.jpg") !important;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), asset-url("pexels-photo-259950.jpeg") !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -101,9 +101,9 @@ ul > li > a {
 // List design
 
 
-.contact-page-banner, .add-property-page-banner {
-    height: 50vh !important;
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), asset-url("philipp-berndt-173197.jpg") !important;
+.contact-page-banner, .add-property-page-banner, .my_property-page-banner, .property-show-page-banner {
+    height: 30vh !important;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5) ), asset-url("philipp-berndt-173197.jpg") !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -113,27 +113,7 @@ ul > li > a {
 
 .agent-benefits-page-banner {
     height: 75vh !important;
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), asset-url("85.jpg") !important;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-origin: content-box;
-}
-
-.my_property-page-banner {
-    height: 50vh !important;
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), asset-url("philipp-berndt-173197.jpg") !important;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-origin: content-box;
-}
-
-.property-show-page-banner {
-    height: 50vh !important;
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), asset-url("philipp-berndt-173197.jpg") !important;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5) ), asset-url("85.jpg") !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -142,7 +122,7 @@ ul > li > a {
 }
 
 section.call_to_action_for_owner {
-    background-image: linear-gradient(-225deg, rgba(0,0,0,0.3) , rgba(0,0,0,0.3) ), asset-url("philipp-berndt-173197.jpg") !important;
+    background-image: linear-gradient(rgba(0,0,0,0.5) , rgba(0,0,0,0.5) ), asset-url("philipp-berndt-173197.jpg") !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

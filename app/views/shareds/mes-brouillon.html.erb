@@ -1,3 +1,35 @@
+elsif params[:ad_type].present? and params[:property_type].blank? and params[:city].blank?
+                    @ad_type_id = AdType.find_by(name: params[:ad_type]).id
+                    @properties = Property.where("ad_type_id = ?", @ad_type_id).all.order("created_at DESC").published.page(params[:page]).per(6)
+                    @properties_numbers = @properties.count
+
+
+
+
+
+                    <% if user_signed_in? and current_user.first_name.blank? and current_user.last_name.blank? and current_user.phone_number.blank? and current_user.address.blank?%>
+<%= f.simple_fields_for :user do |user_contact_form| %>
+<div class="card bg-white border-0 mb-4">
+    <div class="form-inputs form-row card-body p-5">
+        <div class="col-12">
+            <p class="h4 font-weight-bold mb-4">Information de contact</p>
+        </div>
+        <div class="col-lg-6">
+           <%= user_contact_form.input :first_name, required: true, label: "Prénom" %>
+        </div>
+        <div class="col-lg-6">
+           <%= user_contact_form.input :last_name, required: true, label: "Nom" %>
+        </div>
+        <div class="col-lg-6">
+           <%= user_contact_form.input :phone_number, as: :tel, required: true, label: "Numéros de téléphone"%>
+        </div>
+    </div>
+</div>
+<% end %>
+<% end %>
+
+
+
 <% if @property.property_photo.attached? %>
 <section class="property-photos-carousel">
     <div class="owl-carousel owl-theme">
