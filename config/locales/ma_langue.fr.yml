@@ -34,16 +34,16 @@ fr:
 
   activerecord:
     models:
-      property: "Bien"
+      property: "Bien immobilier"
     attributes:
       property:
         title: "Titre"
-        price: "Loyer"
-        area: "Surface"
+        price: "Loyer (/mois)"
+        area: "Surface (m2)"
         description: "Description"
-        address: "Adresse"
-        city: "Commune"
-        room: "Pièce"
+        address: "Adresse exacte"
+        city: "Quartier, Ville ou Commune"
+        room: "Nombre de pièce"
         available: "Disponible ?"
         avance: "Avance"
         property_type: "Type de bien"

@@ -96,9 +96,9 @@
 
                     <% @properties.each do |property| %>
                     <!-- Grid design -->
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 mb-4">
                         <%= link_to property, class: "sans-text-decoration" do %>
-                        <div class="card mb-4 liste-card-recherche text-dark">
+                        <div class="card liste-card-recherche text-dark">
                             <%= image_tag property.photos.first, class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
                             <% if property.ad_type == "Vente" %>
                                 <span class="position-absolute badge badge-secondary p-2" style="top: 10px; left: 10px;">A vendre</span>

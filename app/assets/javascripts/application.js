@@ -22,4 +22,7 @@
 
 //= require typed
 
+//= require jquery.slick
+//= require slick_initialize
+
 //= require_tree .

@@ -22,3 +22,24 @@
 // Pour font-awesome
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+
+// Pour slick (Super cool)
+@import 'slick';
+@import 'slick-theme';
+
+.slick-prev::before, .slick-next::before {
+  color: #000;
+}
+
+// J'ai commenté ça moi même
+.slick-next {
+  // right: -5px;
+}
+
+.slick-prev {
+  // left: -5px;
+}
+// J'ai commenté ça moi même
+
+// Pour slick (Super cool)
