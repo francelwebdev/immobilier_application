@@ -1,10 +1,9 @@
 GIT
   remote: https://github.com/acrogenesis/owlcarousel-rails.git
-  revision: 837fee04926a62d322fecc510fddb0ba2bcfe4cb
+  revision: 95af8e1b890caa4a3da715ef6e44b489c964f8c3
   branch: master
   specs:
-    owlcarousel-rails (2.2.3.4)
-      jquery-rails
+    owlcarousel-rails (2.2.3.5)
 
 GEM
   remote: https://rubygems.org/
@@ -56,7 +55,7 @@ GEM
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
-    autoprefixer-rails (8.4.1)
+    autoprefixer-rails (8.5.0)
       execjs
     aws_cf_signer (0.1.3)
     bcrypt (3.1.11)
@@ -88,7 +87,7 @@ GEM
     builder (3.2.3)
     byebug (10.0.2)
     cancancan (2.2.0)
-    capybara (3.0.3)
+    capybara (3.1.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -133,8 +132,8 @@ GEM
     ffi (1.9.23-java)
     ffi (1.9.23-x64-mingw32)
     ffi (1.9.23-x86-mingw32)
-    font-awesome-sass (5.0.9)
-      sass (>= 3.2)
+    font-awesome-sass (5.0.13)
+      sassc (>= 1.11)
     friendly_id (5.2.4)
       activerecord (>= 4.0.0)
     gibbon (3.2.0)
@@ -204,8 +203,8 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     netrc (0.11.0)
-    nio4r (2.3.0)
-    nio4r (2.3.0-java)
+    nio4r (2.3.1)
+    nio4r (2.3.1-java)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     nokogiri (1.8.2-java)
@@ -314,7 +313,11 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    selenium-webdriver (3.11.0)
+    sassc (1.11.4)
+      bundler
+      ffi (~> 1.9.6)
+      sass (>= 3.3.0)
+    selenium-webdriver (3.12.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     simple_form (4.0.0)
@@ -347,7 +350,7 @@ GEM
     typedJS (0.0.2)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2018.4)
+    tzinfo-data (1.2018.5)
       tzinfo (>= 1.0.0)
     uglifier (4.1.10)
       execjs (>= 0.3.0, < 3)
