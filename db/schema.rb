@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_15_101823) do
+ActiveRecord::Schema.define(version: 2018_05_15_110509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,30 +76,8 @@ ActiveRecord::Schema.define(version: 2018_05_15_101823) do
   end
 
   create_table "properties", force: :cascade do |t|
-    t.string "title"
-    t.decimal "price"
-    t.integer "area"
-    t.text "description"
-    t.string "address"
-    t.string "city"
-    t.float "latitude"
-    t.float "longitude"
-    t.bigint "user_id"
     t.string "slug"
-    t.string "room"
-    t.boolean "available"
-    t.boolean "published"
-    t.integer "avance"
-    t.string "feature"
-    t.string "etage"
-    t.string "travaux"
-    t.datetime "published_at"
-    t.string "commune"
-    t.string "property_type"
-    t.string "ad_type"
-    t.datetime "expiration_date"
     t.index ["slug"], name: "index_properties_on_slug", unique: true
-    t.index ["user_id"], name: "index_properties_on_user_id"
   end
 
   create_table "user_groups", force: :cascade do |t|
@@ -138,6 +116,5 @@ ActiveRecord::Schema.define(version: 2018_05_15_101823) do
   end
 
   add_foreign_key "messages", "users"
-  add_foreign_key "properties", "users"
   add_foreign_key "users", "user_groups"
 end
