@@ -77,6 +77,24 @@ ActiveRecord::Schema.define(version: 2018_05_15_110509) do
 
   create_table "properties", force: :cascade do |t|
     t.string "slug"
+    t.string "title"
+    t.decimal "price"
+    t.integer "area"
+    t.text "description"
+    t.string "address"
+    t.string "city"
+    t.string "room"
+    t.boolean "available"
+    t.boolean "published"
+    t.integer "avance"
+    t.string "feature", array: true
+    t.string "etage"
+    t.string "travaux"
+    t.datetime "published_at"
+    t.string "commune"
+    t.string "property_type"
+    t.string "ad_type"
+    t.datetime "expiration_date"
     t.index ["slug"], name: "index_properties_on_slug", unique: true
   end
 
