@@ -22,10 +22,10 @@
             <p class="h4 font-weight-bold text-dark mb-4">Description du bien</p>
         </div>
         <div class="col-lg-6">
-            <%= f.input :ad_type, collection: Property::AD_TYPE, prompt: "Sélectionner le type d'annonce", autofocus: true %>
+            <%= f.input :ad_type, collection: ["Location"], prompt: "Sélectionner le type d'annonce", autofocus: true %>
         </div>
         <div class="col-lg-6">
-            <%= f.input :property_type, collection: Property::PROPERTY_TYPE, prompt: "Sélectionner le type de bien" %>
+            <%= f.input :property_type, collection: ["Appartement", "Maison", "Bureau", "Commerce", "Villa", "Sanitaire"], prompt: "Sélectionner le type de bien" %>
         </div>
         <div class="col-12">
             <%= f.input :title %>
@@ -34,7 +34,7 @@
             <%= f.input :description, input_html: { rows: 10 } %>
         </div>
         <div class="col-lg-6">
-            <%= f.input :room, collection: Property::ROOM, prompt: "Sélectionner le nombres de pièce" %>
+            <%= f.input :room, collection: ["1 pièce", "2 pièces", "3 pièces", "4 pièces", "5 pièces", "plus de 5 pièces"], prompt: "Sélectionner le nombres de pièce" %>
         </div>
         <div class="col-lg-6">
              <%= f.input :area %>
@@ -43,7 +43,7 @@
             <%= f.input :available, collection: [["Oui", true], ["Non", false]], prompt: "Le bien est disponible maintenant ?" %>
         </div>
         <div class="col-lg-6">
-            <%= f.input :etage, collection: Property::ETAGE, prompt: "Le bien se trouve à quel étage" %>
+            <%= f.input :etage, collection: ["Rez-de-chaussée", "1er étage", "2ème étage", "3ème étage", "4ème étage", "5ème étage"], prompt: "Le bien se trouve à quel étage" %>
         </div>
         <div class="col-lg-6">
             <%= f.input :price, required: true %>
@@ -60,7 +60,7 @@
             <p class="h4 font-weight-bold text-dark mb-4">Caractéristiques du bien</p>
         </div>
         <div class="col-12">
-            <%= f.input :feature, as: :check_boxes, collection: Property::FEATURE, label: false, wrapper_html: { class: "form-check form-check-inline" }, input_html: { class: "form-check-input" } %>
+            <%= f.input :feature, as: :check_boxes, inline_label: true, collection: ["Electricité", "Eau", "WC", "Internet"], label: false, wrapper_html: { class: "form-check form-check-inline" }, input_html: { class: "form-check-input" } %>
         </div>
     </div>
 </div>
@@ -97,10 +97,6 @@
             <div class="col-12 mb-3">
                 <%= f.input :photos, label: "Photo 3", input_html: { name: "property[photos][]", class: "form-control-file"}, multiple: true, direct_upload: true %>
                 <%= image_tag @property.photos[2], size: "400x400" if @property.photos[2].present? %>
-            </div>
-            <div class="col-12 mb-3">
-                <%= f.input :photos, label: "Photo 4", input_html: { name: "property[photos][]", class: "form-control-file"}, multiple: true, direct_upload: true %>
-                <%= image_tag @property.photos[3], size: "400x400" if @property.photos[3].present? %>
             </div>
         </div>
     </div>

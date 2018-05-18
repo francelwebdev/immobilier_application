@@ -30,12 +30,10 @@
             <%= f.input :email, required: true %>
             <%= f.input :password, required: true %>
             <%= f.input :password_confirmation, required: true %>
+
+            <%= f.input :terms_and_conditions, inline_label: true, required: false, label: "J'ai lu et j'accepte les conditions générales d'utilisation du site." %>
           </div>
 
-          <div class="form-inputs d-flex">
-            <%= f.input :terms_and_conditions, required: true, label: false %>
-            <p class="ml-2">J'accepte les <%= link_to "conditions générales d'utilisation" %> du site.</p>
-          </div>
           <div class="form-actions">
             <%= f.button :submit, t(".sign_up"), class: "btn btn-primary btn-block btn-lg" %>
           </div>
