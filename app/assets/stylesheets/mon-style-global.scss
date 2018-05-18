@@ -24,22 +24,26 @@ section.call_to_action_for_agency {
     background-origin: content-box;
 }
 
-.liste-card-rech4rche {
+.liste-card-recherche {
     transition: all 0.3s ease-in-out;
+
+    // transition: all 0.2s ease-in-out;
+    // transition: 0.5s;
 }
 
 .liste-card-recherche:hover {
     box-shadow: 0 10px 20px rgba(0,0,0,.1);
     transition: all 0.3s ease-in-out;
+
+    // transition: all 0.2s ease-in-out;
+    // transition: 0.5s;
 }
 
 .card-photo-property {
     transition: 0.5s, ease;
 }
 
-.index-list-item:hover {
 
-}
 .index-list-item:hover {
     text-decoration: none;
     transition: 0.5s, ease;
@@ -125,3 +129,11 @@ section.call_to_action_for_owner {
     background-repeat: no-repeat;
     background-origin: content-box;
 }
+
+input {
+    // background: none repeat scroll 0 0 #eeeeee;
+    background: #eeeeee;
+}
+
+// Autre
+// background: linear-gradient(transparent 57%, rgba(0,0,0,1) 100%);
