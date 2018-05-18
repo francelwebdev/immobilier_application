@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     if @contact.valid?
       ContactsMailer.contact_us(@contact).deliver_now
-      redirect_to home_page_path, notice: "Message envoyé avec succès, nous vous contacterons dans les plus brefs délai."
+      redirect_to home_page_path, notice: "Merci de nous avoir contacté ! Votre message a été envoyé, nous reviendrons vers vous rapidement."
     else
       flash.now[:alert] = "Le message n'a pas été envoyé, car le formulaire n'a pas été bien remplir."
       render "pages/contact_us"
