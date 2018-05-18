@@ -32,6 +32,10 @@ fr:
     #   defaults:
     #     age: 'Select your age'
 
+
+
+# Traduction des noms de column pour mes tables.
+
   activerecord:
     models:
       property: "Bien immobilier"
@@ -49,25 +53,3 @@ fr:
         property_type: "Type de bien"
         ad_type: "Type d'annonce"
         etage: "Etage"
-
-
-    errors:
-      messages:
-        blank: "ne peut pas être vide"
-
-
-
-  date:
-    formats:
-      default: "%d-%m-%Y"
-      short: "%b %d"
-      long: "%B %d, %Y"
-      time: '%H:%M'
-
-  # :monday
-  # :tuesday
-  # :wednesday
-  # :thursday
-  # :friday
-  # :saturday
-  # :sunday
