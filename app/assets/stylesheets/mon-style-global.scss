@@ -130,9 +130,8 @@ section.call_to_action_for_owner {
     background-origin: content-box;
 }
 
-input {
-    // background: none repeat scroll 0 0 #eeeeee;
-    background: #eeeeee;
+.form-control:focus {
+    background-color: #eeeeee !important;
 }
 
 // Autre

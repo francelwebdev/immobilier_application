@@ -4,9 +4,10 @@
 
 <% if @property.errors.any? %>
     <div class="alert alert-danger" role="alert">
-        <h3 class="alert-heading">
-            <%= pluralize(@property.errors.count, "erreur", "erreurs") %> prohibited this product from being saved :
-        </h3>
+        <h4 class="alert-heading">
+            <%= pluralize(@property.errors.count, "erreur", "erreurs") %> ont empêché l'enregistrement de ce produit:
+            <!-- prohibited this product from being saved : -->
+        </h4>
         <ul>
             <% @property.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>

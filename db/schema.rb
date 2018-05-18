@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_18_132801) do
+ActiveRecord::Schema.define(version: 2018_05_18_161841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,7 +97,9 @@ ActiveRecord::Schema.define(version: 2018_05_18_132801) do
     t.datetime "expiration_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["slug"], name: "index_properties_on_slug", unique: true
+    t.index ["user_id"], name: "index_properties_on_user_id"
   end
 
   create_table "user_groups", force: :cascade do |t|
@@ -136,5 +138,6 @@ ActiveRecord::Schema.define(version: 2018_05_18_132801) do
   end
 
   add_foreign_key "messages", "users"
+  add_foreign_key "properties", "users"
   add_foreign_key "users", "user_groups"
 end

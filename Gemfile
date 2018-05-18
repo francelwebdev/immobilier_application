@@ -78,6 +78,8 @@ group :production do
   gem 'sendinblue', '~> 2.4'
 end
 
+gem 'rails-i18n', '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
+
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'popper_js', '~> 1.12', '>= 1.12.9'
 gem 'bootstrap', '~> 4.1'

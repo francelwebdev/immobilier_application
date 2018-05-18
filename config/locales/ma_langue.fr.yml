@@ -42,8 +42,8 @@ fr:
     attributes:
       property:
         title: "Titre"
-        price: "Loyer (/mois)"
-        area: "Surface (m2)"
+        price: "Loyer"
+        area: "Surface"
         description: "Description"
         address: "Adresse exacte"
         city: "Quartier, Ville ou Commune"
@@ -53,3 +53,10 @@ fr:
         property_type: "Type de bien"
         ad_type: "Type d'annonce"
         etage: "Etage"
+
+
+
+  number:
+    currency:
+      format:
+        unit: FCFA
