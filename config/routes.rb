@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'profiles/show'
+  get 'profiles/edit'
     scope "(:locale)", locale: /fr/ do
 
         root to: "pages#home", as: "home_page"
@@ -21,6 +23,8 @@ Rails.application.routes.draw do
         post 'properties/:id/deactivate', to: 'properties#deactivate', as: "deactivate_property"
 
         devise_for :users
+
+        resource :profile, only: [:show, :edit]
         
         resources :properties
 

@@ -12,7 +12,7 @@
           <%= f.error_notification %>
 
           <div class="form-inputs">
-            <%= f.association :user_group, autofocus: true, include_blank: false, label: "Vous êtes" %>
+            <%= f.input :im, autofocus: true, collection: User::IM, label: "Vous êtes" %>
             <%= f.input :first_name, required: true, label: "Prénom" %>
             <%= f.input :last_name, required: true, label: "Nom" %>
             <%= f.input :phone_number, as: :tel, required: true, label: "Numéros de téléphone" %>
