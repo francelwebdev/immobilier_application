@@ -74,7 +74,6 @@ group :development do
   gem 'pry-byebug', '~> 3.6'
 end
 
-
 group :production do
   gem 'sendinblue', '~> 2.4'
 end

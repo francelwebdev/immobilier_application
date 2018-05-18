@@ -7,7 +7,7 @@ class NewslettersController < ApplicationController
             @newsletter.subscribe
             redirect_to root_path, notice: "Merci de vous inscrire à la liste de diffusion!"
         else
-            flash[:alert] = "Il y a eu une erreur, réessayez"            
+            flash[:alert] = "Il y a eu une erreur, réessayez"
         end
     end
 
