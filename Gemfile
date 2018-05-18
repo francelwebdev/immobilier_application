@@ -74,6 +74,11 @@ group :development do
   gem 'pry-byebug', '~> 3.6'
 end
 
+
+group :production do
+  gem 'sendinblue', '~> 2.4'
+end
+
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'popper_js', '~> 1.12', '>= 1.12.9'
 gem 'bootstrap', '~> 4.1'

@@ -144,6 +144,8 @@ GEM
     hashie (3.5.7)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    httparty (0.16.2)
+      multi_xml (>= 0.5.2)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -156,6 +158,8 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-slick-rails (1.9.0)
       railties (>= 3.1)
+    json (2.1.0)
+    json (2.1.0-java)
     jwt (1.5.6)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
@@ -319,6 +323,9 @@ GEM
     selenium-webdriver (3.12.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
+    sendinblue (2.4)
+      httparty
+      json
     simple_form (4.0.0)
       actionpack (> 4)
       activemodel (> 4)
@@ -420,6 +427,7 @@ DEPENDENCIES
   rolify (~> 5.2)
   sass-rails (~> 5.0)
   selenium-webdriver
+  sendinblue (~> 2.4)
   simple_form (~> 4.0)
   spring
   spring-watcher-listen (~> 2.0.0)
@@ -435,4 +443,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
