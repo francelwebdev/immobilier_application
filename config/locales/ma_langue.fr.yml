@@ -5,13 +5,13 @@ fr:
     "yes": 'Oui'
     "no": 'Non'
     required:
-      text: 'required'
+      text: 'Champs obligatoires'
       mark: '*'
       # You can uncomment the line below if you need to overwrite the whole required html.
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'
     error_notification:
-      default_message: "SVP, Please review the problems below:"
+      default_message: "S'il vous plaît examiner les problèmes ci-dessous :"
     # Examples
     # labels:
     #   defaults:
@@ -53,7 +53,7 @@ fr:
 
     errors:
       messages:
-        blank: "ne doit pas être vide"
+        blank: "ne peut pas être vide"
 
 
 
