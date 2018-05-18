@@ -18,23 +18,23 @@
     <div class="row">
         <div class="col-lg-12" style="border-bottom: 2px solid #dee2e6 !important;">
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-9">
                     <h2><%= @property.title.capitalize %></h2>
                     <p>
                         <i class="fas fa-map-marker-alt"></i>&nbsp;
                         <%= @property.address %>, <%= @property.city %>
                     </p>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-3">
                     <% if @property.ad_type == "Vente" %>
                     <p class="h3 font-weight-bold">A vendre</p>
                     <p class="text-primary h2">
-                        <%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>
+                        <%= number_to_currency(@property.price, precision: 0) %>
                     </p>
                     <% elsif @property.ad_type == "Location" %>
                     <p class="h3 font-weight-bold">A louer</p>
                     <p class="text-primary h2">
-                        <%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>/<small>mois</small></sup>
+                        <%= number_to_currency(@property.price, precision: 0) %>/mois
                     </p>
                     <% end %>
                 </div>
@@ -82,7 +82,7 @@
                                 <div class="col-6 col-lg-3 text-center mb-2">
                                     <p class="font-weight-bold text-dark h6">Loyer</p>
                                     <p>
-                                        <%= number_with_delimiter(sprintf("%0.00f", @property.price)) %><sup>f</sup>/<small>mois</small></sup>
+                                        <%= number_to_currency(@property.price, precision: 0) %>/mois
                                     </p>
                                 </div>
                                 <div class="col-6 col-lg-3 text-center mb-2">
@@ -214,8 +214,12 @@
                                     </p>
                                     <address>
                                         <ul class="list-unstyled">
-                                            <li class="my-2"><i class="fas fa-phone" aria-hidden="true"></i>&nbsp; <%= @property.user.phone_number %></li>
-                                            <li class="my-2"><i class="fas fa-envelope"></i>&nbsp; <%= mail_to @property.user.email %></li>
+                                            <li class="my-2">
+                                                <i class="fas fa-phone" aria-hidden="true"></i>&nbsp; <%= @property.user.phone_number %>
+                                            </li>
+                                            <li class="my-2">
+                                                <i class="fas fa-envelope"></i>&nbsp; <%= mail_to @property.user.email %>
+                                            </li>
                                         </ul>
                                     </address>
                                 </div>

@@ -127,19 +127,18 @@
                                 </address>
                                 <% if property.ad_type == "Vente" %>
                                 <p class="text-primary m-0 p-0 h3">
-                                    <%= number_with_delimiter(sprintf("%0.00f", property.price)) %><sup>f</sup>
+                                    <%= number_to_currency(property.price, precision: 0) %>
                                 </p>
                                 <% elsif property.ad_type == "Location" %>
                                 <p class="text-primary m-0 p-0 h3">
-                                    <%= number_with_delimiter(sprintf("%0.00f", property.price)) %><sup>f</sup>/<small>mois</small></sup>
+                                    <%= number_to_currency(property.price, precision: 0) %>/mois
                                 </p>
                                 <% end %>
                             </div>
 
                             <div class="card-footer bg-white" style="border-top: 1px solid #dee2e6 !important;">
                                 <p class="m-0 ">
-                                    <small>Publié le <%= property.created_at.strftime("%e %B") %></small>
-                                    <small class="sr-only">Il y a <%= time_ago_in_words(property.created_at) %></small>
+                                    <small>Mise en ligne il y a <%= distance_of_time_in_words(property.published_at, Time.now, include_seconds: false) %></small>
                                 </p>
                             </div>
                         </div>
