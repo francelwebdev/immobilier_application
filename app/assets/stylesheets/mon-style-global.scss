@@ -25,6 +25,7 @@ section.call_to_action_for_agency {
 }
 
 .liste-card-recherche {
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
     transition: all 0.3s ease-in-out;
     // transition: all 0.2s ease-in-out;
     // transition: 0.5s;
@@ -53,11 +54,6 @@ section.call_to_action_for_agency {
     }
 }
 
-
-.sans-text-decoration:hover {
-    text-decoration: none;
-}
-
 .barre-recherche-avance {
     height: 75vh !important;
     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), asset-url("pexels-photo-259950.jpeg") !important;
@@ -70,6 +66,10 @@ section.call_to_action_for_agency {
 
 section.banner-contact {
     height: 50vh;
+}
+
+.sans-text-decoration:hover {
+    text-decoration: none;
 }
 
 ul > li > a {
@@ -88,10 +88,17 @@ ul > li > a {
         height: 250px;
     }
 }
-.card-img-right {
+.card-img-left {
     height: 100%;
-    width: 48%;
+    width: 100%;
     border-radius: 0 3px 3px 0;
+}
+@media (min-width: 768px) {
+    .card-img-left-md {
+        height: 100%;
+        width: 45%;
+        border-radius: 0 3px 3px 0;
+    }
 }
 .flex-auto {
     flex: 0 0 auto;

@@ -100,21 +100,22 @@
                         <%= link_to property, class: "sans-text-decoration" do %>
                         <div class="card liste-card-recherche text-dark">
                             <% if property.photos.attached? %>
-                                <%= image_tag property.photos.first, class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
+                            <%= image_tag property.photos.first, class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
                             <% else %>
-                                <p>ANNONCE SANS PHOTO</p>
+                            <p>ANNONCE SANS PHOTO</p>
                             <% end %>
+
                             <% if property.ad_type == "Vente" %>
-                                <span class="position-absolute badge badge-secondary p-2" style="top: 10px; left: 10px;">A vendre</span>
+                            <h4><span class="position-absolute badge badge-secondary p-2" style="top: 10px; left: 10px;">A vendre</span></h4>
                             <% elsif property.ad_type == "Location" %>
-                                <span class="position-absolute badge badge-secondary p-2" style="top: 10px; left: 10px;">A louer</span>
+                            <h4><span class="position-absolute badge badge-secondary p-2" style="top: 10px; left: 10px;">A louer</span></h4>
                             <% end %>
 
                             <% if user_signed_in? %>
                             <% if current_user.admin? and property.published %>
-                                <span class="position-absolute badge badge-success p-2" style="top: 10px; right: 10px;">En ligne</span>
+                            <h4><span class="position-absolute badge badge-success p-2" style="top: 10px; right: 10px;">En ligne</span></h4>
                             <% elsif current_user.admin? and !property.published %>
-                                <span class="position-absolute badge badge-danger p-2" style="top: 10px; right: 10px;">Hors ligne</span>
+                            <h4><span class="position-absolute badge badge-danger p-2" style="top: 10px; right: 10px;">Hors ligne</span></h4>
                             <% end %>
                             <% end %>
 
@@ -138,7 +139,7 @@
 
                             <div class="card-footer bg-white" style="border-top: 1px solid #dee2e6 !important;">
                                 <p class="m-0 ">
-                                    <small>Mise en ligne il y a <%= distance_of_time_in_words(property.published_at, Time.now, include_seconds: false) %></small>
+                                    <small>Publié il y a <%= distance_of_time_in_words(property.published_at, Time.now, include_seconds: false) %></small>
                                 </p>
                             </div>
                         </div>

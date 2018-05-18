@@ -1,4 +1,159 @@
-<% if current_page?(home_page_path) %>
+<ul class="row list-unstyled">
+                            <% @my_properties.each do |my_property| %>  
+                            <li class="col-md-12">
+                               <%= link_to my_property, class: "sans-text-decoration" do %>
+                               <div class="card flex-md-row mb-4 box-shadow h-md-200">
+
+                                <% if my_property.photos.attached? %>
+                                <%= image_tag my_property.photos.first, class: " card-img-left card-img-left-md flex-auto d-block d-md-block box-shadow", alt: "my_property.title" %>
+                                <% else %>
+                                <p>ANNONCE SANS PHOTO</p>
+                                <% end %>
+
+                                <div class="card-body d-flex flex-column justify-content-center">
+                                    <h3 class="text-dark">
+                                        <%= truncate(strip_tags(my_property.title.capitalize), length: 25) %>
+                                    </h3>
+                                    <address class="text-secondary">
+                                        <i class="fas fa-map-marker-alt"></i>&nbsp; <%= my_property.address %>, <%= my_property.city %>
+                                    </address>
+                                    <% if my_property.ad_type == "Vente" %>
+                                    <p class="text-primary m-0 p-0 h3">
+                                        <%= number_to_currency(my_property.price, precision: 0) %>
+                                    </p>
+                                    <% elsif my_property.ad_type == "Location" %>
+                                    <p class="text-primary m-0 p-0 h3">
+                                        <%= number_to_currency(my_property.price, precision: 0) %>/mois
+                                    </p>
+                                    <% end %>
+
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <%= link_to 'Voir', my_property, class: "" %>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <%= link_to "Modifier", edit_property_path(my_property), class: "" %>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <%= link_to 'Supprimer', my_property_path(my_property.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary sr-only" %>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                                <% end %>
+                            </li>
+                            <% end %>
+                        </ul> 
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="row featurette bg-white">
+                            <div class="col-md-6 px-0">
+                                <% if my_property.photos.attached? %>
+                                <%= image_tag my_property.photos.first, class: "px-0 w-100 h-100 pl-0", alt: "Photo de lannonce : #{ my_property.title }" %>
+                                <% else %>
+                                <p>ANNONCE SANS PHOTO</p>
+                                <% end %>
+                            </div>
+                            <div class="col-md-6 d-flex flex-column justify-content-center">
+                                <h3><%= truncate(strip_tags(my_property.title.capitalize), length: 25) %></h3>
+                                <address class="text-secondary">
+                                    <i class="fas fa-map-marker-alt"></i>&nbsp; <%= my_property.address %>, <%= my_property.city %>
+                                </address>
+                                <% if my_property.ad_type == "Vente" %>
+                                <p>
+                                    <span><%= sprintf("%0.00f", my_property.price) %><sup>F</sup></span>
+                                </p>
+                                <% elsif my_property.ad_type == "Location" %>
+                                <p class="h2 text-primary">
+                                    <span><%= sprintf("%0.00f", my_property.price) %><sup>F</sup><small>/mois</small></span>
+                                </p>
+                                <% end %>
+                            </div>
+                        </div>
+
+                        
+
+<!-- Product listing design -->
+
+
+                <ul class="list-unstyled col-12">
+                    <% @my_properties.each do |my_property| %>
+
+<div class="row featurette bg-white">
+    <div class="col-md-6 order-md-2">
+        <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    </div>
+    <div class="col-md-6 order-md-1">
+        <% if my_property.photos.attached? %>
+            <%= image_tag my_property.photos.first, class: "featurette-image img-fluid mx-auto w-100 h-100 pl-0", alt: "Photo de lannonce : #{ my_property.title }" %>
+        <% else %>
+            <p>ANNONCE SANS PHOTO</p>
+        <% end %>
+    </div>
+</div>
+
+
+
+
+
+                    <li class="row d-flex align-items-center">
+                        <div class="col-lg-3">
+                            <% if my_property.photos.attached? %>
+                                <%= image_tag my_property.photos.first, class: "img-fluid w-100 h-100", alt: "Photo de lannonce : #{ my_property.title }" %>
+                            <% else %>
+                                <p>ANNONCE SANS PHOTO</p>
+                            <% end %>
+                        </div>
+                        <div class="col-lg-6 py-3 d-flex flex-column justify-content-center">
+                            <h5><%= truncate(strip_tags(my_property.title.capitalize), length: 25) %></h5>
+                            <address class="">
+                                <i class="fas fa-map-marker-alt"></i>&nbsp; <%= my_property.address %>, <%= my_property.city %>
+                            </address>
+                            <% if my_property.ad_type == "A vendre" %>
+                            <p>
+                                <span><%= sprintf("%0.00f", my_property.price) %><sup>F</sup></span>
+                            </p>
+                            <% elsif my_property.ad_type == "A louer" %>
+                            <p>
+                                <span><%= sprintf("%0.00f", my_property.price) %><sup>F</sup><small>/mois</small></span>
+                            </p>
+                            <% end %>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="btn-group" role="group", aria-label="">
+                                <%= link_to 'Voir', my_property, class: "btn btn-secondary" %>
+                                <%= link_to "Modifier", edit_property_path(my_property), class: "btn btn-secondary" %>
+                                <%= link_to 'Supprimer', my_property_path(my_property.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary sr-only" %>
+                            </div>
+                        </div>
+                    </li>
+                    <hr>
+                    <% end %>
+                </ul>
+
+
+
+
+
+
+
+
+
+
+
+                <% if current_page?(home_page_path) %>
 <%= simple_form_for "", url: properties_path, method: :get do |f| %>
 <div class="row px-1">
     <div class="col-lg-3 px-1">
