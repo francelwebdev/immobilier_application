@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'profiles/show'
-  get 'profiles/edit'
     scope "(:locale)", locale: /fr/ do
 
         root to: "pages#home", as: "home_page"
@@ -24,7 +22,7 @@ Rails.application.routes.draw do
 
         devise_for :users
 
-        resource :profile, only: [:show, :edit]
+        get "profile/:full_name", to: 'profiles#show', as: "user_profile"
         
         resources :properties
 

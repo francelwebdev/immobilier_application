@@ -11,7 +11,6 @@ class ContactsMailer < ApplicationMailer
     # mail to: "to@example.org"
 
     @contact_infos = contact_infos
-    mail to: "francel.webdev@gmail.com", subject: "Nouveau message dépuis SICO Immobilier", from: @contact_infos.email
-  end
-    
+    mail to: "francel.webdev@gmail.com", subject: "Nouveau message dépuis SICO", from: @contact_infos.email
+	end
 end
