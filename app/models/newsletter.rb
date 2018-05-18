@@ -1,12 +1,12 @@
 class Newsletter < ApplicationRecord
-    validates :email_address, presence: true
-    validates :email_address, uniqueness: { message: "L'adresse email existe déja !" }
+    validates :email, presence: true
+    validates :email, uniqueness: { message: "L'adresse email existe déja !" }
 
     before_save :downcase_email
     after_save :subscribe
 
     def downcase_email
-        self.email_address = email_address.downcase      
+        self.email = email.downcase
     end
 
     def subscribe
@@ -15,7 +15,7 @@ class Newsletter < ApplicationRecord
         begin 
       gibbon.lists(list_id).members.create( 
       body: { 
-        email_address: self.email_address,
+        email: self.email,
         status: "subscribed" 
       }) 
     rescue Gibbon::MailChimpError => e 
