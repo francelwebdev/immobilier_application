@@ -1,5 +1,5 @@
 <%= simple_form_for "", url: properties_path, method: :get do |f| %>
-<div class="row px-1">
+<div class="row px-3">
     <div class="col-lg-4 px-1 mb-2">
         <%= f.input :property_type, collection: ["Appartement", "Maison", "Bureau", "Commerce", "Villa", "Sanitaire"], prompt: "Type de bien", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
     </div>

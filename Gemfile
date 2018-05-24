@@ -90,6 +90,7 @@ gem 'autoprefixer-rails', '~> 8.3'
 gem 'simple_form', '~> 4.0'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'devise-i18n', '~> 1.6'
+# gem 'omniauth-facebook'
 gem 'jquery-slick-rails'
 gem 'friendly_id', '~> 5.2', '>= 5.2.3'
 

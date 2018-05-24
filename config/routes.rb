@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
-    scope "(:locale)", locale: /fr/ do
+    scope "/(:locale)", locale: /fr/ do
 
         root to: "pages#home", as: "home_page"
+
+        # devise_for :users
+
+        devise_for :users, skip: :omniauth_callbacks
 
         get "about_us", to: "pages#about_us", as: "about_us"
 
@@ -19,8 +23,6 @@ Rails.application.routes.draw do
         post 'properties/:id/publish', to: 'properties#publish', as: "publish_property"
 
         post 'properties/:id/deactivate', to: 'properties#deactivate', as: "deactivate_property"
-
-        devise_for :users
 
         get "profile/:full_name", to: 'profiles#show', as: "user_profile"
         

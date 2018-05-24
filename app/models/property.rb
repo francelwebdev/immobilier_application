@@ -20,6 +20,8 @@ class Property < ApplicationRecord
     after_destroy :suprimer_les_photos
     after_create :suprimer_si_annonce_expire
 
+    accepts_nested_attributes_for :user, reject_if: :new_record?
+
     private
 
     def suprimer_les_photos

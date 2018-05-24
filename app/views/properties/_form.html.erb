@@ -3,17 +3,17 @@
 <%= f.error_notification %>
 
 <% if @property.errors.any? %>
-    <div class="alert alert-danger" role="alert">
-        <h4 class="alert-heading">
-            <%= pluralize(@property.errors.count, "erreur", "erreurs") %> ont empêché l'enregistrement de ce produit:
-            <!-- prohibited this product from being saved : -->
-        </h4>
-        <ul>
-            <% @property.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-        </ul>
-    </div>    
+<div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">
+        <%= pluralize(@property.errors.count, "erreur", "erreurs") %> ont empêché l'enregistrement de ce produit:
+        <!-- prohibited this product from being saved : -->
+    </h4>
+    <ul>
+        <% @property.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+</div>    
 <% end %>
 
 <div class="card bg-white border-0 mb-4">
@@ -37,21 +37,21 @@
             <%= f.input :room, collection: ["1 pièce", "2 pièces", "3 pièces", "4 pièces", "5 pièces", "plus de 5 pièces"], prompt: "Sélectionner le nombres de pièce" %>
         </div>
         <div class="col-lg-6">
-             <%= f.input :area %>
-        </div>        
-        <div class="col-lg-6">
-            <%= f.input :available, collection: [["Oui", true], ["Non", false]], prompt: "Le bien est disponible maintenant ?" %>
-        </div>
-        <div class="col-lg-6">
-            <%= f.input :etage, collection: ["Rez-de-chaussée", "1er étage", "2ème étage", "3ème étage", "4ème étage", "5ème étage"], prompt: "Le bien se trouve à quel étage" %>
-        </div>
-        <div class="col-lg-6">
-            <%= f.input :price, required: true %>
-        </div>
-        <div class="col-lg-6">
-            <%= f.input :avance, required: true, input_html: { min: 1, max: 3 } %>
-        </div>
+           <%= f.input :area %>
+       </div>        
+       <div class="col-lg-6">
+        <%= f.input :available, collection: [["Oui", true], ["Non", false]], prompt: "Le bien est disponible maintenant ?" %>
     </div>
+    <div class="col-lg-6">
+        <%= f.input :etage, collection: ["Rez-de-chaussée", "1er étage", "2ème étage", "3ème étage", "4ème étage", "5ème étage"], prompt: "Le bien se trouve à quel étage" %>
+    </div>
+    <div class="col-lg-6">
+        <%= f.input :price, required: true %>
+    </div>
+    <div class="col-lg-6">
+        <%= f.input :avance, required: true, input_html: { min: 1, max: 3 } %>
+    </div>
+</div>
 </div>
 
 <div class="card bg-white border-0 mb-4">
@@ -101,6 +101,32 @@
         </div>
     </div>
 </div>
+
+<% if user_signed_in? %>
+<% if current_user.first_name.blank? and current_user.last_name.blank? and current_user.phone_number.blank? %>
+<%= f.simple_fields_for :user do |usr| %>
+<div class="card bg-white border-0 mb-4">
+    <div class=" row card-body p-5">
+        <div class="col-12">
+            <p class="h4 font-weight-bold text-dark mb-4">Informations de contact</p>
+        </div>
+        <div class="col-lg-4">
+            <%= usr.input :first_name, required: true %>
+        </div>
+        <div class="col-lg-4">
+            <%= usr.input :last_name, required: true %>
+        </div>
+        <div class="col-lg-4">
+            <%= usr.input :phone_number, as: :tel, required: true %>
+        </div>
+        <div class="col-lg-4">
+            <%= usr.input :id, as: :hidden, value: current_user.id %>
+        </div>
+    </div>
+</div>
+<% end %>
+<% end %>
+<% end %>
 
 <div class="form-actions row mt-4">
     <div class="col-12">

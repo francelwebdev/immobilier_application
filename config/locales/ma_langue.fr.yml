@@ -34,8 +34,6 @@ fr:
 
 
 
-# Traduction des noms de column pour mes tables.
-
   activerecord:
     models:
       property: "Bien immobilier"
@@ -53,6 +51,8 @@ fr:
         property_type: "Type de bien"
         ad_type: "Type d'annonce"
         etage: "Etage"
+
+
 
 
 

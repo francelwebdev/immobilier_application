@@ -1,0 +1,10 @@
+fr:
+  activerecord:
+    models:
+      user: "Utilisateur"
+    attributes:
+      user:
+        first_name: "Prénom"
+        last_name: "Nom"
+        phone_number: "Numéro de téléphone"
+        gender: "Votre sexe"
