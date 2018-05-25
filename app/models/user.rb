@@ -3,26 +3,20 @@ class User < ApplicationRecord
     # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
-
     devise :confirmable
-
     devise :omniauthable, omniauth_providers: [:facebook]
 
     validates :role, :terms_and_conditions, presence: true
-    # validates :phone_number, uniqueness: true
 
     after_create :send_welcome_email
     after_destroy :suprimer_les_photos
 
-    has_many :properties, dependent: :destroy
-
+    has_many :properties, dependent: :destroy    
     has_many :messages
-
     has_one_attached :profile_photo
 
     ROLE = ["Propriétaire", "Agent immobilier"]
     GENDER = ["Masculin", "Féminin"]
-
 
     def self.new_with_session(params, session)
       super.tap do |user|

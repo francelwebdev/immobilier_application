@@ -17,22 +17,20 @@ class Property < ApplicationRecord
 
     has_many_attached :photos
 
-    after_destroy :suprimer_les_photos
     after_create :suprimer_si_annonce_expire
-
-    accepts_nested_attributes_for :user, reject_if: :new_record?
+    after_destroy :suprimer_les_photos
 
     private
 
+    def suprimer_si_annonce_expire
+        p = Property.find(self.id)
+        if p.published? and p.expiration_date.past?
+            p.delete
+        end    
+    end
+    
     def suprimer_les_photos
         self.photos.purge
     end
 
-    def suprimer_si_annonce_expire
-        if self.expiration_date.present?
-            if self.expiration_date.past?
-                Property.find(self.id).delete
-            end
-        end        
-    end
 end

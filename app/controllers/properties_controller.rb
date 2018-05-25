@@ -4,7 +4,7 @@ class PropertiesController < ApplicationController
 
     def publish
         @property_to_publish = Property.find(params[:id])
-        @property_to_publish.update published: true, published_at: Time.now, expiration_date: 1.week.from_now
+        @property_to_publish.update published: true, published_at: Time.now, expiration_date: 5.day.from_now
         redirect_to @property_to_publish, notice: 'Annonce mise en ligne, OK'
     end
 

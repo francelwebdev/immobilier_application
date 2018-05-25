@@ -210,12 +210,12 @@
                                 <% end %>
                                 <div class="col-lg-12">
                                     <p class="font-weight-bold mb-3 h5">
-                                        <%= @property.user.first_name.capitalize %> <%= @property.user.last_name.upcase %>
+                                        <%#= @property.user.first_name.capitalize %> <%#= @property.user.last_name.upcase %>
                                     </p>
                                     <address>
                                         <ul class="list-unstyled">
                                             <li class="my-2">
-                                                <i class="fas fa-phone" aria-hidden="true"></i>&nbsp; <%= @property.user.phone_number %>
+                                                <i class="fas fa-phone" aria-hidden="true"></i>&nbsp; <%#= @property.user.phone_number %>
                                             </li>
                                             <li class="my-2">
                                                 <i class="fas fa-envelope"></i>&nbsp; <%= mail_to @property.user.email %>
