@@ -6,8 +6,6 @@ Rails.application.routes.draw do
 
         root to: "pages#home", as: "home_page"
 
-        # devise_for :users
-
         get "about_us", to: "pages#about_us", as: "about_us"
 
         get "contact_us", to: "pages#contact_us", as: "contact_us"

@@ -34,12 +34,12 @@ class ApplicationController < ActionController::Base
     protected
 
     def configure_permitted_parameters
-        devise_parameter_sanitizer.permit(:sign_up, keys: [:role, :terms_and_conditions])
-        devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone_number, :gender])
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :role, :terms_and_conditions])
+        devise_parameter_sanitizer.permit(:account_update, keys: [:email, :password, :password_confirmation, :current_password, :first_name, :last_name, :phone_number, :gender, :profile_photo])
     end
 
-    # def after_sign_in_path_for(resource)
-    #     edit_user_registration_path if current_user.first_name.blank? and current_user.last_name.blank? and current_user.phone_number.blank? and current_user.gender.blank?
-    # end
+    def after_sign_in_path_for(resource)
+    	edit_user_registration_path
+    end
 
 end

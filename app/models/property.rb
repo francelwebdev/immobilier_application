@@ -17,7 +17,7 @@ class Property < ApplicationRecord
 
     has_many_attached :photos
 
-    after_create :suprimer_si_annonce_expire
+    after_update :suprimer_si_annonce_expire
     after_destroy :suprimer_les_photos
 
     private
