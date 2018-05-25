@@ -149,7 +149,7 @@
                     <% end %>
 
                     <div class="col-12">
-                        <p class="m-0"><%= paginate @properties, :theme => 'twitter-bootstrap' %></p>
+                        <%= will_paginate @properties %>
                     </div>
                 </section>
             </section>

@@ -68,55 +68,55 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #--------------------------#
 
 group :development do
-  gem 'pry-rails', '~> 0.3.6'
-  gem 'better_errors', '~> 2.4'
-  gem 'binding_of_caller', '~> 0.8.0'
-  gem 'pry-byebug', '~> 3.6'
+  gem 'pry-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'pry-byebug'
 end
 
 group :production do
-  gem 'sendinblue', '~> 2.4'
+  gem 'sendinblue'
 end
 
-gem 'rails-i18n', '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
+gem 'rails-i18n'
 
-gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
-gem 'popper_js', '~> 1.12', '>= 1.12.9'
-gem 'bootstrap', '~> 4.1'
-gem 'font-awesome-sass', '~> 5.0', '>= 5.0.9'
-gem 'bootstrap-datepicker-rails', '~> 1.8', '>= 1.8.0.1'
-gem 'autoprefixer-rails', '~> 8.3'
+gem 'jquery-rails'
+gem 'popper_js'
+gem 'bootstrap'
+gem 'font-awesome-sass'
+gem 'bootstrap-datepicker-rails'
+gem 'autoprefixer-rails'
 
-gem 'simple_form', '~> 4.0'
-gem 'devise', '~> 4.4', '>= 4.4.3'
-gem 'devise-i18n', '~> 1.6'
-# gem 'omniauth-facebook'
+gem 'simple_form'
+gem 'devise'
+gem 'devise-i18n'
+gem 'omniauth-facebook'
 gem 'jquery-slick-rails'
-gem 'friendly_id', '~> 5.2', '>= 5.2.3'
+gem 'friendly_id'
 
-gem 'kaminari', '~> 1.1', '>= 1.1.1'
-gem 'bootstrap-kaminari-views', '~> 0.0.5'
-gem 'kaminari-i18n', '~> 0.5.0'
-gem 'rolify', '~> 5.2'
+gem 'pagy' # je vais suprimer sa après.
+
+gem 'rolify'
 
 gem 'cloudinary', require: false
 gem 'activestorage-cloudinary-service'
 
-gem 'gibbon', '~> 3.2'
+gem 'gibbon'
 gem 'owlcarousel-rails', github: 'acrogenesis/owlcarousel-rails', branch: 'master'
 
-gem 'omniauth-facebook'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.47'
+gem 'bootstrap3-datetimepicker-rails'
 
-gem 'cancancan', '~> 2.2'
-gem 'typedJS', '~> 0.0.2'
-gem 'sweetalert-rails', '~> 1.1', '>= 1.1.3'
-gem 'sweet-alert-confirm', '~> 0.4.1'
-gem 'magnific-popup-rails', '~> 1.1'
+gem 'cancancan'
+gem 'typedJS'
+gem 'sweetalert-rails'
+gem 'sweet-alert-confirm'
+gem 'magnific-popup-rails'
 
 # Géolocalisation
 # gem 'geocoder', '~> 1.4', '>= 1.4.7'
 # gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
 
-# will paginate
-# will paginate bootstrap
+gem 'trix'
+gem 'will_paginate'
+
+gem 'ransack'

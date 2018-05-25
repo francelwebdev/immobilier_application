@@ -17,7 +17,7 @@ module ImmobilierApplication
     # the framework and any gems in your application.
 
     # Mon code
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', "**", '*.{rb,yml}').to_s]
     config.i18n.default_locale = :fr
     config.i18n.available_locales = :fr
     # Mon code

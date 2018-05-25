@@ -1,4 +1,10 @@
 fr:
+  number:
+    currency:
+      format:
+        unit: F
+
+
   shareds:
 
   simple_form:
@@ -31,32 +37,3 @@ fr:
     # prompts:
     #   defaults:
     #     age: 'Select your age'
-
-
-
-  activerecord:
-    models:
-      property: "Bien immobilier"
-    attributes:
-      property:
-        title: "Titre"
-        price: "Loyer"
-        area: "Surface"
-        description: "Description"
-        address: "Adresse exacte"
-        city: "Quartier, Ville ou Commune"
-        room: "Nombre de pièce"
-        available: "Disponible ?"
-        avance: "Avance"
-        property_type: "Type de bien"
-        ad_type: "Type d'annonce"
-        etage: "Etage"
-
-
-
-
-
-  number:
-    currency:
-      format:
-        unit: F

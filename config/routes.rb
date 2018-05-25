@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
+    devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
     scope "/(:locale)", locale: /fr/ do
 
         root to: "pages#home", as: "home_page"
 
         # devise_for :users
-
-        devise_for :users, skip: :omniauth_callbacks
 
         get "about_us", to: "pages#about_us", as: "about_us"
 
