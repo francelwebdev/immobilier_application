@@ -1,13 +1,12 @@
-<%= simple_form_for(@property, html: { class: "", multipart: true }) do |f| %>
+<%= simple_form_for(@property) do |f| %>
 
 <%= f.error_notification %>
 
 <% if @property.errors.any? %>
 <div class="alert alert-danger" role="alert">
-    <h4 class="alert-heading">
+    <p>
         <%= pluralize(@property.errors.count, "erreur", "erreurs") %> ont empêché l'enregistrement de ce produit:
-        <!-- prohibited this product from being saved : -->
-    </h4>
+    </p>
     <ul>
         <% @property.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -16,85 +15,75 @@
 </div>    
 <% end %>
 
-<div class="card bg-white border-0 mb-4">
-    <div class=" row card-body p-5">
-        <div class="col-12">
-            <p class="h4 font-weight-bold text-dark mb-4">Description du bien</p>
-        </div>
-        <div class="col-lg-6">
-            <%= f.input :ad_type, collection: ["Location"], prompt: "Sélectionner le type d'annonce", autofocus: true %>
-        </div>
-        <div class="col-lg-6">
-            <%= f.input :property_type, collection: ["Appartement", "Maison", "Bureau", "Commerce", "Villa", "Sanitaire"], prompt: "Sélectionner le type de bien" %>
-        </div>
-        <div class="col-12">
-            <%= f.input :title %>
-        </div>
-        <div class="col-12">
-            <%= f.input :description, input_html: { rows: 10 } %>
-        </div>
-        <div class="col-lg-6">
-            <%= f.input :room, collection: ["1 pièce", "2 pièces", "3 pièces", "4 pièces", "5 pièces", "plus de 5 pièces"], prompt: "Sélectionner le nombres de pièce" %>
-        </div>
-        <div class="col-lg-6">
-           <%= f.input :area %>
-       </div>        
-       <div class="col-lg-6">
-        <%= f.input :available, collection: [["Oui", true], ["Non", false]], prompt: "Le bien est disponible maintenant ?" %>
-    </div>
-    <div class="col-lg-6">
-        <%= f.input :etage, collection: ["Rez-de-chaussée", "1er étage", "2ème étage", "3ème étage", "4ème étage", "5ème étage"], prompt: "Le bien se trouve à quel étage" %>
-    </div>
-    <div class="col-lg-6">
-        <%= f.input :price, required: true %>
-    </div>
-    <div class="col-lg-6">
-        <%= f.input :avance, required: true, input_html: { min: 1, max: 3 } %>
-    </div>
-</div>
-</div>
-
-<div class="card bg-white border-0 mb-4">
-    <div class=" row card-body p-5">
-        <div class="col-12">
-            <p class="h4 font-weight-bold text-dark mb-4">Caractéristiques du bien</p>
-        </div>
-        <div class="col-12">
-            <%= f.input :feature, as: :check_boxes, inline_label: true, collection: ["Electricité", "Eau", "WC", "Internet"], label: false, wrapper_html: { class: "form-check form-check-inline" }, input_html: { class: "form-check-input" } %>
-        </div>
-    </div>
-</div>
-
-<div class="card bg-white border-0 mb-4">
-    <div class=" row card-body p-5">
-        <div class="col-12">
-            <p class="h4 font-weight-bold text-dark mb-4">Localisation</p>
-        </div>
-        <div class="col-lg-6">
-            <%= f.input :address, required: true %>
-        </div>
-        <div class="col-lg-6">
-            <%= f.input :city, required: true %>
-        </div>
-    </div>
-</div>
-
-<div class="card bg-white border-0 mb-4">
-    <div class="card-body p-5">
-        <div class="row">
+<div class="card border-0 mb-4 mon-box-shadow">
+    <div class="card-body">
+        <div class="form-row p-2">
             <div class="col-12">
-                <p class="h4 font-weight-bold mb-4">Photos</p>
-                <p class="text-info">Une annonce avec photo est 7 fois plus consultée qu'une annonce sans photo. <br> Ajouter les photos des différents pièces et de bonne qualité afin d'attirer plus d'acheteurs ou locataires potentiels.</p>
+                <h4 class="card-title mb-3">Description du bien</h4>
+            </div>            
+            <div class="col-12">
+                <%= f.input :title, autofocus: true %>
             </div>
-            <div class="col-12 mb-3">
+            <div class="col-12">
+                <%= f.input :description, input_html: { rows: 10 } %>
+            </div>
+            <div class="col-md-4">
+                <%= f.input :ad_type, collection: ["Location"] %>
+            </div>
+            <div class="col-md-4">
+                <%= f.input :property_type, collection: ["Appartement", "Maison", "Bureau", "Commerce", "Villa", "Sanitaire"] %>
+            </div>
+            <div class="col-md-4">
+                <%= f.input :room, collection: ["1 pièce", "2 pièces", "3 pièces", "4 pièces", "5 pièces", "plus de 5 pièces"] %>
+            </div>
+            <div class="col-md-4">
+               <%= f.input :area %>
+           </div>        
+           <div class="col-md-4">
+            <%= f.input :available, collection: [["Oui", true], ["Non", false]] %>
+        </div>
+        <div class="col-md-4">
+            <%= f.input :etage, collection: ["Rez-de-chaussée", "1er étage", "2ème étage", "3ème étage", "4ème étage", "5ème étage"] %>
+        </div>
+        <div class="col-md-4">
+            <%= f.input :price %>
+        </div>
+        <div class="col-md-4">
+            <%= f.input :avance, input_html: { min: 1, max: 3 } %>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="card border-0 mb-4 mon-box-shadow">
+    <div class="card-body">
+        <div class="form-row p-2">
+            <div class="col-12">
+                <h4 class="card-title mb-3">Caractéristiques du bien</h4>
+            </div>
+            <div class="col-12">
+                <%= f.input :feature, as: :check_boxes, collection: ["Electricité", "Eau", "WC", "Internet"], label: false, wrapper_html: { class: "form-check" }, input_html: { class: "form-check-input" } %>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<div class="card border-0 mb-4 mon-box-shadow">
+    <div class="card-body">
+        <div class="form-row p-2">
+            <div class="col-12">
+                <h4 class="card-title mb-3">Photos du bien</h4>
+                <p class="card-text text-info mb-3">Une annonce avec photo est 7 fois plus consultée qu'une annonce sans photo. <br> Ajouter les photos des différents pièces et de bonne qualité afin d'attirer plus d'acheteurs ou locataires potentiels.</p>
+            </div>
+            <div class="col-md-4">
                 <%= f.input :photos, label: "Photo 1", input_html: { name: "property[photos][]", class: "form-control-file"}, multiple: true, direct_upload: true, wrapper: :vertical_file_input %>
                 <%= image_tag @property.photos[0], size: "400x400" if @property.photos[0].present? %>
             </div>
-            <div class="col-12 mb-3">
+            <div class="col-md-4">
                 <%= f.input :photos, label: "Photo 2", input_html: { name: "property[photos][]", class: "form-control-file"}, multiple: true, direct_upload: true %>
                 <%= image_tag @property.photos[1], size: "400x400" if @property.photos[1].present? %>
             </div>
-            <div class="col-12 mb-3">
+            <div class="col-md-4">
                 <%= f.input :photos, label: "Photo 3", input_html: { name: "property[photos][]", class: "form-control-file"}, multiple: true, direct_upload: true %>
                 <%= image_tag @property.photos[2], size: "400x400" if @property.photos[2].present? %>
             </div>
@@ -102,7 +91,23 @@
     </div>
 </div>
 
-<div class="form-actions row mt-4">
+<div class="card border-0 mb-4 mon-box-shadow">
+    <div class="card-body">
+        <div class="form-row p-2">
+            <div class="col-12">
+                <h4 class="card-title mb-3">Localisation du bien</h4>
+            </div>
+            <div class="col-md-6">
+                <%= f.input :address %>
+            </div>
+            <div class="col-md-6">
+                <%= f.input :city %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-row">
     <div class="col-12">
         <%= f.button :submit, @property.new_record? ? "Publiez l'annonce" : "Modifier l'annonce", class: "btn btn-primary btn-lg" %>
     </div>

@@ -13,15 +13,14 @@
 
           <% if resource.errors.any? %>
           <div class="alert alert-danger" role="alert">
-          <h4 class="alert-heading">
-          <%= pluralize(resource.errors.count, "error", "erreurs") %> ont empêché l'enregistrement de ce produit:
-          <!-- prohibited this product from being saved : -->
-          </h4>
-          <ul>
-          <% resource.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-          <% end %>
-          </ul>
+            <p class="alert-heading">
+              <%= pluralize(resource.errors.count, "erreur", "erreurs") %> ont empêché l'enregistrement de ce produit:
+            </p>
+            <ul>
+              <% resource.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+              <% end %>
+            </ul>
           </div>    
           <% end %>
 
