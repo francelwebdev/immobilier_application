@@ -78,6 +78,10 @@ group :production do
   gem 'sendinblue'
 end
 
+
+gem 'letter_opener'
+gem 'rails_db'
+
 gem 'rails-i18n'
 
 gem 'jquery-rails'
