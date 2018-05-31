@@ -120,6 +120,6 @@ Rails.application.configure do
   #   :password => ENV["SENDINBLUE_PASSWORD"],
   #   :authentication => 'login',
   #   :enable_starttls_auto => true
-  # }  
+  # }
   # Mon code
 end
