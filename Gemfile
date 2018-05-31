@@ -72,15 +72,13 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-byebug'
+  gem 'letter_opener'
+  gem 'rails_db'
 end
 
 group :production do
   gem 'sendinblue'
 end
-
-
-gem 'letter_opener'
-gem 'rails_db'
 
 gem 'rails-i18n'
 

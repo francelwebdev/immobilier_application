@@ -21,15 +21,14 @@
               <li><%= msg %></li>
               <% end %>
             </ul>
-          </div>    
+          </div>
           <% end %>
 
           <div class="form-inputs">
-            <%= f.input :role, autofocus: true, collection: User::ROLE, required: true, label: "Vous êtes" %>
+            <%= f.input :role, autofocus: true, collection: ["Propriétaire", "Agent immobilier"], required: true, label: "Vous êtes" %>
             <%= f.input :email, required: true %>
             <%= f.input :password, required: true %>
             <%= f.input :password_confirmation, required: true %>
-
             <%= f.input :terms_and_conditions, inline_label: true, required: false, label: "J'ai lu et j'accepte les conditions générales d'utilisation du site." %>
           </div>
 
