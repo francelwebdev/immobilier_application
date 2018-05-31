@@ -117,9 +117,9 @@ config.action_mailer.smtp_settings = {
   :authentication => :plain,
   :address => "smtp.mailgun.org",
   :port => 587,
-  :domain => "sicoapp.herokuapp.com",
-  :user_name => "postmaster@sicoapp.herokuapp.com",
-  :password => "Hello20U!"
+  :domain => "sandboxa69bf090788f48bc885fa291a873ada0.mailgun.org",
+  :user_name => ENV["MAILGUN_LOGIN"],
+  :password => ENV["MAILGUN_PASSWORD"]
 }
 
  # Pour sendinblue
