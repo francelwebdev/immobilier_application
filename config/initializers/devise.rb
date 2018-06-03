@@ -278,10 +278,11 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
 # Mon code
-config.omniauth :facebook, "220002002137902", "5337b26211786fa2c994e1d85da14a96", token_params: { parse: :json },
+config.omniauth :facebook, "ENV["APP_ID"]", "ENV["APP_SECRET"]", token_params: { parse: :json },
     scope: 'email',
-    info_fields: 'email, first_name, last_name',
-    image_size: 'square',  # 50x50, guaranteed ratio
+    display: "popup",
+    info_fields: 'email, first_name, last_name, name',
+    image_size: 'square',
     secure_image_url: true
 # Mon code
 end
