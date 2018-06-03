@@ -279,10 +279,7 @@ Devise.setup do |config|
 
 # Mon code
 config.omniauth :facebook, "ENV["APP_ID"]", "ENV["APP_SECRET"]", token_params: { parse: :json },
-    scope: 'email',
-    display: "popup",
-    info_fields: 'email, first_name, last_name, name',
-    image_size: 'square',
+    info_fields: 'email, first_name, last_name',
     secure_image_url: true
 # Mon code
 end
