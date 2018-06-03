@@ -279,16 +279,5 @@ Devise.setup do |config|
 
 # Mon code
 config.omniauth :facebook, ENV["APP_ID"], ENV["APP_SECRET"], callback_url: "https://sicoapp.herokuapp.com//users/auth/facebook/callback"
-
-
-
-
-token_params: { parse: :json }, scope: 'public_profile, email',
-info_fields: 'email, first_name, last_name, gender, picture',
-client_options: {
-  site: 'https://graph.facebook.com/v2.11',
-  authorize_url: "https://www.facebook.com/v2.11/dialog/oauth",
-  ssl: { ca_file: '/usr/lib/ssl/certs/ca-certificates.crt' }
-}
 # Mon code
 end
