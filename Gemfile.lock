@@ -40,6 +40,12 @@ GEM
       activemodel (= 5.2.0)
       activesupport (= 5.2.0)
       arel (>= 9.0)
+    activerecord-session_store (1.1.1)
+      actionpack (>= 4.0)
+      activerecord (>= 4.0)
+      multi_json (~> 1.11, >= 1.11.2)
+      rack (>= 1.5.2, < 3)
+      railties (>= 4.0)
     activestorage (5.2.0)
       actionpack (= 5.2.0)
       activerecord (= 5.2.0)
@@ -417,6 +423,7 @@ PLATFORMS
   x86-mswin32
 
 DEPENDENCIES
+  activerecord-session_store
   activestorage-cloudinary-service
   autoprefixer-rails
   better_errors

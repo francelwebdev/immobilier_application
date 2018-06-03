@@ -73,8 +73,8 @@ group :development do
   gem 'binding_of_caller'
   gem 'pry-byebug'
   gem 'letter_opener'
-  gem 'rails_db'
 end
+gem 'rails_db'
 
 group :production do
   gem 'sendinblue'
@@ -93,6 +93,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'devise-i18n'
 gem 'omniauth-facebook'
+gem 'activerecord-session_store'
 gem 'jquery-slick-rails'
 gem 'friendly_id'
 
