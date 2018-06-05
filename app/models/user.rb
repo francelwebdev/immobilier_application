@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   has_many :properties, dependent: :destroy
   has_many :messages
-  has_one_attached :image
+  has_one_attached :picture
 
   ROLE = ["Propriétaire", "Agent immobilier"]
   GENDER = ["Masculin", "Féminin"]
@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
     user.first_name = auth.info.first_name   # assuming the user model has a name
     user.last_name = auth.info.last_name   # assuming the user model has a name
-    user.image = auth.info.image # assuming the user model has an image
+    user.picture = auth.info.picture # assuming the user model has an image
 
     # If you are using confirmable and the provider(s) you use validate emails, 
     # uncomment the line below to skip the confirmation emails.
@@ -49,6 +49,6 @@ def self.new_with_session(params, session)
   end
 
   def suprimer_photo_de_profile
-    self.image.purge
+    self.picture.purge
   end
 end
