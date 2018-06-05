@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   has_many :properties, dependent: :destroy
   has_many :messages
-  has_one_attached :facebook_picture_url
+  has_one_attached :image
 
   ROLE = ["Propriétaire", "Agent immobilier"]
   GENDER = ["Masculin", "Féminin"]
@@ -49,6 +49,6 @@ def self.new_with_session(params, session)
   end
 
   def suprimer_photo_de_profile
-    self.facebook_picture_url.purge
+    self.image.purge
   end
 end
