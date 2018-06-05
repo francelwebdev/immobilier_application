@@ -4,34 +4,20 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable
   devise :confirmable
-  devise :omniauthable, omniauth_providers: %i[facebook]
+  devise :omniauthable, :omniauth_providers => [:facebook]
 
-  validates :role, :terms_and_conditions, presence: true, on: :update
+  # validates :role, :terms_and_conditions, presence: true, on: :update
 
   after_create :send_welcome_email
   after_destroy :suprimer_les_photos
 
   has_many :properties, dependent: :destroy
   has_many :messages
-  has_one_attached :image
+  has_one_attached :picture
 
   ROLE = ["Propriétaire", "Agent immobilier"]
   GENDER = ["Masculin", "Féminin"]
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.first_name = auth.info.first_name
-      user.last_name = auth.info.last_name
-      user.phone = auth.info.phone
-      user.gender = auth.info.gender
-      user.image = auth.info.image # assuming the user model has an image
-      # If you are using confirmable and the provider(s) you use validate emails,
-      # uncomment the line below to skip the confirmation emails.
-      user.skip_confirmation!
-    end
-  end
 
   def self.new_with_session(params, session)
     super.tap do |user|
@@ -40,6 +26,20 @@ class User < ApplicationRecord
       end
     end
   end
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+    #user.name = auth.info.name   # assuming the user model has a name
+    #user.image = auth.info.image # assuming the user model has an image
+
+    user.first_name = auth.info.first_name
+    user.last_name = auth.info.last_name
+    user.picture = auth.info.picture
+    user.gender = auth.info.gender
+  end
+end
 
 
   private
