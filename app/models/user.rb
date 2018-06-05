@@ -6,14 +6,12 @@ class User < ApplicationRecord
   devise :confirmable
   devise :omniauthable, omniauth_providers: [:facebook]
 
-  # validates :role, :terms_and_conditions, presence: true, on: :update
-
   after_create :send_welcome_email
-  after_destroy :suprimer_les_photos
+  after_destroy :suprimer_photo_de_profile
 
   has_many :properties, dependent: :destroy
   has_many :messages
-  has_one_attached :picture
+  has_one_attached :facebook_picture_url
 
   ROLE = ["Propriétaire", "Agent immobilier"]
   GENDER = ["Masculin", "Féminin"]
@@ -46,7 +44,7 @@ class User < ApplicationRecord
     UserMailer.welcome(self).deliver_now
   end
 
-  def suprimer_les_photos
-    self.profile_photo.purge
+  def suprimer_photo_de_profile
+    self.facebook_picture_url.purge
   end
 end

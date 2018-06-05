@@ -257,7 +257,7 @@ Devise.setup do |config|
   # Mon code
   config.omniauth :facebook, "220002002137902", "5337b26211786fa2c994e1d85da14a96", 
   scope: 'email',
-    info_fields: 'email, first_name, last_name',
+  info_fields: 'email, first_name, last_name',
     image_size: 'square',  # 50x50, guaranteed ratio
     secure_image_url: true
 # Mon code
