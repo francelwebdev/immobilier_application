@@ -15,7 +15,7 @@
 					<div class="form-inputs">
 						<%= f.input :first_name, autofocus: true, required: true, label: "Prénom" %>
 						<%= f.input :last_name, required: true, label: "Nom" %>
-						<%= f.input :gender, collection: [['M', 'Masculin'], ['F', 'Féminin']], label_method: :second, value_method: :first, required: true %>
+						<%= f.input :gender, collection: [["M", 'Homme'], ['F', 'Femme']], label_method: :second, value_method: :first, required: true %>
 						<%= f.input :phone_number, as: :tel, required: true, label: "Numéros de téléphone" %>
 						<%= image_tag current_user.profile_photo, size: "250x250", class: "rounded-circle mb-4" if current_user.profile_photo.attached? %>
 						<%= f.input :profile_photo, required: true %>
