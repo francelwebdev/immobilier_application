@@ -20,10 +20,15 @@
 <%= link_to t('.didn_t_receive_unlock_instructions'), new_unlock_path(resource_name) %><br />
 <% end -%>
 
-<p class="mt-2">Ou</p>
+<div class="d-flex justify-content-center align-items-center my-3">
+<hr class="bg-primary m-0" style="border: 2px solid gray; width: 30%">
+<p class="m-0 px-3 font-weight-bold">Ou</p>
+<hr class="bg-primary m-0" style="border: 2px solid gray; width: 30%">
+</div>
+
 
 <%- if devise_mapping.omniauthable? %>
 <%- resource_class.omniauth_providers.each do |provider| %>
-<%= link_to t('.sign_in_with_provider', provider: OmniAuth::Utils.camelize(provider)), omniauth_authorize_path(resource_name, provider) %><br />
+<%= link_to t('.sign_in_with_provider', provider: OmniAuth::Utils.camelize(provider)), omniauth_authorize_path(resource_name, provider), class: "design-connexion-avec-fb sans-text-decoration p-3 text-light" %><br />
 <% end -%>
 <% end -%>

@@ -9,12 +9,11 @@ class AddColumnsToProperties < ActiveRecord::Migration[5.2]
     add_column :properties, :room, :string
     add_column :properties, :available, :boolean
     add_column :properties, :published, :boolean, default: false
-    add_column :properties, :avance, :integer
+    add_column :properties, :deposit, :integer
     add_column :properties, :feature, :string, array: true
     add_column :properties, :etage, :string
     add_column :properties, :travaux, :string
     add_column :properties, :published_at, :datetime
-    add_column :properties, :commune, :string
     add_column :properties, :property_type, :string
     add_column :properties, :ad_type, :string
     add_column :properties, :expire_at, :datetime

@@ -47,7 +47,9 @@
                 <h4 class="card-title mb-3">Caractéristiques du bien</h4>
             </div>
             <div class="col-12">
-                <%= f.input :feature, as: :check_boxes, collection: ["Electricité", "Eau", "WC", "Internet"], label: false, wrapper_html: { class: "form-check" }, input_html: { class: "form-check-input" } %>
+                <div class="form-check form-check-inline">
+                <%= f.input_field :feature, as: :check_boxes, collection: ["Electricité", "Eau", "WC", "Internet"], label: false, input_html: { class: "form-check-input" } %>
+                </div>
             </div>
         </div>
     </div>    

@@ -66,16 +66,16 @@ box-shadow: 0 10px 20px rgba(0,0,0,.1);
 
 <ul class="navbar-nav ml-auto d-flex align-items-center">
     <% if user_signed_in? %>
-        <% if current_user.image.attached? %>
+        <% if current_user.profile_picture.attached? %>
             <%= yield :add_property %>
             <li class="nav-item dropdown mx-2">
-                <%= image_tag(current_user.image, size: "50x50", class: "rounded-circle dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false") %>
+                <%= link_to "#{current_user.email}", "", class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" %>
                 <%= yield :dropdown_menu %>
             </li>
         <% else %>
             <%= yield :add_property %>
             <li class="nav-item dropdown mx-2">
-                <%= image_tag "148705-essential-collection/svg/user-3.svg", size: "40x40", class: "dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" %>
+                <%= link_to "#{current_user.email}", "", class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" %>
                 <%= yield :dropdown_menu %>
             </li>
         <% end %>
