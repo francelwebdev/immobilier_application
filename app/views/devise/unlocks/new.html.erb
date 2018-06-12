@@ -1,16 +1,29 @@
-<h2><%= t(".resend_unlock_instructions") %></h2>
+<% content_for :page_title, "Dévérouiller compte utilisateur" %>
 
-<%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-  <%= f.full_error :unlock_token %>
+<section class="container-fluid py-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 offset-lg-4">
+				<div class="card border-0 mon-box-shadow">
+					<div class="card-body px-5">
+						<h2 class="card-title text-center"><%= t(".resend_unlock_instructions") %></h2>
+						<%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+						<%= f.error_notification %>
+						<%= f.full_error :unlock_token %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-  </div>
+						<div class="form-inputs">
+							<%= f.input :email, required: true, autofocus: true %>
+						</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, t(".resend_unlock_instructions") %>
-  </div>
-<% end %>
+						<div class="form-actions">
+							<%= f.button :submit, t(".resend_unlock_instructions"), class: "btn btn-primary btn-block" %>
+						</div>
+						<% end %>
+						<%= render "devise/shared/links" %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-<%= render "devise/shared/links" %>
