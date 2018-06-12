@@ -1,10 +1,8 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
-
     puts "========================"
     puts request.env["omniauth.auth"].inspect
     puts "========================"
-
     # You need to implement the method below in your model (e.g. app/models/user.rb)
     @user = User.from_omniauth(request.env["omniauth.auth"])
 
@@ -20,11 +18,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def failure
     redirect_to root_path
   end
-end
 
-def facebook
   if request.env["omniauth.auth"].info.email.blank?
-    redirect_to "/users/auth/facebook?auth_type=rerequest&scope=email"
+      redirect_to "/users/auth/facebook?auth_type=rerequest&scope=email"
       return # be sure to include an return if there is code after this otherwise it will be executed
     end
-  end
+end

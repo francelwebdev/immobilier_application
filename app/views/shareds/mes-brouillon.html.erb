@@ -1,3 +1,15 @@
+<h2>Welcome to <%= link_to "SICO", home_page_url %>, <%= @user.first_name %></h2>
+<p>You have successfully signed up to <%= link_to "SICO", "sicoapp.herokuapp.com" %>, your email address is: <%= @user.email %>.</p>
+<p>To login to the site, just follow this link: <%= link_to "#{home_page_url}", home_page_url %>.</p>
+<p>Thanks for joining and have a great day!</p>
+<p>If you have any questions please don't hesitate to contact us!</p>
+
+
+
+<%= f.input :gender, collection: [["M", 'Homme'], ['F', 'Femme']], label_method: :second, value_method: :first, required: true %>
+
+
+
 Rails.application.secrets.fb_app_id, Rails.application.secrets.fb_app_secret,
 
 
