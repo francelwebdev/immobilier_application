@@ -47,7 +47,7 @@
                                     <% if current_user.admin? and my_property.published %>
                                     <h4><span class="position-absolute badge badge-success p-2" style="top: 10px; right: 10px;">En ligne</span></h4>
                                     <% elsif current_user.admin? and !my_property.published %>
-                                    <h4><span class="position-absolute badge badge-danger p-2" style="top: 10px; right: 10px;">Hors ligne</span></h4>
+                                    <h4><span class="position-absolute badge badge-warning text-white p-2" style="top: 10px; right: 10px;">En attente de mise en ligne</span></h4>
                                     <% end %>
                                     <% end %>
 
@@ -71,7 +71,7 @@
 
                                     <div class="card-footer bg-white" style="border-top: 1px solid #dee2e6 !important;">
                                         <p class="d-flex justify-content-between align-items-center mb-0">
-                                            <small class="text-dark">Publié il y a <%= distance_of_time_in_words(my_property.published_at, Time.now, include_seconds: false) %></small>
+                                            <small class="text-dark">Publié il y a <%= distance_of_time_in_words(my_property.created_at, Time.now, include_seconds: false) %></small>
                                             <%= link_to "Modifier", edit_property_path(my_property), class: "btn btn-secondary" %>
                                         </p>
                                     </div>

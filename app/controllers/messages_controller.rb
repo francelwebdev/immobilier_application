@@ -15,6 +15,6 @@ class MessagesController < ApplicationController
 	private
 
 	def message_params
-		params.require(:message).permit(:user_id, :customer_full_name, :customer_phone_number, :customer_email, :customer_message)
+		params.require(:message).permit(:user_id, :name, :phone, :email, :message)
 	end
 end

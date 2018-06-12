@@ -24,7 +24,7 @@ class Property < ApplicationRecord
 
     def suprimer_si_annonce_expire
         p = Property.find(self.id)
-        if p.published? and p.expiration_date.past?
+        if p.published? and p.expire_at.past?
             p.delete
         end    
     end

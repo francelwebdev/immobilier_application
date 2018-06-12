@@ -13,7 +13,7 @@ class MessagesMailer < ApplicationMailer
     @user = user
     @message = message
 
-    mail to: @user.email, subject: "Un nouveau message pour votre annonce", from: @message.customer_email
+    mail to: @user.email, subject: "Un nouveau message pour votre annonce", from: @message.email
   end
 
 end

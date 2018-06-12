@@ -90,6 +90,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'autoprefixer-rails'
 
 gem 'simple_form'
+# gem "cocoon"
 gem 'devise'
 gem 'devise-i18n'
 gem 'omniauth-facebook'
