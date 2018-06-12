@@ -1,14 +1,12 @@
 <%- if controller_name != 'sessions' %>
-    <span>Vous avez un compte ?</span>
   <%= link_to t(".sign_in"), new_session_path(resource_name) %><br />
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-    <span>Vous n'avez pas un compte ?</span>
   <%= link_to t(".sign_up"), new_registration_path(resource_name) %><br />
 <% end -%>
 
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
   <%= link_to t(".forgot_your_password"), new_password_path(resource_name) %><br />
 <% end -%>
 
@@ -20,10 +18,8 @@
   <%= link_to t('.didn_t_receive_unlock_instructions'), new_unlock_path(resource_name) %><br />
 <% end -%>
 
-<p class="mt-2">Ou</p>
-
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to t('.sign_in_with_provider', provider: provider.to_s.titleize), omniauth_authorize_path(resource_name, provider), class: "btn btn-primary btn-lg design-connexion-avec-fb border-0"%><br />
+    <%= link_to t('.sign_in_with_provider', provider: OmniAuth::Utils.camelize(provider)), omniauth_authorize_path(resource_name, provider) %><br />
   <% end -%>
 <% end -%>

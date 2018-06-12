@@ -72,8 +72,8 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-byebug'
-  gem 'letter_opener'
 end
+
 gem 'rails_db'
 
 group :production do
@@ -97,8 +97,6 @@ gem 'activerecord-session_store'
 gem 'jquery-slick-rails'
 gem 'friendly_id'
 
-gem 'pagy' # je vais suprimer sa après.
-
 gem 'rolify'
 
 gem 'cloudinary', require: false
@@ -106,8 +104,6 @@ gem 'activestorage-cloudinary-service'
 
 gem 'gibbon'
 gem 'owlcarousel-rails', github: 'acrogenesis/owlcarousel-rails', branch: 'master'
-
-gem 'bootstrap3-datetimepicker-rails'
 
 gem 'cancancan'
 gem 'typedJS'

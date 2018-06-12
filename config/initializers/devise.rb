@@ -8,13 +8,17 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '2bc57a196be213e4b5cd303454fb494c3f4558934effde6e1ae1e6f4ed9a65211bb21fe7fdb8e99e84573d3efdb850e4b93a61a20a618fafd60b60403c7212e0'
+  # config.secret_key = '8dc1c80c72753d5c5d0a2ff5d64865b592fbd7fbb69cf517e74866acee385ec8827a8d1ac6c3ab8da8787924a77ad369549cfe2eb5860beae525c221e736d3f7'
+  
+  # ==> Controller configuration
+  # Configure the parent class to the devise controllers.
+  # config.parent_controller = 'DeviseController'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'no-reply@example.com'
+  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -110,7 +114,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '2d89bba5402ef1068e3a44800927485f8420f8fb9b0f32d1867f92a741edfbe9a5f16d8846de054efced899ad77b4f2a5390b1b3195c0462fd73e372d75b6175'
+  # config.pepper = '68eac36dfca2d514fa6b98b3aec40244c6a64331de9ce28c3d14b10558ad8d29764b064f5650053a2de7af66136b18f4ba19b52769b7ab6bad427e17ec1a77b7'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -253,14 +257,6 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-
-  # Mon code
-  config.omniauth :facebook, "220002002137902", "5337b26211786fa2c994e1d85da14a96", token_params: { parse: :json }, scope: 'email', info_fields: 'email, first_name, last_name, image, gender, phone', image_size: 'square', secure_image_url: true, client_options: {
-                    site: 'https://graph.facebook.com/v2.11',
-                    authorize_url: "https://www.facebook.com/v2.11/dialog/oauth",
-                    ssl: { ca_path: '/etc/ssl/certs' }
-                }
-# Mon code
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

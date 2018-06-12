@@ -11,6 +11,7 @@
 	<title>Sico - <%= content_for?(:page_title) ? yield(:page_title) : "Bienvenue" %></title>
 	<%= csrf_meta_tags %>
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 	<% if content_for?(:head) %>
 	<%= yield(:head) %>
 	<% end %>
@@ -24,7 +25,6 @@
 	<!-- <%= render "shareds/call_to_action_for_agency" if !current_page?(agency_benefits_path) %> -->
 	<%= render "shareds/call_to_action_for_owner" %>
 	<%= render "shareds/footer" %>
-	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 	<!-- <% if current_page?(home_page_path) %>
 	<%= yield :value_proposition_text_typed %>

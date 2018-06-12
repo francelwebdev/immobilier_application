@@ -1,34 +1,17 @@
-<% content_for :page_title, "Inscription utilisateur" %>
+<h2><%= t(".sign_up") %></h2>
 
-<section class="container py-5">
-  <div class="row">
-    <div class="col-lg-6 offset-lg-3 text-center mb-4">
-      <h2><%= t(".sign_up") %></h2>
-    </div>
-    <div class="col-lg-6 offset-lg-3">
-      <div class="card border-0 mon-box-shadow">
-        <div class="card-body px-5">
-          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= f.error_notification %>
-          
-          <div class="form-inputs">
-            <%= f.input :role, autofocus: true, collection: ["Propriétaire", "Agent immobilier"], required: true, label: "Vous êtes" %>
-            <%= f.input :email, required: true %>
-            <%= f.input :password, required: true %>
-            <%= f.input :password_confirmation, required: true %>
-            <p><small>En appuyant sur Inscription, vous acceptez avoir lu et accepté nos <%= link_to "conditions générales d’utilisation", terms_and_conditions_path %>, notre politique de confidentialité. Vous pouvez à tout moment vous désinscrire.</small></p>
-          </div>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
 
-          <div class="form-actions">
-            <%= f.button :submit, t(".sign_up"), class: "btn btn-primary btn-block btn-lg" %>
-          </div>
-          <% end %>
-
-          <div class="text-center mt-4">
-            <%= render "devise/shared/links" %>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="form-inputs">
+    <%= f.input :email, required: true, autofocus: true %>
+    <%= f.input :password, required: true, hint: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length) %>
+    <%= f.input :password_confirmation, required: true %>
   </div>
-</section>
+
+  <div class="form-actions">
+    <%= f.button :submit, t(".sign_up") %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

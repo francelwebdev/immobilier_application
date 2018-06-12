@@ -50,6 +50,10 @@ fr:
         greeting: Bienvenue %{recipient}!
         instruction: 'Vous pouvez confirmer votre courriel grâce au lien ci-dessous:'
         subject: Instructions de confirmation
+      email_changed:
+        greeting: Bonjour %{recipient}!
+        message: Nous vous contactons pour vous notifier que votre adresse de courriel a été changée en %{email}.
+        subject: Courriel modifié
       password_change:
         greeting: Bonjour %{recipient}!
         message: Nous vous contactons pour vous notifier que votre mot de passe a été modifié.
@@ -118,6 +122,9 @@ fr:
         sign_in: Connexion
         sign_in_with_provider: Connexion avec %{provider}
         sign_up: Inscription
+      minimum_password_length:
+        one: "(%{count} caractère au moins)"
+        other: "(%{count} caractères au moins)"
     unlocks:
       new:
         resend_unlock_instructions: Renvoyer les instructions de déblocage
