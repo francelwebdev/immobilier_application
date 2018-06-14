@@ -11,7 +11,7 @@ fr:
         address: "Adresse exacte"
         city: "Quartier, Ville ou Commune"
         room: "Nombre de pièce"
-        available: "Disponible ?"
+        available: "Disponible maintenant ?"
         avance: "Avance"
         property_type: "Type de bien"
         ad_type: "Type d'annonce"

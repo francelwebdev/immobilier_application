@@ -6,11 +6,11 @@ class Property < ApplicationRecord
     FEATURE = ["Electricité", "Eau", "WC", "Internet"]
     ETAGE = ["Rez-de-chaussée", "1er étage", "2ème étage", "3ème étage", "4ème étage", "5ème étage"]
     AD_TYPE = ["Location"]
-    PROPERTY_TYPE = ["Appartement", "Maison", "Bureau", "Commerce", "Villa", "Sanitaire"]
+    PROPERTY_TYPE = ["Appartement", "Maison", "Bureau", "Commerce", "Villa", "Chambre","Entrée couché"]
 
     belongs_to :user
 
-    validates :price, :area, :description, :address, :city, :room, :available, :avance, :property_type, :ad_type, :feature, :etage, :title, presence: true
+    validates :price, :description, :city, :available, :avance, :property_type, :ad_type, :feature, :etage, :title, presence: true
 
     scope :published, -> { where(published: true) }
     scope :unpublished, -> { where(published: false) }

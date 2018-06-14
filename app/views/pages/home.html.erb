@@ -1,12 +1,8 @@
 <% content_for :page_title, "Accueil" %>
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
-
-<!-- Pour vidéo d'arrière plan : jarallax" data-jarallax='{"speed": 0.2}' data-jarallax-video="https://www.youtube.com/watch?v=UrkXWG9WgC8" -->
-<!-- <h1 class="text-white">Le moyen le plus simple de trouver <span class="element font-weight-bold"></span> a louer</h1> -->
 <div class="jumbotron jumbotron-fluid d-flex align-items-center mb-0 jumbotron-accueil">
     <div class="container">
-        <h1 class="text-white text-center">Trouver <span id="js-rotating" class="font-weight-bold">la maison, l'appartement, le bureau, la boutique, la villa, la chambre</span> qui correspond à vos besoins sans avoir a visiter plusieur avant.</h1>
+        <h1 class="text-white text-center">Trouver <span id="js-rotating" class="font-weight-bold">la maison, l'appartement, le bureau, la boutique, la villa, la chambre, l'entréé couché</span> qui correspond à vos besoins sans avoir a visiter plusieur avant.</h1>
         <div class="py-3 px-3" style="border-radius: 3px; background-color: rgba(0, 0, 0, 0.3)">
             <%= simple_form_for "", url: properties_path, method: :get do |f| %>
             <div class="row px-3">
@@ -29,7 +25,7 @@
 </div>
 
 
-<section class="container-fluid py-5 sr-only">
+<section class="container-fluid py-4 sr-only">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center mb-5">
@@ -58,30 +54,36 @@
     </div>
 </section>
 
-<section class="container-fluid py-5 bg-white" id="comment-ca-marche">
+<section class="container-fluid py-4 bg-white">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-center mb-3">
+            <div class="col-lg-12 text-center mb-2">
                 <h1>Comment ça marche</h1>
                 <p>3 étapes très simple</p>
             </div>
-            <div class="col-lg-4 text-center mb-5">
-                <p class="mb-3"><%= image_tag "179347-control/svg/number-1.svg", class: "w-25" %></p>
+            <div class="col-lg-4 text-center mb-4">
+                <p class="mb-3">
+                    <%= image_tag "179347-control/svg/number-1.svg", class: "w-25" %>
+                </p>
                 <p>Faîte une recherche et choisissez un bien parmis les résultats de recherche.</p>
             </div>
-            <div class="col-lg-4 text-center mb-5">
-                <p class="mb-3"><%= image_tag "179347-control/svg/number-2.svg", class: "w-25" %></p>
+            <div class="col-lg-4 text-center mb-4">
+                <p class="mb-3">
+                    <%= image_tag "179347-control/svg/number-2.svg", class: "w-25" %>
+                </p>
                 <p>Contacter le propriétaire du bien pour convenir d'un RDV pour la visite.</p>
             </div>
-            <div class="col-lg-4 text-center mb-5">
-                <p class="mb-3"><%= image_tag "179347-control/svg/number-3.svg", class: "w-25" %></p>
+            <div class="col-lg-4 text-center mb-4">
+                <p class="mb-3">
+                    <%= image_tag "179347-control/svg/number-3.svg", class: "w-25" %>
+                </p>
                 <p>Visiter le bien puis régler l'avance et prenez les clefs si le bien correspond à vos besoins.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="container-fluid py-5 sr-only">
+<section class="container-fluid py-4 sr-only">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center mb-5">
@@ -131,7 +133,7 @@
     </div>
 </section>
 
-<section class="container-fluid py-5 sr-only bg-white">
+<section class="container-fluid py-4 sr-only bg-white">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center mb-4">
