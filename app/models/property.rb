@@ -6,7 +6,7 @@ class Property < ApplicationRecord
     FEATURE = ["Electricité", "Eau", "WC", "Internet"]
     ETAGE = ["Rez-de-chaussée", "1er étage", "2ème étage", "3ème étage", "4ème étage", "5ème étage"]
     AD_TYPE = ["Location"]
-    PROPERTY_TYPE = ["Appartement", "Maison", "Bureau", "Commerce", "Villa", "Chambre","Entrée couché"]
+    PROPERTY_TYPE = ["Appartement", "Maison", "Bureau", "Commerce", "Villa", "Chambre", "Entrée couché"]
 
     belongs_to :user
 
