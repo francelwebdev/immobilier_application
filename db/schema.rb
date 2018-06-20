@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2018_05_18_205844) do
   create_table "contacts", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.integer "phone"
+    t.integer "phone_number"
     t.string "email"
     t.text "message"
     t.datetime "created_at", null: false
@@ -85,13 +85,11 @@ ActiveRecord::Schema.define(version: 2018_05_18_205844) do
     t.string "city"
     t.string "room"
     t.boolean "available"
-    t.boolean "published", default: false
-    t.integer "avance"
+    t.boolean "published", default: true
+    t.integer "deposit"
     t.string "feature", array: true
     t.string "etage"
-    t.string "travaux"
     t.datetime "published_at"
-    t.string "commune"
     t.string "property_type"
     t.string "ad_type"
     t.datetime "expire_at"
@@ -121,13 +119,14 @@ ActiveRecord::Schema.define(version: 2018_05_18_205844) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
     t.string "role"
-    t.string "provider"
-    t.string "uid"
+    t.string "name"
     t.string "first_name"
     t.string "last_name"
-    t.string "image"
-    t.string "gender"
-    t.integer "phone"
+    t.string "profile_picture"
+    t.integer "phone_number"
+    t.boolean "terms_and_conditions", default: true
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

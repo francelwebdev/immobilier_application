@@ -10,7 +10,13 @@ class Property < ApplicationRecord
 
     belongs_to :user
 
+    accepts_nested_attributes_for :user, update_only: true
+
     validates :price, :description, :city, :available, :avance, :property_type, :ad_type, :feature, :etage, :title, presence: true
+    validates :title, uniqueness: true
+
+    validates :price, numericality: { only_integer: true }
+    validates :avance, numericality: { greater_than_or_equal_to: 1 }
 
     scope :published, -> { where(published: true) }
     scope :unpublished, -> { where(published: false) }
@@ -26,9 +32,9 @@ class Property < ApplicationRecord
         p = Property.find(self.id)
         if p.published? and p.expire_at.past?
             p.delete
-        end    
+        end
     end
-    
+
     def suprimer_les_photos
         self.photos.purge
     end

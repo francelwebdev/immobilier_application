@@ -22,9 +22,9 @@
                 <%= f.input :room, collection: ["1 pièce", "2 pièces", "3 pièces", "4 pièces", "5 pièces", "plus de 5 pièces"] %>
             </div>
             <div class="col-md-4">
-               <%= f.input :area %>
-           </div>        
-           <div class="col-md-4">
+             <%= f.input :area %>
+         </div>
+         <div class="col-md-4">
             <%= f.input :available, collection: [["Oui", true], ["Non", false]] %>
         </div>
         <div class="col-md-4">
@@ -34,7 +34,7 @@
             <%= f.input :price %>
         </div>
         <div class="col-md-4">
-            <%= f.input :avance, input_html: { min: 1, max: 3 } %>
+            <%= f.input :deposit, input_html: { min: 1 }, hint: "nombres de mois ?" %>
         </div>
     </div>
 </div>
@@ -48,7 +48,7 @@
             </div>
             <div class="col-12">
                 <div class="form-check form-check-inline">
-                <%= f.input_field :feature, as: :check_boxes, collection: ["Electricité", "Eau", "WC", "Internet"], label: false, input_html: { class: "form-check-input" } %>
+                    <%= f.input_field :feature, as: :check_boxes, collection: ["Electricité", "Eau", "WC", "Internet"], label: false, input_html: { class: "form-check-input" } %>
                 </div>
             </div>
         </div>
@@ -93,6 +93,34 @@
         </div>
     </div>
 </div>
+
+<% if user_signed_in? %>
+<% if current_user.role.blank? and current_user.first_name.blank? and current_user.last_name.blank? and current_user.phone_number.blank? %>
+<%= f.simple_fields_for :user do |user_info| %>
+<div class="card border-0 mb-4 mon-box-shadow">
+    <div class="card-body">
+        <div class="form-row p-2">
+            <div class="col-12">
+                <h4 class="card-title mb-3">Information de contact</h4>
+            </div>
+            <div class="col-md-6">
+                <%= user_info.input :first_name %>
+            </div>
+            <div class="col-md-6">
+                <%= user_info.input :last_name %>
+            </div>
+            <div class="col-md-6">
+                <%= user_info.input :phone_number %>
+            </div>
+            <div class="col-md-6">
+                <%= user_info.input :role, autofocus: true, collection: ["Propriétaire", "Agent immobilier"], required: true, label: "Vous êtes" %>
+            </div>
+        </div>
+    </div>
+</div>
+<% end %>
+<% end %>
+<% end %>
 
 <div class="form-row">
     <div class="col-12">

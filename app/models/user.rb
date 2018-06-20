@@ -6,7 +6,8 @@ class User < ApplicationRecord
   devise :confirmable
   devise :omniauthable, omniauth_providers: %i[facebook]
 
-  # validates :role, presence: true
+  validates :role, presence: true, on: :update
+  validates :phone_number, presence: true, uniqueness: true, numericality: { only_integer: true }, length: { is: 8 }, on: :update
 
   after_create :send_welcome_email
   after_destroy :suprimer_photo_de_profile
