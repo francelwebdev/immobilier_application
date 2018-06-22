@@ -10,8 +10,6 @@ class Property < ApplicationRecord
 
     belongs_to :user
 
-    accepts_nested_attributes_for :user, update_only: true
-
     validates :price, :description, :city, :available, :deposit, :property_type, :ad_type, :feature, :room, :title, presence: true
     validates :title, uniqueness: true
     validates :price, numericality: { only_integer: true }

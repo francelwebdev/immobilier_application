@@ -30,6 +30,10 @@ class ApplicationController < ActionController::Base
         @current_year = Time.now.year
     end
 
+    def after_sign_in_path_for(resource)
+        edit_user_registration_path(resource) if current_user.first_name.blank? && current_user.last_name.blank? && current_user.phone_number.blank?
+    end
+
 
     protected
 

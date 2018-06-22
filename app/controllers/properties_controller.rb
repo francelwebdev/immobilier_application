@@ -50,7 +50,14 @@ class PropertiesController < ApplicationController
     end
 
     def new
-        @property = current_user.properties.build
+        if user_signed_in?
+            if current_user.role.blank? and current_user.first_name.blank? and current_user.last_name.blank? and current_user.phone_number.blank?
+                redirect_to edit_user_registration_url, alert: "Veuillez completer SVP vos informations de profile puis cliquer à nouveau sur publier une annonce."
+            else
+                @property = current_user.properties.build
+            end
+        end
+        # @property = current_user.properties.build
     end
 
     def edit

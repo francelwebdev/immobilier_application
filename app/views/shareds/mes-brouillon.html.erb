@@ -1,3 +1,30 @@
+<% if user_signed_in? %>
+<% if current_user.role.blank? and current_user.first_name.blank? and current_user.last_name.blank? and current_user.phone_number.blank? %>
+<%= f.simple_fields_for :user do |user_info| %>
+<div class="card border-0 mb-4 mon-box-shadow">
+    <div class="card-body">
+        <div class="form-row p-2">
+            <div class="col-12">
+                <h4 class="card-title mb-3">Information de contact</h4>
+            </div>
+            <div class="col-md-6">
+                <%= user_info.input :first_name %>
+            </div>
+            <div class="col-md-6">
+                <%= user_info.input :last_name %>
+            </div>
+            <div class="col-md-6">
+                <%= user_info.input :phone_number %>
+            </div>
+        </div>
+    </div>
+</div>
+<% end %>
+<% end %>
+<% end %>
+
+
+
 <!-- Pour vidéo d'arrière plan : jarallax" data-jarallax='{"speed": 0.2}' data-jarallax-video="https://www.youtube.com/watch?v=UrkXWG9WgC8" -->
 <!-- <h1 class="text-white">Le moyen le plus simple de trouver <span class="element font-weight-bold"></span> a louer</h1> -->
 
