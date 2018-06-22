@@ -4,23 +4,6 @@
 <meta name="turbolinks-cache-control" content="no-cache">
 <% end %>
 
-<section class="container-fluid px-0">
-    <div class="row">
-        <div class="col-lg-12 mb-4">
-            <% if @property.photos.attached? %>
-            <div class="single-item">
-                <% @property.photos.each do |photo| %>
-                <div>
-                    <%= image_tag photo, class: "w-100 h-100" %>
-                </div>
-                <% end %>
-            </div>
-            <% else %>
-            <p class="text-center">ANNONCE SANS PHOTO</p>
-            <% end %>
-        </div>
-    </div>
-</section>
 
 <section class="container-fluid mb-4 property-show-page-banner d-flex align-items-center">
     <div class="container">

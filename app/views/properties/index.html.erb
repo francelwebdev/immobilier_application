@@ -124,7 +124,6 @@
                     <% @properties.each do |property| %>
                     <!-- Grid design -->
                     <div class="col-lg-6 mb-4">
-                        <%= link_to property, class: "sans-text-decoration" do %>
                         <div class="card liste-card-recherche text-dark">
                             <% if property.photos.attached? %>
                             <%= image_tag property.photos.first, class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
@@ -164,20 +163,20 @@
                                 <% end %>
                             </div>
 
+                            <p><%= link_to "Détail", property, class: "btn btn-primary btn-sm" %></p>
+
                             <div class="card-footer bg-white" style="border-top: 1px solid #dee2e6 !important;">
                                 <p class="m-0 ">
                                     <small>Publié il y a <%= distance_of_time_in_words(property.created_at, Time.now, include_seconds: false) %></small>
                                 </p>
                             </div>
                         </div>
-                        <% end %>
                     </div>
                     <!-- Grid design -->
                     <% end %>
 
                     <div class="col-12">
-                        <!-- renderer: BootstrapPagination::Rails,  -->
-                        <%= will_paginate @properties, previous_label: "Précédent ", next_label: " Suivant", page_links: false, container: false %>
+                        <%= will_paginate @properties, renderer: BootstrapPagination::Rails, previous_label: "Précédent ", next_label: " Suivant", page_links: false, container: false %>
                     </div>
                 </section>
             </section>

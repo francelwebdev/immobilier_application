@@ -121,3 +121,4 @@ gem 'trix'
 gem 'will_paginate'
 gem 'ransack'
 
+gem 'will_paginate-bootstrap'

@@ -12,7 +12,7 @@ fr:
         city: "Quartier ou Commune"
         room: "Nombres de pièce"
         available: "Disponible maintenant ?"
-        deposit: "Avance"
+        deposit: "Avance (nombres de mois ?)"
         property_type: "Type de bien"
         ad_type: "Type d'annonce"
         etage: "A quel étage se trouve t'elle ?"

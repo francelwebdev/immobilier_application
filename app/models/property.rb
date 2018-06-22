@@ -12,11 +12,10 @@ class Property < ApplicationRecord
 
     accepts_nested_attributes_for :user, update_only: true
 
-    validates :price, :description, :city, :available, :avance, :property_type, :ad_type, :feature, :etage, :title, presence: true
+    validates :price, :description, :city, :available, :deposit, :property_type, :ad_type, :feature, :room, :title, presence: true
     validates :title, uniqueness: true
-
     validates :price, numericality: { only_integer: true }
-    validates :avance, numericality: { greater_than_or_equal_to: 1 }
+    validates :deposit, numericality: { greater_than_or_equal_to: 1 }
 
     scope :published, -> { where(published: true) }
     scope :unpublished, -> { where(published: false) }

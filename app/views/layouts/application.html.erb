@@ -1,14 +1,13 @@
 <!doctype html>
 <html lang="fr">
 <head>
-	<!-- Required meta tags -->
 	<meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Sico - <%= content_for?(:page_title) ? yield(:page_title) : "Bienvenue" %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="author" content="Francel AMAMOO">
 	<meta name="description" content="Petite annonce immobilier au Bénin">
 	<%= favicon_link_tag "148705-essential-collection/svg/home-1.svg" %>
-	<title>Sico - <%= content_for?(:page_title) ? yield(:page_title) : "Bienvenue" %></title>
 	<%= csrf_meta_tags %>
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
