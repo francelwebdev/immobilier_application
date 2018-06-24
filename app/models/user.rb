@@ -15,6 +15,7 @@ class User < ApplicationRecord
   validates :phone_number, presence: true, uniqueness: true, numericality: { only_integer: true }, length: { is: 8 }, on: :update
 
   after_create :send_welcome_email
+  before_create :create_administrator
   after_destroy :suprimer_photo_de_profile
   # after_create :build_agency_or_profile
 
@@ -22,13 +23,6 @@ class User < ApplicationRecord
   has_many :properties, dependent: :destroy
   has_many :messages
   has_one_attached :profile_picture
-
-  # def build_agency_or_profile
-  #   if self.role == "Agent immobilier"
-  #       Agency.create user_id: self.id
-  #   end
-  # end
-
 
   def self.from_omniauth(auth)
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -66,4 +60,17 @@ def self.new_with_session(params, session)
   def suprimer_photo_de_profile
     self.profile_picture.purge
   end
+
+  def create_administrator
+    if self.email == "francel.webdev@gmail.com"
+      self.admin = true
+    end
+  end
+
+  # def build_agency_or_profile
+  #   if self.role == "Agent immobilier"
+  #       Agency.create user_id: self.id
+  #   end
+  # end
+
 end
