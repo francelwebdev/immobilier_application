@@ -6,19 +6,19 @@ class Property < ApplicationRecord
     FEATURE = ["Electricité", "Eau", "WC", "Internet"]
     ETAGE = ["Rez-de-chaussée", "1er étage", "2ème étage", "3ème étage", "4ème étage", "5ème étage"]
     AD_TYPE = ["Location"]
-    PROPERTY_TYPE = ["Appartement", "Maison", "Bureau", "Commerce", "Villa", "Chambre", "Entrée couché"]
-
-    belongs_to :user
+    PROPERTY_TYPE = ["Appartement", "Maison", "Bureau", "Boutique", "Villa", "Chambre", "Entrée couché", "Magasin"]
 
     validates :price, :description, :city, :available, :deposit, :property_type, :ad_type, :feature, :room, :title, presence: true
     validates :title, uniqueness: true
     validates :price, numericality: { only_integer: true }
     validates :deposit, numericality: { greater_than_or_equal_to: 1 }
 
-    scope :published, -> { where(published: true) }
-    scope :unpublished, -> { where(published: false) }
+    belongs_to :user
 
     has_many_attached :photos
+
+    scope :published, -> { where(published: true) }
+    scope :unpublished, -> { where(published: false) }
 
     after_update :suprimer_si_annonce_expire
     after_destroy :suprimer_les_photos
