@@ -74,20 +74,16 @@
         <div class="form-row p-2">
             <div class="col-12">
                 <h4 class="card-title mb-3">Photos du bien</h4>
-                <p class="card-text text-info mb-3">Une annonce avec photo est 7 fois plus consultée qu'une annonce sans photo. <br> Ajouter les photos des différents pièces et de bonne qualité afin d'attirer plus d'acheteurs ou locataires potentiels.</p>
+                <p class="card-text text-info mb-3">Une annonce avec photo est 7 fois plus consultée qu'une annonce sans photo. <br> Ajouter les photos des différents pièces et de bonne qualité afin d'attirer plus de locataires potentiels.</p>
             </div>
+
+            <% 3.times do |i| %>
             <div class="col-md-4">
-                <%= f.input :photos, label: "Photo 1", input_html: { name: "property[photos][]", class: "form-control-file"}, multiple: true, direct_upload: true %>
-                <%= image_tag @property.photos[0], size: "200x150" if @property.photos[0].present? %>
+                <%= f.input :images, as: :file, label: "Photo #{i}", input_html: { name: "property[images][]", class: "form-control-file"}, direct_upload: true %>
+                <%= image_tag @property.images["#{i}".to_i], size: "200x150" if @property.images["#{i}".to_i].present? %>
             </div>
-            <div class="col-md-4">
-                <%= f.input :photos, label: "Photo 2", input_html: { name: "property[photos][]", class: "form-control-file"}, multiple: true, direct_upload: true %>
-                <%= image_tag @property.photos[1], size: "200x150" if @property.photos[1].present? %>
-            </div>
-            <div class="col-md-4">
-                <%= f.input :photos, label: "Photo 3", input_html: { name: "property[photos][]", class: "form-control-file"}, multiple: true, direct_upload: true %>
-                <%= image_tag @property.photos[2], size: "200x150" if @property.photos[2].present? %>
-            </div>
+            <% end %>
+
         </div>
     </div>
 </div>

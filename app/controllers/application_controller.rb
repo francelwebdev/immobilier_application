@@ -29,15 +29,12 @@ class ApplicationController < ActionController::Base
         @current_year = Time.now.year
     end
 
-    def after_sign_in_path_for(resource)
-        edit_user_registration_path(resource) if current_user.first_name.blank? && current_user.last_name.blank? && current_user.phone_number.blank?
-    end
-
 
     protected
 
     def configure_permitted_parameters
-        devise_parameter_sanitizer.permit(:account_update, keys: [:role, :first_name, :last_name, :profile_picture, :phone_number])
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:role])
+        devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone_number, :profile_picture])
     end
 
 end

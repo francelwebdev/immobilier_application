@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 		root to: "pages#home", as: "home_page"
         resource :agency, only: :show
         resources :agencies, only: [:index, :show, :edit] do
-            resources :properties            
+            resources :properties
         end
         get "agency/benefits", to: "pages#benefits_for_agency", as: "agency_benefits"
 		get "about_us", to: "pages#about_us", as: "about_us"

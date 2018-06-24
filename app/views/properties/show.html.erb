@@ -52,11 +52,11 @@
                     <div class="card border-0 bg-white">
                         <div class="card-body p-4">
                             <h4 class="card-title font-weight-bold mb-4">Photos</h4>
-                            <% if @property.photos.attached? %>
+                            <% if @property.images.attached? %>
                             <div class="single-item">
-                                <% @property.photos.each do |photo| %>
+                                <% @property.images.each do |image| %>
                                 <div>
-                                    <%= image_tag photo, class: "w-100 h-100" %>
+                                    <%= image_tag image, class: "w-100 h-100" %>
                                 </div>
                                 <% end %>
                             </div>

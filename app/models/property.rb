@@ -16,22 +16,22 @@ class Property < ApplicationRecord
     belongs_to :user
     # belongs_to :agency
 
-    has_many_attached :photos
+    has_many_attached :images
 
     scope :published, -> { where(published: true) }
     scope :unpublished, -> { where(published: false) }
 
-    after_update :suprimer_si_annonce_expire
+    # after_update :suprimer_si_annonce_expire
     after_destroy :suprimer_les_photos
 
     private
 
-    def suprimer_si_annonce_expire
-        p = Property.find(self.id)
-        if p.published? and p.expire_at.past?
-            p.delete
-        end
-    end
+    # def suprimer_si_annonce_expire
+    #     p = Property.find(self.id)
+    #     if p.published? and p.published_at.past?
+    #         p.delete
+    #     end
+    # end
 
     def suprimer_les_photos
         self.photos.purge
