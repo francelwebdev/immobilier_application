@@ -27,7 +27,7 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav ml-auto mt-2 mt-md-0 d-flex align-items-center">
-            <li class="nav-item mx-1 active navLi">
+            <li class="nav-item mx-1 active">
                 <%= link_to home_page_path, class: "nav-link" do %>
                 Accueil <span class="sr-only">(current)</span>
                 <% end %>
@@ -37,7 +37,7 @@
             </li>
 
             <% if user_signed_in? %>
-            <li class="nav-item mx-1 navLi">
+            <li class="nav-item mx-1">
                 <%= link_to "Mes biens", my_properties_path, class: "nav-link"  %>
             </li>
             <% elsif !user_signed_in? or (user_signed_in? and current_user.user_group.name == "Agence") %>

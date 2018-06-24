@@ -12,10 +12,12 @@
     <meta name="keywords" content="<%= yield :page_meta_keywords %>" />
 
     <%= favicon_link_tag "148705-essential-collection/svg/home-1.svg" %>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <% if content_for?(:head) %>
     <%= yield(:head) %>
     <% end %>
@@ -33,6 +35,19 @@
     <%= render "shareds/footer" %>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    
+    <% if current_page?(home_page_path) %>
+    <script>
+    // Morphext
+    $("#js-rotating").Morphext({
+        animation: "bounceIn", // Overrides default "bounceIn"
+        speed: 3000, // Overrides default 2000
+        complete: function () {
+            // Overrides default empty function
+        }
+    });
+    </script>
+    <% end %>
 
     <%# if current_page?(home_page_path) %>
     <%#= yield :value_proposition_text_typed %>

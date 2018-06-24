@@ -12,15 +12,11 @@
 //
 
 //= require jquery3
-
 //= require popper
 //= require bootstrap
-
 //= require typed
-
 //= require jquery.slick
 //= require slick_initialize
-
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
