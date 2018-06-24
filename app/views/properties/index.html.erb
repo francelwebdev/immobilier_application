@@ -125,7 +125,7 @@
 					<div class="col-lg-6 mb-4">
 						<div class="card liste-card-recherche text-dark" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
 							<% if property.images.attached? %>
-							<%= image_tag property.images.first, class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
+							<%= image_tag url_for(property.images.first), class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
 							<% else %>
 							<p class="text-center">
 								<%= image_tag "148705-essential-collection/svg/home-1.svg", class: "w-50" %>

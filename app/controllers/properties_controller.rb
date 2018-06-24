@@ -59,11 +59,11 @@ class PropertiesController < ApplicationController
     def create
         @property = current_user.properties.build(property_params)
         if @property.save
-            # if params[:property][:user_info][:first_name].present? && params[:property][:user_info][:last_name].present? && params[:property][:user_info][:phone_number].present?
-            #     user = User.find(@property.user.id)
-            #     user.update first_name: params[:property][:user_info][:first_name], last_name: params[:property][:user_info][:last_name], phone_number: params[:property][:user_info][:phone_number]
-            # end
-            redirect_to @property, notice: "L'annonce a été créée avec succès."
+            if params[:property][:user_info][:first_name].present? && params[:property][:user_info][:last_name].present? && params[:property][:user_info][:phone_number].present?
+                user = User.find(@property.user.id)
+                user.update first_name: params[:property][:user_info][:first_name], last_name: params[:property][:user_info][:last_name], phone_number: params[:property][:user_info][:phone_number]
+            end
+            redirect_to @property, notice: "Le bien a été ajouté avec succès."
             # , en attente de mise en ligne par un administrateur
         else
             render :new
@@ -72,7 +72,7 @@ class PropertiesController < ApplicationController
 
     def update
         if @property.update(property_params)
-            redirect_to @property, notice: "L'annonce été mise à jour avec succès."
+            redirect_to @property, notice: "Le bien a été mise à jour avec succès."
         else
             render :edit
         end

@@ -32,7 +32,7 @@
                                     <%= link_to my_property, class: "sans-text-decoration" do %>
                                     <div class="card liste-card-recherche text-dark">
                                         <% if my_property.images.attached? %>
-                                        <%= image_tag my_property.images.first, class: "card-img-top", alt: "Photo de #{ my_property.title }", height: "200px" %>
+                                        <%= image_tag url_for(my_property.images.first), class: "card-img-top", alt: "Photo de #{ my_property.title }", height: "200px" %>
                                         <% else %>
                                         <p>ANNONCE SANS PHOTO</p>
                                         <% end %>

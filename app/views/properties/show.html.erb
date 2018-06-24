@@ -56,7 +56,7 @@
                             <div class="single-item">
                                 <% @property.images.each do |image| %>
                                 <div>
-                                    <%= image_tag image, class: "w-100 h-100" %>
+                                    <%= image_tag url_for(image), class: "w-100 h-100" %>
                                 </div>
                                 <% end %>
                             </div>
