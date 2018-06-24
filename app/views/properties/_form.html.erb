@@ -36,7 +36,7 @@
                 <%= f.input :room, collection: Property::ROOM, include_blank: false %>
             </div>
             <div class="col-md-4">
-             <%= f.input :area, input_html: { min: 1 } %>
+             <%= f.input :area, input_html: { min: 1 }, label: "Surface du bien (m2)" %>
          </div>
          <div class="col-md-4">
             <%= f.input :available, collection: Property::AVAILABLE, include_blank: false %>
@@ -48,7 +48,7 @@
             <%= f.input :price, input_html: { min: 1 } %>
         </div>
         <div class="col-md-4">
-            <%= f.input :deposit, input_html: { min: 1 } %>
+            <%= f.input :deposit, input_html: { min: 1 }, label: "(nombres de mois ?)" %>
         </div>
     </div>
 </div>
@@ -61,29 +61,11 @@
                 <h4 class="card-title mb-3">Caractéristiques du bien</h4>
             </div>
             <div class="col-12">
-                <%= f.input :feature, as: :check_boxes, collection: Property::FEATURE, label: false, wrapper: :horizontal_collection %>
+                <%= f.input :feature, as: :check_boxes, collection: Property::FEATURE, label: false, wrapper: :horizontal_collection_inline %>
             </div>
         </div>
     </div>
 </div>
-
-<div class="card border-0 mb-4 mon-box-shadow">
-    <div class="card-body">
-        <div class="form-row p-2">
-            <div class="col-12">
-                <h4 class="card-title mb-3">Caractéristiques du bien</h4>
-            </div>
-            <div class="col-12">
-                <div class="form-check">
-                    <%= f.simple_fields_for :property_features do |pf| %>
-                        <%= pf.input :name %>
-                    <% end %>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <div class="card border-0 mb-4 mon-box-shadow">
     <div class="card-body">

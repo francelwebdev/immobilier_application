@@ -17,11 +17,8 @@ class Property < ApplicationRecord
     validates :deposit, numericality: { only_integer: true }
     validates :deposit, numericality: { greater_than_or_equal_to: 1 }
 
-    # belongs_to :agency
     belongs_to :user
-    has_many :property_features, dependent: :destroy
-
-    accepts_nested_attributes_for :property_features
+    # belongs_to :agency
 
     has_many_attached :images
 

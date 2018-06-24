@@ -14,12 +14,10 @@
 						<%= f.input :password, required: false %>
 						<%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
 					</div>
-
 					<div class="form-actions">
-						<%= f.button :submit, t(".sign_in"), class: "btn btn-primary btn-block" %>
+						<%= f.button :submit, t(".sign_in"), class: "btn btn-primary btn-lg btn-block" %>
 					</div>
 					<% end %>
-
 					<div class="text-center mt-4">
 						<%= render "devise/shared/links" %>
 					</div>
