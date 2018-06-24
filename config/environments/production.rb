@@ -107,21 +107,9 @@ config.action_mailer.smtp_settings = {
   :port => 587,
   :domain => "sandboxa69bf090788f48bc885fa291a873ada0.mailgun.org",
   :user_name => ENV["MAILGUN_LOGIN"],
-  :password => ENV["MAILGUN_PASSWORD"]
+  :password => ENV["MAILGUN_PASSWORD"],
 
-  domain: "mailgun.org",
-  enable_starttls_auto: true
+  # enable_starttls_auto: true
 }
-
- # Pour sendinblue
-  #  config.action_mailer.smtp_settings = {
-  #   :address => 'smtp-relay.sendinblue.com',
-  #   :port => 587,
-  #   :domain => 'sendinblue.com',
-  #   :user_name => ENV["SENDINBLUE_EMAIL"],
-  #   :password => ENV["SENDINBLUE_PASSWORD"],
-  #   :authentication => 'login',
-  #   :enable_starttls_auto => true
-  # }
   # Mon code
 end

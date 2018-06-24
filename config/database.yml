@@ -83,3 +83,12 @@ production:
   database: immobilier_application_production
   username: immobilier_application
   password: <%= ENV['IMMOBILIER_APPLICATION_DATABASE_PASSWORD'] %>
+
+
+
+# Je test cette configuration de production en mode development
+# production:
+#   <<: *default
+#   database: immobilier_application_development
+#   username: "francel"
+#   password: "Hello2U!"
