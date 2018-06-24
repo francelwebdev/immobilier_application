@@ -27,25 +27,25 @@
                 <%= f.input :description, input_html: { rows: 10 } %>
             </div>
             <div class="col-md-4">
-                <%= f.input :ad_type, collection: ["Location"] %>
+                <%= f.input :ad_type, collection: Property::AD_TYPE, include_blank: false %>
             </div>
             <div class="col-md-4">
-                <%= f.input :property_type, collection: ["Appartement", "Maison", "Bureau", "Commerce", "Villa", "Chambre","Entrée couché"] %>
+                <%= f.input :property_type, collection: Property::PROPERTY_TYPE, include_blank: false %>
             </div>
             <div class="col-md-4">
-                <%= f.input :room, collection: ["1 pièce", "2 pièces", "3 pièces", "4 pièces", "5 pièces", "plus de 5 pièces"] %>
+                <%= f.input :room, collection: Property::ROOM, include_blank: false %>
             </div>
             <div class="col-md-4">
-             <%= f.input :area %>
+             <%= f.input :area, input_html: { min: 1 } %>
          </div>
          <div class="col-md-4">
-            <%= f.input :available, collection: [[false, "Nom"], [true, "Oui"]], label_method: :second, value_method: :first %>
+            <%= f.input :available, collection: Property::AVAILABLE, include_blank: false %>
         </div>
         <div class="col-md-4">
-            <%= f.input :etage, collection: ["Rez-de-chaussée", "1er étage", "2ème étage", "3ème étage", "4ème étage", "5ème étage"] %>
+            <%= f.input :etage, collection: Property::ETAGE, include_blank: false %>
         </div>
         <div class="col-md-4">
-            <%= f.input :price %>
+            <%= f.input :price, input_html: { min: 1 } %>
         </div>
         <div class="col-md-4">
             <%= f.input :deposit, input_html: { min: 1 } %>
@@ -61,9 +61,7 @@
                 <h4 class="card-title mb-3">Caractéristiques du bien</h4>
             </div>
             <div class="col-12">
-                <div class="form-check">
-                    <%= f.input_field :feature, as: :check_boxes, collection: ["Electricité", "Eau", "WC", "Internet"], label: false, input_html: { class: "form-check-input" } %>
-                </div>
+                <%= f.input :feature, as: :check_boxes, collection: Property::FEATURE, label: false, wrapper: :horizontal_collection %>
             </div>
         </div>
     </div>
@@ -73,17 +71,35 @@
     <div class="card-body">
         <div class="form-row p-2">
             <div class="col-12">
+                <h4 class="card-title mb-3">Caractéristiques du bien</h4>
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <%= f.simple_fields_for :property_features do |pf| %>
+                        <%= pf.input :name %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="card border-0 mb-4 mon-box-shadow">
+    <div class="card-body">
+        <div class="form-row p-2">
+            <div class="col-12">
                 <h4 class="card-title mb-3">Photos du bien</h4>
-                <p class="card-text text-info mb-3">Une annonce avec photo est 7 fois plus consultée qu'une annonce sans photo. <br> Ajouter les photos des différents pièces et de bonne qualité afin d'attirer plus de locataires potentiels.</p>
+                <p class="card-text text-info mb-3">
+                    <small>Une annonce avec photo est 7 fois plus consultée qu'une annonce sans photo. <br> Ajouter les photos des différents pièces et de bonne qualité afin d'attirer plus de locataires potentiels.</small>
+                </p>
             </div>
-
+            <div class="col-md-12">
             <% 3.times do |i| %>
-            <div class="col-md-4">
-                <%= f.input :images, as: :file, label: "Photo #{i}", input_html: { name: "property[images][]", class: "form-control-file"}, direct_upload: true %>
+                <%= f.input :images, as: :file, label: "Photo #{i}", input_html: { name: "property[images][]", class: "form-control-file"}, direct_upload: true, wrapper: :horizontal_file %>
                 <%= image_tag url_for(@property.images["#{i}".to_i]), size: "200x150" if @property.images["#{i}".to_i].present? %>
-            </div>
             <% end %>
-
+            </div>
         </div>
     </div>
 </div>
@@ -114,13 +130,13 @@
                 <h4 class="card-title mb-3">Information de contact</h4>
             </div>
             <div class="col-md-6">
-                <%= user_info.input :first_name %>
+                <%= user_info.input :first_name, label: "Prénom" %>
             </div>
             <div class="col-md-6">
-                <%= user_info.input :last_name %>
+                <%= user_info.input :last_name, label: "Nom" %>
             </div>
             <div class="col-md-6">
-                <%= user_info.input :phone_number, as: :tel %>
+                <%= user_info.input :phone_number, as: :tel, label: "Numéro de téléphone" %>
             </div>
         </div>
     </div>
