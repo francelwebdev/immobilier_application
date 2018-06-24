@@ -1,42 +1,41 @@
 <!doctype html>
 <html lang="fr">
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Sico - <%= content_for?(:page_title) ? yield(:page_title) : "Bienvenue" %></title>
-	<meta name="author" content="Francel AMAMOO">
-	<meta name="description" content="Petite annonce immobilier au Bénin">
-	<%= favicon_link_tag "148705-essential-collection/svg/home-1.svg" %>
-	<%= csrf_meta_tags %>
+
+    <!-- Pour SEO de la page dans moteurs de recherche -->
+    <meta name="author" content="Francel AMAMOO">
+    <meta name="description" content="<%= yield :page_meta_description %>">
+    <meta name="keywords" content="<%= yield :page_meta_keywords %>" />
+
+    <%= favicon_link_tag "148705-essential-collection/svg/home-1.svg" %>
+    <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-	<% if content_for?(:head) %>
-	<%= yield(:head) %>
-	<% end %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <% if content_for?(:head) %>
+    <%= yield(:head) %>
+    <% end %>
 </head>
 <body class="<%= controller.controller_name %>/<%= controller.action_name %>">
-	<%= render "shareds/navbar" %>
-		<%= render 'shareds/flash' %>
-	<main>
-		<%= yield %>
-	</main>
-	<!-- <%#= render "shareds/call_to_action_for_agency" if !current_page?(agency_benefits_path) %> -->
-	<%= render "shareds/call_to_action_for_owner" %>
-	<%= render "shareds/footer" %>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-	<!-- <% if current_page?(home_page_path) %>
-	<%= yield :value_proposition_text_typed %>
-	<% end %> -->
-	<script>
-		$("#js-rotating").Morphext({
-		animation: "bounceIn", // Overrides default "bounceIn"
-		speed: 3000, // Overrides default 2000
-		complete: function () {
-			// Overrides default empty function
-		}
-	});
-</script>
+    <%= render "shareds/navbar" %>
+    <%= render 'shareds/flash' %>
+
+    <main>
+        <%= yield %>
+    </main>
+
+    <%#= render "shareds/call_to_action_for_agency" if !current_page?(agency_benefits_path) %>
+    <%= render "shareds/call_to_action_for_owner" %>
+    <%= render "shareds/footer" %>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+    <%# if current_page?(home_page_path) %>
+    <%#= yield :value_proposition_text_typed %>
+    <%# end %>
 </body>
 </html>
