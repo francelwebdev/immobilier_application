@@ -2,13 +2,14 @@
 <html lang="fr">
 <head>
 	<meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Sico - <%= content_for?(:page_title) ? yield(:page_title) : "Bienvenue" %></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sico - <%= content_for?(:page_title) ? yield(:page_title) : "Bienvenue" %></title>
 	<meta name="author" content="Francel AMAMOO">
 	<meta name="description" content="Petite annonce immobilier au Bénin">
 	<%= favicon_link_tag "148705-essential-collection/svg/home-1.svg" %>
 	<%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 	<% if content_for?(:head) %>

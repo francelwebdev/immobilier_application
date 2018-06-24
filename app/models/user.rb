@@ -19,7 +19,6 @@ class User < ApplicationRecord
   has_one_attached :profile_picture
 
   ROLE = ["Propriétaire", "Agent immobilier"]
-  GENDER = ["Masculin", "Féminin"]
 
   def self.from_omniauth(auth)
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -28,10 +27,10 @@ class User < ApplicationRecord
     # user.name = auth.info.name   # assuming the user model has a name
     # user.image = auth.info.image # assuming the user model has an image
 
+    user.name = auth.info.name
     user.profile_picture = auth.info.profile_pic
     user.first_name = auth.info.first_name
     user.last_name = auth.info.last_name
-    user.gender = auth.info.gender
 
     # If you are using confirmable and the provider(s) you use validate emails, 
     # uncomment the line below to skip the confirmation emails.
