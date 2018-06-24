@@ -259,7 +259,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
 
-  config.omniauth :facebook, "220002002137902", "5337b26211786fa2c994e1d85da14a96",token_params: { parse: :json }, scope: 'email', display: "popup", image_size: "square", info_fields: 'name,email,first_name,last_name,profile_pic', secure_image_url: true, client_options: {
+  config.omniauth :facebook, Rails.application.secrets.fb_app_id, Rails.application.secrets.fb_app_id, token_params: { parse: :json }, scope: 'email', display: "popup", image_size: "square", info_fields: 'name,email,first_name,last_name,profile_pic', secure_image_url: true, client_options: {
       site: 'https://graph.facebook.com/v3.0',
       authorize_url: "https://www.facebook.com/v3.0/dialog/oauth"
     }

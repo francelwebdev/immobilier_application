@@ -99,17 +99,6 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => "sicoapp.herokuapp.com" }
   config.action_mailer.delivery_method = :smtp
 
-  # Pour gmail
-  # config.action_mailer.smtp_settings = {
-  #   address: "smtp.gmail.com",
-  #   port: 587,
-  #   domain: "gmail.com",
-  #   authentication: "plain",
-  #   user_name: ENV['GMAIL_ADDRESS'],
-  #   password: ENV['GMAIL_PASSWORD'],
-  #   enable_starttls_auto: true
-  # }
-
 # Pour mailgun
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
@@ -119,6 +108,9 @@ config.action_mailer.smtp_settings = {
   :domain => "sandboxa69bf090788f48bc885fa291a873ada0.mailgun.org",
   :user_name => ENV["MAILGUN_LOGIN"],
   :password => ENV["MAILGUN_PASSWORD"]
+
+  domain: "mailgun.org",
+  enable_starttls_auto: true
 }
 
  # Pour sendinblue
