@@ -6,21 +6,30 @@ class User < ApplicationRecord
   devise :confirmable
   devise :omniauthable, omniauth_providers: %i[facebook]
 
-  validates :role, presence: true, on: :update
-  validates :phone_number, presence: true, uniqueness: true, numericality: { only_integer: true }, length: { is: 8 }, on: :update
+  ROLE = ["Propriétaire", "Agent immobilier"]
+
+  validates :group_id, presence: true, on: :create
+  validates :group_id, presence: true, on: :update
   validates :first_name, presence: true, on: :update
   validates :last_name, presence: true, on: :update
+  validates :phone_number, presence: true, uniqueness: true, numericality: { only_integer: true }, length: { is: 8 }, on: :update
 
   after_create :send_welcome_email
   after_destroy :suprimer_photo_de_profile
+  after_create :init_agency_or_profile
 
   belongs_to :group
-  has_one :agency
+  has_one :agency, dependent: :destroy
   has_many :properties, dependent: :destroy
   has_many :messages
   has_one_attached :profile_picture
 
-  ROLE = ["Propriétaire", "Agent immobilier"]
+  def init_agency_or_profile
+    if self.group_id == 2
+        self.build_agency
+    end
+  end
+
 
   def self.from_omniauth(auth)
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

@@ -5,7 +5,7 @@
         <div class="form-row p-2">
             <div class="col-12">
                 <h4 class="card-title mb-3">Description du bien</h4>
-            </div>            
+            </div>
             <div class="col-12">
                 <%= f.input :title, autofocus: true %>
             </div>
@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 </div>
 
 <div class="card border-0 mb-4 mon-box-shadow">
@@ -93,6 +93,28 @@
         </div>
     </div>
 </div>
+
+<% if user_signed_in? %>
+<% if current_user.group_id == 2 and current_user.agency.name.blank? and current_user.agency.phone_number.blank? %>
+<%= f.simple_fields_for :user do |agency_info| %>
+<div class="card border-0 mb-4 mon-box-shadow">
+    <div class="card-body">
+        <div class="form-row p-2">
+            <div class="col-12">
+                <h4 class="card-title mb-3">Information de contact</h4>
+            </div>
+            <div class="col-md-6">
+                <%= agency_info.input :name %>
+            </div>
+            <div class="col-md-6">
+                <%= agency_info.input :phone_number %>
+            </div>
+        </div>
+    </div>
+</div>
+<% end %>
+<% end %>
+<% end %>
 
 <div class="form-row">
     <div class="col-12">

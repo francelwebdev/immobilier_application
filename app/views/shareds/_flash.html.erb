@@ -4,13 +4,8 @@
 	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 </div>
 <% elsif alert %>
-<div class="alert alert-warning alert-dismissible fade show mb-0 rounded-0" role="alert">
-    <p class="text-center mb-0"><%= alert %></p>
-	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-</div>
-<% elsif flash[:danger] %>
 <div class="alert alert-danger alert-dismissible fade show mb-0 rounded-0" role="alert">
-    <p class="text-center mb-0"><%= flash[:alert] %></p>
+    <p class="text-center mb-0"><%= alert %></p>
 	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 </div>
 <% end %>

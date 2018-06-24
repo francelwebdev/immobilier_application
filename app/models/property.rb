@@ -14,6 +14,8 @@ class Property < ApplicationRecord
     validates :deposit, numericality: { greater_than_or_equal_to: 1 }
 
     belongs_to :user
+    belongs_to :agency
+    accepts_nested_attributes_for :agency
 
     has_many_attached :photos
 

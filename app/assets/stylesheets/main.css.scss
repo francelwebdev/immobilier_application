@@ -147,3 +147,13 @@ section.call_to_action_for_owner {
     background-color: rgb(66, 103, 178) !important;
     border-radius: 3px;
 }
+
+.agency-list-banner {
+    height: 80vh !important;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5) ), asset-url("85.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}

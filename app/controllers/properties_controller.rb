@@ -50,14 +50,8 @@ class PropertiesController < ApplicationController
     end
 
     def new
-        if user_signed_in?
-            if current_user.role.blank? and current_user.first_name.blank? and current_user.last_name.blank? and current_user.phone_number.blank?
-                redirect_to edit_user_registration_url, alert: "Veuillez completer SVP vos informations de profile puis cliquer à nouveau sur publier une annonce."
-            else
-                @property = current_user.properties.build
-            end
-        end
-        # @property = current_user.properties.build
+        @property = current_user.properties.build
+        @agency_property = current_user.agency.properties.build
     end
 
     def edit
@@ -100,6 +94,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-        params.require(:property).permit(:property_type, :ad_type, :title, :price, :room, :area, :etage, { feature: [] }, :description, :address, :city, :available, :deposit, user_attributes: [:id, :role, :first_name, :last_last, :phone_number])
+        params.require(:property).permit(:property_type, :ad_type, :title, :price, :room, :area, :etage, { feature: [] }, :description, :address, :city, :available, :deposit, agency_attributes: [:name, :address, :phone_number])
     end
 end

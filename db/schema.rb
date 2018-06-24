@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_24_181142) do
+ActiveRecord::Schema.define(version: 2018_06_24_213231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2018_06_24_181142) do
     t.integer "user_id"
     t.index ["email"], name: "index_agencies_on_email", unique: true
     t.index ["phone_number"], name: "index_agencies_on_phone_number", unique: true
+    t.index ["user_id"], name: "index_agencies_on_user_id"
     t.index ["website"], name: "index_agencies_on_website", unique: true
   end
 
@@ -118,6 +119,8 @@ ActiveRecord::Schema.define(version: 2018_06_24_181142) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "agency_id"
+    t.index ["agency_id"], name: "index_properties_on_agency_id"
     t.index ["slug"], name: "index_properties_on_slug", unique: true
     t.index ["user_id"], name: "index_properties_on_user_id"
   end
