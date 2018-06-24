@@ -8,15 +8,14 @@
     <div class="col-lg-6 offset-lg-3">
       <div class="card border-0 mon-box-shadow">
         <div class="card-body px-5">
-
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.error_notification %>
 
           <div class="form-inputs">
+            <%= f.input :group_id, autofocus: true, as: :radio_buttons, collection: Group::all, required: true, label: "Vous êtes" %>
             <%= f.input :email, required: true %>
             <%= f.input :password, required: true, hint: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length) %>
             <%= f.input :password_confirmation, required: true %>
-
             <p><small>En appuyant sur Inscription, vous acceptez avoir lu et accepté nos <%= link_to "conditions générales d’utilisation", terms_and_conditions_path %>, notre politique de confidentialité. Vous pouvez à tout moment vous désinscrire.</small></p>
           </div>
 

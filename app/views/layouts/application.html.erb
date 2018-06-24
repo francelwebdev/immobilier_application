@@ -1,56 +1,44 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Sico - <%= content_for?(:page_title) ? yield(:page_title) : "Bienvenue" %></title>
-
-    <!-- Pour SEO de la page dans moteurs de recherche -->
-    <meta name="author" content="Francel AMAMOO">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="<%= yield :page_meta_description %>">
+    <meta name="author" content="Francel AMAMOO">
     <meta name="keywords" content="<%= yield :page_meta_keywords %>" />
-
     <%= favicon_link_tag "148705-essential-collection/svg/home-1.svg" %>
-
+    <title>Sico - <%= content_for?(:page_title) ? yield(:page_title) : "Bienvenue" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     <% if content_for?(:head) %>
     <%= yield(:head) %>
     <% end %>
 </head>
-<body class="<%= controller.controller_name %>/<%= controller.action_name %>">
+<body class="<%= controller.controller_name + "#" + controller.action_name %>">
     <%= render "shareds/navbar" %>
     <%= render 'shareds/flash' %>
-
     <main>
         <%= yield %>
     </main>
-
-    <%#= render "shareds/call_to_action_for_agency" if !current_page?(agency_benefits_path) %>
+    <%#= render "shareds/call_to_action_for_agency" %>
     <%= render "shareds/call_to_action_for_owner" %>
     <%= render "shareds/footer" %>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-    
-    <% if current_page?(home_page_path) %>
-    <script>
-    // Morphext
-    $("#js-rotating").Morphext({
-        animation: "bounceIn", // Overrides default "bounceIn"
-        speed: 3000, // Overrides default 2000
-        complete: function () {
-            // Overrides default empty function
-        }
-    });
-    </script>
+    <% if content_for?(:Morphext) %>
+    <%= yield :Morphext %>
     <% end %>
 
-    <%# if current_page?(home_page_path) %>
-    <%#= yield :value_proposition_text_typed %>
-    <%# end %>
+     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
 </body>
 </html>

@@ -1,10 +1,9 @@
 class ApplicationController < ActionController::Base
-    protect_from_forgery with: :exception
+    # protect_from_forgery with: :exception
 
     before_action :set_locale, :tout_les_ad_types, :tout_les_property_types, :newsletter, :current_year
     before_action :authenticate_user!
     before_action :configure_permitted_parameters, if: :devise_controller?
-
 
     def set_locale
         I18n.locale = params[:locale] || I18n.default_locale
@@ -35,7 +34,6 @@ class ApplicationController < ActionController::Base
             edit_user_registration_path(resource)
         else
             edit_user_registration_path(resource)
-
          end
     end
 
@@ -43,7 +41,8 @@ class ApplicationController < ActionController::Base
     protected
 
     def configure_permitted_parameters
-        devise_parameter_sanitizer.permit(:account_update, keys: [:role, :first_name, :last_name, :profile_picture, :phone_number])
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:group_id])
+        devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone_number, :profile_picture])
     end
 
 end

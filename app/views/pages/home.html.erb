@@ -1,5 +1,17 @@
 <% content_for :page_title, "Accueil" %>
 <% content_for :page_meta_description, "Accueil - SICO - Annonces immobilieres au Bénin" %>
+<% content_for :page_meta_keywords, "" %>
+<% content_for :Morphext do %>
+<script>
+$("#js-rotating").Morphext({
+    animation: "bounceIn", // Overrides default "bounceIn"
+    speed: 3000, // Overrides default 2000
+    complete: function () {
+        // Overrides default empty function
+    }
+});
+</script>
+<% end%>
 
 <div class="jumbotron jumbotron-fluid d-flex align-items-center mb-0 jumbotron-accueil">
     <div class="container">

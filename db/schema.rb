@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_18_205844) do
+ActiveRecord::Schema.define(version: 2018_06_24_181142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,22 @@ ActiveRecord::Schema.define(version: 2018_05_18_205844) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "agencies", force: :cascade do |t|
+    t.string "name"
+    t.string "logo"
+    t.string "address"
+    t.bigint "phone_number"
+    t.string "email"
+    t.string "website"
+    t.text "about_agency"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["email"], name: "index_agencies_on_email", unique: true
+    t.index ["phone_number"], name: "index_agencies_on_phone_number", unique: true
+    t.index ["website"], name: "index_agencies_on_website", unique: true
+  end
+
   create_table "contacts", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -56,6 +72,12 @@ ActiveRecord::Schema.define(version: 2018_05_18_205844) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -118,7 +140,6 @@ ActiveRecord::Schema.define(version: 2018_05_18_205844) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
-    t.string "role"
     t.string "name"
     t.string "first_name"
     t.string "last_name"
@@ -127,7 +148,9 @@ ActiveRecord::Schema.define(version: 2018_05_18_205844) do
     t.boolean "terms_and_conditions", default: true
     t.string "provider"
     t.string "uid"
+    t.integer "group_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["group_id"], name: "index_users_on_group_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

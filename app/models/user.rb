@@ -14,6 +14,8 @@ class User < ApplicationRecord
   after_create :send_welcome_email
   after_destroy :suprimer_photo_de_profile
 
+  belongs_to :group
+  has_one :agency
   has_many :properties, dependent: :destroy
   has_many :messages
   has_one_attached :profile_picture
@@ -32,7 +34,7 @@ class User < ApplicationRecord
     user.first_name = auth.info.first_name
     user.last_name = auth.info.last_name
 
-    # If you are using confirmable and the provider(s) you use validate emails, 
+    # If you are using confirmable and the provider(s) you use validate emails,
     # uncomment the line below to skip the confirmation emails.
     user.skip_confirmation!
   end

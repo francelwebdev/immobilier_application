@@ -74,6 +74,11 @@
                                             <small class="text-dark">Publié il y a <%= distance_of_time_in_words(my_property.created_at, Time.now, include_seconds: false) %></small>
                                             <%= link_to "Modifier", edit_property_path(my_property), class: "btn btn-secondary" %>
                                         </p>
+                                        <div class="btn-group">
+<button type="button" class="btn btn-success">Add</button>
+<button type="button" class="btn btn-warning">Edit</button>
+<button type="button" class="btn btn-danger">Delete</button>
+</div>
                                     </div>
                                 </div>
                                 <% end %>

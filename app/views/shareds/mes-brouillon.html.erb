@@ -1,3 +1,9 @@
+<%# if current_page?(home_page_path) %>
+<%#= yield :value_proposition_text_typed %>
+<%# end %>
+
+
+
 <!--
 box-shadow: 0 2px 10px rgba(0,0,0,.3);
 box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px 0px, rgba(0, 0, 0, 0.2) 0px 2px 20px 0px;
@@ -79,13 +85,13 @@ Rails.application.secrets.fb_app_id, Rails.application.secrets.fb_app_secret,
         <li><%= msg %></li>
         <% end %>
     </ul>
-</div>    
+</div>
 <% end %>
 
 
 
 <ul class="row list-unstyled">
-    <% @my_properties.each do |my_property| %>  
+    <% @my_properties.each do |my_property| %>
     <li class="col-md-12">
      <%= link_to my_property, class: "sans-text-decoration" do %>
      <div class="card flex-md-row mb-4 box-shadow h-md-200">
@@ -130,7 +136,7 @@ Rails.application.secrets.fb_app_id, Rails.application.secrets.fb_app_secret,
     <% end %>
 </li>
 <% end %>
-</ul> 
+</ul>
 
 
 
@@ -282,7 +288,7 @@ Rails.application.secrets.fb_app_id, Rails.application.secrets.fb_app_secret,
     </div>
     <div class="col-lg-3 my-1">
         <%= form.select :room, Property::ROOM, { prompt: "Nombres de pièce" }, class: "form-control" %>
-    </div>    
+    </div>
     <div class="col-lg-2 my-1">
         <%= form.number_field :loyer_minimum, placeholder: "Loyer minimum", class: 'form-control' %>
     </div>
@@ -298,4 +304,3 @@ Rails.application.secrets.fb_app_id, Rails.application.secrets.fb_app_secret,
 </div>
 <% end %>
 <% end %>
-
