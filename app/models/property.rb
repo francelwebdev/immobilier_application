@@ -9,7 +9,7 @@ class Property < ApplicationRecord
     PROPERTY_TYPE = ["Appartement", "Maison", "Bureau", "Boutique", "Villa", "Chambre", "Entrée couché", "Magasin"]
     AVAILABLE = { Oui: :true, Nom: :false }
 
-    validates :price, :description, :city, :available, :deposit, :property_type, :ad_type, :feature, :room, :title, presence: true
+    validates :price, :description, :city, :deposit, :property_type, :ad_type, :feature, :room, :title, presence: true
     validates :title, uniqueness: true
     validates :price, numericality: true
     validates :price, numericality: { greater_than_or_equal_to: 1 }

@@ -79,7 +79,9 @@
             <div class="col-md-12">
             <% 3.times do |i| %>
                 <%= f.input :images, as: :file, label: "Photo #{i}", input_html: { name: "property[images][]", class: "form-control-file"}, direct_upload: true, wrapper: :horizontal_file %>
-                <%= image_tag url_for(@property.images["#{i}".to_i]), size: "200x150" if @property.images["#{i}".to_i].present? %>
+                <% if current_page? controller: :properties, action: :edit %>
+                    <%= image_tag url_for(@property.images["#{i}".to_i]), size: "200x150" if @property.images["#{i}".to_i].present? %>
+                <% end %>
             <% end %>
             </div>
         </div>
