@@ -8,8 +8,8 @@ class User < ApplicationRecord
 
   ROLE = ["Propriétaire", "Agent immobilier"]
 
-  validates :group_id, presence: true, on: :create
-  validates :group_id, presence: true, on: :update
+  validates :role, presence: true, on: :create
+  validates :role, presence: true, on: :update
   validates :first_name, presence: true, on: :update
   validates :last_name, presence: true, on: :update
   validates :phone_number, presence: true, uniqueness: true, numericality: { only_integer: true }, length: { is: 8 }, on: :update
@@ -18,14 +18,13 @@ class User < ApplicationRecord
   after_destroy :suprimer_photo_de_profile
   after_create :init_agency_or_profile
 
-  belongs_to :group
   has_one :agency, dependent: :destroy
   has_many :properties, dependent: :destroy
   has_many :messages
   has_one_attached :profile_picture
 
   def init_agency_or_profile
-    if self.group_id == 2
+    if self.role == "Agent immobilier"
         self.build_agency
     end
   end

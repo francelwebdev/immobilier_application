@@ -95,8 +95,8 @@
 </div>
 
 <% if user_signed_in? %>
-<% if current_user.group_id == 2 and current_user.agency.name.blank? and current_user.agency.phone_number.blank? %>
-<%= f.simple_fields_for :user do |agency_info| %>
+<% if current_user.role == "Agent immobilier" && current_user.agency.name.blank? && current_user.agency.phone_number.blank? %>
+<%= f.simple_fields_for :agency do |agency_info| %>
 <div class="card border-0 mb-4 mon-box-shadow">
     <div class="card-body">
         <div class="form-row p-2">

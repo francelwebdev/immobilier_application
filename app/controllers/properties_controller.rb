@@ -51,7 +51,6 @@ class PropertiesController < ApplicationController
 
     def new
         @property = current_user.properties.build
-        @agency_property = current_user.agency.properties.build
     end
 
     def edit
@@ -60,12 +59,6 @@ class PropertiesController < ApplicationController
     def create
         @property = current_user.properties.build(property_params)
         if @property.save
-
-            if params[:property][:user_attributes].present?
-                us = User.find(params[:property][:user_attributes][:id].to_i)
-                us.update(params[:property][:user_attributes])
-            end
-
             redirect_to @property, notice: "L'annonce a été créée avec succès."
             # , en attente de mise en ligne par un administrateur
         else
@@ -94,6 +87,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-        params.require(:property).permit(:property_type, :ad_type, :title, :price, :room, :area, :etage, { feature: [] }, :description, :address, :city, :available, :deposit, agency_attributes: [:name, :address, :phone_number])
+        params.require(:property).permit(:property_type, :ad_type, :title, :price, :room, :area, :etage, { feature: [] }, :description, :address, :city, :available, :deposit, agency_attributes: [:name, :phone_number])
     end
 end
