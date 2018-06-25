@@ -1,0 +1,306 @@
+<%# if current_page?(home_page_path) %>
+<%#= yield :value_proposition_text_typed %>
+<%# end %>
+
+
+
+<!--
+box-shadow: 0 2px 10px rgba(0,0,0,.3);
+box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px 0px, rgba(0, 0, 0, 0.2) 0px 2px 20px 0px;
+box-shadow: 0 10px 32px 0 rgba(0,0,0,.1);
+box-shadow: 0 0 40px 0 rgba(0,0,0,0.1);
+box-shadow: 0 16px 20px 0 rgba(216, 216, 216, .75);
+box-shadow: 0 10px 20px rgba(0,0,0,.1);
+-->
+
+
+
+
+<% if user_signed_in? %>
+<% if current_user.role.blank? and current_user.first_name.blank? and current_user.last_name.blank? and current_user.phone_number.blank? %>
+<%= f.simple_fields_for :user do |user_info| %>
+<div class="card border-0 mb-4 mon-box-shadow">
+    <div class="card-body">
+        <div class="form-row p-2">
+            <div class="col-12">
+                <h4 class="card-title mb-3">Information de contact</h4>
+            </div>
+            <div class="col-md-6">
+                <%= user_info.input :first_name %>
+            </div>
+            <div class="col-md-6">
+                <%= user_info.input :last_name %>
+            </div>
+            <div class="col-md-6">
+                <%= user_info.input :phone_number %>
+            </div>
+        </div>
+    </div>
+</div>
+<% end %>
+<% end %>
+<% end %>
+
+
+
+<!-- Pour vidéo d'arrière plan : jarallax" data-jarallax='{"speed": 0.2}' data-jarallax-video="https://www.youtube.com/watch?v=UrkXWG9WgC8" -->
+<!-- <h1 class="text-white">Le moyen le plus simple de trouver <span class="element font-weight-bold"></span> a louer</h1> -->
+
+
+
+<h2>Welcome to <%= link_to "SICO", home_page_url %>, <%= @user.first_name %></h2>
+<p>You have successfully signed up to <%= link_to "SICO", "sicoapp.herokuapp.com" %>, your email address is: <%= @user.email %>.</p>
+<p>To login to the site, just follow this link: <%= link_to "#{home_page_url}", home_page_url %>.</p>
+<p>Thanks for joining and have a great day!</p>
+<p>If you have any questions please don't hesitate to contact us!</p>
+
+
+
+Rails.application.secrets.fb_app_id, Rails.application.secrets.fb_app_secret,
+
+
+
+<% if resource.errors.any? %>
+<div class="alert alert-danger" role="alert">
+    <p class="alert-heading">
+      <%= pluralize(resource.errors.count, "erreur", "erreurs") %> ont empêché l'enregistrement de ce produit:
+  </p>
+  <ul>
+      <% resource.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+
+<% if @property.errors.any? %>
+<div class="alert alert-danger" role="alert">
+    <p>
+        <%= pluralize(@property.errors.count, "erreur", "erreurs") %> ont empêché l'enregistrement de ce produit:
+    </p>
+    <ul>
+        <% @property.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+
+
+
+<ul class="row list-unstyled">
+    <% @my_properties.each do |my_property| %>
+    <li class="col-md-12">
+     <%= link_to my_property, class: "sans-text-decoration" do %>
+     <div class="card flex-md-row mb-4 box-shadow h-md-200">
+
+        <% if my_property.photos.attached? %>
+        <%= image_tag my_property.photos.first, class: " card-img-left card-img-left-md flex-auto d-block d-md-block box-shadow", alt: "my_property.title" %>
+        <% else %>
+        <p>ANNONCE SANS PHOTO</p>
+        <% end %>
+
+        <div class="card-body d-flex flex-column justify-content-center">
+            <h3 class="text-dark">
+                <%= truncate(strip_tags(my_property.title.capitalize), length: 25) %>
+            </h3>
+            <address class="text-secondary">
+                <i class="fas fa-map-marker-alt"></i>&nbsp; <%= my_property.address %>, <%= my_property.city %>
+            </address>
+            <% if my_property.ad_type == "Vente" %>
+            <p class="text-primary m-0 p-0 h3">
+                <%= number_to_currency(my_property.price, precision: 0) %>
+            </p>
+            <% elsif my_property.ad_type == "Location" %>
+            <p class="text-primary m-0 p-0 h3">
+                <%= number_to_currency(my_property.price, precision: 0) %>/mois
+            </p>
+            <% end %>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <%= link_to 'Voir', my_property, class: "" %>
+                </div>
+                <div class="col-lg-4">
+                    <%= link_to "Modifier", edit_property_path(my_property), class: "" %>
+                </div>
+                <div class="col-lg-4">
+                    <%= link_to 'Supprimer', my_property_path(my_property.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary sr-only" %>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <% end %>
+</li>
+<% end %>
+</ul>
+
+
+
+
+
+
+<div class="row featurette bg-white">
+    <div class="col-md-6 px-0">
+        <% if my_property.photos.attached? %>
+        <%= image_tag my_property.photos.first, class: "px-0 w-100 h-100 pl-0", alt: "Photo de lannonce : #{ my_property.title }" %>
+        <% else %>
+        <p>ANNONCE SANS PHOTO</p>
+        <% end %>
+    </div>
+    <div class="col-md-6 d-flex flex-column justify-content-center">
+        <h3><%= truncate(strip_tags(my_property.title.capitalize), length: 25) %></h3>
+        <address class="text-secondary">
+            <i class="fas fa-map-marker-alt"></i>&nbsp; <%= my_property.address %>, <%= my_property.city %>
+        </address>
+        <% if my_property.ad_type == "Vente" %>
+        <p>
+            <span><%= sprintf("%0.00f", my_property.price) %><sup>F</sup></span>
+        </p>
+        <% elsif my_property.ad_type == "Location" %>
+        <p class="h2 text-primary">
+            <span><%= sprintf("%0.00f", my_property.price) %><sup>F</sup><small>/mois</small></span>
+        </p>
+        <% end %>
+    </div>
+</div>
+
+
+
+<!-- Product listing design -->
+
+
+<ul class="list-unstyled col-12">
+    <% @my_properties.each do |my_property| %>
+
+    <div class="row featurette bg-white">
+        <div class="col-md-6 order-md-2">
+            <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-6 order-md-1">
+            <% if my_property.photos.attached? %>
+            <%= image_tag my_property.photos.first, class: "featurette-image img-fluid mx-auto w-100 h-100 pl-0", alt: "Photo de lannonce : #{ my_property.title }" %>
+            <% else %>
+            <p>ANNONCE SANS PHOTO</p>
+            <% end %>
+        </div>
+    </div>
+
+
+
+
+
+    <li class="row d-flex align-items-center">
+        <div class="col-lg-3">
+            <% if my_property.photos.attached? %>
+            <%= image_tag my_property.photos.first, class: "img-fluid w-100 h-100", alt: "Photo de lannonce : #{ my_property.title }" %>
+            <% else %>
+            <p>ANNONCE SANS PHOTO</p>
+            <% end %>
+        </div>
+        <div class="col-lg-6 py-3 d-flex flex-column justify-content-center">
+            <h5><%= truncate(strip_tags(my_property.title.capitalize), length: 25) %></h5>
+            <address class="">
+                <i class="fas fa-map-marker-alt"></i>&nbsp; <%= my_property.address %>, <%= my_property.city %>
+            </address>
+            <% if my_property.ad_type == "A vendre" %>
+            <p>
+                <span><%= sprintf("%0.00f", my_property.price) %><sup>F</sup></span>
+            </p>
+            <% elsif my_property.ad_type == "A louer" %>
+            <p>
+                <span><%= sprintf("%0.00f", my_property.price) %><sup>F</sup><small>/mois</small></span>
+            </p>
+            <% end %>
+        </div>
+        <div class="col-lg-3">
+            <div class="btn-group" role="group", aria-label="">
+                <%= link_to 'Voir', my_property, class: "btn btn-secondary" %>
+                <%= link_to "Modifier", edit_property_path(my_property), class: "btn btn-secondary" %>
+                <%= link_to 'Supprimer', my_property_path(my_property.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary sr-only" %>
+            </div>
+        </div>
+    </li>
+    <hr>
+    <% end %>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+<% if current_page?(home_page_path) %>
+<%= simple_form_for "", url: properties_path, method: :get do |f| %>
+<div class="row px-1">
+    <div class="col-lg-3 px-1">
+        <%= f.input :property_type, collection: Property::PROPERTYTYPE, required: true, input_html: { class: "form-control form-control-lg" }, label: false, wrapper: false %>
+    </div>
+    <div class="col-lg-3 px-1">
+        <%= f.input :ad_type, collection: Property::ADTYPE, required: true, input_html: { class: "form-control form-control-lg" }, label: false, wrapper: false %>
+    </div>
+    <div class="col-lg-4 px-1">
+        <%= f.input :city, placeholder: "Ou ? Example: Zogbo, Fifadji, etc...", input_html: { class: "form-control form-control-lg" }, label: false, wrapper: false %>
+    </div>
+    <div class="col-lg-2 px-1">
+        <%= f.button :submit, "Rechercher", name: nil, class: 'btn btn-primary btn-block btn-lg' %>
+    </div>
+</div>
+
+<% end %>
+
+<%= form_with url: properties_path, method: :get, local: true do |form| %>
+<div class="form-row px-1">
+    <div class="col-lg-3 my-1">
+        <%= form.select :property_type, PropertyType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type de bien" }, { class: "form-control form-control-lg", required: true } %>
+    </div>
+    <div class="col-lg-3 my-1">
+        <%= form.select :ad_type, AdType.all.collect { |p| [ p.name, p.id ] }, { include_blank: "Type d'annonce" }, { class: "form-control form-control-lg", required: true } %>
+    </div>
+    <div class="col-lg-4 my-1">
+        <%= form.search_field :city, placeholder: "Ou ? Example: Zogbo, Fifadji, etc...", class: 'form-control form-control-lg' %>
+    </div>
+    <div class="col-lg-2 my-1">
+        <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn-block btn-lg' %>
+    </div>
+</div>
+<% end %>
+<% elsif current_page?(controller: "properties", action: "index")%>
+<%= form_with url: properties_path, method: :get, local: true do |form| %>
+<div class="form-row px-1">
+    <div class="col-lg-4 my-1">
+        <%= form.select :property_type, PropertyType.all.collect { |p| [ p.name, p.id ] }, { prompt: "Type de bien" }, { class: "form-control", required: true } %>
+    </div>
+    <div class="col-lg-4 my-1">
+        <%= form.select :ad_type, AdType.all.collect { |p| [ p.name, p.id ] }, { prompt: "Type d'annonce" }, { class: "form-control", required: true } %>
+    </div>
+    <div class="col-lg-4 my-1">
+        <%= form.text_field :city, placeholder: "Ou ? Example: Zogbo, Fifadji, Ste Rita etc...", class: 'form-control' %>
+    </div>
+    <div class="col-lg-3 my-1">
+        <%= form.select :room, Property::ROOM, { prompt: "Nombres de pièce" }, class: "form-control" %>
+    </div>
+    <div class="col-lg-2 my-1">
+        <%= form.number_field :loyer_minimum, placeholder: "Loyer minimum", class: 'form-control' %>
+    </div>
+    <div class="col-lg-2 my-1">
+        <%= form.number_field :loyer_maximum, placeholder: "Loyer maximum", class: 'form-control' %>
+    </div>
+    <div class="col-lg-2 my-1">
+        <%= form.number_field :surface_minimum, placeholder: "Surface minimum", class: 'form-control' %>
+    </div>
+    <div class="col-lg-3 my-1">
+        <%= form.submit "Rechercher", name: nil, class: 'btn btn-primary btn btn-block' %>
+    </div>
+</div>
+<% end %>
+<% end %>

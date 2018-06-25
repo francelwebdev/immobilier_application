@@ -1,0 +1,159 @@
+// Mon style global
+
+
+main {
+    background-color: #F2F6FF;
+}
+
+.jumbotron-accueil {
+    height: 80vh !important;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5) ), asset-url("pexels-photo-259950.jpeg") !important;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}
+
+section.call_to_action_for_agency {
+    background-image: linear-gradient(-225deg, rgba(0,0,0,0.3) , rgba(0,0,0,0.3) ), asset-url("philipp-berndt-173197.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}
+
+.liste-card-recherche {
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+    transition: all 0.3s ease-in-out;
+    // transition: all 0.2s ease-in-out;
+    // transition: 0.5s;
+}
+
+.liste-card-recherche:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,.1);
+    transition: all 0.3s ease-in-out;
+    // transition: all 0.2s ease-in-out;
+    // transition: 0.5s;
+}
+
+.card-photo-property {
+    transition: 0.5s, ease;
+}
+
+
+.index-list-item:hover {
+    text-decoration: none;
+    transition: 0.5s, ease;
+    .list-item {
+        border-right: 8px solid #007BFF;
+        transition: 0.5s, ease;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+}
+
+.barre-recherche-avance {
+    height: 75vh !important;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), asset-url("pexels-photo-259950.jpeg") !important;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}
+
+section.banner-contact {
+    height: 50vh;
+}
+
+.sans-text-decoration:hover {
+    text-decoration: none;
+}
+
+ul > li > a {
+    text-decoration: none !important;
+}
+
+// List design
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+.h-250 {
+    height: 250px;
+}
+@media (min-width: 768px) {
+    .h-md-250 {
+        height: 250px;
+    }
+}
+.card-img-left {
+    height: 100%;
+    width: 100%;
+    border-radius: 0 3px 3px 0;
+}
+@media (min-width: 768px) {
+    .card-img-left-md {
+        height: 100%;
+        width: 45%;
+        border-radius: 0 3px 3px 0;
+    }
+}
+.flex-auto {
+    flex: 0 0 auto;
+}
+// List design
+
+
+.contact-page-banner, .add-property-page-banner, .edit-property-page-banner, .my_property-page-banner, .property-show-page-banner {
+    height: 30vh !important;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5) ), asset-url("philipp-berndt-173197.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}
+
+.agent-benefits-page-banner {
+    height: 75vh !important;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5) ), asset-url("85.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}
+
+section.call_to_action_for_owner {
+    height: 40vh;
+    background-image: linear-gradient(rgba(0,0,0,0.5) , rgba(0,0,0,0.5) ), asset-url("philipp-berndt-173197.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}
+
+// Autre
+// background: linear-gradient(transparent 57%, rgba(0,0,0,1) 100%);
+
+.mon-box-shadow {
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+}
+
+.design-connexion-avec-fb {
+    background-color: rgb(66, 103, 178) !important;
+    border-radius: 3px;
+}
+
+.agency-list-banner {
+    height: 80vh !important;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5) ), asset-url("85.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}

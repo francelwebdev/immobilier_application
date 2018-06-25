@@ -1,0 +1,88 @@
+<footer class="container-fluid pt-4 bg-white">
+    <div class="container">
+        <div class="row py-5">
+            <div class="col-lg-4 my-3 my-lg-0">
+                <h3 class="mb-3 font-weight-bold d-flex align-items-baseline">SICO</h3>
+                <p>Nous aidons les personnes et les biens à se trouver plus simplement !</p>
+                <address>
+                    <ul class="list-unstyled">
+                        <li class="my-2">
+                            <span class="font-weight-bold text-dark">96 61 90 73</span>
+                        </li>
+                        <li class="my-2">
+                            <%= mail_to "francel.webdev@gmail.com", "francel.webdev@gmail.com", subject: "Demande d'information", class: "text-dark" %>
+                        </li>
+                    </ul>
+                </address>
+            </div>
+            <div class="col-lg-2 my-3 my-lg-0">
+                <h5 class="mb-3 font-weight-bold">A propos</h5>
+                <ul class="list-unstyled">
+                    <li class="my-2">
+                        <%= link_to 'A propos de nous', about_us_path, class: "text-dark" %>
+                    </li>
+                    <li class="my-2">
+                        <%= link_to 'Contactez nous', contact_us_path, class: "text-dark" %>
+                    </li>
+                    <li class="my-2">
+                        <%= link_to "Recrutement", home_page_path, class: "text-dark" %>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-2 my-3 my-lg-0">
+                <h5 class="mb-3 font-weight-bold">Informations</h5>
+                <ul class="list-unstyled">
+                    <li class="my-2">
+                        <%= link_to "Blog", home_page_path, class: "text-dark" %>
+                    </li>
+                    <li class="my-2">
+                        <%= link_to "Condition d'utilisation", home_page_path, class: "text-dark" %>
+                    </li>
+                    <li class="my-2">
+                        <%= link_to "Confidentialité", home_page_path, class: "text-dark" %>
+                    </li>
+                    <li class="my-2">
+                        <%= link_to "FAQ", home_page_path, class: "text-dark" %>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-4 my-3 my-md-0">
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <h5 class="mb-3 font-weight-bold">Newsletter</h5>
+                        <p class="text-dark"><small>Abonnez-vous à la newletter pour être averti des nouvautés.</small></p>
+                        <%= simple_form_for @newsletter do |f| %>
+                        <div class="d-flex">
+                            <%= f.input :email, as: :email, label: false, wrapper: false, placeholder: "Votre email", class: "form-control", autocomplete: true, style: "border-radius: 0px;"  %>
+                            <small><%= @newsletter.errors[:email].first if @newsletter.errors.any? %></small>
+                            <%= f.submit "S'abonné", class: "btn btn-primary", style: "border-radius: 0px;" %>
+                        </div>
+                        <% end %>
+                    </div>
+                    <div class="col-12">
+                        <h5 class="mb-3 font-weight-bold">Suivez-nous sur</h5>
+                        <ul class="list-unstyled d-flex mt-4">
+                            <li>
+                                <%= link_to "https://facebook.com", class: "m-2", title: "Suivez-nous sur facebook" do %>
+                                <%= image_tag "145797-social-network-logo-collection/svg/facebook.svg", alt: "Liens vers la page facebook de Sico", width: "30px;" %>
+                                <i class="fab fa-facebook-f sr-only"></i>
+                                <% end %>
+                            </li>
+                            <li>
+                                <%= link_to "https://facebook.com", class: "m-2", title: "Suivez-nous sur twitter" do %>
+                                <%= image_tag "145797-social-network-logo-collection/svg/twitter.svg", alt: "Liens vers la page twitter de Sico", width: "30px;" %>
+                                <i class="fab fa-twitter sr-only"></i>
+                                <% end %>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row pt-3" style="border-top: 1px solid #dee2e6 !important;">
+            <div class="col-lg-12 text-center">
+                <p class="text-secondary">&copy; Copyright <%= @current_year %> Sico. Tous droit réservé.</p>
+            </div>
+        </div>
+    </footer>
