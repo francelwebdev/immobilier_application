@@ -60,8 +60,8 @@ class PropertiesController < ApplicationController
         @property = current_user.properties.build(property_params)
         if @property.save
             if params[:property][:user_info][:first_name].present? && params[:property][:user_info][:last_name].present? && params[:property][:user_info][:phone_number].present?
-                u = User.find(@property.user.id)
-                u.update first_name: params[:property][:user_info][:first_name], last_name: params[:property][:user_info][:last_name], phone_number: params[:property][:user_info][:phone_number]
+                user = User.find(@property.user.id)
+                user.update first_name: params[:property][:user_info][:first_name], last_name: params[:property][:user_info][:last_name], phone_number: params[:property][:user_info][:phone_number]
             end
             redirect_to @property, notice: "L'annonce a été créée avec succès."
             # , en attente de mise en ligne par un administrateur

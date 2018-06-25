@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    # protect_from_forgery with: :exception
+    protect_from_forgery with: :exception
 
     before_action :set_locale, :tout_les_ad_types, :tout_les_property_types, :newsletter, :current_year
     before_action :authenticate_user!
@@ -30,27 +30,14 @@ class ApplicationController < ActionController::Base
     end
 
     def after_sign_in_path_for(resource)
-         if current_user.first_name.blank? && current_user.last_name.blank? && current_user.phone_number.blank?
-            edit_user_registration_path(resource)
-        else
-            edit_user_registration_path(resource)
-         end
+        edit_user_registration_path(resource) if current_user.first_name.blank? && current_user.last_name.blank? && current_user.phone_number.blank?
     end
-
-    # def after_sign_up_path_for(resource)
-    #     edit_user_registration_path(resource)
-    # end
-    #
-    # def after_update_path_for(resource)
-    #     edit_user_registration_path(resource)
-    # end
 
 
     protected
 
     def configure_permitted_parameters
-        devise_parameter_sanitizer.permit(:sign_up, keys: [:role])
-        devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone_number, :profile_picture])
+        devise_parameter_sanitizer.permit(:account_update, keys: [:role, :first_name, :last_name, :profile_picture, :phone_number])
     end
 
 end
