@@ -10,7 +10,7 @@
     <%= favicon_link_tag "148705-essential-collection/svg/home-1.svg" %>
     <title>Sico - <%= content_for?(:page_title) ? yield(:page_title) : "Bienvenue" %></title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <%#= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <% if content_for?(:head) %>

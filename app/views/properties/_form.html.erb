@@ -1,5 +1,19 @@
 <%= simple_form_for(@property) do |f| %>
 <%= f.error_notification %>
+
+<% if @property.errors.any? %>
+<div class="alert alert-danger" role="alert">
+    <p>
+        <%= pluralize(@property.errors.count, "erreur", "erreurs") %> ont empêché l'enregistrement de cet annonce:
+    </p>
+    <ul>
+        <% @property.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+
 <div class="card border-0 mb-4 mon-box-shadow">
     <div class="card-body">
         <div class="form-row p-2">
@@ -25,7 +39,7 @@
              <%= f.input :area %>
          </div>
          <div class="col-md-4">
-            <%= f.input :available, collection: [["Oui", true], ["Non", false]] %>
+            <%= f.input :available, collection: [[false, "Nom"], [true, "Oui"]], label_method: :second, value_method: :first %>
         </div>
         <div class="col-md-4">
             <%= f.input :etage, collection: ["Rez-de-chaussée", "1er étage", "2ème étage", "3ème étage", "4ème étage", "5ème étage"] %>
@@ -95,8 +109,8 @@
 </div>
 
 <% if user_signed_in? %>
-<% if current_user.role == "Agent immobilier" && current_user.agency.name.blank? && current_user.agency.phone_number.blank? %>
-<%= f.simple_fields_for :agency do |agency_info| %>
+<% if current_user.role == "Agent immobilier" && current_user.first_name.blank? && current_user.last_name.blank? && current_user.phone_number.blank? %>
+<%= f.simple_fields_for :user_info do |user_info| %>
 <div class="card border-0 mb-4 mon-box-shadow">
     <div class="card-body">
         <div class="form-row p-2">
@@ -104,10 +118,13 @@
                 <h4 class="card-title mb-3">Information de contact</h4>
             </div>
             <div class="col-md-6">
-                <%= agency_info.input :name %>
+                <%= user_info.input :first_name %>
             </div>
             <div class="col-md-6">
-                <%= agency_info.input :phone_number %>
+                <%= user_info.input :last_name %>
+            </div>
+            <div class="col-md-6">
+                <%= user_info.input :phone_number, as: :tel %>
             </div>
         </div>
     </div>
