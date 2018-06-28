@@ -15,7 +15,7 @@ class Property < ApplicationRecord
     validates :deposit, numericality: { only_integer: true }
     validates :deposit, numericality: { greater_than_or_equal_to: 1 }
 
-    belongs_to :user, validate: :true
+    belongs_to :user
     # belongs_to :agency
 
     has_many_attached :images
