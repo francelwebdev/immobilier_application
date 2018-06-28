@@ -63,7 +63,7 @@
             <li class="nav-item dropdown mx-2">
                 <%= link_to "", class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" do %>
                 <%= image_tag "148705-essential-collection/svg/user-3.svg", size: "35" %>
-                <%= current_user.first_name + " " + current_user.last_name if current_user.first_name.present? && current_user.last_name.present?  %>
+                <%= current_user.first_name.capitalize + " " + current_user.last_name.upcase if current_user.first_name.present? && current_user.last_name.present?  %>
                 <% end %>
                 <%= yield :dropdown_menu %>
             </li>
