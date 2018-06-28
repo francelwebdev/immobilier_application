@@ -152,7 +152,7 @@
 									<%= truncate(strip_tags(property.title.capitalize), length: 25) %>
 								</h5>
 								<address class="card-text text-dark">
-									<i class="fas fa-map-marker-alt"></i>&nbsp; <%= property.address.capitalize %>, <%= property.city.capitalize %>
+									<i class="fas fa-map-marker-alt"></i>&nbsp; <%= property.address %>, <%= property.city %>
 								</address>
 								<% if property.ad_type == "Vente" %>
 								<p class="text-primary m-0 p-0 h3">

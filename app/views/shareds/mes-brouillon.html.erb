@@ -1,3 +1,7 @@
+if params[:property][:user_info][:first_name].present? && params[:property][:user_info][:last_name].present? && params[:property][:user_info][:phone_number].present?
+
+
+
 <% if @project.errors.any? %>
 <div id="error_explanation">
 <h2><%= pluralize(@project.errors.count, "error") %>
