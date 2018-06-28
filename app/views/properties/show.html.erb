@@ -33,7 +33,7 @@
                         <%= number_to_currency(@property.price, precision: 0) %>
                     </p>
                     <% elsif @property.ad_type == "Location" %>
-                    <p class="h3 font-weight-bold">A louer</p>
+                    <p class="h2"><span class="badge badge-info">A louer</span></p>
                     <p class="text-primary h2">
                         <%= number_to_currency(@property.price, precision: 0) %>/mois
                     </p>
@@ -52,6 +52,7 @@
                     <div class="card border-0 bg-white">
                         <div class="card-body p-4">
                             <h4 class="card-title font-weight-bold mb-4">Photos</h4>
+                            <p><%= number_to_human_size(@property.images.size) %></p>
                             <% if @property.images.attached? %>
                             <div class="single-item">
                                 <% @property.images.each do |image| %>

@@ -121,8 +121,9 @@
 					</div>
 
 					<% @properties.each do |property| %>
-					<!-- Grid design -->
+						<!-- Grid design -->
 					<div class="col-lg-6 mb-4">
+					<%= link_to property, class: "sans-text-decoration" do %>
 						<div class="card liste-card-recherche text-dark" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
 							<% if property.images.attached? %>
 							<%= image_tag url_for(property.images.first), class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
@@ -133,9 +134,9 @@
 							<% end %>
 
 							<% if property.ad_type == "Vente" %>
-							<h4><span class="position-absolute badge badge-secondary p-2" style="top: 10px; left: 10px;">A vendre</span></h4>
+							<p class="h3"><span class="position-absolute badge badge-info p-2" style="top: 10px; left: 10px;">A vendre</span></p>
 							<% elsif property.ad_type == "Location" %>
-							<h4><span class="position-absolute badge badge-secondary p-2" style="top: 10px; left: 10px;">A louer</span></h4>
+							<p class="h3"><span class="position-absolute badge badge-info p-2" style="top: 10px; left: 10px;">A louer</span></p>
 							<% end %>
 
 							<% if user_signed_in? %>
@@ -165,12 +166,13 @@
 							</div>
 
 							<div class="card-footer bg-white d-flex justify-content-between align-items-center" style="border-top: 1px solid #dee2e6 !important;">
-								<p class="m-0 ">
+								<p class="m-0 text-dark">
 									<small>Publié il y a <%= distance_of_time_in_words(property.created_at, Time.now, include_seconds: false) %></small>
 								</p>
-								<p class="m-0"><%= link_to "Détail", property, class: "btn btn-secondary btn-sm" %></p>
+								<p class="m-0"><%= link_to "Détails", property, class: "btn btn-primary" %></p>
 							</div>
 						</div>
+					<% end %>
 					</div>
 					<!-- Grid design -->
 					<% end %>

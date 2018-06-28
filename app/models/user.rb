@@ -19,8 +19,8 @@ class User < ApplicationRecord
   after_destroy :suprimer_photo_de_profile
   # after_create :build_agency_or_profile
 
-  # has_one :agency, dependent: :destroy
-  has_many :properties, dependent: :destroy
+  # has_one :agency, dependent: :delete
+  has_many :properties, dependent: :delete_all
   has_many :messages
   has_one_attached :profile_picture
 
@@ -58,7 +58,7 @@ def self.new_with_session(params, session)
   end
 
   def suprimer_photo_de_profile
-    self.profile_picture.purge
+    self.profile_picture.purge if self.profile_picture.present?
   end
 
   def create_administrator

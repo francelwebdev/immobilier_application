@@ -38,7 +38,7 @@ class Property < ApplicationRecord
     # end
 
     def suprimer_les_photos
-        self.photos.purge_later
+        self.images.purge_later
     end
 
 end

@@ -77,9 +77,9 @@
                 </p>
             </div>
             <div class="col-md-12">
-            <% 3.times do |i| %>
+            <% 4.times do |i| %>
                 <%= f.input :images, as: :file, label: "Photo #{i}", input_html: { name: "property[images][]", class: "form-control-file"}, direct_upload: true, wrapper: :horizontal_file %>
-                <% if current_page? controller: :properties, action: :edit %>
+                 <% if current_page? "properties/#{:id}/edit" %>
                     <%= image_tag url_for(@property.images["#{i}".to_i]), size: "200x150" if @property.images["#{i}".to_i].present? %>
                 <% end %>
             <% end %>
@@ -105,7 +105,7 @@
 </div>
 
 <% if user_signed_in? %>
-<% if current_user.role == "Agent immobilier" && current_user.first_name.blank? && current_user.last_name.blank? && current_user.phone_number.blank? %>
+<% if current_user.first_name.blank? && current_user.last_name.blank? && current_user.phone_number.blank? %>
 <%= f.simple_fields_for :user_info do |user_info| %>
 <div class="card border-0 mb-4 mon-box-shadow">
     <div class="card-body">
