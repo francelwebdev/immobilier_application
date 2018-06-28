@@ -119,11 +119,50 @@
 					<div class="col-lg-12">
 						<p><%= pluralize(@properties_numbers, "annonce trouvé", "annonces trouvés") %></p>
 					</div>
+				</section>
 
+				<ul class="row list-unstyled">
 					<% @properties.each do |property| %>
-						<!-- Grid design -->
-					<div class="col-lg-6 mb-4">
-					<%= link_to property, class: "sans-text-decoration" do %>
+					<!-- List design -->
+					<li class="col-lg-12 d-flex mb-4 box-shadow">
+						<% if property.images.attached? %>
+						<%= image_tag url_for(property.images.first), class: "w-50 h-100 d-none d-lg-block", alt: "#{ property.title }" %>
+						<% else %>
+						<%= image_tag "148705-essential-collection/svg/home-1.svg", class: "w-50 h-100" %>
+						<% end %>
+
+						<div class="p-4 w-100 bg-white">
+							<h4 class="text-dark">
+								<%= truncate(strip_tags(property.title.capitalize), length: 25) %>
+							</h4>
+							<address class="text-secondary">
+								<i class="fas fa-map-marker-alt"></i>&nbsp; <%= property.address.capitalize %>, <%= property.city.capitalize %>
+							</address>
+							<% if property.ad_type == "Vente" %>
+							<p class="text-primary h2">
+								<%= number_to_currency(property.price, precision: 0) %>
+							</p>
+							<% elsif property.ad_type == "Location" %>
+							<p class="text-primary h2">
+								<%= number_to_currency(property.price, precision: 0) %>/mois
+							</p>
+							<% end %>
+							<hr>
+							<div class="d-flex justify-content-between align-items-center">
+								<p class="mb-0">
+									<small>Publié il y a <%= distance_of_time_in_words(property.created_at, Time.now, include_seconds: false) %></small>
+								</p>
+								<p class="mb-0">
+									<%= link_to "Voir détails", property, class: "btn btn-primary" %>
+								</p>
+							</div>
+						</div>
+					</li>
+					<!-- List design -->
+
+					<!-- Grid design -->
+					<div class="col-lg-6 mb-4 invisible">
+						<%= link_to property, class: "sans-text-decoration" do %>
 						<div class="card liste-card-recherche text-dark" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
 							<% if property.images.attached? %>
 							<%= image_tag url_for(property.images.first), class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
@@ -172,22 +211,23 @@
 								<p class="m-0"><%= link_to "Détails", property, class: "btn btn-primary" %></p>
 							</div>
 						</div>
-					<% end %>
+						<% end %>
 					</div>
 					<!-- Grid design -->
-					<% end %>
 
+					<% end %>
+				</ul>
+
+				<section class="row">
 					<div class="col-12">
 						<%= will_paginate @properties, renderer: BootstrapPagination::Rails, previous_label: "Précédent ", next_label: " Suivant", page_links: false, container: false %>
 					</div>
 				</section>
 			</section>
 			<% else %>
-			<div class="col-lg-8">
-				<div class="card bg-transparent border-0">
-					<p>Aucun résultat trouvé !</p>
-				</div>
-			</div>
+			<section class="col-lg-8">
+				<p>Aucun résultat trouvé !</p>
+			</section>
 			<% end %>
 
 		</div>

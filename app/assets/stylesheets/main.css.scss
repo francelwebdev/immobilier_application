@@ -80,29 +80,6 @@ ul > li > a {
 .box-shadow {
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
-.h-250 {
-    height: 250px;
-}
-@media (min-width: 768px) {
-    .h-md-250 {
-        height: 250px;
-    }
-}
-.card-img-left {
-    height: 100%;
-    width: 100%;
-    border-radius: 0 3px 3px 0;
-}
-@media (min-width: 768px) {
-    .card-img-left-md {
-        height: 100%;
-        width: 45%;
-        border-radius: 0 3px 3px 0;
-    }
-}
-.flex-auto {
-    flex: 0 0 auto;
-}
 // List design
 
 
@@ -156,17 +133,4 @@ section.call_to_action_for_owner {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-origin: content-box;
-}
-
-
-.h-250 {
-    height: 250px;
-}
-
-@media (min-width: 768px) {
-  .h-md-250 { height: 250px; }
-}
-
-.box-shadow {
-    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }

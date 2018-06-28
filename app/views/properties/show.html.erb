@@ -57,7 +57,7 @@
                             <div class="single-item">
                                 <% @property.images.each do |image| %>
                                 <div>
-                                    <%= image_tag url_for(image), class: "w-100 h-100" %>
+                                    <%= image_tag url_for(image), class: "w-100 h-100 img-thumbnail" %>
                                 </div>
                                 <% end %>
                             </div>
@@ -203,11 +203,11 @@
                             <div class="row">
                                 <% if @property.user.profile_picture.attached? %>
                                 <div class="col-lg-12 mb-3">
-                                    <%= image_tag url_for(@property.user.profile_picture), class: "rounded-circle", size: "200x200" if @property.user.profile_picture.attached? %>
+                                    <%= image_tag url_for(@property.user.profile_picture), class: "rounded-circle img-fluid img-thumbnail", size: "200x200" if @property.user.profile_picture.attached? %>
                                 </div>
                                 <% else %>
                                 <div class="col-lg-12 mb-3">
-                                    <%= image_tag "148705-essential-collection/svg/user-3.svg", class: "", size: "200x200" %>
+                                    <%= image_tag "148705-essential-collection/svg/user-3.svg", class: " img-fluid img-thumbnail", size: "200x200" %>
                                 </div>
                                 <% end %>
                                 <div class="col-lg-12">
