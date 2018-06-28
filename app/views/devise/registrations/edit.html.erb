@@ -14,8 +14,8 @@
             <%= f.input :first_name, autofocus: true, required: true, label: "Prénom" %>
             <%= f.input :last_name, required: true, label: "Nom" %>
             <%= f.input :phone_number, as: :tel, required: true, label: "Numéros de téléphone" %>
-            <%= image_tag current_user.profile_picture, size: "250x250", class: "rounded-circle mb-4" if current_user.profile_picture.attached? %>
             <%= f.input :profile_picture, required: true %>
+            <%= image_tag current_user.profile_picture, size: "250x250", class: "rounded-circle mb-4" if current_user.profile_picture.attached? %>
             <%= f.input :email, required: true %>
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <p><%= t(".currently_waiting_confirmation_for_email", email: resource.unconfirmed_email) %></p>

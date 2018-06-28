@@ -11,13 +11,11 @@ class Property < ApplicationRecord
 
     validates :price, :description, :city, :deposit, :property_type, :ad_type, :feature, :room, :title, presence: true
     validates :title, uniqueness: true
-    validates :price, numericality: true
-    validates :price, numericality: { greater_than_or_equal_to: 1 }
     validates :area, numericality: { only_integer: true }
     validates :deposit, numericality: { only_integer: true }
     validates :deposit, numericality: { greater_than_or_equal_to: 1 }
 
-    belongs_to :user
+    belongs_to :user, validate: :true
     # belongs_to :agency
 
     has_many_attached :images
@@ -25,17 +23,24 @@ class Property < ApplicationRecord
     scope :published, -> { where(published: true) }
     scope :unpublished, -> { where(published: false) }
 
-    # after_update :suprimer_si_annonce_expire
+    before_create :definir_la_date_dexpiration
+    after_create :suprimer_si_annonce_expire
     after_destroy :suprimer_les_photos
+
 
     private
 
-    # def suprimer_si_annonce_expire
-    #     p = Property.find(self.id)
-    #     if p.published? and p.published_at.past?
-    #         p.delete
-    #     end
-    # end
+    def definir_la_date_dexpiration
+        self.published_at = Time.now
+        self.expire_at = 1.month.from_now
+    end
+
+    def suprimer_si_annonce_expire
+        p = Property.find(self.id)
+        if p.published? and p.expire_at.past?
+            p.delete
+        end
+    end
 
     def suprimer_les_photos
         self.images.purge_later

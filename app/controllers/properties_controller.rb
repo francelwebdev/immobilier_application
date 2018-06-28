@@ -17,30 +17,30 @@ class PropertiesController < ApplicationController
     def index
         if params[:property_type].present? and params[:ad_type].blank? and params[:city].blank?
             @properties = Property.includes(:user).where("property_type = :property_type", { property_type: params[:property_type] }).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
-            @properties_numbers = @properties.count
-
+            @properties_numbers = @properties.size
         elsif params[:property_type].present? and params[:ad_type].present? and params[:city].blank?
             @properties = Property.includes(:user).where("property_type = :property_type AND ad_type = :ad_type", { property_type: params[:property_type], ad_type: params[:ad_type] }).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
-            @properties_numbers = @properties.count
-
+            @properties_numbers = @properties.size
         elsif params[:property_type].present? and params[:ad_type].present? and params[:city].present?
             @properties = Property.includes(:user).where("property_type = :property_type AND ad_type = :ad_type AND city = :city", { property_type: params[:property_type], ad_type: params[:ad_type], city: params[:city] }).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
-            @properties_numbers = @properties.count
-
-        elsif params[:property_type].blank? and params[:ad_type].present? and params[:city].blank?
-            @properties = Property.includes(:user).where("ad_type = :ad_type", { ad_type: params[:ad_type] }).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
-            @properties_numbers = @properties.count
-
+            @properties_numbers = @properties.size
+        elsif params[:property_type].blank? and params[:ad_type].present? and params[:city].present?
+            @properties = Property.includes(:user).where("ad_type = :ad_type && city = :city", { ad_type: params[:ad_type], city: params[:city] }).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
+            @properties_numbers = @properties.size
         elsif params[:property_type].blank? and params[:ad_type].blank? and params[:city].present?
             @properties = Property.includes(:user).where("city = :city", { city: params[:city] }).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
-            @properties_numbers = @properties.count
+            @properties_numbers = @properties.size
+        elsif params[:property_type].blank? and params[:ad_type].present? and params[:city].blank?
+            @properties = Property.includes(:user).where("ad_type = :ad_type", { ad_type: params[:ad_type] }).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
+            @properties_numbers = @properties.size
+
 
 
 
 
         else
             @properties = Property.includes(:user).all.order("created_at DESC").published.paginate(page: params[:page], per_page: 6)
-            @properties_numbers = @properties.count
+            @properties_numbers = @properties.size
         end
     end
 
