@@ -1,0 +1,19 @@
+fr:
+  activerecord:
+    models:
+      property: "Bien immobilier"
+    attributes:
+      property:
+        title: "Titre de l'annonce"
+        price: "Prix"
+        area: "Surface"
+        description: "Description de l'annonce"
+        address: "Adresse exacte"
+        city: "Commune"
+        room: "Nombres de pièce"
+        available: "Le bien est disponible maintenant ?"
+        deposit: "Avance"
+        property_type: "Choisisez le type de bien"
+        ad_type: "Choisissez le type d'annonce"
+        etage: "A quel étage se trouve le bien ?"
+        feature: "Caractéristique"

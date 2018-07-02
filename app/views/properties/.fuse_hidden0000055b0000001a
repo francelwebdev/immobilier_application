@@ -1,0 +1,193 @@
+<% content_for :page_title, "Resultat de recherche"  %>
+
+<section class="d-flex align-items-center mb-0 p-0 barre-recherche-avance">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-white">Affiner votre recherche</h2>
+            </div>
+            <div class="col-12 py-3" style="border-radius: 5px; background-color: rgba(0, 0, 0, 0.3) !important;">
+                <%= simple_form_for "", url: properties_path, method: :get do |f| %>
+                <div class="row px-3">
+                    <div class="col-lg-4 px-1 mb-2">
+                        <%= f.input :property_type, collection: ["Appartement", "Maison", "Bureau", "Commerce", "Villa", "Chambre", "Entrée couché"], prompt: "Type de bien", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                    </div>
+                    <div class="col-lg-4 px-1 mb-2">
+                        <%= f.input :ad_type, collection: Property::AD_TYPE, prompt: "Type d'annonce", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                    </div>
+                    <div class="col-lg-4 px-1 mb-2">
+                        <%= f.input :city, placeholder: "Ou ? Zogbo, Fifadji, Fidjrossè ?", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                    </div>
+                    <div class="col-lg-4 px-1 mb-2">
+                        <%= f.input :room, collection: ["1 pièce", "2 pièces", "3 pièces", "4 pièces", "5 pièces", "plus de 5 pièces"], prompt: "Nombres de pièce", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                    </div>
+                    <div class="col-lg-2 px-1 mb-2">
+                        <%= f.input :loyer_minimum, as: :decimal, placeholder: "Loyer min", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                    </div>
+                    <div class="col-lg-2 px-1 mb-2">
+                        <%= f.input :loyer_maximum, as: :decimal, placeholder: "Loyer max", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                    </div>
+                    <div class="col-lg-2 px-1 mb-2">
+                        <%= f.input :surface_minimum, as: :integer, placeholder: "Surface min", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                    </div>
+                    <div class="col-lg-2 px-1 mb-2">
+                        <%= f.button :submit, "Rechercher", name: nil, class: 'btn btn-primary btn-block btn-lg' %>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-secondary text-white">
+                                <h5 class="m-0 font-weight-bold">Type de bien</h5>
+                            </div>
+                            <div class="list-group ">
+                                <% @property_types.each do |property_type| %>
+                                <%= link_to properties_path(property_type: property_type), class: "list-group-item list-group-item-action d-flex justify-content-between align-items-center" do %>
+                                <%= property_type %>
+                                <span class="bagde badge-primary badge-pill px-2 sr-only">7 annonces</span>
+                                <% end %>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-secondary text-white">
+                                <h5 class="m-0 font-weight-bold">Type d'annonce</h5>
+                            </div>
+                            <div class="list-group">
+                                <% @ad_types.each do |ad_type| %>
+                                <%= link_to properties_path(ad_type: ad_type), class: "list-group-item list-group-item-action d-flex justify-content-between align-items-center" do %>
+                                <%= ad_type %>
+                                <span class="bagde badge-primary badge-pill px-2 sr-only">7 annonces</span>
+                                <% end %>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <div class="card bg-white border-0">
+                            <div class="card-body">
+                                <h5 class="mb-3">Biens par Commune</h5>
+                                <ul class="list-unstyled sr-only">
+                                    <li class="my-2">
+                                        <%= link_to "", class: "text-dark" do %>
+                                        <i class="fas fa-arrow-right"></i>&nbsp; Cotonou
+                                        <% end %>
+                                    </li>
+                                    <li class="my-2">
+                                        <%= link_to "", class: "text-dark" do %>
+                                        <i class="fas fa-arrow-right"></i>&nbsp; Porto-Novo
+                                        <% end %>
+                                    </li>
+                                    <li class="my-2">
+                                        <%= link_to "", class: "text-dark" do %>
+                                        <i class="fas fa-arrow-right"></i>&nbsp; Abomey-Calavi
+                                        <% end %>
+                                    </li>
+                                    <li class="my-2">
+                                        <%= link_to "", class: "text-dark" do %>
+                                        <i class="fas fa-arrow-right"></i>&nbsp; Godomey
+                                        <% end %>
+                                    </li>
+                                    <li class="my-2">
+                                        <%= link_to "", class: "text-dark" do %>
+                                        <i class="fas fa-arrow-right"></i>&nbsp; Parakou
+                                        <% end %>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <% if @properties.present? %>
+            <section class="col-lg-9">
+                <section class="row">
+                    <div class="col-lg-12">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <p class="mb-0"><%= pluralize(@properties_numbers, "annonce trouvé", "annonces trouvés") %></p>
+                        </div>
+                    </div>
+
+                    <% @properties.each do |property| %>
+                    <div class="col-lg-12 mb-4">
+                        <div class="card liste-card-recherche shadow-sm">
+                            <div class="row">
+                                <div class="col-lg-5 pr-lg-0">
+                                    <% if property.ad_type == "A vendre" %>
+                                    <span class="position-absolute badge badge-info p-2" style="top: 10px; left: 20px;">A vendre</span>
+                                    <% elsif property.ad_type == "A louer" %>
+                                    <span class="position-absolute badge badge-info p-2" style="top: 10px; left: 20px;">A louer</span>
+                                    <% end %>
+
+                                    <% if user_signed_in? %>
+                                    <% if current_user.admin? and property.published %>
+                                    <span class="position-absolute badge badge-success p-2" style="top: 10px; right: 20px;">En ligne</span>
+                                    <% elsif current_user.admin? and !property.published %>
+                                    <span class="position-absolute badge badge-danger p-2" style="top: 10px; right: 20px;">Hors ligne</span>
+                                    <% end %>
+                                    <% end %>
+
+                                    <% if property.images.attached? %>
+                                    <%= image_tag url_for(property.images.first), class: "w-100", alt: "#{property.title}", height: "213px" %>
+                                    <% else %>
+                                    <%= image_tag "148705-essential-collection/svg/picture.svg", class: "w-100 h-100" %>
+                                    <span>Annonce sans photo</span>
+                                    <% end %>
+                                </div>
+                                <div class="col-lg-7 pl-lg-0">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-dark">
+                                            <%= truncate(strip_tags(property.title.capitalize), length: 50) %>
+                                        </h5>
+                                        <address class="card-text text-secondary">
+                                            <i class="fas fa-map-marker-alt"></i>&nbsp; <%= property.address.capitalize %>, <%= property.city.capitalize %>
+                                        </address>
+                                        <% if property.ad_type == "A vendre" %>
+                                        <p class="text-primary h3">
+                                            <%= number_to_currency(property.price, precision: 0) %>
+                                        </p>
+                                        <% elsif property.ad_type == "A louer" %>
+                                        <p class="text-primary h3">
+                                            <%= number_to_currency(property.price, precision: 0) %>/mois
+                                        </p>
+                                        <% end %>
+                                    </div>
+                                    <div class="card-footer bg-white">
+                                        <p class="m-0 d-flex justify-content-between align-items-center">
+                                            <small>Publié il y a <%= distance_of_time_in_words(property.created_at, Time.now, include_seconds: false) %></small>
+                                            <%= link_to "Voir détails", property, class: "btn btn-primary btn-sm" %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% end %>
+
+                    <div class="col-12">
+                        <%= will_paginate @properties, previous_label: "Précédent ", next_label: " Suivant", container: false %>
+                    </div>
+                </section>
+            </section>
+            <% else %>
+            <section class="col-lg-8">
+                <p>Aucun résultat trouvé !</p>
+            </section>
+            <% end %>
+
+        </div>
+    </div>
+</section>
