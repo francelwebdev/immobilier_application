@@ -1,4 +1,4 @@
-<% if @ad_type == "A louer" %>
+<% if @ad_type == "À louer" %>
 <%= simple_form_for(@property) do |f| %>
 <%= f.error_notification %>
 <% if @property.errors.any? %>
@@ -136,7 +136,7 @@
 <% end %>
 
 
-<% elsif @ad_type == "A vendre" %>
+<% elsif @ad_type == "À vendre" %>
 <%= simple_form_for(@property) do |f| %>
 <%= f.error_notification %>
 <% if @property.errors.any? %>
