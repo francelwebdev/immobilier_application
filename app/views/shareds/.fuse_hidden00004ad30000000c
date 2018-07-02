@@ -1,6 +1,6 @@
 <% content_for :add_property do %>
 <li class="nav-item mx-1 d-flex align-items.center">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Déposer une annonce</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"> Ajouter un annonce</button>
 </li>
 <% end %>
 
@@ -16,13 +16,13 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-12">
-                        <h3 class="text-center">Choisissez votre type d'annonce :</h3>
-                        <div class="d-flex flex-column flex-md-row justify-content-md-around justify-content-between align-items-center">
+                        <h1 class="text-center">Vous souhaitez ?</h1>
+                        <div class="d-flex flex-column justify-content-between align-items-center">
                             <p>
-                                <%= link_to "A louer", new_property_path(ad_type: "À louer"), class: "btn btn-outline-primary btn-lg" %>
+                                <%= link_to "Louer un bien immobilier", new_property_path(ad_type: "A louer"), class: "btn btn-outline-primary btn-lg" %>
                             </p>
                             <p>
-                                <%= link_to "A vendre", new_property_path(ad_type: "À vendre"),  class: "btn btn-outline-primary btn-lg" %>
+                                <%= link_to "Vendre un bien immobilier", new_property_path(ad_type: "A vendre"),  class: "btn btn-outline-primary btn-lg" %>
                             </p>
                         </div>
                     </div>
@@ -70,6 +70,12 @@
                 <li class="nav-item mx-1 sr-only">
                     <%#= link_to "Tout les agents", home_page_path, class: "nav-link" %>
                 </li>
+
+                <% @ad_types.each do |ad_type| %>
+                <li class="nav-item mx-1">
+                    <%= link_to ad_type, properties_path(ad_type: ad_type), class: "nav-link" %>
+                </li>
+                <% end %>
 
                 <% if user_signed_in? %>
                 <li class="nav-item mx-1">
