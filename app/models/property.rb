@@ -13,7 +13,7 @@ class Property < ApplicationRecord
 
     belongs_to :user, dependent: :destroy
     # belongs_to :agency
-    
+
     validates :price, :description, :city, :deposit, :property_type, :ad_type, :feature, :title, :available, presence: true
     validates :title, uniqueness: true
     validates :area, numericality: { only_integer: true }

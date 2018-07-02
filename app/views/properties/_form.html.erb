@@ -23,7 +23,7 @@
                 <%= f.input :ad_type, as: :hidden, input_html: { value: @ad_type } %>
             </div>
             <div class="col-lg-12">
-                <%= f.input :property_type, as: :radio_buttons, collection: Property::PROPERTY_TYPE_FOR_RENT, wrapper: :horizontal_collection_inline %>
+                <%= f.input :property_type, as: :radio_buttons, collection: Property::PROPERTY_TYPE_FOR_RENT, wrapper: :horizontal_collection_inline, input_html: { class: "choix" } %>
             </div>
             <div class="col-12">
                 <%= f.input :title %>

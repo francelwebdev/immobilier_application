@@ -28,6 +28,10 @@
                     </div>
                 </div>
             </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-block"
+                data-dismiss="modal">Annuler</button>
+            </div>
         </div>
     </div>
 </div>
