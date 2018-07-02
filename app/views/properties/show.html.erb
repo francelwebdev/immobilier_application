@@ -26,6 +26,7 @@
                         <i class="fas fa-map-marker-alt"></i>&nbsp;
                         <%= @property.address.capitalize %>, <%= @property.city.capitalize %>
                     </p>
+                    <p><small>Publié il y a <%= distance_of_time_in_words(@property.created_at, Time.now, include_seconds: false) %></small></p>
                 </div>
                 <div class="col-lg-3">
                     <% if @property.ad_type == "Vente" %>
@@ -58,7 +59,7 @@
                             <div class="single-item">
                                 <% @property.images.each do |image| %>
                                 <div>
-                                    <%= image_tag url_for(image), class: "w-100 h-100 img-thumbnail" %>
+                                    <%= image_tag url_for(image), class: "w-100", height: "500px" %>
                                 </div>
                                 <% end %>
                             </div>
@@ -195,7 +196,7 @@
 
                 <div class="col-lg-12 mb-4">
                     <div class="card border-0 bg-white">
-                        <div class="card-body p-4">
+                        <div class="card-body p-4 text-center">
                             <% if @property.user.role == "Propriétaire" %>
                             <h4 class="mb-4 font-weight-bold">Contacter le properiétaire</h4>
                             <% elsif @property.user.role == "Agent immobilier" %>
