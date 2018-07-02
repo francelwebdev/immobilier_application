@@ -26,6 +26,7 @@
                         <i class="fas fa-map-marker-alt"></i>&nbsp;
                         <%= @property.address.capitalize %>, <%= @property.city.capitalize %>
                     </p>
+                    <p class="text-dark"><small>Publié il y a <%= distance_of_time_in_words(@property.created_at, Time.now, include_seconds: false) %></small></p>
                 </div>
                 <div class="col-lg-3">
                     <% if @property.ad_type == "Vente" %>

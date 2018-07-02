@@ -123,56 +123,48 @@
 					<% @properties.each do |property| %>
 					<!-- Grid design -->
 					<div class="col-lg-6 mb-4">
-						<%= link_to property, class: "sans-text-decoration" do %>
-						<div class="card liste-card-recherche text-dark" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
-							<% if property.images.attached? %>
-							<%= image_tag url_for(property.images.first), class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
-							<% else %>
-							<p class="text-center">
-								<%= image_tag "148705-essential-collection/svg/home-1.svg", class: "w-50" %>
-							</p>
-							<% end %>
-
+						<div class="card liste-card-recherche">
 							<% if property.ad_type == "Vente" %>
-							<p><span class="position-absolute badge badge-info p-2" style="top: 10px; left: 10px;">A vendre</span></p>
+							<span class="position-absolute badge badge-info p-2" style="top: 10px; left: 10px;">A vendre</span>
 							<% elsif property.ad_type == "Location" %>
-							<p><span class="position-absolute badge badge-info p-2" style="top: 10px; left: 10px;">A louer</span></p>
+							<span class="position-absolute badge badge-info p-2" style="top: 10px; left: 10px;">A louer</span>
 							<% end %>
 
 							<% if user_signed_in? %>
 							<% if current_user.admin? and property.published %>
-							<p><span class="position-absolute badge badge-success p-2" style="top: 10px; right: 10px;">En ligne</span></p>
+							<span class="position-absolute badge badge-success p-2" style="top: 10px; right: 10px;">En ligne</span>
 							<% elsif current_user.admin? and !property.published %>
-							<p><span class="position-absolute badge badge-danger p-2" style="top: 10px; right: 10px;">Hors ligne</span></p>
+							<span class="position-absolute badge badge-danger p-2" style="top: 10px; right: 10px;">Hors ligne</span>
 							<% end %>
 							<% end %>
 
-							<div class="card-body p-3">
-								<h5 class="card-title font-weight-bold text-dark">
+							<% if property.images.attached? %>
+							<%= image_tag url_for(property.images.first), class: "card-img-top", alt: "Photo de #{ property.title }", height: "200px" %>
+							<% else %>
+							<%= image_tag "148705-essential-collection/svg/home-1.svg", class: "w-50" %>
+							<% end %>
+
+							<div class="card-body">
+								<h5 class="card-title text-dark">
 									<%= truncate(strip_tags(property.title.capitalize), length: 30) %>
 								</h5>
-								<address class="card-text text-dark">
+								<address class="card-text text-secondary">
 									<i class="fas fa-map-marker-alt"></i>&nbsp; <%= property.address.capitalize %>, <%= property.city.capitalize %>
 								</address>
 								<% if property.ad_type == "Vente" %>
-								<p class="text-primary m-0 p-0 h3">
+								<p class="text-primary h3">
 									<%= number_to_currency(property.price, precision: 0) %>
 								</p>
 								<% elsif property.ad_type == "Location" %>
-								<p class="text-primary m-0 p-0 h3">
+								<p class="text-primary h3">
 									<%= number_to_currency(property.price, precision: 0) %>/mois
 								</p>
 								<% end %>
-							</div>
-
-							<div class="card-footer bg-white d-flex justify-content-between align-items-center" style="border-top: 1px solid #dee2e6 !important;">
-								<p class="m-0 text-dark">
-									<small>Publié il y a <%= distance_of_time_in_words(property.created_at, Time.now, include_seconds: false) %></small>
+								<p class="m-0 text-right">
+									<%= link_to "Détails", property, class: "btn btn-primary" %>
 								</p>
-								<p class="m-0"><%= link_to "Détails", property, class: "btn btn-primary" %></p>
 							</div>
 						</div>
-						<% end %>
 					</div>
 					<!-- Grid design -->
 
