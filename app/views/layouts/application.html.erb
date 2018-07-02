@@ -12,6 +12,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <% if content_for?(:head) %>
     <%= yield(:head) %>
     <% end %>
@@ -25,7 +26,6 @@
     <%#= render "shareds/call_to_action_for_agency" %>
     <%= render "shareds/call_to_action_for_owner" %>
     <%= render "shareds/footer" %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <% if content_for?(:Morphext) %>
     <%= yield :Morphext %>
     <% end %>
