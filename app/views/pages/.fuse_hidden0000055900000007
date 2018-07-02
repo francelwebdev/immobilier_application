@@ -1,0 +1,159 @@
+<% content_for :page_title, "Accueil" %>
+<% content_for :page_meta_description, "Accueil - SICO - Annonces immobilieres au Bénin" %>
+<% content_for :page_meta_keywords, "" %>
+<% content_for :Morphext do %>
+<script>
+$(function() {
+$("#js-rotating").Morphext({
+    animation: "bounceIn", // Overrides default "bounceIn"
+    speed: 3000, // Overrides default 2000
+    complete: function () {
+        // Overrides default empty function
+    }
+});
+});
+</script>
+<% end%>
+
+<div class="jumbotron jumbotron-fluid d-flex align-items-center mb-0 jumbotron-accueil">
+    <div class="container">
+        <h1 class="text-white text-center mb-3">Trouver <span id="js-rotating" class="font-weight-bold">la maison, l'appartement, le bureau, la boutique, la villa, la chambre, le magasin, le parcelle, le terrain</span> de vos rêves sans aucune difficulté.</h1>
+        <div class="py-3 px-3" style="border-radius: 3px; background-color: rgba(0, 0, 0, 0.3)">
+            <%= simple_form_for "", url: properties_path, method: :get do |f| %>
+            <div class="row px-3">
+                <div class="col-lg-3 px-1 mb-2">
+                    <%= f.input :property_type, collection: ["Appartement", "Maison", "Bureau", "Commerce", "Villa", "Chambre", "Entrée couché"], prompt: "Type de bien", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                </div>
+                <div class="col-lg-3 px-1 mb-2">
+                    <%= f.input :ad_type, collection: ["Location"], prompt: "Type d'annonce", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                </div>
+                <div class="col-lg-4 px-1 mb-2">
+                    <%= f.input :city, placeholder: "Ou ? Zogbo, Fifadji, Fidjrossè ?", label: false, input_html: { class: "form-control form-control-lg", autocomplete: true }, wrapper_html: { class: "m-0" } %>
+                </div>
+                <div class="col-lg-2 px-1 mb-2">
+                    <%= f.button :submit, "Rechercher", name: nil, class: 'btn btn-primary btn-block btn-lg' %>
+                </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+
+<section class="container-fluid py-4 sr-only">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h3>Annonces en vedette</h3>
+            </div>
+            <div class="col-12">
+                <div class="row annonce_nouvellement_publié">
+                    <div class="col-12 col-md-4 mx-1">
+                        <div class="card mb-4">
+                            <img class="card-img-top" src="" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-text">Appartement</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid py-4 bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-2">
+                <h1>Comment ça marche</h1>
+                <p>3 étapes très simple</p>
+            </div>
+            <div class="col-lg-4 text-center mb-4">
+                <p class="mb-3">
+                    <%= image_tag "179347-control/svg/number-1.svg", class: "w-25" %>
+                </p>
+                <p>Faîte une recherche et choisissez un bien parmis les résultats de recherche.</p>
+            </div>
+            <div class="col-lg-4 text-center mb-4">
+                <p class="mb-3">
+                    <%= image_tag "179347-control/svg/number-2.svg", class: "w-25" %>
+                </p>
+                <p>Contacter le propriétaire du bien pour convenir d'un RDV pour la visite.</p>
+            </div>
+            <div class="col-lg-4 text-center mb-4">
+                <p class="mb-3">
+                    <%= image_tag "179347-control/svg/number-3.svg", class: "w-25" %>
+                </p>
+                <p>Visiter le bien puis régler l'avance et prenez les clefs si le bien correspond à vos besoins.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid py-4 sr-only">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2>Communes/Quartiers les plus consultés</h2>
+            </div>
+            <div class="col-lg-8 mb-5">
+                <%= link_to home_page_path, class: "sans-text-decoration" do %>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h2 class="card-title mb-0">Cotonou</h2>
+                        <p class="lead">N* de biens</p>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+            <div class="col-lg-4 mb-5">
+                <%= link_to home_page_path, class: "sans-text-decoration" do %>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h2 class="card-title mb-0">Cotonou</h2>
+                        <p class="lead">N* de biens</p>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+            <div class="col-lg-4 mb-5">
+                <%= link_to home_page_path, class: "sans-text-decoration" do %>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h2 class="card-title mb-0">Cotonou</h2>
+                        <p class="lead">N* de biens</p>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+            <div class="col-lg-8 mb-5">
+                <%= link_to home_page_path, class: "sans-text-decoration" do %>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h2 class="card-title mb-0">Cotonou</h2>
+                        <p class="lead">N* de biens</p>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid py-4 sr-only bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-4">
+                <h2>Quelques agences immobiliers</h2>
+            </div>
+        </div>
+    </div>
+</section>

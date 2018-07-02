@@ -162,7 +162,7 @@
                 <%= f.input :ad_type, as: :hidden, input_html: { value: @ad_type } %>
             </div>
             <div class="col-lg-12">
-                <%= f.input :property_type, as: :radio_buttons, collection: Property::PROPERTY_TYPE_FOR_SELL, wrapper: :vertical_collection_inline %>
+                <%= f.input :property_type, as: :radio_buttons, collection: Property::PROPERTY_TYPE_FOR_SELL, wrapper: :horizontal_collection_inline %>
             </div>
             <div class="col-12">
                 <%= f.input :title %>
@@ -171,13 +171,13 @@
                 <%= f.input :description, input_html: { rows: 10 } %>
             </div>
             <div class="col-md-4">
-             <%= f.input :area, input_html: { min: 1 }, label: "Surface (en m2)" %>
+             <%= f.input :area, input_html: { min: 1 }, label: "Surface du bien (m2)", required: true %>
          </div>
          <div class="col-md-4">
-                <%= f.input :room, collection: Property::ROOM, prompt: "Sélectionner le nbres de pièces" %>
+                <%= f.input :room, collection: Property::ROOM %>
             </div>
         <div class="col-md-4">
-            <%= f.input :price, input_html: { min: 1 } %>
+            <%= f.input :price, input_html: { min: 1 }, label: "Prix" %>
         </div>
     </div>
 </div>
@@ -190,7 +190,7 @@
                 <h4 class="card-title mb-3">Caractéristiques du bien</h4>
             </div>
             <div class="col-12">
-                <%= f.input :feature, as: :check_boxes, collection: Property::FEATURE, wrapper: :vertical_collection_inline %>
+                <%= f.input :feature, as: :check_boxes, collection: Property::FEATURE, wrapper: :horizontal_collection_inline %>
             </div>
         </div>
     </div>
