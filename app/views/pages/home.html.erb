@@ -15,20 +15,20 @@ $("#js-rotating").Morphext({
 </script>
 <% end%>
 
-<div class="jumbotron jumbotron-fluid d-flex align-items-center mb-0 jumbotron-accueil">
+<div class="jumbotron jumbotron-fluid d-flex align-items-center mb-0 jumbotron-accueil py-5">
     <div class="container">
         <h1 class="text-white text-center mb-3">Trouver <span id="js-rotating" class="font-weight-bold">la maison, l'appartement, le bureau, la boutique, la villa, la chambre, le magasin, le parcelle, le terrain</span> de vos rêves sans aucune difficulté.</h1>
         <div class="py-3 px-3" style="border-radius: 3px; background-color: rgba(0, 0, 0, 0.3)">
             <%= simple_form_for "", url: properties_path, method: :get do |f| %>
             <div class="row px-3">
                 <div class="col-lg-3 px-1 mb-2">
-                    <%= f.input :property_type, collection: ["Appartement", "Maison", "Bureau", "Commerce", "Villa", "Chambre", "Entrée couché"], prompt: "Type de bien", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                    <%= f.input :property_type, collection: Property::PROPERTY_TYPE, prompt: "Choisissez le type de bien", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
                 </div>
                 <div class="col-lg-3 px-1 mb-2">
-                    <%= f.input :ad_type, collection: Property::AD_TYPE, prompt: "Type d'annonce", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                    <%= f.input :ad_type, collection: Property::AD_TYPE, prompt: "Choisissez le type d'annonce", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
                 </div>
                 <div class="col-lg-4 px-1 mb-2">
-                    <%= f.input :city, placeholder: "Ou ? Zogbo, Fifadji, Fidjrossè ?", label: false, input_html: { class: "form-control form-control-lg", autocomplete: true }, wrapper_html: { class: "m-0" } %>
+                    <%= f.input :city, placeholder: "Ou ? Zogbo, Fidjrossè, Abomey-Calavi ?", label: false, input_html: { class: "form-control form-control-lg", autocomplete: true }, wrapper_html: { class: "m-0" } %>
                 </div>
                 <div class="col-lg-2 px-1 mb-2">
                     <%= f.button :submit, "Rechercher", name: nil, class: 'btn btn-primary btn-block btn-lg' %>
