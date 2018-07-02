@@ -30,12 +30,12 @@
                 </div>
                 <div class="col-lg-3">
                     <% if @property.ad_type == "Vente" %>
-                    <p class="h3 font-weight-bold">A vendre</p>
+                    <p class="h3 font-weight-bold">À vendre</p>
                     <p class="text-primary h2">
                         <%= number_to_currency(@property.price, precision: 0) %>
                     </p>
                     <% elsif @property.ad_type == "Location" %>
-                    <p class="h2"><span class="badge badge-info">A louer</span></p>
+                    <p class="h2"><span class="badge badge-info">À louer</span></p>
                     <p class="text-primary h2">
                         <%= number_to_currency(@property.price, precision: 0) %>/mois
                     </p>

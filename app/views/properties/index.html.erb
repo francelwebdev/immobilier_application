@@ -126,10 +126,10 @@
                         <div class="card liste-card-recherche shadow-sm">
                             <div class="row">
                                 <div class="col-lg-5 pr-lg-0">
-                                    <% if property.ad_type == "A vendre" %>
-                                    <span class="position-absolute badge badge-info p-2" style="top: 10px; left: 20px;">A vendre</span>
-                                    <% elsif property.ad_type == "A louer" %>
-                                    <span class="position-absolute badge badge-info p-2" style="top: 10px; left: 20px;">A louer</span>
+                                    <% if property.ad_type == "À vendre" %>
+                                    <span class="position-absolute badge badge-info p-2" style="top: 10px; left: 20px;">À vendre</span>
+                                    <% elsif property.ad_type == "À louer" %>
+                                    <span class="position-absolute badge badge-info p-2" style="top: 10px; left: 20px;">À louer</span>
                                     <% end %>
 
                                     <% if user_signed_in? %>
@@ -155,11 +155,11 @@
                                         <address class="card-text text-secondary">
                                             <i class="fas fa-map-marker-alt"></i>&nbsp; <%= property.address.capitalize %>, <%= property.city.capitalize %>
                                         </address>
-                                        <% if property.ad_type == "A vendre" %>
+                                        <% if property.ad_type == "À vendre" %>
                                         <p class="text-primary h3">
                                             <%= number_to_currency(property.price, precision: 0) %>
                                         </p>
-                                        <% elsif property.ad_type == "A louer" %>
+                                        <% elsif property.ad_type == "À louer" %>
                                         <p class="text-primary h3">
                                             <%= number_to_currency(property.price, precision: 0) %>/mois
                                         </p>
