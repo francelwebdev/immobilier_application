@@ -39,7 +39,7 @@ class PropertiesController < ApplicationController
 
 
         else
-            @properties = Property.includes(:user).all.order("created_at DESC").published.paginate(page: params[:page], per_page: 6)
+            @properties = Property.includes(:user).all.order("created_at DESC").published.paginate(page: params[:page], per_page: 4)
             @properties_numbers = @properties.size
         end
     end
