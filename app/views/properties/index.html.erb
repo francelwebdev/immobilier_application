@@ -126,6 +126,20 @@
 						<div class="card liste-card-recherche shadow-sm">
 							<div class="row">
 								<div class="col-lg-5 pr-lg-0">
+									<% if property.ad_type == "A vendre" %>
+									<span class="position-absolute badge badge-info p-2" style="top: 10px; left: 20px;">A vendre</span>
+									<% elsif property.ad_type == "A louer" %>
+									<span class="position-absolute badge badge-info p-2" style="top: 10px; left: 20px;">A louer</span>
+									<% end %>
+
+									<% if user_signed_in? %>
+									<% if current_user.admin? and property.published %>
+									<span class="position-absolute badge badge-success p-2" style="top: 10px; right: 20px;">En ligne</span>
+									<% elsif current_user.admin? and !property.published %>
+									<span class="position-absolute badge badge-danger p-2" style="top: 10px; right: 20px;">Hors ligne</span>
+									<% end %>
+									<% end %>
+
 									<% if property.images.attached? %>
 									<%= image_tag url_for(property.images.first), class: "w-100", alt: "#{property.title}", height: "213px" %>
 									<% else %>
@@ -135,7 +149,7 @@
 								<div class="col-lg-7 pl-lg-0">
 									<div class="card-body">
 										<h5 class="card-title text-dark">
-											<%= truncate(strip_tags(property.title.capitalize), length: 30) %>
+											<%= truncate(strip_tags(property.title.capitalize), length: 50) %>
 										</h5>
 										<address class="card-text text-secondary">
 											<i class="fas fa-map-marker-alt"></i>&nbsp; <%= property.address.capitalize %>, <%= property.city.capitalize %>

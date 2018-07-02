@@ -1,6 +1,10 @@
 class PropertiesController < ApplicationController
-    skip_before_action :authenticate_user!, only: [:index, :show]
+    skip_before_action :authenticate_user!, only: [:index, :show, :type_dannonce]
     before_action :set_property, only: [:show, :edit, :update, :destroy]
+
+    def ad_type
+
+    end
 
     def publish
         @property_to_publish = Property.find(params[:id])
@@ -50,6 +54,7 @@ class PropertiesController < ApplicationController
     end
 
     def new
+        @ad_type = params[:ad_type]
         @property = current_user.properties.build
     end
 

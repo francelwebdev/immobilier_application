@@ -18,8 +18,8 @@
     <% end %>
 </head>
 <body class="<%= controller.controller_name + "#" + controller.action_name %>">
-    <%= render "shareds/navbar" %>
     <%= render 'shareds/flash' %>
+    <%= render "shareds/navbar" %>
     <main>
         <%= yield %>
     </main>
@@ -28,6 +28,9 @@
     <%= render "shareds/footer" %>
     <% if content_for?(:Morphext) %>
     <%= yield :Morphext %>
+    <% end %>
+    <% if content_for? :script_de_choix_du_type_dannonce %>
+    <%= yield :script_de_choix_du_type_dannonce %>
     <% end %>
 </body>
 </html>
