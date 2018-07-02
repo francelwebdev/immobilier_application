@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
-    before_action :set_property, only: [:show, :edit, :update, :destroy]
     skip_before_action :authenticate_user!, only: [:index, :show]
+    before_action :set_property, only: [:show, :edit, :update, :destroy]
 
     def publish
         @property_to_publish = Property.find(params[:id])
@@ -59,7 +59,7 @@ class PropertiesController < ApplicationController
     def create
         @property = current_user.properties.build(property_params)
         if @property.save
-            if params[:property][:user][:first_name].present? && params[:property][:user][:last_name].present? && params[:property][:user][:phone_number].present?
+            if params[:property][:user].present? && params[:property][:user].present? && params[:property][:user].present?
                 user = User.find(@property.user.id)
                 user.update first_name: params[:property][:user][:first_name], last_name: params[:property][:user][:last_name], phone_number: params[:property][:user][:phone_number]
             end
@@ -91,6 +91,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-        params.require(:property).permit(:property_type, :ad_type, :title, :price, :room, :area, :etage, { feature: [] }, :description, :address, :city, :available, :deposit, { user_info: [] }, { images: [] })
+        params.require(:property).permit(:property_type, :ad_type, :title, :price, :room, :area, :etage, { feature: [] }, :description, :address, :city, :available, :deposit, { images: [] })
     end
 end

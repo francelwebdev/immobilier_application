@@ -9,13 +9,13 @@ class Property < ApplicationRecord
     PROPERTY_TYPE = ["Appartement", "Maison", "Bureau", "Boutique", "Villa", "Chambre", "Entrée couché", "Magasin"]
     AVAILABLE = { Oui: :true, Nom: :false }
 
-    validates :price, :description, :city, :deposit, :property_type, :ad_type, :feature, :title, presence: true
+    belongs_to :user
+    # belongs_to :agency
+    
+    validates :price, :description, :city, :deposit, :property_type, :ad_type, :feature, :title, :available, presence: true
     validates :title, uniqueness: true
     validates :area, numericality: { only_integer: true }
     validates :deposit, numericality: { only_integer: true }
-
-    belongs_to :user
-    # belongs_to :agency
 
     has_many_attached :images
 
