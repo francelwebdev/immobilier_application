@@ -25,14 +25,13 @@ section.call_to_action_for_agency {
 }
 
 .liste-card-recherche {
-    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
     transition: all 0.3s ease-in-out;
     // transition: all 0.2s ease-in-out;
     // transition: 0.5s;
 }
 
 .liste-card-recherche:hover {
-    box-shadow: 0 10px 20px rgba(0,0,0,.1);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
     transition: all 0.3s ease-in-out;
     // transition: all 0.2s ease-in-out;
     // transition: 0.5s;
