@@ -1,10 +1,6 @@
 class PropertiesController < ApplicationController
-    skip_before_action :authenticate_user!, only: [:index, :show, :type_dannonce]
+    skip_before_action :authenticate_user!, only: [:index, :show]
     before_action :set_property, only: [:show, :edit, :update, :destroy]
-
-    def ad_type
-
-    end
 
     def publish
         @property_to_publish = Property.find(params[:id])
@@ -19,6 +15,14 @@ class PropertiesController < ApplicationController
     end
 
     def index
+
+    #     if(params.has_key?(:job_type))
+    #   @jobs = Job.where(job_type: params[:job_type]).order("created_at desc")
+    # else
+    #   @jobs = Job.all.order("created_at desc")
+    # end
+
+
         if params[:property_type].present? and params[:ad_type].blank? and params[:city].blank?
             @properties = Property.includes(:user).where("property_type = :property_type", { property_type: params[:property_type] }).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
             @properties_numbers = @properties.size

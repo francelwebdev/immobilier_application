@@ -3,6 +3,7 @@
 <% content_for :page_meta_keywords, "" %>
 <% content_for :Morphext do %>
 <script>
+$(function() {
 $("#js-rotating").Morphext({
     animation: "bounceIn", // Overrides default "bounceIn"
     speed: 3000, // Overrides default 2000
@@ -10,12 +11,13 @@ $("#js-rotating").Morphext({
         // Overrides default empty function
     }
 });
+});
 </script>
 <% end%>
 
 <div class="jumbotron jumbotron-fluid d-flex align-items-center mb-0 jumbotron-accueil">
     <div class="container">
-        <h1 class="text-white text-center mb-3">Trouver <span id="js-rotating" class="font-weight-bold">une maison, un appartement, un bureau, une boutique, une villa, une chambre, un entrée couché, un magasin</span> a louer sans aucune difficulté.</h1>
+        <h1 class="text-white text-center mb-3">Trouver <span id="js-rotating" class="font-weight-bold">la maison, l'appartement, le bureau, la boutique, la villa, la chambre, le magasin, le parcelle, le terrain</span> de vos rêves sans aucune difficulté.</h1>
         <div class="py-3 px-3" style="border-radius: 3px; background-color: rgba(0, 0, 0, 0.3)">
             <%= simple_form_for "", url: properties_path, method: :get do |f| %>
             <div class="row px-3">

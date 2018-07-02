@@ -6,9 +6,9 @@ class Property < ApplicationRecord
     FEATURE = ["Electricité", "Eau", "WC", "Internet"]
     ETAGE = ["Rez-de-chaussée", "1er étage", "2ème étage", "3ème étage", "4ème étage", "5ème étage"]
     AD_TYPE = ["A louer", "A vendre"]
-    PROPERTY_TYPE = ["Appartement", "Maison", "Bureau", "Boutique", "Villa", "Chambre", "Entrée couché", "Magasin"]
     PROPERTY_TYPE_FOR_RENT = ["Appartement", "Maison", "Bureau", "Boutique", "Villa", "Chambre", "Entrée couché", "Magasin"]
     PROPERTY_TYPE_FOR_SELL = ["Maison", "Villa", "Terrain", "Parcelle"]
+    PROPERTY_TYPE = ["Appartement", "Maison", "Bureau", "Boutique", "Villa", "Chambre", "Entrée couché", "Magasin"]
     AVAILABLE = { Oui: :true, Nom: :false }
 
     belongs_to :user, dependent: :destroy

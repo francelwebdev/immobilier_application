@@ -20,6 +20,9 @@
                 <h4 class="card-title mb-3">Description du bien</h4>
             </div>
             <div class="col-lg-12">
+                <%= f.input :ad_type, as: :hidden, input_html: { value: @ad_type } %>
+            </div>
+            <div class="col-lg-12">
                 <%= f.input :property_type, as: :radio_buttons, collection: Property::PROPERTY_TYPE_FOR_RENT, wrapper: :horizontal_collection_inline %>
             </div>
             <div class="col-12">
@@ -134,10 +137,8 @@
 
 
 <% elsif @ad_type == "A vendre" %>
-
 <%= simple_form_for(@property) do |f| %>
 <%= f.error_notification %>
-
 <% if @property.errors.any? %>
 <div class="alert alert-danger" role="alert">
     <p>
@@ -156,6 +157,9 @@
         <div class="form-row p-2">
             <div class="col-12">
                 <h4 class="card-title mb-3">Description du bien</h4>
+            </div>
+            <div class="col-lg-12">
+                <%= f.input :ad_type, as: :hidden, input_html: { value: @ad_type } %>
             </div>
             <div class="col-lg-12">
                 <%= f.input :property_type, as: :radio_buttons, collection: Property::PROPERTY_TYPE_FOR_SELL, wrapper: :horizontal_collection_inline %>
