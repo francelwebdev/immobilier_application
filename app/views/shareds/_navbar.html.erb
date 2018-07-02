@@ -21,7 +21,8 @@
 <% end %>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
-    <%= link_to home_page_path, class: "navbar-brand" do %>
+   <div class="container">
+     <%= link_to home_page_path, class: "navbar-brand" do %>
     <span class="h3 text-uppercase font-weight-bold">SICO</span>
     <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,11 +36,11 @@
                 Accueil <span class="sr-only">(current)</span>
                 <% end %>
             </li>
-            <li class="nav-item mx-2 ">
+            <li class="nav-item mx-2">
                 <%= link_to "Tout les annonces", properties_path, class: "nav-link" %>
             </li>
-            <li class="nav-item mx-2 ">
-                <%= link_to "Tout les agents", home_page_path, class: "nav-link" %>
+            <li class="nav-item mx-2 sr-only">
+                <%#= link_to "Tout les agents", home_page_path, class: "nav-link" %>
             </li>
 
             <% if user_signed_in? %>
@@ -53,7 +54,7 @@
             <%= yield :add_property %>
             <li class="nav-item dropdown mx-2">
                 <%= link_to "", class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" do %>
-                <%= image_tag url_for(current_user.profile_picture), size: "50", class: "rounded-circle" %>
+                <%= image_tag url_for(current_user.profile_picture), size: "30", class: "rounded-circle" %>
                 <%= current_user.first_name.capitalize + " " + current_user.last_name.upcase if current_user.first_name.present? && current_user.last_name.present? %>
                 <% end %>
                 <%= yield :dropdown_menu %>
@@ -62,7 +63,7 @@
             <%= yield :add_property %>
             <li class="nav-item dropdown mx-2">
                 <%= link_to "", class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" do %>
-                <%= image_tag "148705-essential-collection/svg/user-3.svg", size: "50" %>
+                <%= image_tag "148705-essential-collection/svg/user-3.svg", size: "30" %>
                 <%= current_user.first_name.capitalize + " " + current_user.last_name.upcase if current_user.first_name.present? && current_user.last_name.present?  %>
                 <% end %>
                 <%= yield :dropdown_menu %>
@@ -76,4 +77,5 @@
             <% end %>
         </ul>
     </div>
+   </div>
 </nav>

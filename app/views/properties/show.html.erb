@@ -20,10 +20,11 @@
         <div class="col-lg-12" style="border-bottom: 2px solid #dee2e6 !important;">
             <div class="row">
                 <div class="col-lg-9">
-                    <h2><%= @property.title.capitalize %></h2>
+                    <h2>
+                        <%= truncate(strip_tags(@property.title.capitalize), length: 50) %></h2>
                     <p>
                         <i class="fas fa-map-marker-alt"></i>&nbsp;
-                        <%= @property.address %>, <%= @property.city %>
+                        <%= @property.address.capitalize %>, <%= @property.city.capitalize %>
                     </p>
                 </div>
                 <div class="col-lg-3">
@@ -203,7 +204,7 @@
                             <div class="row">
                                 <% if @property.user.profile_picture.attached? %>
                                 <div class="col-lg-12 mb-3">
-                                    <%= image_tag url_for(@property.user.profile_picture), class: "rounded-circle img-fluid img-thumbnail", size: "200x200" if @property.user.profile_picture.attached? %>
+                                    <%= image_tag url_for(@property.user.profile_picture), class: "rounded-circle box-shadow", size: "200" if @property.user.profile_picture.attached? %>
                                 </div>
                                 <% else %>
                                 <div class="col-lg-12 mb-3">
