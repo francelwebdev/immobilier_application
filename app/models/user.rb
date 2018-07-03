@@ -7,10 +7,11 @@ class User < ApplicationRecord
     devise :omniauthable, omniauth_providers: %i[facebook]
 
     ROLE = ["Propriétaire", "Agent immobilier"]
+    GENDER = ["", ""]
 
     validates :role, presence: true, on: :create
     #validates :role, presence: true, on: :update
-    validates :first_name, :last_name, presence: true, on: :update
+    validates :first_name, :last_name, :gender, presence: true, on: :update
     validates :phone_number, presence: true, uniqueness: true, numericality: { only_integer: true }, length: { is: 8 }, on: :update
 
     before_create :create_administrator

@@ -58,7 +58,6 @@ class PropertiesController < ApplicationController
     end
 
     def new
-        @ad_type = params[:ad_type]
         @property = current_user.properties.build
     end
 
