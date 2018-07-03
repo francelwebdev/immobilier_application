@@ -2,7 +2,7 @@ fr:
   number:
     currency:
       format:
-        unit: F
+        unit: Fcfa
 
 
   shareds:

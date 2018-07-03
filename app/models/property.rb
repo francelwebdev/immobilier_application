@@ -12,10 +12,10 @@ class Property < ApplicationRecord
     belongs_to :user, dependent: :destroy
     # belongs_to :agency
 
-    validates :price, :description, :city, :area, :deposit, :property_type, :ad_type, :title, :available, presence: true
+    validates :price, :description, :city, :area, :property_type, :ad_type, :title, :available, presence: true
     validates :title, uniqueness: true
     validates :area, numericality: { only_integer: true }
-    validates :deposit, numericality: { only_integer: true }
+    validates :deposit, numericality: { only_integer: true, greeter_than_or_egal_to: 0 }
 
     has_many_attached :images
 

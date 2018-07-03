@@ -1,5 +1,19 @@
-<% content_for :script_de_choix_du_type_dannonce do %>
+<% content_for :script_choix_type_dannonce do %>
 <script>
+
+    $(function() {
+
+     $(".choix_type_dannonce").on("click", function(event) {
+
+        if ($(this).val() == "À louer") {
+            $(".choix_type_de_bien").hide();
+        } else if ($(this).val() == "À vendre") {
+            $(".choix_type_de_bien").show();
+        }
+
+    })
+
+ });
 
 </script>
 <% end %>

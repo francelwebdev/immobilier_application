@@ -30,12 +30,8 @@
     <%= yield :Morphext %>
     <% end %>
 
-    <script>
-    $(".choix").on("click", function(e) {
-        if ($(this).val() == "Appartement") {
-            $("input").hide();
-        }
-    })
-    </script>
+    <% if content_for? :script_choix_type_dannonce %>
+    <%= yield :script_choix_type_dannonce %>
+    <% end %>
 </body>
 </html>

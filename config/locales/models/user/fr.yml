@@ -6,7 +6,7 @@ fr:
       user:
         first_name: "Prénom"
         last_name: "Nom"
-        phone_number: "Numéro de téléphone"
+        phone_number: "Numéros de téléphone"
         gender: "Votre sexe"
         terms_and_conditions: "Conditions générales d'utilisation"
         profile_picture: "Photo de profile"

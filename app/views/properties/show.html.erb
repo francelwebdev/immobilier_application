@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-lg-3">
                         <% if @property.ad_type == "À vendre" %>
-                        <p class="h3 font-weight-bold">À vendre</p>
+                        <p class="h2"><span class="badge badge-info">À vendre</span></p>
                         <p class="text-primary h2">
                             <%= number_to_currency(@property.price, precision: 0) %>
                         </p>
