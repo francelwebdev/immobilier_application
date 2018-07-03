@@ -7,7 +7,7 @@ class User < ApplicationRecord
     devise :omniauthable, omniauth_providers: %i[facebook]
 
     ROLE = ["Propriétaire", "Agent immobilier"]
-    GENDER = ["", ""]
+    GENDER = { M: :Male, F: :Female }
 
     validates :role, presence: true, on: :create
     #validates :role, presence: true, on: :update
