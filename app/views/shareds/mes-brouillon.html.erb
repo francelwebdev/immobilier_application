@@ -1,3 +1,41 @@
+
+
+arriver à un accord
+
+scope :available, -> { where(in_stock: true) }
+  scope :cheap, -> { where(price: 0..1) }
+
+  scope :cheaper_than, ->(price) { where("price < ?", price) }
+
+
+def query
+@items = Item.where(Hash[*params[:specs].split("/")])
+if @items.empty?
+flash[:error] = "Can't find items with those properties"
+end
+render :index
+end
+
+$message = ‘Thank you for signing up for an account! Before you ‘.
+‘ can login you need to verify your account. You can do so ‘ .
+‘by visiting http://www.example.com/verify.php?uid=’ .
+$user- > userId . ‘ & token=’ . $token . ‘.’;
+if (@mail($user- > emailAddr, ‘Activate your new account’, $message))
+{
+$GLOBALS[‘TEMPLATE’][‘content’] = ‘ < p > < strong > Thank you for ‘ .
+‘registering. < /strong > < /p > < p > You will be receiving an ‘ .
+‘email shortly with instructions on activating your ‘ .
+‘account. < /p > ’;
+}
+else
+{
+$GLOBALS[‘TEMPLATE’][‘content’] = ‘ < p > < strong > There was an ‘ .
+‘error sending you the activation link. < /strong > < /p > ‘ .
+‘ < p > Please contact the site administrator at < a href=”’ .
+‘mailto:admin@example.com” > admin@example.com < /a > for ‘ .
+‘assistance. < /p > ’;
+
+
 <!-- Pour definir une date d'expiration -->
 class Listing < ApplicationRecord
 after_create :set_expiry_date

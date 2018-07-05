@@ -31,12 +31,12 @@ class Property < ApplicationRecord
 
     def definir_la_date_dexpiration
         self.published_at = Date.today
-        self.expire_at = Date.today + 1.week
+        self.expire_at = Date.today + 2.weeks
     end
 
     def suprimer_si_annonce_expire
         p = Property.find(self.id)
-        if p.published? and p.expire_at.past?
+        if p.published? && p.expire_at.past?
             p.delete
         end
     end

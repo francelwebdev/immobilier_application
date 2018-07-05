@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_03_004805) do
+ActiveRecord::Schema.define(version: 2018_07_05_165246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2018_07_03_004805) do
   create_table "properties", force: :cascade do |t|
     t.string "slug"
     t.string "title"
-    t.decimal "price"
+    t.decimal "price", precision: 10, scale: 2
     t.integer "area"
     t.text "description"
     t.string "address"
@@ -108,10 +108,10 @@ ActiveRecord::Schema.define(version: 2018_07_03_004805) do
     t.integer "deposit"
     t.string "feature", array: true
     t.string "etage"
-    t.datetime "published_at"
+    t.date "published_at"
     t.string "property_type"
     t.string "ad_type"
-    t.datetime "expire_at"
+    t.date "expire_at"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
