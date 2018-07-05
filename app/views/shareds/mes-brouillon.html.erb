@@ -1,3 +1,18 @@
+<!-- Pour definir une date d'expiration -->
+class Listing < ApplicationRecord
+after_create :set_expiry_date
+private
+def set_expiry_date
+expiry_date = Date.today + 30.days
+self.update_column(:expires_on, expiry_date)
+end
+end
+<!-- Pour definir une date d'expiration -->
+
+
+
+
+
 <%= simple_form_for(@property) do |f| %>
 <%= f.error_notification %>
 

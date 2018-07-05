@@ -64,8 +64,9 @@
                                     <% end %>
                                 </div>
                                 <% else %>
-                                <p class="text-center">
-                                    <%= image_tag "148705-essential-collection/svg/picture.svg", class: "w-100 h-100" %>
+                                <p class="mb-0 d-flex flex-column justify-content-center align-items-center">
+                                    <%= image_tag "148705-essential-collection/svg/picture.svg", size: "300" %>
+                                    <span>Annonce sans photo</span>
                                 </p>
                                 <% end %>
                             </div>
@@ -215,9 +216,18 @@
                                     </div>
                                     <% end %>
                                     <div class="col-lg-12">
-                                        <p class="font-weight-bold mb-3 h5 text-dark">
+                                        <% if @property.user.gender == "Male" %>
+                                        <p class="mb-3 h5">
+                                            Mr
                                             <%= @property.user.first_name.capitalize %> <%= @property.user.last_name.upcase %>
                                         </p>
+                                        <% elsif @property.user.gender == "Female" %>
+                                        <p class="mb-3 h5">
+                                            Mme
+                                            <%= @property.user.first_name.capitalize %> <%= @property.user.last_name.upcase %>
+                                        </p>
+                                        <% end %>
+
                                         <address>
                                             <ul class="list-unstyled">
                                                 <li class="my-2">
@@ -284,16 +294,16 @@
                                         <%= msg.input :user_id, as: :hidden, value: @property.user.id %>
                                     </div>
                                     <div class="col-12">
-                                        <%= msg.input :name, label: false, placeholder: "Prénom et NOM" %>
+                                        <%= msg.input :name %>
                                     </div>
                                     <div class="col-12">
-                                        <%= msg.input :email, as: :email, label: false, placeholder: "Email" %>
+                                        <%= msg.input :email, as: :email %>
                                     </div>
                                     <div class="col-12">
-                                        <%= msg.input :phone, as: :tel, label: false, placeholder: "Numéros de téléphone" %>
+                                        <%= msg.input :phone, as: :tel %>
                                     </div>
                                     <div class="col-12">
-                                        <%= msg.input :message, label: false, placeholder: "Message", input_html: {rows: 5} %>
+                                        <%= msg.input :message, input_html: {rows: 5} %>
                                     </div>
                                     <div class="col-12">
                                         <%= msg.submit "Envoyer", class: "btn btn-primary btn-block" %>
