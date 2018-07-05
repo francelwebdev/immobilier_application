@@ -16,8 +16,7 @@ class NewslettersController < ApplicationController
         if @newsletter.save
             redirect_to request.referrer, notice: "Merci de vous inscrire à la newsletter."
         else
-            flash[:alert] = "Il y a eu une erreur, réessayez"
-            redirect_to request.referrer
+            redirect_to request.referrer, alert: "Il y a eu une erreur, réessayez"
         end
     end
 

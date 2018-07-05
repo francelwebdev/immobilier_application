@@ -1,7 +1,6 @@
 class Newsletter < ApplicationRecord
     validates :email, presence: true
     validates :email, uniqueness: { message: "L'adresse email existe déja !" }
-    validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
 
     before_save :downcase_email
     # after_save :subscribe
