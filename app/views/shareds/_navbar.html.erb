@@ -21,42 +21,42 @@
 <% end %>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow">
-    <div class="container">
-        <%= link_to home_page_path, class: "navbar-brand" do %>
-        <span class="h3 text-uppercase font-weight-bold">SICO</span>
-        <% end %>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <%= link_to home_page_path, class: "navbar-brand" do %>
+    <span class="h3 text-uppercase font-weight-bold">SICO</span>
+    <% end %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item mx-1 active">
-                    <%= link_to home_page_path, class: "nav-link" do %>
-                    <i class="fa fa-home" aria-hidden="true"></i>
-                    Accueil <span class="sr-only">(current)</span>
-                    <% end %>
-                </li>
-                <li class="nav-item mx-1">
-                    <%= link_to "Toutes les annonces", properties_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item mx-1 sr-only">
-                    <%#= link_to "Tout les agents", home_page_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item mx-1">
-                    <%= link_to "Nos tarifs", pricing_plan_path, class: "nav-link" %>
-                </li>
-
-                <% if user_signed_in? %>
-                <li class="nav-item mx-1">
-                    <%= link_to "Mes annonces", my_properties_path, class: "nav-link"  %>
-                </li>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item mx-1 active">
+                <%= link_to home_page_path, class: "nav-link" do %>
+                <i class="fa fa-home" aria-hidden="true"></i>
+                Accueil <span class="sr-only">(current)</span>
                 <% end %>
+            </li>
+            <li class="nav-item mx-1">
+                <%= link_to "Toutes les annonces", properties_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item mx-1 sr-only">
+                <%#= link_to "Tout les agents", home_page_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item mx-1">
+                <%= link_to "Nos tarifs", pricing_plan_path, class: "nav-link" %>
+            </li>
 
-                <!-- <% if user_signed_in? %>
-                <% if current_user.profile_picture.attached? %>
-                <%= yield :add_property %>
-                <li class="nav-item dropdown mx-1">
+            <% if user_signed_in? %>
+            <li class="nav-item mx-1">
+                <%= link_to "Mes annonces", my_properties_path, class: "nav-link"  %>
+            </li>
+            <% end %>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+            <% if current_user.profile_picture.attached? %>
+            <%= yield :add_property %>
+            <li class="nav-item dropdown mx-1">
                 <%= link_to "", class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" do %>
                 <%= image_tag url_for(current_user.profile_picture), size: "30", class: "rounded-circle" %>
                 <%= current_user.first_name.capitalize + " " + current_user.last_name.upcase if current_user.first_name.present? && current_user.last_name.present? %>
@@ -66,48 +66,19 @@
             <% else %>
             <%= yield :add_property %>
             <li class="nav-item dropdown mx-1">
-            <%= link_to "", class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" do %>
-            <%= image_tag "148705-essential-collection/svg/user-3.svg", size: "30" %>
-            <%= current_user.first_name.capitalize + " " + current_user.last_name.upcase if current_user.first_name.present? && current_user.last_name.present?  %>
+                <%= link_to "", class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" do %>
+                <%= image_tag "148705-essential-collection/svg/user-3.svg", size: "30" %>
+                <%= current_user.first_name.capitalize + " " + current_user.last_name.upcase if current_user.first_name.present? && current_user.last_name.present?  %>
+                <% end %>
+                <%= yield :dropdown_menu %>
+            </li>
             <% end %>
-            <%= yield :dropdown_menu %>
-        </li>
-        <% end %>
-        <% else %>
-        <%= yield :add_property %>
-        <li class="nav-item mx-1">
-        <%= link_to "Connexion", new_user_session_path, class: "btn btn-secondary" %>
-    </li>
-    <% end %> -->
-</ul>
-<ul class="navbar-nav ml-auto">
-    <% if user_signed_in? %>
-    <% if current_user.profile_picture.attached? %>
-    <%= yield :add_property %>
-    <li class="nav-item dropdown mx-1">
-        <%= link_to "", class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" do %>
-        <%= image_tag url_for(current_user.profile_picture), size: "30", class: "rounded-circle" %>
-        <%= current_user.first_name.capitalize + " " + current_user.last_name.upcase if current_user.first_name.present? && current_user.last_name.present? %>
-        <% end %>
-        <%= yield :dropdown_menu %>
-    </li>
-    <% else %>
-    <%= yield :add_property %>
-    <li class="nav-item dropdown mx-1">
-        <%= link_to "", class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" do %>
-        <%= image_tag "148705-essential-collection/svg/user-3.svg", size: "30" %>
-        <%= current_user.first_name.capitalize + " " + current_user.last_name.upcase if current_user.first_name.present? && current_user.last_name.present?  %>
-        <% end %>
-        <%= yield :dropdown_menu %>
-    </li>
-    <% end %>
-    <% else %>
-    <%= yield :add_property %>
-    <li class="nav-item mx-1">
-        <%= link_to "Connexion", new_user_session_path, class: "btn btn-secondary" %>
-    </li>
-    <% end %>
-</ul>
-</div>
-</div>
+            <% else %>
+            <%= yield :add_property %>
+            <li class="nav-item mx-1">
+                <%= link_to "Connexion", new_user_session_path, class: "btn btn-secondary" %>
+            </li>
+            <% end %>
+        </ul>
+    </div>
 </nav>
