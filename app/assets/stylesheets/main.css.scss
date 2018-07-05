@@ -1,5 +1,8 @@
 // Mon style global
 
+// Mes variable SASS
+$mon_box_shadow_au_survol: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+
 
 main {
     background-color: #F2F6FF;
@@ -13,19 +16,6 @@ main {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-origin: content-box;
-}
-
-.liste-card-recherche {
-    transition: all 0.3s ease-in-out;
-    // transition: all 0.2s ease-in-out;
-    // transition: 0.5s;
-}
-
-.liste-card-recherche:hover {
-    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
-    transition: all 0.3s ease-in-out;
-    // transition: all 0.2s ease-in-out;
-    // transition: 0.5s;
 }
 
 .card-photo-property {
@@ -105,8 +95,22 @@ section.cta_for_owner_or_agency_or_agent {
 // Autre
 // background: linear-gradient(transparent 57%, rgba(0,0,0,1) 100%);
 
-.mon-box-shadow {
-    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+.pricing_plan {
+    transition: 0.3s;
+}
+.pricing_plan:hover {
+    box-shadow: $mon_box_shadow_au_survol;
+    // transition: all 0.3s ease-in-out;
+    transition: 0.3s;
+}
+
+.result_search_list_design {
+    transition: 0.3s;
+}
+.result_search_list_design:hover {
+    box-shadow: $mon_box_shadow_au_survol;
+    // transition: all 0.3s ease-in-out;
+    transition: 0.3s;
 }
 
 .design-connexion-avec-fb {

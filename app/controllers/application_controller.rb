@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     end
 
     def current_year
-        @current_year = Time.now.year
+        @current_year = Date.today.year
     end
 
 

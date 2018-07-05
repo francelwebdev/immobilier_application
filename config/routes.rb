@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 		get "about_us", to: "pages#about_us", as: "about_us"
 		get "contact_us", to: "pages#contact_us", as: "contact_us"
 		get "faq", to: "pages#faq", as: "faq"
-		get "pricing", to: "pages#pricing", as: "pricing"
+		get "pricing_plan", to: "pages#pricing_plan", as: "pricing_plan"
 		get "terms_and_conditions", to: "pages#terms_and_conditions", as: "terms_and_conditions"
 		post 'properties/:id/publish', to: 'properties#publish', as: "publish_property"
 		post 'properties/:id/deactivate', to: 'properties#deactivate', as: "deactivate_property"

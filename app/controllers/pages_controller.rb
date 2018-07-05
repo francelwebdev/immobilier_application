@@ -25,7 +25,7 @@ class PagesController < ApplicationController
 
     end
 
-    def pricing
+    def pricing_plan
 
     end
 

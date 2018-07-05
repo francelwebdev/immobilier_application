@@ -30,8 +30,8 @@ class Property < ApplicationRecord
     private
 
     def definir_la_date_dexpiration
-        self.published_at = Time.now
-        self.expire_at = 1.month.from_now
+        self.published_at = Date.today
+        self.expire_at = Date.today + 1.week
     end
 
     def suprimer_si_annonce_expire
