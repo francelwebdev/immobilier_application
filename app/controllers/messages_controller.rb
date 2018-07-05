@@ -6,9 +6,9 @@ class MessagesController < ApplicationController
 		@message = @user.messages.build(message_params)
 		if @message.valid?
 	    	MessagesMailer.send_message_to_owner(@user, @message).deliver_now
-            redirect_to(request.referrer, notice: "Message envoyé avec succès")
+            redirect_to request.referrer, notice: "Message envoyé avec succès"
         else
-            redirect_to(request.referrer, alert: "Le message n'a pas été envoyé, car le formulaire n'a pas été bien remplir.")
+            redirect_to request.referrer, alert: "Le message n'a pas été envoyé, car le formulaire n'a pas été bien remplir."
 		end
 	end
 

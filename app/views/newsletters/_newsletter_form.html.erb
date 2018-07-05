@@ -1,0 +1,6 @@
+<%= simple_form_for Newsletter.new do |f| %>
+<div class="d-flex">
+    <%= f.input :email, as: :email, label: false, wrapper: false, placeholder: "Entrer votre addresse email", class: "border-0" %>
+    <%= f.submit "S'abonné", class: "btn btn-primary border-0" %>
+</div>
+<% end %>

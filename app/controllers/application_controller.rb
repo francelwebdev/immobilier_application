@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
 
-    before_action :set_locale, :tout_les_ad_types, :tout_les_property_types, :newsletter, :current_year
+    before_action :set_locale, :tout_les_ad_types, :tout_les_property_types, :current_year
     before_action :authenticate_user!
     before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -21,14 +21,9 @@ class ApplicationController < ActionController::Base
         @property_types = Property::PROPERTY_TYPE
     end
 
-    def newsletter
-        @newsletter = Newsletter.new
-    end
-
     def current_year
         @current_year = Date.today.year
     end
-
 
     protected
 
