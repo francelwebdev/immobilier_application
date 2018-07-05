@@ -50,7 +50,6 @@ class User < ApplicationRecord
         end
     end
 
-
     private
 
     def send_welcome_email
