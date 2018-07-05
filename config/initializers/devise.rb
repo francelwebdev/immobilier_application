@@ -9,7 +9,7 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '8dc1c80c72753d5c5d0a2ff5d64865b592fbd7fbb69cf517e74866acee385ec8827a8d1ac6c3ab8da8787924a77ad369549cfe2eb5860beae525c221e736d3f7'
-  
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -259,7 +259,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
 
-  config.omniauth :facebook, Rails.application.secrets.fb_app_id, Rails.application.secrets.fb_app_id, token_params: { parse: :json }, scope: 'email', display: "popup", image_size: "square", info_fields: 'name,email,first_name,last_name,profile_pic', secure_image_url: true, client_options: {
+  config.omniauth :facebook, Rails.application.secrets.fb_app_id, Rails.application.secrets.fb_app_id, token_params: { parse: :json }, scope: 'email', display: "popup", image_size: "square", info_fields: 'email,first_name,last_name,profile_pic,gender', secure_image_url: true, client_options: {
       site: 'https://graph.facebook.com/v3.0',
       authorize_url: "https://www.facebook.com/v3.0/dialog/oauth"
     }
