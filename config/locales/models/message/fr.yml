@@ -1,0 +1,10 @@
+fr:
+  activerecord:
+    models:
+      message: "Message"
+    attributes:
+      message:
+        name: "Prénom et NOM"
+        email: "Adresse email"
+        phone: "Numéros de téléphone"
+        message: "Votre message"
