@@ -4,7 +4,7 @@ class Property < ApplicationRecord
 
     ROOM = ["1 pièce", "2 pièces", "3 pièces", "4 pièces", "5 pièces", "plus de 5 pièces"]
     FEATURE = ["Electricité", "Eau", "WC", "Internet"]
-    ETAGE = ["Rez-de-chaussée", "1er étage", "2ème étage", "3ème étage", "4ème étage", "5ème étage"]
+    ETAGE = ["Rez-de-chaussée", "1er étage", "2ème étage", "3ème étage", "4ème étage", "5ème étage", "6ème étage", "7ème étage"]
     AD_TYPE = ["À louer", "À vendre"]
     PROPERTY_TYPE = ["Appartement", "Maison", "Bureau", "Boutique", "Villa", "Chambre", "Magasin", "Terrain", "Parcelle"]
     AVAILABLE = { Oui: :true, Nom: :false }
@@ -12,7 +12,7 @@ class Property < ApplicationRecord
     belongs_to :user, dependent: :destroy
     # belongs_to :agency
 
-    validates :price, :description, :city, :area, :property_type, :ad_type, :title, :available, presence: true
+    validates :price, :description, :city, :address, :area, :property_type, :ad_type, :title, :available, presence: true
     validates :title, uniqueness: true
     validates :area, numericality: { only_integer: true }
     validates :deposit, numericality: { only_integer: true, greeter_than_or_egal_to: 0 }

@@ -8,7 +8,7 @@ fr:
         price: "Prix"
         area: "Surface"
         description: "Description de l'annonce"
-        address: "Adresse"
+        address: "Adresse ou Quartier"
         city: "Commune"
         room: "Nombres de pièce"
         available: "Le bien est disponible maintenant ?"
