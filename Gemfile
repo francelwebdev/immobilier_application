@@ -94,7 +94,6 @@ gem 'simple_form'
 gem 'devise'
 gem 'devise-i18n'
 gem 'omniauth-facebook'
-gem 'activerecord-session_store'
 gem 'jquery-slick-rails'
 gem 'friendly_id'
 
