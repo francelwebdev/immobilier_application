@@ -121,3 +121,6 @@ gem 'will_paginate'
 gem 'ransack'
 
 gem 'will_paginate-bootstrap'
+
+gem 'stripe'
+gem 'meta-tags'
