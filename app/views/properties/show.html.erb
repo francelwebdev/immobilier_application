@@ -231,17 +231,9 @@
                                     </div>
                                     <% end %>
                                     <div class="col-lg-12">
-                                        <% if @property.user.gender == "Male" %>
                                         <p class="mb-3 h5">
-                                            Mr
                                             <%= @property.user.first_name.capitalize %> <%= @property.user.last_name.upcase %>
                                         </p>
-                                        <% elsif @property.user.gender == "Female" %>
-                                        <p class="mb-3 h5">
-                                            Mme
-                                            <%= @property.user.first_name.capitalize %> <%= @property.user.last_name.upcase %>
-                                        </p>
-                                        <% end %>
 
                                         <address>
                                             <ul class="list-unstyled">
