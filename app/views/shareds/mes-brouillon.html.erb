@@ -1,3 +1,18 @@
+<script>
+$(function() {
+
+    $(window).scroll(function() {
+        if ($("#mainNav").offset().top > 100) {
+            $("#mainNav").removeClass("navbar-dark bg-transparent");
+            $("#mainNav").addClass("navbar-light bg-white shadow");
+        } else {
+            $("#mainNav").addClass("navbar-dark bg-transparent");
+            $("#mainNav").removeClass("shadow");
+        }
+    });
+
+});
+</script>
 
 
 arriver à un accord

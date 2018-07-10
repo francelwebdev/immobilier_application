@@ -124,3 +124,5 @@ gem 'will_paginate-bootstrap'
 
 gem 'stripe'
 gem 'meta-tags'
+
+gem 'font-awesome-sass'
