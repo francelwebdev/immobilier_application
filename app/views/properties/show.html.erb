@@ -246,84 +246,93 @@
                                             </ul>
                                         </address>
                                         <p>
-                                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Envoyer un message</button>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">Envoyer un message</button>
                                         </p>
-                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                        <h4 class="modal-title sr-only">Vous souhaitez ?</h4>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p class="mb-4 font-weight-bold">Envoyer un message à <%= @property.user.first_name.capitalize %> <%= @property.user.last_name.upcase %></p>
-                                                        <%= simple_form_for @message do |msg| %>
-                                                        <div class="form-row">
-                                                            <div class="col-12">
-                                                                <%= msg.input :user_id, as: :hidden, value: @property.user.id %>
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <%= msg.input :name %>
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <%= msg.input :email, as: :email %>
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <%= msg.input :phone, as: :tel %>
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <%= msg.input :message %>
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <%= msg.submit "Envoyer", class: "btn btn-primary btn-block btn-lg" %>
-                                                            </div>
-                                                        </div>
-                                                        <% end %>
-                                                    </div>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                          <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Envoyer un message à <%= @property.user.first_name.capitalize %> <%= @property.user.last_name.upcase %></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                  <span aria-hidden="true">&times;</span>
+                                              </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <%= simple_form_for @message do |msg| %>
+                                            <div class="container">
+                                                <div class="form-row">
+                                                <div class="col-12">
+                                                    <%= msg.input :user_id, as: :hidden, value: @property.user.id %>
+                                                </div>
+                                                <div class="col-12">
+                                                    <%= msg.input :name %>
+                                                </div>
+                                                <div class="col-12">
+                                                    <%= msg.input :email, as: :email %>
+                                                </div>
+                                                <div class="col-12">
+                                                    <%= msg.input :phone, as: :tel %>
+                                                </div>
+                                                <div class="col-12">
+                                                    <%= msg.input :message, input_html: { rows: 5 } %>
+                                                </div>
+                                                <div class="col-12">
+                                                    <%= msg.submit "Envoyer", class: "btn btn-primary btn-block btn-lg" %>
                                                 </div>
                                             </div>
+                                            </div>
+                                            <% end %>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                            <button type="button" class="btn btn-primary sr-only">Save changes</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="col-12 mb-4">
-                        <div class="card border-0 bg-white">
-                            <div class="card-body p-4">
-                                <h4 class="card-title">Envoyer un message</h4>
-                                <%= simple_form_for @message do |msg| %>
-                                <div class="form-row">
-                                    <div class="col-12">
-                                        <%= msg.input :user_id, as: :hidden, value: @property.user.id %>
-                                    </div>
-                                    <div class="col-12">
-                                        <%= msg.input :name %>
-                                    </div>
-                                    <div class="col-12">
-                                        <%= msg.input :email, as: :email %>
-                                    </div>
-                                    <div class="col-12">
-                                        <%= msg.input :phone, as: :tel %>
-                                    </div>
-                                    <div class="col-12">
-                                        <%= msg.input :message, input_html: {rows: 5} %>
-                                    </div>
-                                    <div class="col-12">
-                                        <%= msg.submit "Envoyer", class: "btn btn-primary btn-block" %>
-                                    </div>
-                                </div>
-                                <% end %>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="col-12 mb-4 sr-only">
+            <div class="card border-0 bg-white">
+                <div class="card-body p-4">
+                    <h4 class="card-title">Envoyer un message</h4>
+                    <%= simple_form_for @message do |msg| %>
+                    <div class="form-row">
+                        <div class="col-12">
+                            <%= msg.input :user_id, as: :hidden, value: @property.user.id %>
+                        </div>
+                        <div class="col-12">
+                            <%= msg.input :name %>
+                        </div>
+                        <div class="col-12">
+                            <%= msg.input :email, as: :email %>
+                        </div>
+                        <div class="col-12">
+                            <%= msg.input :phone, as: :tel %>
+                        </div>
+                        <div class="col-12">
+                            <%= msg.input :message, input_html: {rows: 5} %>
+                        </div>
+                        <div class="col-12">
+                            <%= msg.submit "Envoyer", class: "btn btn-primary btn-block" %>
+                        </div>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+</div>
+</div>
 </div>
 
 <div class="col-lg-12">

@@ -29,18 +29,34 @@
                                 <% @my_properties.each do |my_property| %>
                                 <!-- Grid design -->
                                 <div class="col-lg-6 mb-4">
-                                    <%= link_to my_property, class: "sans-text-decoration" do %>
-                                    <div class="card liste-card-recherche text-dark">
+                                    <div class="card result_search_list_design shadow-sm">
                                         <% if my_property.images.attached? %>
-                                        <%= image_tag url_for(my_property.images.first), class: "card-img-top", alt: "Photo de #{ my_property.title }", height: "200px" %>
+                                        <%= image_tag url_for(my_property.images.first), class: "card-img-top", alt: "Photo de #{ my_property.title }" %>
                                         <% else %>
-                                        <p>ANNONCE SANS PHOTO</p>
+                                        <p class="m-0 d-flex flex-column justify-content-center align-items-center">
+                                            <%= image_tag "148705-essential-collection/svg/picture.svg", size: "207x207" %>
+                                            <span>Annonce sans photo</span>
+                                        </p>
                                         <% end %>
 
+                                        <% if my_property.ad_type == "À vendre" %>
+                                    <h5 class="position-absolute" style="top: 10px; left: 20px;">
+                                        <span class="badge badge-secondary p-2" >À vendre</span>
+                                    </h5>
+                                    <% elsif my_property.ad_type == "À louer" %>
+                                    <h5 class="position-absolute" style="top: 10px; left: 20px;">
+                                        <span class="badge badge-secondary p-2">À louer</span>
+                                        <% end %>
+                                    </h5>
+
                                         <% if my_property.ad_type == "Vente" %>
-                                        <p class="h3"><span class="position-absolute badge badge-info p-2" style="top: 10px; left: 10px;">A vendre</span></p>
+                                        <h5 class="position-absolute" style="top: 10px; left: 20px;">
+                                            <span class="badge badge-info p-2">À vendre</span>
+                                        </h5>
                                         <% elsif my_property.ad_type == "Location" %>
-                                        <p class="h3"><span class="position-absolute badge badge-info p-2" style="top: 10px; left: 10px;">A louer</span></p>
+                                        <h5 class="position-absolute" style="top: 10px; left: 20px;">
+                                            <span class="badge badge-info p-2">À louer</span>
+                                        </h5>
                                         <% end %>
 
                                         <% if user_signed_in? %>
@@ -68,13 +84,17 @@
                                             </p>
                                             <% end %>
                                             <hr>
-                                             <p class="d-flex justify-content-between align-items-center mb-0">
+                                            <div class="d-flex justify-content-between align-items-center mb-0">
+                                            <p class="mb-0">
                                                 <small class="text-dark">Publié il y a <%= distance_of_time_in_words(my_property.created_at, Time.now, include_seconds: false) %></small>
-                                                <%= link_to "Modifier", edit_property_path(my_property), class: "btn btn-success btn-sm" %>
                                             </p>
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <%= link_to "Modifier", edit_property_path(my_property), class: "btn btn-primary" %>
+                                                <%= link_to "Voir", my_property, class: "btn btn-primary" %>
+                                            </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <% end %>
                                 </div>
                                 <!-- Grid design -->
                                 <% end %>
