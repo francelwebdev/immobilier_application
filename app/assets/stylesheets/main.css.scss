@@ -10,12 +10,11 @@ main {
 
 .jumbotron-accueil {
     height: 100vh !important;
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), asset-url("pexels-photo-277667.jpeg") !important;
+    background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("pexels-photo-277667.jpeg") !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-origin: content-box;
 }
 
 .card-photo-property {
@@ -36,12 +35,11 @@ main {
 
 .barre-recherche-avance {
     height: 75vh !important;
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), asset-url("pexels-photo-259950.jpeg") !important;
+    background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("pexels-photo-259950.jpeg") !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-origin: content-box;
 }
 
 section.banner-contact {
@@ -65,31 +63,28 @@ ul > li > a {
 
 .contact-page-banner, .add-property-page-banner, .edit-property-page-banner, .my_property-page-banner, .property-show-page-banner {
     height: 30vh !important;
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), asset-url("philipp-berndt-173197.jpg") !important;
+    background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("philipp-berndt-173197.jpg") !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-origin: content-box;
 }
 
 .agent-benefits-page-banner {
     height: 75vh !important;
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), asset-url("85.jpg") !important;
+    background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("85.jpg") !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-origin: content-box;
 }
 
 section.cta_for_owner_or_agency_or_agent {
-    background-image: linear-gradient(rgba(0,0,0,0.4) , rgba(0,0,0,0.4) ), asset-url("85.jpg") !important;
+    background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("85.jpg") !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-origin: content-box;
 }
 
 // Autre
@@ -120,10 +115,9 @@ section.cta_for_owner_or_agency_or_agent {
 
 .agency-list-banner {
     height: 80vh !important;
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2) ), asset-url("85.jpg") !important;
+    background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("85.jpg") !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-origin: content-box;
 }

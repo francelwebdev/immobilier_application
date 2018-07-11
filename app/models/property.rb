@@ -8,6 +8,7 @@ class Property < ApplicationRecord
     AD_TYPE = ["À louer", "À vendre"]
     PROPERTY_TYPE = ["Appartement", "Maison", "Bureau", "Boutique", "Villa", "Chambre", "Magasin", "Terrain", "Parcelle", "Immeuble"]
     AVAILABLE = { Oui: :true, Nom: :false }
+    CT = [""]
 
     belongs_to :user, dependent: :destroy
     # belongs_to :agency
