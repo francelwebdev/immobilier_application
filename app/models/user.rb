@@ -31,10 +31,11 @@ class User < ApplicationRecord
             # user.name = auth.info.name   # assuming the user model has a name
             # user.image = auth.info.image # assuming the user model has an image
 
-            user.name = auth.info.name
             user.profile_picture = auth.info.profile_pic
             user.first_name = auth.info.first_name
             user.last_name = auth.info.last_name
+            user.token = auth.credentials.token
+            user.token_expires_at = Time.at(auth.credentials.expires_at)
 
             # If you are using confirmable and the provider(s) you use validate emails,
             # uncomment the line below to skip the confirmation emails.
