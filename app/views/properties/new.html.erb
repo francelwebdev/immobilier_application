@@ -31,7 +31,7 @@
 <% end %>
 
 <section class="add-property-page-banner d-flex flex-column justify-content-center">
-    <div class="container">
+    <div class="w-75 m-auto">
         <div class="row">
             <div class="col-12 text-center">
                 <h2 class="text-white">Ajout d'un bien immobilier</h2>
@@ -40,13 +40,13 @@
     </div>
 </section>
 
-<section class="container py-5">
+<section class="py-5 w-75 m-auto">
     <div class="row">
-        <div class="col-lg-10 offset-lg-1 mb-3">
+        <div class="col-12 mb-3">
             <p>(*) Champs obligatoires</p>
             <%= render 'form', property: @property %>
         </div>
-        <div class="col-lg-10 offset-lg-1 sr-only">
+        <div class="col-12 sr-only">
             <%= link_to 'Back', properties_path, class: "btn btn-secondary" %>
         </div>
     </div>

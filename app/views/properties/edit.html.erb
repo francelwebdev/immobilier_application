@@ -1,35 +1,25 @@
 <% content_for :title, "Modification de mon annonce" %>
 <% content_for :script_choix_type_dannonce do %>
 <script>
-    $(document).ready(function() {
-        $(".choix_type_dannonce:checked").on('focus', function() {
-
-            if (this.val() === "À louer") {
-                $(".property_property_type > div:nth-child(3)").show();
-                $(".property_property_type > div:nth-child(4)").show();
-                $(".property_property_type > div:nth-child(5)").show();
-                $(".property_property_type > div:nth-child(6)").show();
-                $("div.form-check:nth-child(7)").show();
-                $("div.form-check:nth-child(8)").show();
-                $("div.form-check:nth-child(9)").show();
-                $("div.form-check:nth-child(10)").hide();
-                $("div.form-check:nth-child(11)").hide();
-                $("div.col-md-4:nth-child(11)").show();
-            } else if (this.val() === "À vendre") {
-                $(".property_property_type > div:nth-child(3)").hide();
-                $(".property_property_type > div:nth-child(4)").show();
-                $(".property_property_type > div:nth-child(5)").hide();
-                $(".property_property_type > div:nth-child(6)").hide();
-                $("div.form-check:nth-child(7)").show();
-                $("div.form-check:nth-child(8)").hide();
-                $("div.form-check:nth-child(9)").hide();
-                $("div.form-check:nth-child(10)").show();
-                $("div.form-check:nth-child(11)").show();
-                $("div.col-md-4:nth-child(11)").hide();
-            }
-
-        })
-    });
+$(document).ready(function() {
+    var celle_qui_est_coche = $(".choix_type_dannonce:checked");
+    if (celle_qui_est_coche.val() === "À louer") {
+        $(".property_property_type > div:nth-child(3)").show();
+        $(".property_property_type > div:nth-child(4)").show();
+        $(".property_property_type > div:nth-child(5)").show();
+        $(".property_property_type > div:nth-child(6)").show();
+        $("div.form-check:nth-child(7)").show();
+        $("div.form-check:nth-child(8)").show();
+        $("div.form-check:nth-child(9)").show();
+        $("div.form-check:nth-child(10)").hide();
+        $("div.form-check:nth-child(11)").hide();
+    } else if (celle_qui_est_coche.val() === "À vendre") {
+        $(".property_property_type > div:nth-child(3)").hide();
+        $(".property_property_type > div:nth-child(5)").hide();
+        $(".property_property_type > div:nth-child(6)").hide();
+        $("div.form-check:nth-child(8)").hide();
+    }
+});
 </script>
 <% end %>
 
