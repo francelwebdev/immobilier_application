@@ -110,11 +110,11 @@
                 <div class="card result_search_list_design shadow-sm">
                     <div class="row">
                         <div class="col-lg-5 pr-lg-0 d-flex flex-column justify-content-center align-items-center">
-                            <% if property.ad_type == "À vendre" %>
+                            <% if property.ad_type.name == "À vendre" %>
                             <h5 class="position-absolute" style="top: 10px; left: 20px;">
                                 <span class="badge badge-secondary p-2" >À vendre</span>
                             </h5>
-                            <% elsif property.ad_type == "À louer" %>
+                            <% elsif property.ad_type.name == "À louer" %>
                             <h5 class="position-absolute" style="top: 10px; left: 20px;">
                                 <span class="badge badge-secondary p-2">À louer</span>
                                 <% end %>
@@ -141,7 +141,7 @@
                                     <%= truncate(strip_tags(property.title.capitalize), length: 50) %>
                                 </h5>
                                 <address class="card-text text-secondary">
-                                    <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>&nbsp; <%= property.address.capitalize %>, <%= property.city.capitalize %>
+                                    <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>&nbsp; <%= property.address.capitalize %>, <%= property.city.name%>
                                 </address>
                                 <% if property.ad_type == "À vendre" %>
                                 <p class="text-primary h3">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_12_150435) do
+ActiveRecord::Schema.define(version: 2018_07_12_172541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,7 +115,6 @@ ActiveRecord::Schema.define(version: 2018_07_12_150435) do
     t.integer "area"
     t.text "description"
     t.string "address"
-    t.string "city"
     t.string "room"
     t.boolean "available"
     t.boolean "published", default: true
@@ -123,8 +122,6 @@ ActiveRecord::Schema.define(version: 2018_07_12_150435) do
     t.string "feature", array: true
     t.string "etage"
     t.date "published_at"
-    t.string "property_type"
-    t.string "ad_type"
     t.date "expire_at"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -133,12 +130,10 @@ ActiveRecord::Schema.define(version: 2018_07_12_150435) do
     t.integer "property_type_id"
     t.integer "ad_type_id"
     t.string "location"
-    t.index ["ad_type"], name: "index_properties_on_ad_type"
+    t.integer "city_id"
     t.index ["agency_id"], name: "index_properties_on_agency_id"
     t.index ["area"], name: "index_properties_on_area"
-    t.index ["city"], name: "index_properties_on_city"
     t.index ["price"], name: "index_properties_on_price"
-    t.index ["property_type"], name: "index_properties_on_property_type"
     t.index ["slug"], name: "index_properties_on_slug", unique: true
     t.index ["user_id"], name: "index_properties_on_user_id"
   end

@@ -13,7 +13,7 @@ class Property < ApplicationRecord
     belongs_to :property_type
     # belongs_to :agency
 
-    validates :price, :description, :city, :address, :area, :property_type, :ad_type, :title, :available, presence: true
+    validates :price, :description, :city_id, :address, :area, :property_type_id, :ad_type_id, :title, :available, presence: true
     validates :title, uniqueness: true
     validates :area, numericality: { only_integer: true }
     validates :deposit, numericality: { only_integer: true, greeter_than_or_egal_to: 0 }, allow_blank: true
