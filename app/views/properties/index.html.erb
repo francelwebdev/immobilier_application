@@ -18,7 +18,7 @@
                         <%= f.input :ad_type, collection: Property::AD_TYPE, prompt: "Type d'annonce", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
                     </div>
                     <div class="col-lg-6 px-1 mb-2">
-                        <%= f.input :city, placeholder: "Ou ? Zogbo, Fifadji, Fidjrossè, Agla, Akpakpa, Godomey", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                        <%= f.input :city, placeholder: "Ou ? Entrez le nom d'un quartier ou d'une ville", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
                     </div>
                     <div class="col-lg-4 px-1 mb-2">
                         <%= f.input :room, collection: ["1 pièce", "2 pièces", "3 pièces", "4 pièces", "5 pièces", "plus de 5 pièces"], prompt: "Nombres de pièce", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
