@@ -10,25 +10,32 @@ class Property < ApplicationRecord
     AVAILABLE = { Oui: :true, Nom: :false }
     CITY = "Banikoara Gogounou Kandi Karimama Malanville Segbana Boukoumbé Cobly Kérou Kouandé Matéri Natitingou Pehonko Tanguiéta Toucountouna Abomey-Calavi Allada Kpomassè Ouidah Sô-Ava Toffo Tori-Bossito Zè Bembéréké Kalalé N'Dali Nikki Parakou Pèrèrè Sinendé Tchaourou Bantè Dassa-Zoumè Glazoué Ouèssè Savalou Savè Aplahoué Djakotomey Dogbo Klouékanmè Lalo Toviklin Bassila Copargo Djougou Ouaké Cotonou Athiémé Bopa Comè Grand-Popo Houéyogbé Lokossa Adjarra Adjohoun Aguégués Akpro-Missérété Avrankou Bonou Dangbo Porto-Novo Sèmè-Kpodji Ifangni Adja-Ouèrè Kétou Pobè Sakété Abomey Agbangnizoun Bohicon Covè Djidja Ouinhi Za-Kpota Zagnanado Zogbodomey".split.sort
 
-    belongs_to :user, dependent: :destroy
+    belongs_to :user
     # belongs_to :agency
 
     validates :price, :description, :city, :address, :area, :property_type, :ad_type, :title, :available, presence: true
     validates :title, uniqueness: true
     validates :area, numericality: { only_integer: true }
-    validates :deposit, numericality: { only_integer: true, greeter_than_or_egal_to: 0 }
+    validates :deposit, numericality: { only_integer: true, greeter_than_or_egal_to: 0 }, allow_blank: true
 
     has_many_attached :images
 
     scope :published, -> { where(published: true) }
     scope :unpublished, -> { where(published: false) }
 
+    before_save :mettre_tout_en_minuscule
     before_create :definir_la_date_dexpiration
     after_create :suprimer_si_annonce_expire
     after_destroy :suprimer_les_photos
 
 
     private
+
+    def mettre_tout_en_minuscule
+        self.title.downcase!
+        self.description.downcase!
+        self.address.downcase!
+    end
 
     def definir_la_date_dexpiration
         self.published_at = Date.today
@@ -43,7 +50,7 @@ class Property < ApplicationRecord
     end
 
     def suprimer_les_photos
-        self.images.purge_later
+        self.images.purge
     end
 
 end

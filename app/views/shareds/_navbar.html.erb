@@ -66,7 +66,7 @@
             <% if current_user.profile_picture.attached? %>
             <%= yield :add_property %>
             <li class="nav-item dropdown mx-1">
-                <%= link_to "", class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" do %>
+                <%= link_to "", class: "nav-link dropdown-toggle d-flex align-items-center", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" do %>
                 <%= image_tag url_for(current_user.profile_picture), size: "30", class: "rounded-circle" %>
                 <%= current_user.first_name.capitalize + " " + current_user.last_name.upcase if current_user.first_name.present? && current_user.last_name.present? %>
                 <% end %>
@@ -75,9 +75,9 @@
             <% else %>
             <%= yield :add_property %>
             <li class="nav-item dropdown mx-1">
-                <%= link_to "", class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" do %>
+                <%= link_to "", class: "nav-link dropdown-toggle d-flex align-items-center", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" do %>
                 <i class="fa fa-user-circle fa-2x fa-fw" aria-hidden="true"></i>
-                <%= current_user.first_name.capitalize + " " + current_user.last_name.upcase if current_user.first_name.present? && current_user.last_name.present?  %>
+                <%= current_user.first_name.capitalize + " " + current_user.last_name.upcase if current_user.first_name.present? && current_user.last_name.present? %>
                 <% end %>
                 <%= yield :dropdown_menu %>
             </li>

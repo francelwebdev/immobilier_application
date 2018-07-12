@@ -67,7 +67,7 @@ class PropertiesController < ApplicationController
     def create
         @property = current_user.properties.build(property_params)
         if @property.save
-            if params[:property][:user].present? && params[:property][:user].present? && params[:property][:user].present?
+            if params[:property][:user].present?
                 user = User.find(@property.user.id)
                 user.update first_name: params[:property][:user][:first_name], last_name: params[:property][:user][:last_name], phone_number: params[:property][:user][:phone_number]
             end
