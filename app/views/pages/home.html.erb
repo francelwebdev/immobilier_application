@@ -6,18 +6,18 @@
 $(function() {
 $("#js-rotating").Morphext({
     animation: "bounceIn", // Overrides default "bounceIn"
-    speed: 5000, // Overrides default 2000
+    speed: 3000, // Overrides default 2000
     complete: function () {
         // Overrides default empty function
     }
 });
 });
 </script>
-<% end%>
+<% end %>
 
 <div class="jumbotron jumbotron-fluid d-flex align-items-center mb-0 jumbotron-accueil py-5">
     <div class="container">
-        <h1 class="text-white text-center mb-3">Trouver <span id="js-rotating" class="font-weight-bold">la maison, l'appartement, le bureau, la boutique, la villa, la chambre, le magasin, le parcelle, le terrain</span> de vos rêves sans aucune difficulté.</h1>
+        <h1 class="text-white text-center mb-3">Trouver <span id="js-rotating" class="font-weight-bold">la chambre, la maison, le villa, l'appartement, le bureau, la boutique, le magasin, le parcelle, le terrain</span> de vos rêves sans aucune difficulté.</h1>
         <div class="py-3 px-3 rounded" style="background-color: rgba(0, 0, 0, 0.3)">
             <%= form_with url: properties_path, method: :get do |f| %>
             <div class="form-row">

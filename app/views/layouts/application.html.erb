@@ -23,8 +23,7 @@
     <main>
         <%= yield %>
     </main>
-    <%#= render "shareds/call_to_action_for_agency" %>
-    <%= render "shareds/call_to_action_for_owner" %>
+    <%= render "shareds/vp_for_agent_or_agency" %>
     <%= render "shareds/footer" %>
     <% if content_for?(:Morphext) %>
     <%= yield :Morphext %>

@@ -79,12 +79,13 @@ ul > li > a {
     background-repeat: no-repeat;
 }
 
-section.cta_for_owner_or_agency_or_agent {
+section.vp_for_agent_or_agency {
     background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("85.jpg") !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    height: 50vh;
 }
 
 // Autre
