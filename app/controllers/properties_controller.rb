@@ -16,15 +16,41 @@ class PropertiesController < ApplicationController
 
     def index
         if params.has_key?(:property_type) and params.has_key?(:ad_type) and params.has_key?(:city) and !params.has_key?(:room) and !params.has_key?(:price) and !params.has_key?(:area)
-            property_type_id = PropertyType.find_by(name: params[:property_type]).id
-            ad_type_id = AdType.find_by(name: params[:ad_type]).id
-            city_id = City.find_by(name: params[:city].capitalize)
-            unless city_id.nil?
-                city_id = City.find_by(name: params[:city].capitalize).id
+            if params[:property_type].present? and params[:ad_type].blank? and params[:city].blank?
+                property_type_id = PropertyType.find_by(name: params[:property_type]).id
+                @properties = Property.includes(:user, :property_type, :ad_type, :city).where("property_type_id = :property_type_id or ad_type_id = :ad_type_id or city_id = :city_id or description LIKE :description or title LIKE :title or address LIKE :address", property_type_id: property_type_id, ad_type_id: ad_type_id, city_id: city_id, description: "%#{params[:city].downcase}%", title: "%#{params[:city].downcase}%", address: "%#{params[:city].downcase}%").published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
+                @properties_numbers = @properties.count
+            elsif params[:ad_type].present?
+                ad_type_id = AdType.find_by(name: params[:ad_type]).id
+            elsif params[:city].present?
+                city_id = City.find_by(name: params[:city].capitalize)
+                if !city_id.nil?
+                    city_id = City.find_by(name: params[:city].capitalize).id
+                end
             end
-            @properties = Property.includes(:user).where("property_type_id = :property_type_id or ad_type_id = :ad_type_id or city_id = :city_id or description LIKE :description or title LIKE :title or address LIKE :address", property_type_id: property_type_id, ad_type_id: ad_type_id, city_id: city_id, description: "%#{params[:city].downcase}%", title: "%#{params[:city].downcase}%", address: "%#{params[:city].downcase}%").published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
+            @properties = Property.includes(:user, :property_type, :ad_type, :city).where("property_type_id = :property_type_id or ad_type_id = :ad_type_id or city_id = :city_id or description LIKE :description or title LIKE :title or address LIKE :address", property_type_id: property_type_id, ad_type_id: ad_type_id, city_id: city_id, description: "%#{params[:city].downcase}%", title: "%#{params[:city].downcase}%", address: "%#{params[:city].downcase}%").published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
             @properties_numbers = @properties.count
+
+
+
+
+
+
+
         elsif params.has_key?(:property_type) and params.has_key?(:ad_type) and params.has_key?(:city) and params.has_key?(:room) and params.has_key?(:price) and params.has_key?(:area)
+            if params[:property_type].present?
+                property_type_id = PropertyType.find_by(name: params[:property_type]).id
+            elsif params[:ad_type].present?
+                ad_type_id = AdType.find_by(name: params[:ad_type]).id
+            elsif params[:city].present?
+                city_id = City.find_by(name: params[:city].capitalize)
+                if !city_id.nil?
+                    city_id = City.find_by(name: params[:city].capitalize).id
+                end
+            elsif params[:room].present?
+                room_id = Room.find_by(name: params[:room]).id
+            end
+
             if !params[:price].empty? and params[:area].empty?
                 @properties = Property.includes(:user).where("property_type = :property_type or ad_type = :ad_type or city = :city or room = :room or price <= :price or area >= :area or description LIKE :description or title LIKE :title or address LIKE :address", property_type: params[:property_type], ad_type: params[:ad_type], city: params[:city].capitalize, room: params[:room], price: params[:price].to_i, area: nil, description: "%#{params[:city].downcase}%", title: "%#{params[:city].downcase}%", address: "%#{params[:city].downcase}%").published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
                 @properties_numbers = @properties.count
