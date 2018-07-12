@@ -65,13 +65,6 @@ class PropertiesController < ApplicationController
     end
 
     def new
-    #     if params[:pricing_plan_choosing].present?
-    #         session[:pricing_plan_choosing] = params[:pricing_plan_choosing]
-    #     end
-    #     @pricing_plan_choosing = session[:pricing_plan_choosing]
-    #     puts "*************************"
-    #         puts @pricing_plan_choosing
-    #     puts "*************************"
         @property = current_user.properties.build
     end
 

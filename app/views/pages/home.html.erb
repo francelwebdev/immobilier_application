@@ -19,7 +19,7 @@ $("#js-rotating").Morphext({
     <div class="container">
         <h1 class="text-white text-center mb-3">Trouver <span id="js-rotating" class="font-weight-bold">la chambre, la maison, le villa, l'appartement, le bureau, la boutique, le magasin, le parcelle, le terrain</span> de vos rêves sans aucune difficulté.</h1>
         <div class="py-3 px-3 rounded" style="background-color: rgba(0, 0, 0, 0.3)">
-            <%= form_with url: properties_path, method: :get do |f| %>
+            <%= form_with url: properties_path, method: :get, local: true do |f| %>
             <div class="form-row">
                 <div class="col-md-3 px-0 mb-2">
                     <%= f.collection_select :property_type, PropertyType.all, :name, :name, { prompt: "Type de bien" }, { class: "rounded-0 form-control form-control-lg", required: true } %>
