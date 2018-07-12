@@ -18,9 +18,27 @@ $("#js-rotating").Morphext({
 <div class="jumbotron jumbotron-fluid d-flex align-items-center mb-0 jumbotron-accueil py-5">
     <div class="w-75 m-auto">
         <h1 class="text-white text-center mb-3">Trouver <span id="js-rotating" class="font-weight-bold">la maison, l'appartement, le bureau, la boutique, la villa, la chambre, le magasin, le parcelle, le terrain</span> de vos rêves sans aucune difficulté.</h1>
-        <div class="py-3 px-3" style="border-radius: 3px; background-color: rgba(0, 0, 0, 0.3)">
+        <div class="py-3 px-3 rounded" style="background-color: rgba(0, 0, 0, 0.3)">
+
+            <%= form_with url: search_property_path, method: :get do |f| %>
+            <div class="form-row">
+                <div class="col-md-3">
+                    <%= f.collection_select :property_type, PropertyType.all, :name, :name, prompt: "Type de bien", class: "form-control form-control-lg" %>
+                </div>
+                <div class="col-md-3">
+                    <%= f.collection_select :property_type, AdType.all, :name, :name, prompt: "Type d'annonce", class: "form-control form-control-lg" %>
+                </div>
+                <div class="col-md-4">
+                    <%= f.text_field :location, class: "form-control form-control-lg" %>
+                </div>
+                <div class="col-md-2">
+                    <%= f.submit "Rechercher", class: "btn btn-primary btn-lg" %>
+                </div>
+            </div>
+            <% end %>
+
             <%= simple_form_for "", url: properties_path, method: :get do |f| %>
-            <div class="row px-3">
+            <div class="form-row px-3">
                 <div class="col-lg-3 px-1 mb-2">
                     <%= f.input :property_type, collection: Property::PROPERTY_TYPE, prompt: "Type de bien", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
                 </div>

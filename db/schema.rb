@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_12_141913) do
+ActiveRecord::Schema.define(version: 2018_07_12_150435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2018_07_12_141913) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_ad_types_on_name", unique: true
   end
 
   create_table "agencies", force: :cascade do |t|
@@ -59,6 +60,13 @@ ActiveRecord::Schema.define(version: 2018_07_12_141913) do
     t.index ["slug"], name: "index_agencies_on_slug", unique: true
     t.index ["user_id"], name: "index_agencies_on_user_id"
     t.index ["website"], name: "index_agencies_on_website", unique: true
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_cities_on_name", unique: true
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -124,6 +132,7 @@ ActiveRecord::Schema.define(version: 2018_07_12_141913) do
     t.integer "agency_id"
     t.integer "property_type_id"
     t.integer "ad_type_id"
+    t.string "location"
     t.index ["ad_type"], name: "index_properties_on_ad_type"
     t.index ["agency_id"], name: "index_properties_on_agency_id"
     t.index ["area"], name: "index_properties_on_area"
@@ -138,6 +147,7 @@ ActiveRecord::Schema.define(version: 2018_07_12_141913) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_property_types_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -159,6 +169,7 @@ ActiveRecord::Schema.define(version: 2018_07_12_141913) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
     t.string "role"
+    t.string "name"
     t.string "first_name"
     t.string "last_name"
     t.string "profile_picture"
