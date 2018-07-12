@@ -21,16 +21,20 @@
 <% end -%>
 
 <div class="d-flex justify-content-center align-items-center my-3">
-<hr class="bg-primary m-0" style="border: 2px solid gray; width: 30%">
-<p class="m-0 px-3 font-weight-bold">Ou</p>
-<hr class="bg-primary m-0" style="border: 2px solid gray; width: 30%">
+	<hr class="bg-primary m-0" style="border: 2px solid gray; width: 30%">
+	<p class="m-0 px-3 font-weight-bold">Ou</p>
+	<hr class="bg-primary m-0" style="border: 2px solid gray; width: 30%">
 </div>
 
 
 <%- if devise_mapping.omniauthable? %>
 <%- resource_class.omniauth_providers.each do |provider| %>
-<p>
-	<%= link_to t('.sign_in_with_provider', provider: OmniAuth::Utils.camelize(provider)), omniauth_authorize_path(resource_name, provider), class: "design-connexion-avec-fb sans-text-decoration p-3 text-light" %><br />
-</p>
+<%#= link_to t('.sign_in_with_provider', provider: OmniAuth::Utils.camelize(provider)), omniauth_authorize_path(resource_name, provider) %><br />
+
+<%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-block btn-lg btn-social btn-facebook" do %>
+<span class="fa fa-facebook"></span>
+<%= t('.sign_in_with_provider', provider: OmniAuth::Utils.camelize(provider)) %>
+<% end %>
+<br />
 <% end -%>
 <% end -%>
