@@ -12,22 +12,22 @@
                 <%= form_with url: properties_path, method: :get do |f| %>
                 <div class="form-row">
                     <div class="col-md-3 px-0 mb-2">
-                        <%= f.collection_select :property_type, PropertyType.all, :name, :name, { prompt: "Type de bien" }, { class: "rounded-0 form-control form-control-lg" } %>
+                        <%= f.collection_select :property_type, PropertyType.all, :name, :name, { prompt: "Type de bien" }, { class: "rounded-0 form-control form-control-lg", required: true } %>
                     </div>
                     <div class="col-md-3 px-0 mb-2">
-                        <%= f.collection_select :ad_type, AdType.all, :name, :name, { prompt: "Type d'annonce" }, { class: "rounded-0 form-control form-control-lg" } %>
+                        <%= f.collection_select :ad_type, AdType.all, :name, :name, { prompt: "Type d'annonce" }, { class: "rounded-0 form-control form-control-lg", required: true } %>
                     </div>
                     <div class="col-md-6 px-0 mb-2">
-                        <%= f.text_field :city, placeholder: "Ou ? Ex: Fidjrossè, Abomey-Calavi", class: "rounded-0 form-control form-control-lg" %>
+                        <%= f.text_field :city, placeholder: "Ou ? Ex: Fidjrossè, Abomey-Calavi", class: "rounded-0 form-control form-control-lg", required: true %>
                     </div>
                     <div class="col-md-3 px-0 mb-2">
-                        <%= f.select :room, options_for_select(Property::ROOM), { prompt: "Nombres de pièce" }, { class: "rounded-0 form-control form-control-lg" } %>
+                        <%= f.collection_select :room, Room.all, :name, :name, { prompt: "Nombres de pièce" }, { class: "rounded-0 form-control form-control-lg", required: true } %>
                     </div>
                     <div class="col-md-3 px-0 mb-2">
-                        <%= f.number_field :price, placeholder: "Loyer ou prix maximum", class: "rounded-0 form-control form-control-lg" %>
+                        <%= f.number_field :price, placeholder: "Loyer ou prix maximum", class: "rounded-0 form-control form-control-lg", required: true %>
                     </div>
                     <div class="col-md-3 px-0 mb-2">
-                        <%= f.number_field :area, placeholder: "Surface minimum", class: "rounded-0 form-control form-control-lg" %>
+                        <%= f.number_field :area, placeholder: "Surface minimum", class: "rounded-0 form-control form-control-lg", required: true %>
                     </div>
                     <div class="col-md-3 px-0 mb-2">
                         <%= f.submit "Rechercher", class: "rounded-0 btn btn-primary btn-lg btn-block" %>

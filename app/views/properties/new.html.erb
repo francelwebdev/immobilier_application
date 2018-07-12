@@ -1,8 +1,9 @@
 <% content_for :script_choix_type_dannonce do %>
 <script>
     $(function() {
-        $(".choix_type_dannonce").on("click", function() {
-            if (this.checked && $(this).val() == "À louer") {
+        $("#property_ad_type_id").on("change", function() {
+            var property_ad_type_id = $('#property_ad_type_id option:selected').val();
+            if (property_ad_type_id === "1") {
                 $(".property_property_type > div:nth-child(3)").show();
                 $(".property_property_type > div:nth-child(4)").show();
                 $(".property_property_type > div:nth-child(5)").show();
@@ -13,7 +14,7 @@
                 $("div.form-check:nth-child(10)").hide();
                 $("div.form-check:nth-child(11)").hide();
                 $("div.col-md-4:nth-child(11)").show();
-            } else if (this.checked && $(this).val() == "À vendre") {
+            } else if (property_ad_type_id === "2") {
                 $(".property_property_type > div:nth-child(3)").hide();
                 $(".property_property_type > div:nth-child(4)").show();
                 $(".property_property_type > div:nth-child(5)").hide();
@@ -42,7 +43,7 @@
 
 <section class="py-5 container">
     <div class="row">
-        <div class="col-12 mb-3">
+        <div class="col-lg-10 offset-lg-1 mb-3">
             <p>(*) Champs obligatoires</p>
             <%= render 'form', property: @property %>
         </div>

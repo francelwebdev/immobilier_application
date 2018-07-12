@@ -22,13 +22,13 @@ $("#js-rotating").Morphext({
             <%= form_with url: properties_path, method: :get do |f| %>
             <div class="form-row">
                 <div class="col-md-3 px-0 mb-2">
-                    <%= f.collection_select :property_type, PropertyType.all, :name, :name, { prompt: "Type de bien" }, { class: "rounded-0 form-control form-control-lg" } %>
+                    <%= f.collection_select :property_type, PropertyType.all, :name, :name, { prompt: "Type de bien" }, { class: "rounded-0 form-control form-control-lg", required: true } %>
                 </div>
                 <div class="col-md-3 px-0 mb-2">
-                    <%= f.collection_select :ad_type, AdType.all, :name, :name, { prompt: "Type d'annonce" }, { class: "rounded-0 form-control form-control-lg" } %>
+                    <%= f.collection_select :ad_type, AdType.all, :name, :name, { prompt: "Type d'annonce" }, { class: "rounded-0 form-control form-control-lg", required: true } %>
                 </div>
                 <div class="col-md-4 px-0 mb-2">
-                    <%= f.text_field :city, placeholder: "Ou ? Ex: Fidjrossè, Abomey-Calavi", class: "rounded-0 form-control form-control-lg" %>
+                    <%= f.text_field :city, placeholder: "Ou ? Ex: Fidjrossè, Abomey-Calavi", class: "rounded-0 form-control form-control-lg", required: true %>
                 </div>
                 <div class="col-md-2 px-0 mb-2">
                     <%= f.submit "Rechercher", class: "rounded-0 btn btn-primary btn-lg btn-block" %>

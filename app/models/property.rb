@@ -2,21 +2,24 @@ class Property < ApplicationRecord
     extend FriendlyId
     friendly_id :title, use: :slugged
 
-    ROOM = ["1 pièce", "2 pièces", "3 pièces", "4 pièces", "5 pièces", "plus de 5 pièces"].sort
     FEATURE = ["Electricité", "Eau", "WC", "Internet"].sort
     ETAGE = ["Rez-de-chaussée", "1er étage", "2ème étage", "3ème étage", "4ème étage", "5ème étage", "6ème étage", "7ème étage"].sort
-    AVAILABLE = { Oui: :true, Nom: :false }.sort
+    AVAILABLE = { Oui: :TRUE, Nom: :FALSE }
 
     belongs_to :user
     belongs_to :city
     belongs_to :ad_type
     belongs_to :property_type
+    belongs_to :room
     # belongs_to :agency
 
-    validates :price, :description, :city_id, :address, :area, :property_type_id, :ad_type_id, :title, :available, presence: true
+    validates :price, :description, :address, :area, :title, presence: true
+    validates :etage, presence: true, allow_blank: true
+    validates :available, presence: true, inclusion: { in: ["TRUE", "FALSE"] }, allow_blank: true
     validates :title, uniqueness: true
     validates :area, numericality: { only_integer: true }
     validates :deposit, numericality: { only_integer: true, greeter_than_or_egal_to: 0 }, allow_blank: true
+    validates_associated :user
 
     has_many_attached :images
 

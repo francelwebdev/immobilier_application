@@ -39,21 +39,21 @@
                                         </p>
                                         <% end %>
 
-                                        <% if my_property.ad_type == "À vendre" %>
+                                        <% if my_property.ad_type.name == "À vendre" %>
                                     <h5 class="position-absolute" style="top: 10px; left: 20px;">
                                         <span class="badge badge-secondary p-2" >À vendre</span>
                                     </h5>
-                                    <% elsif my_property.ad_type == "À louer" %>
+                                    <% elsif my_property.ad_type.name == "À louer" %>
                                     <h5 class="position-absolute" style="top: 10px; left: 20px;">
                                         <span class="badge badge-secondary p-2">À louer</span>
                                         <% end %>
                                     </h5>
 
-                                        <% if my_property.ad_type == "Vente" %>
+                                        <% if my_property.ad_type.name == "Vente" %>
                                         <h5 class="position-absolute" style="top: 10px; left: 20px;">
                                             <span class="badge badge-info p-2">À vendre</span>
                                         </h5>
-                                        <% elsif my_property.ad_type == "Location" %>
+                                        <% elsif my_property.ad_type.name == "Location" %>
                                         <h5 class="position-absolute" style="top: 10px; left: 20px;">
                                             <span class="badge badge-info p-2">À louer</span>
                                         </h5>
@@ -72,13 +72,13 @@
                                                 <%= truncate(strip_tags(my_property.title.capitalize), length: 25) %>
                                             </h5>
                                             <address class="card-text text-secondary">
-                                                <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>&nbsp; <%= my_property.address %>, <%= my_property.city %>
+                                                <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>&nbsp; <%= my_property.address %>, <%= my_property.city.name %>
                                             </address>
-                                            <% if my_property.ad_type == "Vente" %>
+                                            <% if my_property.ad_type.name == "À vendre" %>
                                             <p class="text-primary m-0 p-0 h3">
                                                 <%= number_to_currency(my_property.price, precision: 0) %>
                                             </p>
-                                            <% elsif my_property.ad_type == "Location" %>
+                                            <% elsif my_property.ad_type.name == "À louer" %>
                                             <p class="text-primary m-0 p-0 h3">
                                                 <%= number_to_currency(my_property.price, precision: 0) %>/mois
                                             </p>

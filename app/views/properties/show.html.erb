@@ -94,8 +94,8 @@
                                         <p><%= @property.area %> m<sup>2</sup></p>
                                     </div>
                                     <div class="col-6 col-lg-3 text-center mb-2">
-                                        <p class="font-weight-bold text-dark h6">Nbrs de pièces</p>
-                                        <p><%= @property.room %></p>
+                                        <p class="font-weight-bold text-dark h6">Nombres de pièces</p>
+                                        <p><%= @property.room.name %></p>
                                     </div>
                                     <div class="col-6 col-lg-3 text-center mb-2">
                                         <% if @property.ad_type.name == "À louer" %>
