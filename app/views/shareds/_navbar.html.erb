@@ -1,5 +1,5 @@
 <% content_for :add_property do %>
-<li class="nav-item mx-1 d-flex align-items.center">
+<li class="nav-item mx-1">
     <li class="nav-item mx-1">
         <%= link_to "Déposer une annonce", new_property_path, class: "nav-link btn btn-primary text-white" %>
     </li>
@@ -14,7 +14,7 @@
     <%# if user_signed_in? && current_user.role == "Agent immobilier" %>
     <%#= link_to "Mon agence", edit_agency_path(current_user.agency), class: "dropdown-item" %>
     <%# end %>
-    <%= link_to "Modifier mon compte", edit_user_registration_path, class: "dropdown-item" %>
+    <%= link_to "Mon compte", edit_user_registration_path, class: "dropdown-item" %>
     <div class="dropdown-divider"></div>
     <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
 </div>
@@ -49,7 +49,7 @@
             </li>
             <% end %>
         </ul>
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto d-md-flex align-items-md-center">
             <% if user_signed_in? %>
             <% if current_user.profile_picture.attached? %>
             <%= yield :add_property %>
@@ -64,7 +64,7 @@
             <%= yield :add_property %>
             <li class="nav-item dropdown mx-1">
                 <%= link_to "", class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" do %>
-                <%= image_tag "148705-essential-collection/svg/user-3.svg", size: "30" %>
+                <i class="fa fa-user-circle fa-2x fa-fw" aria-hidden="true"></i>
                 <%= current_user.first_name.capitalize + " " + current_user.last_name.upcase if current_user.first_name.present? && current_user.last_name.present?  %>
                 <% end %>
                 <%= yield :dropdown_menu %>

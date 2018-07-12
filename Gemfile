@@ -85,7 +85,7 @@ gem 'rails-i18n'
 gem 'jquery-rails'
 gem 'popper_js'
 gem 'bootstrap'
-gem 'font-awesome-sass'
+gem 'font-awesome-sass', '~> 4.7'
 gem 'bootstrap-datepicker-rails'
 gem 'autoprefixer-rails'
 
@@ -124,5 +124,3 @@ gem 'will_paginate-bootstrap'
 
 gem 'stripe'
 gem 'meta-tags'
-
-gem 'font-awesome-sass'

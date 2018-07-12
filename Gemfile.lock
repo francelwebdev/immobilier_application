@@ -129,7 +129,7 @@ GEM
     ffi (1.9.25-java)
     ffi (1.9.25-x64-mingw32)
     ffi (1.9.25-x86-mingw32)
-    font-awesome-sass (5.0.13)
+    font-awesome-sass (4.7.0)
       sassc (>= 1.11)
     friendly_id (5.2.4)
       activerecord (>= 4.0.0)
@@ -428,7 +428,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   devise-i18n
-  font-awesome-sass
+  font-awesome-sass (~> 4.7)
   friendly_id
   gibbon
   jbuilder (~> 2.5)
