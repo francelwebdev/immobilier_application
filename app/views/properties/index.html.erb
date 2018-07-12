@@ -18,7 +18,7 @@
                         <%= f.collection_select :ad_type, AdType.all, :name, :name, { prompt: "Type d'annonce" }, { class: "rounded-0 form-control form-control-lg" } %>
                     </div>
                     <div class="col-md-6 px-0 mb-2">
-                        <%= f.text_field :location, placeholder: "Ou ? Entrez le nom d'un quartier ou d'une ville", class: "rounded-0 form-control form-control-lg" %>
+                        <%= f.text_field :city, placeholder: "Ou ? Ex: Fidjrossè, Abomey-Calavi", class: "rounded-0 form-control form-control-lg" %>
                     </div>
                     <div class="col-md-3 px-0 mb-2">
                         <%= f.select :room, options_for_select(Property::ROOM), { prompt: "Nombres de pièce" }, { class: "rounded-0 form-control form-control-lg" } %>

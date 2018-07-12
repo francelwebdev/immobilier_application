@@ -15,8 +15,8 @@ class PropertiesController < ApplicationController
     end
 
     def index
-        if params.has_key?(:property_type) and params.has_key?(:ad_type) and params.has_key?(:location) and !params.has_key?(:room) and !params.has_key?(:price) and !params.has_key?(:area)
-            @properties = Property.includes(:user).where("property_type = :property_type or ad_type = :ad_type or city = :location_one or address LIKE :location_two or location LIKE city = :location_three or description LIKE :description or title LIKE :title or address LIKE :address", property_type: params[:property_type], ad_type: params[:ad_type], city: params[:city].capitalize, description: "%#{params[:city].downcase}%", title: "%#{params[:city].downcase}%", address: "%#{params[:city].downcase}%").published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
+        if params.has_key?(:property_type) and params.has_key?(:ad_type) and params.has_key?(:city) and !params.has_key?(:room) and !params.has_key?(:price) and !params.has_key?(:area)
+            @properties = Property.includes(:user).where("property_type = :property_type or ad_type = :ad_type or city = :city or description LIKE :description or title LIKE :title or address LIKE :address", property_type: params[:property_type], ad_type: params[:ad_type], city: params[:city].capitalize, description: "%#{params[:city].downcase}%", title: "%#{params[:city].downcase}%", address: "%#{params[:city].downcase}%").published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
             @properties_numbers = @properties.count
         elsif params.has_key?(:property_type) and params.has_key?(:ad_type) and params.has_key?(:city) and params.has_key?(:room) and params.has_key?(:price) and params.has_key?(:area)
             if !params[:price].empty? and params[:area].empty?
