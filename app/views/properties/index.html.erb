@@ -24,10 +24,10 @@
                         <%= f.select :room, options_for_select(Property::ROOM), { prompt: "Nombres de pièce" }, { class: "rounded-0 form-control form-control-lg" } %>
                     </div>
                     <div class="col-md-3 px-0 mb-2">
-                        <%= f.number_field :price, placeholder: "Loyer ou prix max", class: "rounded-0 form-control form-control-lg" %>
+                        <%= f.number_field :price, placeholder: "Loyer ou prix maximum", class: "rounded-0 form-control form-control-lg" %>
                     </div>
                     <div class="col-md-3 px-0 mb-2">
-                        <%= f.number_field :area, placeholder: "Surface min", class: "rounded-0 form-control form-control-lg" %>
+                        <%= f.number_field :area, placeholder: "Surface minimum", class: "rounded-0 form-control form-control-lg" %>
                     </div>
                     <div class="col-md-3 px-0 mb-2">
                         <%= f.submit "Rechercher", class: "rounded-0 btn btn-primary btn-lg btn-block" %>
