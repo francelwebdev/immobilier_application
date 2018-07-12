@@ -93,10 +93,10 @@
                 <h4 class="card-title mb-3">Localisation du bien</h4>
             </div>
             <div class="col-md-6">
-                <%= f.input :address, label: "Adresse/Quartier" %>
+                <%= f.input :city, as: :select, collection: Property::CITY, prompt: "Sélectionner une commune" %>
             </div>
             <div class="col-md-6">
-                <%= f.input :city %>
+                <%= f.input :address, label: "Adresse/Quartier" %>
             </div>
         </div>
     </div>

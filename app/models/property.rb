@@ -8,7 +8,7 @@ class Property < ApplicationRecord
     AD_TYPE = ["À louer", "À vendre"]
     PROPERTY_TYPE = ["Appartement", "Maison", "Bureau", "Boutique", "Villa", "Chambre", "Magasin", "Terrain", "Parcelle", "Immeuble"]
     AVAILABLE = { Oui: :true, Nom: :false }
-    CT = [""]
+    CITY = ["Abomey-Calavi", "Allada", "Aplahoué", "Banikoara", "Bantè", "Bassila", "Bembéréké", "Boukoumbé", "Cobly", "Copargo", "Dassa-Zoumè", "Djakotomey", "Djougou", "Dogbo", "Glazoué", "Gogounou", "Kalalé", "Kandi", "Karimama", "Klouékanmè", "Kouandé", "Kpomassè", "Kérou", "Lalo", "Malanville", "Matéri", "N'Dali", "Natitingou", "Nikki", "Ouaké", "Ouidah", "Ouèssè", "Parakou", "Pehonko", "Pèrèrè", "Savalou", "Savè", "Segbana", "Sinendé", "Sô-Ava", "Tanguiéta", "Tchaourou", "Toffo", "Tori-Bossito", "Toucountouna", "Toviklin", "Zè"]
 
     belongs_to :user, dependent: :destroy
     # belongs_to :agency
