@@ -83,10 +83,10 @@
                 <div class="card bg-white border-0">
                     <div class="card-body px-4">
                         <h5 class="mb-4 font-weight-bold">Biens par Commune</h5>
-                        <ul class="list-unstyled sr-only">
+                        <ul class="list-unstyled">
                             <li class="my-2">
                                 <%= link_to "", class: "text-dark" do %>
-                                <i class="fas fa-arrow-right"></i>&nbsp; Cotonou
+                                <i class="fa fa-angle-right fa-lg" aria-hidden="true"></i>&nbsp; Cotonou
                                 <% end %>
                             </li>
                         </ul>
@@ -143,11 +143,11 @@
                                 <address class="card-text text-secondary">
                                     <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>&nbsp; <%= property.address.capitalize %>, <%= property.city.name%>
                                 </address>
-                                <% if property.ad_type == "À vendre" %>
+                                <% if property.ad_type.name == "À vendre" %>
                                 <p class="text-primary h3">
                                     <%= number_to_currency(property.price, precision: 0) %>
                                 </p>
-                                <% elsif property.ad_type == "À louer" %>
+                                <% elsif property.ad_type.name == "À louer" %>
                                 <p class="text-primary h3">
                                     <%= number_to_currency(property.price, precision: 0) %>/mois
                                 </p>
