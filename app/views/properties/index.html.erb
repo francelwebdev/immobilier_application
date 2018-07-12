@@ -1,4 +1,4 @@
-<% content_for :page_title, "Resultat de recherche"  %>
+<% content_for :page_title, "Resultat de recherche" %>
 <% content_for :page_meta_description, "Accueil - SICO - Annonces immobilieres au Bénin" %>
 <% content_for :page_meta_keywords, "Chambre a louer cotonou, Parcelle a vendre Benin, Appartement a louer cotonou, Boutique a louer cotonou" %>
 
@@ -24,10 +24,10 @@
                         <%= f.input :room, collection: ["1 pièce", "2 pièces", "3 pièces", "4 pièces", "5 pièces", "plus de 5 pièces"], prompt: "Nombres de pièce", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
                     </div>
                     <div class="col-lg-3 px-1 mb-2">
-                        <%= f.input :loyer_maximum, as: :decimal, placeholder: "Loyer max", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                        <%= f.input :price, as: :integer, placeholder: "Loyer ou prix maximum", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
                     </div>
                     <div class="col-lg-3 px-1 mb-2">
-                        <%= f.input :surface_minimum, as: :integer, placeholder: "Surface min", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
+                        <%= f.input :area, as: :integer, placeholder: "Surface minimum", label: false, input_html: { class: "form-control form-control-lg" }, wrapper_html: { class: "m-0" } %>
                     </div>
                     <div class="col-lg-2 px-1 mb-2">
                         <%= f.button :submit, "Rechercher", name: nil, class: 'btn btn-primary btn-block btn-lg' %>
@@ -124,7 +124,7 @@
                     <div class="col-lg-12 mb-4">
                         <div class="card result_search_list_design shadow-sm">
                             <div class="row">
-                                <div class="col-lg-5 pr-lg-0">
+                                <div class="col-lg-5 pr-lg-0 d-flex flex-column justify-content-center align-items-center">
                                     <% if property.ad_type == "À vendre" %>
                                     <h5 class="position-absolute" style="top: 10px; left: 20px;">
                                         <span class="badge badge-secondary p-2" >À vendre</span>
@@ -146,10 +146,8 @@
                                     <% if property.images.attached? %>
                                     <%= image_tag url_for(property.images.first), class: "w-100", alt: "#{property.title}", height: "221px" %>
                                     <% else %>
-                                    <p class="mb-0 d-flex flex-column justify-content-center align-items-center">
-                                        <i class="fa fa-picture-o fa-4x" aria-hidden="true"></i>
-                                        <span>Annonce sans photo</span>
-                                    </p>
+                                    <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
+                                    <span>Annonce sans photo</span>
                                     <% end %>
                                 </div>
                                 <div class="col-lg-7 pl-lg-0">
@@ -158,7 +156,7 @@
                                             <%= truncate(strip_tags(property.title.capitalize), length: 50) %>
                                         </h5>
                                         <address class="card-text text-secondary">
-                                            <i class="fas fa-map-marker-alt"></i>&nbsp; <%= property.address.capitalize %>, <%= property.city.capitalize %>
+                                            <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; <%= property.address.capitalize %>, <%= property.city.capitalize %>
                                         </address>
                                         <% if property.ad_type == "À vendre" %>
                                         <p class="text-primary h3">

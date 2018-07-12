@@ -11,15 +11,13 @@
     <h6 class="dropdown-header">Bienvenue !</h6>
     <div class="dropdown-divider"></div>
     <%= link_to my_properties_path, class: "dropdown-item" do %>
-    <i class="fa fa-list" aria-hidden="true"></i>&nbsp;
-    Mes annonces
+    <i class="fa fa-list" aria-hidden="true"></i>&nbsp; Mes annonces
     <% end %>
     <%# if user_signed_in? && current_user.role == "Agent immobilier" %>
     <%#= link_to "Mon agence", edit_agency_path(current_user.agency), class: "dropdown-item" %>
     <%# end %>
     <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
-    <i class="fa fa-cog" aria-hidden="true"></i>&nbsp;
-    Mon compte
+    <i class="fa fa-cog" aria-hidden="true"></i>&nbsp; Mon compte
     <% end %>
     <div class="dropdown-divider"></div>
     <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
@@ -76,7 +74,7 @@
             <%= yield :add_property %>
             <li class="nav-item dropdown mx-1">
                 <%= link_to "", class: "nav-link dropdown-toggle d-flex align-items-center", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" do %>
-                <i class="fa fa-user-circle fa-2x fa-fw" aria-hidden="true"></i>
+                <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>&nbsp;
                 <%= current_user.first_name.capitalize + " " + current_user.last_name.upcase if current_user.first_name.present? && current_user.last_name.present? %>
                 <% end %>
                 <%= yield :dropdown_menu %>

@@ -15,40 +15,28 @@ class PropertiesController < ApplicationController
     end
 
     def index
+        if params.has_key?(:property_type) and params.has_key?(:ad_type) and params.has_key?(:city) and !params.has_key?(:room) and !params.has_key?(:price) and !params.has_key?(:area)
+            @properties = Property.includes(:user).where("property_type = ? or ad_type = ? or city = ?", "#{params[:property_type]}", "#{params[:ad_type]}", "#{params[:city].capitalize}").published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
+            @properties_numbers = @properties.count
 
-    #     if(params.has_key?(:job_type))
-    #   @jobs = Job.where(job_type: params[:job_type]).order("created_at desc")
-    # else
-    #   @jobs = Job.all.order("created_at desc")
-    # end
-
-
-        if params[:property_type].present? and params[:ad_type].blank? and params[:city].blank?
-            @properties = Property.includes(:user).where("property_type = :property_type", { property_type: params[:property_type] }).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
-            @properties_numbers = @properties.size
-        elsif params[:property_type].present? and params[:ad_type].present? and params[:city].blank?
-            @properties = Property.includes(:user).where("property_type = :property_type AND ad_type = :ad_type", { property_type: params[:property_type], ad_type: params[:ad_type] }).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
-            @properties_numbers = @properties.size
-        elsif params[:property_type].present? and params[:ad_type].present? and params[:city].present?
-            @properties = Property.includes(:user).where("property_type = :property_type AND ad_type = :ad_type AND city = :city", { property_type: params[:property_type], ad_type: params[:ad_type], city: params[:city] }).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
-            @properties_numbers = @properties.size
-        elsif params[:property_type].blank? and params[:ad_type].present? and params[:city].present?
-            @properties = Property.includes(:user).where("ad_type = :ad_type && city = :city", { ad_type: params[:ad_type], city: params[:city] }).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
-            @properties_numbers = @properties.size
-        elsif params[:property_type].blank? and params[:ad_type].blank? and params[:city].present?
-            @properties = Property.includes(:user).where("city = :city", { city: params[:city] }).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
-            @properties_numbers = @properties.size
-        elsif params[:property_type].blank? and params[:ad_type].present? and params[:city].blank?
-            @properties = Property.includes(:user).where("ad_type = :ad_type", { ad_type: params[:ad_type] }).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
-            @properties_numbers = @properties.size
-
-
-
-
-
+        elsif params.has_key?(:property_type) and params.has_key?(:ad_type) and params.has_key?(:city) and params.has_key?(:room) and params.has_key?(:price) and params.has_key?(:area)
+            @properties = Property.includes(:user).where("
+                property_type = ? or
+                ad_type = ? or
+                city = ? or
+                room = ? or
+                price <= ? or
+                area >= ?",
+                params[:property_type].to_s,
+                params[:ad_type].to_s,
+                params[:city].to_s.capitalize,
+                params[:room].to_s,
+                params[:price].to_i,
+                params[:area].to_i).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
+            @properties_numbers = @properties.count
         else
             @properties = Property.includes(:user).all.order("created_at DESC").published.paginate(page: params[:page], per_page: 4)
-            @properties_numbers = @properties.size
+            @properties_numbers = @properties.count
         end
     end
 

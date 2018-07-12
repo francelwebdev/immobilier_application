@@ -17,16 +17,15 @@
 
 <section class="container">
     <div class="row">
-        <div class="col-lg-12" style="border-bottom: 2px solid #dee2e6 !important;">
+        <div class="col-lg-12">
             <div class="row">
                 <div class="col-lg-9">
                     <h2>
                         <%= truncate(strip_tags(@property.title.capitalize), length: 50) %></h2>
                         <p>
-                            <i class="fas fa-map-marker-alt"></i>&nbsp;
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;
                             <%= @property.address.capitalize %>, <%= @property.city.capitalize %>
                         </p>
-                        <p><small>Publié il y a <%= distance_of_time_in_words(@property.created_at, Time.now, include_seconds: false) %></small></p>
                     </div>
                     <div class="col-lg-3">
                         <% if @property.ad_type == "À vendre" %>
@@ -47,18 +46,24 @@
                     </div>
                 </div>
             </div>
+            <div class="col-12">
+                <hr>
+            </div>
+            <div class="col-12">
+                <p>Publié il y a <%= distance_of_time_in_words(@property.created_at, Time.now, include_seconds: false) %>.</p>
+            </div>
+
         </div>
     </section>
 
-    <section class="container py-5">
+    <section class="container py-3">
         <div class="row">
             <div class="col-lg-8">
                 <div class="row">
                     <div class="col-lg-12 mb-4">
                         <div class="card border-0 bg-white">
                             <div class="card-body p-4">
-                                <h4 class="card-title font-weight-bold mb-4">Photos</h4>
-                                <p><%= pluralize(@property.images.count, "photo", "photos") %></p>
+                                <h4 class="card-title font-weight-bold mb-4">Photos <small class="text-muted">(<%= pluralize(@property.images.count, "photo", "photos") %>)</small></h4>
                                 <% if @property.images.attached? %>
                                 <div class="single-item">
                                     <% @property.images.each do |image| %>
@@ -69,7 +74,7 @@
                                 </div>
                                 <% else %>
                                 <p class="mb-0 d-flex flex-column justify-content-center align-items-center">
-                                    <%= image_tag "148705-essential-collection/svg/picture.svg", size: "300" %>
+                                    <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
                                     <span>Annonce sans photo</span>
                                 </p>
                                 <% end %>
@@ -214,7 +219,7 @@
 
                     <div class="col-12 mb-4">
                         <div class="card border-0 bg-white">
-                            <div class="card-body p-4">
+                            <div class="card-body p-4 text-center">
                                 <% if @property.user.role == "Propriétaire" %>
                                 <h4 class="mb-4">À propos du properiétaire</h4>
                                 <% elsif @property.user.role == "Agent immobilier" %>
@@ -227,7 +232,7 @@
                                     </div>
                                     <% else %>
                                     <div class="col-lg-12 mb-3">
-                                        <%= image_tag "148705-essential-collection/svg/user-3.svg", class: " img-fluid box-shadow", size: "200x200" %>
+                                        <i class="fa fa-user-circle fa-5x" aria-hidden="true"></i>
                                     </div>
                                     <% end %>
                                     <div class="col-lg-12">
@@ -238,10 +243,10 @@
                                         <address>
                                             <ul class="list-unstyled">
                                                 <li class="my-2">
-                                                    <i class="fas fa-phone" aria-hidden="true"></i>&nbsp; <%= @property.user.phone_number %>
+                                                    <i class="fa fa-mobile fa-lg" aria-hidden="true"></i>&nbsp; <%= @property.user.phone_number %>
                                                 </li>
                                                 <li class="my-2">
-                                                    <i class="fas fa-envelope"></i>&nbsp; <%= mail_to @property.user.email, @property.user.email, class: "text-dark" %>
+                                                    <i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i>&nbsp; <%= mail_to @property.user.email, @property.user.email, class: "text-dark" %>
                                                 </li>
                                             </ul>
                                         </address>
@@ -264,25 +269,25 @@
                                             <%= simple_form_for @message do |msg| %>
                                             <div class="container">
                                                 <div class="form-row">
-                                                <div class="col-12">
-                                                    <%= msg.input :user_id, as: :hidden, value: @property.user.id %>
+                                                    <div class="col-12">
+                                                        <%= msg.input :user_id, as: :hidden, value: @property.user.id %>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <%= msg.input :name %>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <%= msg.input :email, as: :email %>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <%= msg.input :phone, as: :tel %>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <%= msg.input :message, input_html: { rows: 5 } %>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <%= msg.submit "Envoyer", class: "btn btn-primary btn-block btn-lg" %>
+                                                    </div>
                                                 </div>
-                                                <div class="col-12">
-                                                    <%= msg.input :name %>
-                                                </div>
-                                                <div class="col-12">
-                                                    <%= msg.input :email, as: :email %>
-                                                </div>
-                                                <div class="col-12">
-                                                    <%= msg.input :phone, as: :tel %>
-                                                </div>
-                                                <div class="col-12">
-                                                    <%= msg.input :message, input_html: { rows: 5 } %>
-                                                </div>
-                                                <div class="col-12">
-                                                    <%= msg.submit "Envoyer", class: "btn btn-primary btn-block btn-lg" %>
-                                                </div>
-                                            </div>
                                             </div>
                                             <% end %>
                                         </div>

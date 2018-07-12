@@ -1,7 +1,6 @@
 <% content_for :script_choix_type_dannonce do %>
 <script>
     $(function() {
-
         $(".choix_type_dannonce").on("click", function() {
             if (this.checked && $(this).val() == "À louer") {
                 $(".property_property_type > div:nth-child(3)").show();
@@ -27,7 +26,6 @@
                 $("div.col-md-4:nth-child(11)").hide();
             }
         })
-
     });
 </script>
 <% end %>
