@@ -51,7 +51,7 @@
                                 <% @property_types.each do |property_type| %>
                                 <li class="my-3">
                                    <%= link_to properties_path(property_type: property_type), class: "text-dark d-flex justify-content-between" do %>
-                                   <span><i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp; <%= property_type %></span>
+                                   <span><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i>&nbsp; <%= property_type %></span>
                                    <span class="bagde badge-primary badge-pill p-1 sr-only">ok</span>
                                    <% end %>
                                </li>
@@ -69,7 +69,7 @@
                             <% @ad_types.each do |ad_type| %>
                             <li class="my-3">
                                 <%= link_to properties_path(ad_type: ad_type), class: "text-dark d-flex justify-content-between" do %>
-                                <span><i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp; <%=  ad_type %></span>
+                                <span><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i>&nbsp; <%=  ad_type %></span>
                                 <span class="bagde badge-primary badge-pill p-1 sr-only">ok</span>
                                 <% end %>
                             </li>
@@ -87,26 +87,6 @@
                             <li class="my-2">
                                 <%= link_to "", class: "text-dark" do %>
                                 <i class="fas fa-arrow-right"></i>&nbsp; Cotonou
-                                <% end %>
-                            </li>
-                            <li class="my-2">
-                                <%= link_to "", class: "text-dark" do %>
-                                <i class="fas fa-arrow-right"></i>&nbsp; Porto-Novo
-                                <% end %>
-                            </li>
-                            <li class="my-2">
-                                <%= link_to "", class: "text-dark" do %>
-                                <i class="fas fa-arrow-right"></i>&nbsp; Abomey-Calavi
-                                <% end %>
-                            </li>
-                            <li class="my-2">
-                                <%= link_to "", class: "text-dark" do %>
-                                <i class="fas fa-arrow-right"></i>&nbsp; Godomey
-                                <% end %>
-                            </li>
-                            <li class="my-2">
-                                <%= link_to "", class: "text-dark" do %>
-                                <i class="fas fa-arrow-right"></i>&nbsp; Parakou
                                 <% end %>
                             </li>
                         </ul>

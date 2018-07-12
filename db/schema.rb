@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_12_115352) do
+ActiveRecord::Schema.define(version: 2018_07_12_141913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,12 @@ ActiveRecord::Schema.define(version: 2018_07_12_115352) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "ad_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "agencies", force: :cascade do |t|
@@ -116,6 +122,8 @@ ActiveRecord::Schema.define(version: 2018_07_12_115352) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "agency_id"
+    t.integer "property_type_id"
+    t.integer "ad_type_id"
     t.index ["ad_type"], name: "index_properties_on_ad_type"
     t.index ["agency_id"], name: "index_properties_on_agency_id"
     t.index ["area"], name: "index_properties_on_area"
@@ -124,6 +132,12 @@ ActiveRecord::Schema.define(version: 2018_07_12_115352) do
     t.index ["property_type"], name: "index_properties_on_property_type"
     t.index ["slug"], name: "index_properties_on_slug", unique: true
     t.index ["user_id"], name: "index_properties_on_user_id"
+  end
+
+  create_table "property_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
