@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   	root "pages#home", as: "home_page"
 
+    resource :profile
+
   	resource :agency, only: :show
 
   	resources :agencies, only: [:index, :show, :edit] do

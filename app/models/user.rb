@@ -6,7 +6,7 @@ class User < ApplicationRecord
     devise :confirmable
     devise :omniauthable, omniauth_providers: %i[facebook]
 
-    ROLE = ["Agent immobilier", "Agence immobilière", "Propriétaire"].sort
+    ROLE = ["Agent immobilier", "Propriétaire"].sort
     GENDER = { M: :Male, F: :Female }
 
     validates :role, presence: true, on: :create
