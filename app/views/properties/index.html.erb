@@ -52,7 +52,7 @@
                                 <li class="my-3">
                                    <%= link_to properties_path(property_type: property_type.name), class: "text-dark d-flex justify-content-between" do %>
                                    <span><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i>&nbsp; <%= property_type.name %></span>
-                                   <span class="bagde badge-primary badge-pill p-1 sr-only">ok</span>
+                                   <span>(<%= property_type.properties.count %>)</span>
                                    <% end %>
                                </li>
                                <% end %>
@@ -70,7 +70,7 @@
                             <li class="my-3">
                                 <%= link_to properties_path(ad_type: ad_type.name), class: "text-dark d-flex justify-content-between" do %>
                                 <span><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i>&nbsp; <%= ad_type.name %></span>
-                                <span class="bagde badge-primary badge-pill px-1 "><%= ad_type.properties.length %></span>
+                                <span>(<%= ad_type.properties.count %>)</span>
                                 <% end %>
                             </li>
                             <% end %>
