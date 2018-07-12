@@ -118,9 +118,9 @@ gem 'magnific-popup-rails'
 
 gem 'trix'
 gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 gem 'ransack'
 
-gem 'will_paginate-bootstrap'
 
 gem 'stripe'
 gem 'meta-tags'

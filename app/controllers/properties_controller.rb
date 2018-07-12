@@ -54,7 +54,7 @@ class PropertiesController < ApplicationController
             @properties = Property.includes(:user, :property_type, :ad_type, :city, :room).where("ad_type_id = :ad_type_id", ad_type_id: ad_type_id).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
             @properties_numbers = @properties.count
         else
-            @properties = Property.includes(:user, :property_type, :ad_type, :city, :room).all.order("created_at DESC").published.paginate(page: params[:page], per_page: 4)
+            @properties = Property.includes(:user, :property_type, :ad_type, :city, :room).all.order("created_at DESC").published.paginate(page: params[:page], per_page: 6)
             @properties_numbers = @properties.count
         end
     end
@@ -65,6 +65,13 @@ class PropertiesController < ApplicationController
     end
 
     def new
+    #     if params[:pricing_plan_choosing].present?
+    #         session[:pricing_plan_choosing] = params[:pricing_plan_choosing]
+    #     end
+    #     @pricing_plan_choosing = session[:pricing_plan_choosing]
+    #     puts "*************************"
+    #         puts @pricing_plan_choosing
+    #     puts "*************************"
         @property = current_user.properties.build
     end
 

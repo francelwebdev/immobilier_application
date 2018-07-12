@@ -166,7 +166,9 @@
             <% end %>
 
             <div class="col-12">
-                <%= will_paginate @properties, previous_label: "Précédent ", next_label: " Suivant", container: false %>
+                <%#= will_paginate @properties, previous_label: "Précédent ", next_label: " Suivant", container: false %>
+                <%= will_paginate @properties, renderer: BootstrapPagination::Rails %>
+
             </div>
         </section>
     </section>
