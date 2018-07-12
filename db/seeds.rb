@@ -16,7 +16,7 @@ ad_types.each do |ad_type|
     AdType.create name: ad_type
 end
 
-cities = "Banikoara Gogounou Kandi Karimama Malanville Segbana Boukoumbé Cobly Kérou Kouandé Matéri Natitingou Pehonko Tanguiéta Toucountouna Abomey-Calavi Allada Kpomassè Ouidah Sô-Ava Toffo Tori-Bossito Zè Bembéréké Kalalé N'Dali Nikki Parakou Pèrèrè Sinendé Tchaourou Bantè Dassa-Zoumè Glazoué Ouèssè Savalou Savè Aplahoué Djakotomey Dogbo Klouékanmè Lalo Toviklin Bassila Copargo Djougou Ouaké Cotonou Athiémé Bopa Comè Grand-Popo Houéyogbé Lokossa Adjarra Adjohoun Aguégués Akpro-Missérété Avrankou Bonou Dangbo Porto-Novo Sèmè-Kpodji Ifangni Adja-Ouèrè Kétou Pobè Sakété Abomey Agbangnizoun Bohicon Covè Djidja Ouinhi Za-Kpota Zagnanado Zogbodomey".split.sort
+cities = ["Banikoara", "Gogounou", "Kandi", "Karimama", "Malanville", "Segbana", "Boukoumbé", "Cobly", "Kérou", "Kouandé", "Matéri", "Natitingou", "Pehonko", "Tanguiéta", "Toucountouna", "Abomey-Calavi", "Allada", "Kpomassè", "Ouidah", "Sô-Ava", "Toffo", "Tori-Bossito", "Zè", "Bembéréké", "Kalalé", "N'Dali", "Nikki", "Parakou", "Pèrèrè", "Sinendé", "Tchaourou", "Bantè", "Dassa-Zoumè", "Glazoué", "Ouèssè", "Savalou", "Savè", "Aplahoué", "Djakotomey", "Dogbo", "Klouékanmè", "Lalo", "Toviklin", "Bassila", "Copargo", "Djougou", "Ouaké", "Cotonou", "Athiémé", "Bopa", "Comè", "Grand-Popo", "Houéyogbé", "Lokossa", "Adjarra", "Adjohoun", "Aguégués", "Akpro-Missérété", "Avrankou", "Bonou", "Dangbo", "Porto-Novo", "Sèmè-Kpodji", "Ifangni", "Adja-Ouèrè", "Kétou", "Pobè", "Sakété", "Abomey", "Agbangnizoun", "Bohicon", "Covè", "Djidja", "Ouinhi", "Za-Kpota", "Zagnanado", "Zogbodomey"].sort
 cities.each do |city|
     City.create name: city
 end

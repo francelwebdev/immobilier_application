@@ -15,7 +15,6 @@ Rails.application.routes.draw do
 		post 'properties/:id/publish', to: 'properties#publish', as: "publish_property"
 		post 'properties/:id/deactivate', to: 'properties#deactivate', as: "deactivate_property"
 		resources :properties
-		get "search_property", to: "properties#search_property"
 		resources :messages, only: :create
 		resources :contacts, only: :create
 		resources :newsletters, only: :create

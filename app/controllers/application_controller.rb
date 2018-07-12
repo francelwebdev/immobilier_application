@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
 
-    before_action :set_locale, :tout_les_ad_types, :tout_les_property_types, :current_year
+    before_action :set_locale, :current_year
     before_action :authenticate_user!
     before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -11,14 +11,6 @@ class ApplicationController < ActionController::Base
 
     def default_url_options
         { locale: I18n.locale }
-    end
-
-    def tout_les_ad_types
-        @ad_types = Property::AD_TYPE
-    end
-
-    def tout_les_property_types
-        @property_types = Property::PROPERTY_TYPE
     end
 
     def current_year

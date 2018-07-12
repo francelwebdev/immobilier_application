@@ -5,12 +5,12 @@ class Property < ApplicationRecord
     ROOM = ["1 pièce", "2 pièces", "3 pièces", "4 pièces", "5 pièces", "plus de 5 pièces"].sort
     FEATURE = ["Electricité", "Eau", "WC", "Internet"].sort
     ETAGE = ["Rez-de-chaussée", "1er étage", "2ème étage", "3ème étage", "4ème étage", "5ème étage", "6ème étage", "7ème étage"].sort
-    AD_TYPE = ["À louer", "À vendre"].sort
-    PROPERTY_TYPE = ["Appartement", "Maison", "Bureau", "Boutique", "Villa", "Chambre", "Magasin", "Terrain", "Parcelle", "Immeuble"].sort
     AVAILABLE = { Oui: :true, Nom: :false }.sort
-    CITY = "Banikoara Gogounou Kandi Karimama Malanville Segbana Boukoumbé Cobly Kérou Kouandé Matéri Natitingou Pehonko Tanguiéta Toucountouna Abomey-Calavi Allada Kpomassè Ouidah Sô-Ava Toffo Tori-Bossito Zè Bembéréké Kalalé N'Dali Nikki Parakou Pèrèrè Sinendé Tchaourou Bantè Dassa-Zoumè Glazoué Ouèssè Savalou Savè Aplahoué Djakotomey Dogbo Klouékanmè Lalo Toviklin Bassila Copargo Djougou Ouaké Cotonou Athiémé Bopa Comè Grand-Popo Houéyogbé Lokossa Adjarra Adjohoun Aguégués Akpro-Missérété Avrankou Bonou Dangbo Porto-Novo Sèmè-Kpodji Ifangni Adja-Ouèrè Kétou Pobè Sakété Abomey Agbangnizoun Bohicon Covè Djidja Ouinhi Za-Kpota Zagnanado Zogbodomey".split.sort
 
     belongs_to :user
+    belongs_to :city
+    belongs_to :ad_type
+    belongs_to :property_type
     # belongs_to :agency
 
     validates :price, :description, :city, :address, :area, :property_type, :ad_type, :title, :available, presence: true
