@@ -29,6 +29,13 @@ class PropertiesController < ApplicationController
                 @properties = Property.includes(:user).where("property_type = :property_type or ad_type = :ad_type or city = :city or room = :room or price <= :price or area >= :area or description LIKE :description or title LIKE :title or address LIKE :address", property_type: params[:property_type], ad_type: params[:ad_type], city: params[:city].capitalize, room: params[:room], price: nil, area: params[:area].to_i, description: "%#{params[:city].downcase}%", title: "%#{params[:city].downcase}%", address: "%#{params[:city].downcase}%").published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
                 @properties_numbers = @properties.count
             end
+
+        elsif params.has_key?(:property_type) and !params.has_key?(:ad_type) and !params.has_key?(:city) and !params.has_key?(:room) and !params.has_key?(:price) and !params.has_key?(:area)
+            @properties = Property.includes(:user).where("property_type = :property_type", property_type: params[:property_type]).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
+            @properties_numbers = @properties.count
+        elsif !params.has_key?(:property_type) and params.has_key?(:ad_type) and !params.has_key?(:city) and !params.has_key?(:room) and !params.has_key?(:price) and !params.has_key?(:area)
+            @properties = Property.includes(:user).where("ad_type = :ad_type", ad_type: params[:ad_type]).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
+            @properties_numbers = @properties.count
         else
             @properties = Property.includes(:user).all.order("created_at DESC").published.paginate(page: params[:page], per_page: 4)
             @properties_numbers = @properties.count

@@ -23,7 +23,7 @@
                     <h2>
                         <%= truncate(strip_tags(@property.title.capitalize), length: 50) %></h2>
                         <p>
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;
+                            <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>&nbsp;
                             <%= @property.address.capitalize %>, <%= @property.city.capitalize %>
                         </p>
                     </div>
@@ -50,7 +50,9 @@
                 <hr>
             </div>
             <div class="col-12">
-                <p>Publié il y a <%= distance_of_time_in_words(@property.created_at, Time.now, include_seconds: false) %>.</p>
+                <p>
+                    <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>&nbsp; Publié il y a <%= distance_of_time_in_words(@property.created_at, Time.now, include_seconds: false) %>.
+                </p>
             </div>
 
         </div>
@@ -128,7 +130,7 @@
                                     </div>
                                 </div>
 
-                                <p><%= @property.description %></p>
+                                <p><%= strip_tags(@property.description) %></p>
 
                             </div>
                         </div>
@@ -219,7 +221,7 @@
 
                     <div class="col-12 mb-4">
                         <div class="card border-0 bg-white">
-                            <div class="card-body p-4 text-center">
+                            <div class="card-body p-4">
                                 <% if @property.user.role == "Propriétaire" %>
                                 <h4 class="mb-4">À propos du properiétaire</h4>
                                 <% elsif @property.user.role == "Agent immobilier" %>
