@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-	devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 	scope "/(:locale)", locale: /fr/ do
 		root to: "pages#home", as: "home_page"
         resource :agency, only: :show
@@ -22,5 +24,5 @@ Rails.application.routes.draw do
 			resources :my_properties, only: [:index, :edit, :destroy]
 		end
 	end
-	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 end
