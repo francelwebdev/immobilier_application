@@ -22,7 +22,7 @@ class User < ApplicationRecord
     # has_one :agency, dependent: :delete
     has_many :properties, dependent: :delete_all
     has_many :messages
-    has_one_attached :profile_picture, dependent: :purge_later
+    has_one_attached :profile_picture, dependent: :purge
 
     def self.from_omniauth(auth)
         where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -31,7 +31,7 @@ class User < ApplicationRecord
             # user.name = auth.info.name   # assuming the user model has a name
             # user.image = auth.info.image # assuming the user model has an image
 
-            user.profile_picture = auth.info.picture
+            user.profile_picture = auth.info.profile_picture
             user.first_name = auth.info.first_name
             user.last_name = auth.info.last_name
             # user.token = auth.credentials.token

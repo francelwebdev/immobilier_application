@@ -21,7 +21,7 @@ class Property < ApplicationRecord
     validates :deposit, numericality: { only_integer: true, greeter_than_or_egal_to: 0 }, allow_blank: true
     validates_associated :user
 
-    has_many_attached :images, dependent: :purge_later
+    has_many_attached :images, dependent: :purge
 
     scope :published, -> { where(published: true) }
     scope :unpublished, -> { where(published: false) }
