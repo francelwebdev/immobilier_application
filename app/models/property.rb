@@ -21,7 +21,7 @@ class Property < ApplicationRecord
     validates :deposit, numericality: { only_integer: true, greeter_than_or_egal_to: 0 }, allow_blank: true
     validates_associated :user
 
-    has_many_attached :images
+    has_many_attached :images, dependent: :purge_later
 
     scope :published, -> { where(published: true) }
     scope :unpublished, -> { where(published: false) }
@@ -29,7 +29,7 @@ class Property < ApplicationRecord
     before_save :mettre_tout_en_minuscule
     before_create :definir_la_date_dexpiration
     after_create :suprimer_si_annonce_expire
-    after_destroy :suprimer_les_photos
+    # after_destroy :suprimer_les_photos
 
 
     private
@@ -52,8 +52,8 @@ class Property < ApplicationRecord
         end
     end
 
-    def suprimer_les_photos
-        self.images.purge
-    end
+    # def suprimer_les_photos
+    #     self.images.purge
+    # end
 
 end

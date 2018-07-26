@@ -259,10 +259,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
 
-  config.omniauth :facebook, Rails.application.secrets.fb_app_id, Rails.application.secrets.fb_app_secret, token_params: { parse: :json }, scope: 'email', display: "popup", image_size: "square", info_fields: 'email,first_name,last_name,profile_pic', secure_image_url: true, client_options: {
-      site: 'https://graph.facebook.com/v3.0',
-      authorize_url: "https://www.facebook.com/v3.0/dialog/oauth"
-    }
+  config.omniauth :facebook, Rails.application.secrets.fb_app_id, Rails.application.secrets.fb_app_secret, token_params: { parse: :json }, scope: 'email', display: "popup", image_size: "square", info_fields: 'email,first_name,last_name,picture', secure_image_url: true
 
 
   # ==> Warden configuration

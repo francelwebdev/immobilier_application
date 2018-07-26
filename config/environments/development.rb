@@ -69,16 +69,19 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 
-  # Pour letter opener
-  # config.action_mailer.delivery_method = :letter_opener
-  # config.action_mailer.perform_deliveries = true
-
-  # Maildev
+  # Pour Mailcatcher
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address => "localhost",
     :port => 1025
   }
+
+  # Maildev
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   :address => "localhost",
+  #   :port => 1025
+  # }
   # Mon code
 end
 

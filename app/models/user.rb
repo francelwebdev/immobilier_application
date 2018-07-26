@@ -16,13 +16,13 @@ class User < ApplicationRecord
 
     before_create :create_administrator
     after_create :send_welcome_email
-    after_destroy :suprimer_photo_de_profile
+    # after_destroy :suprimer_photo_de_profile
     # after_create :build_agency_or_profile
 
     # has_one :agency, dependent: :delete
     has_many :properties, dependent: :delete_all
     has_many :messages
-    has_one_attached :profile_picture
+    has_one_attached :profile_picture, dependent: :purge_later
 
     def self.from_omniauth(auth)
         where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -31,11 +31,11 @@ class User < ApplicationRecord
             # user.name = auth.info.name   # assuming the user model has a name
             # user.image = auth.info.image # assuming the user model has an image
 
-            user.profile_picture = auth.info.profile_pic
+            user.profile_picture = auth.info.picture
             user.first_name = auth.info.first_name
             user.last_name = auth.info.last_name
-            user.token = auth.credentials.token
-            user.token_expires_at = Time.at(auth.credentials.expires_at)
+            # user.token = auth.credentials.token
+            # user.token_expires_at = Time.at(auth.credentials.expires_at)
 
             # If you are using confirmable and the provider(s) you use validate emails,
             # uncomment the line below to skip the confirmation emails.
@@ -57,9 +57,9 @@ class User < ApplicationRecord
         UserMailer.welcome(self).deliver_now
     end
 
-    def suprimer_photo_de_profile
-        self.profile_picture.purge if self.profile_picture.present?
-    end
+    # def suprimer_photo_de_profile
+    #     self.profile_picture.purge if self.profile_picture.present?
+    # end
 
     def create_administrator
         if self.email == "francel.webdev@gmail.com"
