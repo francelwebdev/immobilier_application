@@ -31,7 +31,7 @@ class User < ApplicationRecord
             # user.name = auth.info.name   # assuming the user model has a name
             # user.image = auth.info.image # assuming the user model has an image
 
-            user.profile_picture = auth.info.profile_picture
+            user.profile_picture = auth.info.picture
             user.first_name = auth.info.first_name
             user.last_name = auth.info.last_name
             # user.token = auth.credentials.token
