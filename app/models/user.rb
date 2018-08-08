@@ -9,12 +9,11 @@ class User < ApplicationRecord
     ROLE = ["Agent immobilier", "Propriétaire"].sort
     GENDER = { M: :Male, F: :Female }
 
-    validates :role, presence: true, on: :create
-    #validates :role, presence: true, on: :update
+    # validates :role, presence: true, on: :update
     validates :first_name, :last_name, :phone_number, presence: true, on: :update
-    validates :phone_number, presence: true, uniqueness: true, numericality: { only_integer: true }, length: { is: 8 }, on: :update
+    validates :phone_number, uniqueness: true, numericality: { only_integer: true }, length: { is: 8 }, on: :update
 
-    before_create :create_administrator
+    # before_create :create_administrator
     after_create :send_welcome_email
     # after_destroy :suprimer_photo_de_profile
     # after_create :build_agency_or_profile
@@ -34,6 +33,7 @@ class User < ApplicationRecord
             user.profile_picture = auth.info.picture
             user.first_name = auth.info.first_name
             user.last_name = auth.info.last_name
+
             # user.token = auth.credentials.token
             # user.token_expires_at = Time.at(auth.credentials.expires_at)
 

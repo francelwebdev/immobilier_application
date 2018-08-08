@@ -11,8 +11,7 @@
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.error_notification %>
           <div class="form-inputs">
-            <%= f.input :role, autofocus: true, collection: User::ROLE, label: "Vous êtes un(e)", include_blank: false %>
-            <%= f.input :email, required: true %>
+            <%= f.input :email, required: true, autofocus: true %>
             <%= f.input :password, required: true, hint: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length) %>
             <%= f.input :password_confirmation, required: true %>
             <p class="sr-only"><small>En appuyant sur Inscription, vous acceptez avoir lu et accepté nos <%= link_to "conditions générales d’utilisation", terms_and_conditions_path %>, notre politique de confidentialité. Vous pouvez à tout moment vous désinscrire.</small></p>
