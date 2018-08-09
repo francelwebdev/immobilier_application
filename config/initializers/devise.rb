@@ -260,8 +260,8 @@ Devise.setup do |config|
 
 
   config.omniauth :facebook, Rails.application.secrets.fb_app_id, Rails.application.secrets.fb_app_secret, scope: 'email,first_name,last_name,picture', display: "popup", client_options: {
-      site: 'https://graph.facebook.com/v3.1',
-      authorize_url: "https://www.facebook.com/v3.1/dialog/oauth"
+      site: 'https://graph.facebook.com/v3.0',
+      authorize_url: "https://www.facebook.com/v3.0/dialog/oauth"
     }
 
 
