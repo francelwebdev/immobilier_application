@@ -72,6 +72,9 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-byebug'
+
+  # gem "awesome_print"
+  # gem "table_print"
 end
 
 gem 'rails_db'
