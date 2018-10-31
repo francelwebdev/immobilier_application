@@ -82,7 +82,7 @@ group :development do
   # gem "table_print"
 end
 
-gem 'rails_db'
+# gem 'rails_db'
 
 group :production do
   gem 'sendinblue'
