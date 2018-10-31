@@ -20,6 +20,8 @@ module ImmobilierApplication
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', "**", '*.{rb,yml}').to_s]
     config.i18n.default_locale = :fr
     config.i18n.available_locales = :fr
+
+    config.assets.initialize_on_precompile = false
     # Mon code
 
   end
