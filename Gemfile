@@ -136,8 +136,5 @@ gem 'koala'
 
 gem 'activeadmin'
 
-# Pour email transactionnel
-gem 'sparkpost_rails' 
-
 # Pour le serveur de dev et prod
 gem "passenger"

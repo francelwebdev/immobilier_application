@@ -329,8 +329,6 @@ GEM
     simple_form (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
-    sparkpost_rails (1.5.1)
-      rails (>= 4.0, < 5.3)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -429,7 +427,6 @@ DEPENDENCIES
   selenium-webdriver
   sendinblue
   simple_form
-  sparkpost_rails
   spring
   spring-watcher-listen (~> 2.0.0)
   stripe
