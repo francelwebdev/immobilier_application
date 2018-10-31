@@ -81,5 +81,8 @@ test:
 production:
   <<: *default
   database: immobilier_application_production
-  username: immobilier_application
-  password: <%= ENV['IMMOBILIER_APPLICATION_DATABASE_PASSWORD'] %>
+  # username: immobilier_application
+  # password: <%= ENV['IMMOBILIER_APPLICATION_DATABASE_PASSWORD'] %>
+
+  username: 
+  password: 
