@@ -36,18 +36,18 @@
             <div class="col-md-4">
                 <%= f.input :area, input_html: { min: 1 } %>
             </div>
-            <div class="col-md-4">
-                <%= f.input :available, collection: Property::AVAILABLE, prompt: "Le bien est disponible maintenant ?" %>
+            <!-- <div class="col-md-4">
+                <%#= f.input :available, collection: Property::AVAILABLE, prompt: "Le bien est disponible maintenant ?" %>
             </div>
             <div class="col-md-4">
-                <%= f.input :etage, collection: Property::ETAGE, prompt: "Le bien se trouve à quel étage ?" %>
-            </div>
+                <%#= f.input :etage, collection: Property::ETAGE, prompt: "Le bien se trouve à quel étage ?" %>
+            </div> -->
             <div class="col-md-4">
                 <%= f.input :price, input_html: { min: 1 } %>
             </div>
-            <div class="col-md-4">
-                <%= f.input :deposit, input_html: { min: 1 } %>
-            </div>
+            <!-- <div class="col-md-4">
+                <%#= f.input :deposit, input_html: { min: 1 } %>
+            </div> -->
         </div>
     </div>
 </div>
@@ -108,9 +108,6 @@
         <div class="form-row p-2">
             <div class="col-12">
                 <h4 class="card-title mb-3">Information de contact</h4>
-            </div>           
-            <div class="col-md-6">
-                <%= user_info.input :role, collection: User::ROLE, label: "Vous êtes un(e)", include_blank: false %>
             </div>
             <div class="col-md-6">
                 <%= user_info.input :first_name, label: "Prénom" %>

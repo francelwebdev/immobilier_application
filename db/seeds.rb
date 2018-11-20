@@ -6,12 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-property_types = ["Appartement", "Maison", "Bureau", "Boutique", "Villa", "Chambre", "Magasin", "Terrain", "Parcelle", "Immeuble"].sort
+
+
+
+# property_types = ["Appartement", "Maison", "Bureau", "Boutique", "Villa", "Chambre", "Magasin", "Terrain", "Parcelle", "Immeuble"].sort
+
+property_types = ["Maison", "Villa", "Terrain", "Parcelle", "Immeuble"].sort
 property_types.each do |property_type|
     PropertyType.create name: property_type
 end
 
-ad_types = ["À louer", "À vendre"].sort
+# ad_types = ["À louer", "À vendre"].sort
+
+ad_types = ["A vendre"].sort
 ad_types.each do |ad_type|
     AdType.create name: ad_type
 end

@@ -28,34 +28,40 @@
 <% end %>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow sticky-top">
-    <%= link_to home_page_path, class: "navbar-brand" do %>
-    <span class="h3 text-uppercase font-weight-bold">SICO</span>
-    <% end %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+   <div class="container">
+     <%= link_to home_page_path, class: "navbar-brand" do %>
+     <span class="h3 text-uppercase font-weight-bold">SICO</span>
+     <% end %>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item mx-1 active">
+            <li class="nav-item mx-2 active">
                 <%= link_to home_page_path, class: "nav-link" do %>
-                <i class="fa fa-home fa-lg" aria-hidden="true"></i>&nbsp;
                 Accueil <span class="sr-only">(current)</span>
                 <% end %>
             </li>
-            <li class="nav-item mx-1">
-                <%= link_to "Toutes les annonces", properties_path, class: "nav-link" %>
+            <% AdType.all.each do |ad_type| %>
+            <li class="nav-item mx-2">
+                <%= link_to ad_type.name, properties_path(ad_type: ad_type.name), class: "nav-link" %>
             </li>
-            <li class="nav-item mx-1 sr-only">
-                <%#= link_to "Tout les agents", home_page_path, class: "nav-link" %>
+            <% end %>
+
+            <!-- <li class="nav-item mx-1">
+                <%#= link_to "Toutes les annonces", properties_path, class: "nav-link" %>
+            </li> -->
+           <!--  <li class="nav-item mx-2">
+                <%#= link_to "Les agents", home_page_path, class: "nav-link" %>
             </li>
+            <li class="nav-item mx-2">
+                <%#= link_to "Nos services", home_page_path, class: "nav-link" %>
+            </li> -->
 
             <% if user_signed_in? %>
-            <li class="nav-item mx-1">
-                <%= link_to my_properties_path, class: "nav-link" do %>
-                    <i class="fa fa-list fa-lg" aria-hidden="true"></i>&nbsp;
-                    Mes annonces
-                <% end %>
+            <li class="nav-item mx-2">
+                <%= link_to "Mes annonces", my_properties_path, class: "nav-link" %>
             </li>
             <% end %>
         </ul>
@@ -83,9 +89,10 @@
             <% else %>
             <%= yield :add_property %>
             <li class="nav-item mx-1">
-                <%= link_to "Connexion", new_user_session_path, class: "btn btn-secondary" %>
+                <%= link_to "Connexion", new_user_session_path, class: "btn btn-secondary btn-block" %>
             </li>
             <% end %>
         </ul>
     </div>
+</div>
 </nav>

@@ -5,7 +5,7 @@ fr:
     attributes:
       property:
         title: "Titre de l'annonce"
-        price: "Loyer mensuel ou Prix de vente"
+        price: "Prix"
         area: "Surface (en m2)"
         description: "Description de l'annonce"
         address: "Adresse/Quartier"

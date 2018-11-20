@@ -17,21 +17,24 @@ $("#js-rotating").Morphext({
 
 <div class="jumbotron jumbotron-fluid d-flex align-items-center mb-0 jumbotron-accueil py-5">
     <div class="container">
-        <h1 class="text-white text-center mb-3">Trouver <span id="js-rotating" class="font-weight-bold">la chambre, la maison, le villa, l'appartement, le bureau, la boutique, le magasin, le parcelle, le terrain</span> de vos rêves sans aucune difficulté.</h1>
+        <!-- <h1 class="text-white text-center mb-3">Trouver <span id="js-rotating" class="font-weight-bold">la chambre, la maison, le villa, l'appartement, le bureau, la boutique, le magasin, le parcelle, le terrain</span> de vos rêves sans aucune difficulté.</h1> -->
+
+        <h1 class="text-white text-center">Devenir propriétaire est un beau et grand projet de vie.</h1>
+        <h4 class="text-white text-center mb-3">Trouvez <span id="js-rotating" class="font-weight-bold">la parcelle, le terrain, la maison, la villa, l'immeuble</span> dont vous rêvez et faites votre acquisition en toute sécurité.</h4>
         <div class="py-3 px-3 rounded" style="background-color: rgba(0, 0, 0, 0.3)">
             <%= form_with url: properties_path, method: :get, local: true do |f| %>
             <div class="form-row">
                 <div class="col-md-3 px-0 mb-2">
-                    <%= f.collection_select :property_type, PropertyType.all, :name, :name, { prompt: "Type de bien" }, { class: "rounded-0 form-control form-control-lg", required: true } %>
+                    <%= f.collection_select :property_type, PropertyType.all, :name, :name, { prompt: "Type de bien" }, { class: "rounded-0 form-control", required: true } %>
                 </div>
                 <div class="col-md-3 px-0 mb-2">
-                    <%= f.collection_select :ad_type, AdType.all, :name, :name, { prompt: "Type d'annonce" }, { class: "rounded-0 form-control form-control-lg", required: true } %>
+                    <%= f.collection_select :ad_type, AdType.all, :name, :name, { prompt: "Type d'annonce" }, { class: "rounded-0 form-control", required: true } %>
                 </div>
                 <div class="col-md-4 px-0 mb-2">
-                    <%= f.text_field :city, placeholder: "Ou ? Ex: Fidjrossè, Abomey-Calavi", class: "rounded-0 form-control form-control-lg", required: true %>
+                    <%= f.text_field :city, placeholder: "Ou ? Ouidah, Calavi, Allada, Zè, Parakou ...", class: "rounded-0 form-control", required: true %>
                 </div>
                 <div class="col-md-2 px-0 mb-2">
-                    <%= f.submit "Rechercher", class: "rounded-0 btn btn-primary btn-lg btn-block" %>
+                    <%= f.submit "Rechercher", class: "rounded-0 btn btn-primary btn-block"%>
                 </div>
             </div>
             <% end %>
@@ -77,15 +80,15 @@ $("#js-rotating").Morphext({
             </div>
             <div class="col-lg-4 text-center mb-4 d-flex flex-column justify-content-between">
                 <i class="fa fa-search fa-5x text-primary" aria-hidden="true"></i>
-                <p>Faîte une recherche et choisissez un bien parmis les résultats de recherche.</p>
+                <p class="mt-3">Choisissez un bien parmis les résultats de recherche.</p>
             </div>
             <div class="col-lg-4 text-center mb-4 d-flex flex-column justify-content-between">
                 <i class="fa fa-mobile fa-5x text-primary" aria-hidden="true"></i>
-                <p>Contacter le propriétaire du bien pour convenir d'un RDV pour la visite.</p>
+                <p class="mt-3">Contacter et prenez RDV avec le vendeur pour effectuer une visite.</p>
             </div>
             <div class="col-lg-4 text-center mb-4 d-flex flex-column justify-content-between">
                 <i class="fa fa-thumbs-o-up fa-4x text-primary" aria-hidden="true"></i>
-                <p>Visiter le bien puis régler l'avance et prenez les clefs si le bien correspond à vos besoins.</p>
+                <p class="mt-3">Concluer l’achat de votre bien devant un notaire et signé l'acte de vente.</p>
             </div>
         </div>
     </div>

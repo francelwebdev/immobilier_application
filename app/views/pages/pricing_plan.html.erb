@@ -23,57 +23,34 @@ jusqu'à ce que vos biens soit loués ou vendus
                         </h1>
                         <hr>
                         <ul class="list-unstyled">
-                            <li class="my-2">Annonces illimités.</li>
+                            <li class="my-2">1 annonce.</li>
                             <li class="my-2">Durée d'affichage: 1 semaine.</li>
-                            <li class="my-2">3 photos maximum/annonce.</li>
+                            <li class="my-2">4 photos maximum.</li>
+                            <li class="my-2">Location ou vente.</li>
                         </ul>
                         <p>
                             <%= link_to "Choisir ce plan", new_property_path(pricing_plan_choosing: "basic"), class: "btn btn-outline-primary btn-lg" %>
                         </p>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-                <div class="card pricing_plan shadow-sm">
-                    <div class="card-header text-center">
-                        <h3 class="my-0">Agence</h3>
-                    </div>
-                    <div class="card-body text-center">
-                        <h1 class="card-title">
-                            <%= number_with_delimiter(sprintf("%0.00f", 75000)) %><sup>f</sup><small class="text-muted">/mois</small>
-                        </h1>
-                        <hr>
-                        <ul class="list-unstyled">
-                            <li class="my-2">Annonces illimités.</li>
-                            <li class="my-2">Durée d'affichage: illimité.</li>
-                            <li class="my-2">12 photos maximum/annonce plus 1 vidéo.</li>
-                            <li class="my-2">Téléchargements des modèles de contrats.</li>
-                            <li class="my-2">Page vitrine pour présenter votre agence.</li>
-                            <li>Assistance 24/7.</li>
-                            <li class="my-2">Assistance juridique mis à votre disposition.</li>
-                        </ul>
-                        <p>
-                            <%= link_to "Contactez-nous", contact_us_path, class: "btn btn-outline-primary btn-lg"  %>
-                        </p>
-                    </div>
-                </div>
-            </div>
+            </div>            
             <div class="col-lg-4 mb-4">
                 <div class="card border-primary pricing_plan shadow-sm">
                     <div class="card-header bg-primary text-center">
-                        <h3 class="my-0 text-white">Profesionnel</h3>
+                        <h3 class="my-0 text-white">Premium</h3>
                     </div>
                     <div class="card-body text-center">
                         <h1 class="card-title">
-                            <%= number_with_delimiter(sprintf("%0.00f", 39500)) %><sup>f</sup><small class="text-muted">/mois</small>
+                            <%= number_with_delimiter(sprintf("%0.00f", 15000)) %><sup>f</sup>
                         </h1>
                         <hr>
                         <ul class="list-unstyled">
-                            <li class="my-2">Annonces illimités.</li>
-                            <li class="my-2">Durée d'affichage: 1 mois.</li>
-                            <li class="my-2">6 photos maximum/annonce.</li>
+                            <li class="my-2">5 annonces maximum.</li>
+                            <li class="my-2">Durée d'affichage: jusqu'a 6 mois.</li>
+                            <li class="my-2">12 photos maximum.</li>
+                            <li class="my-2">Location ou vente.</li>
                             <li class="my-2">Téléchargements des modèles de contrats.</li>
-                            <li class="my-2">Assistance 24/7.</li>
+                            <li class="my-2">Support 24/7.</li>
                         </ul>
                         <p>
                             <%= link_to "Contactez-nous", contact_us_path, class: "btn btn-primary btn-lg"  %>
@@ -81,7 +58,33 @@ jusqu'à ce que vos biens soit loués ou vendus
                     </div>
                 </div>
             </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card pricing_plan shadow-sm">
+                    <div class="card-header text-center">
+                        <h3 class="my-0">Business</h3>
+                    </div>
+                    <div class="card-body text-center">
+                        <h1 class="card-title">
+                            <%= number_with_delimiter(sprintf("%0.00f", 29000)) %><sup>f</sup>
+                        </h1>
+                        <hr>
+                        <ul class="list-unstyled">
+                            <li class="my-2">Annonces illimités.</li>
+                            <li class="my-2">Durée d'affichage: jusqu'à la location ou à la vente de votre bien.</li>
+                            <li class="my-2">Photos illimités/annonce + 1 vidéo.</li>
+                            <li class="my-2">Location ou vente.</li>
+                            <li class="my-2">Téléchargements des modèles de contrats.</li>
+                            <li class="my-2">Assistance juridique mis à votre disposition.</li>
+                            <li class="my-2">Page vitrine pour présenter votre agence et vos offres.</li>
+                            <li>Support 24/7.</li>
+                        </ul>
+                        <p>
+                            <%= link_to "Contactez-nous", contact_us_path, class: "btn btn-outline-primary btn-lg"  %>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
         </section>
-	</section>
+    </section>
 </section>
