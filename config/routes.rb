@@ -7,31 +7,33 @@ Rails.application.routes.draw do
 
   	root "pages#home", as: "home_page"
 
-    resource :profile
+    # resource :profile
 
-  	resource :agency, only: :show
+    # resource :agency, only: :show
 
-  	resources :agencies, only: [:index, :show, :edit] do
-  		resources :properties
-  	end
+    # resources :agencies, only: [:index, :show, :edit] do
+    #   resources :properties
+    # end
 
-  	get "agency/benefits", to: "pages#benefits_for_agency", as: "agency_benefits"
+    # get "agency/benefits", to: "pages#benefits_for_agency", as: "agency_benefits"
 
-  	get "about_us", to: "pages#about_us", as: "about_us"
+    get "about_us", to: "pages#about_us", as: "about_us"
 
-  	get "contact_us", to: "pages#contact_us", as: "contact_us"
+    get "contact_us", to: "pages#contact_us", as: "contact_us"
 
-  	get "faq", to: "pages#faq", as: "faq"
+    get "faq", to: "pages#faq", as: "faq"
 
-  	get "pricing_plan", to: "pages#pricing_plan", as: "pricing_plan"
+    get "pricing_plan", to: "pages#pricing_plan", as: "pricing_plan"
 
-  	get "terms_and_conditions", to: "pages#terms_and_conditions", as: "terms_and_conditions"
+    get "terms_and_conditions", to: "pages#terms_and_conditions", as: "terms_and_conditions"
 
-  	post 'properties/:id/publish', to: 'properties#publish', as: "publish_property"
-
-  	post 'properties/:id/deactivate', to: 'properties#deactivate', as: "deactivate_property"
-
-    resources :properties
+    resources :properties do
+      member do
+        post "publish"
+        post "deactivate"
+      end
+      get "search", on: :collection
+    end
 
     resources :messages, only: :create
 

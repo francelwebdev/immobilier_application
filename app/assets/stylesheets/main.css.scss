@@ -43,7 +43,7 @@ main {
 }
 
 section.banner-contact {
-    height: 50vh;
+    height: 50%;
 }
 
 .sans-text-decoration:hover {
@@ -62,7 +62,7 @@ ul > li > a {
 
 
 .contact-page-banner, .add-property-page-banner, .edit-property-page-banner, .my_property-page-banner, .property-show-page-banner {
-    height: 30vh !important;
+    height: 30% !important;
     background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("philipp-berndt-173197.jpg") !important;
     background-size: cover;
     background-position: center;
@@ -71,7 +71,7 @@ ul > li > a {
 }
 
 .agent-benefits-page-banner {
-    height: 75vh !important;
+    height: 75% !important;
     background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("85.jpg") !important;
     background-size: cover;
     background-position: center;
@@ -85,7 +85,7 @@ section.vp_for_agent_or_agency {
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    height: 50vh;
+    height: 75%;
 }
 
 // Autre
@@ -115,7 +115,7 @@ section.vp_for_agent_or_agency {
 }
 
 .agency-list-banner {
-    height: 80vh !important;
+    height: 80% !important;
     background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("85.jpg") !important;
     background-size: cover;
     background-position: center;

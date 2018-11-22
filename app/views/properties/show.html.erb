@@ -95,7 +95,7 @@
                                     </div>
                                     <div class="col-6 col-lg-3 text-center mb-2">
                                         <p class="font-weight-bold text-dark h6">Nombres de pièces</p>
-                                        <p><%= @property.room.name %></p>
+                                        <p><%= @property.room %></p>
                                     </div>
                                     <div class="col-6 col-lg-3 text-center mb-2">
                                         <% if @property.ad_type.name == "À louer" %>
@@ -343,7 +343,12 @@
 </div>
 
 <div class="col-lg-12">
-    <p><%= link_to 'Retour au resultat', request.referer, class: "btn btn-primary" %></p>
+    <% if user_signed_in? && request.referer == new_property_path %>
+    <p><%= link_to 'Retour au resultat de recherche', request.referer, class: "btn btn-primary" %></p>
+    <p><%= link_to 'Déposer une nouvelle annonce', new_property_path, class: "btn btn-primary" %></p>
+    <% else %>
+        <p><%= link_to 'Déposer une nouvelle annonce', new_property_path, class: "btn btn-primary" %></p>
+    <% end %>
 </div>
 </div>
 </section>

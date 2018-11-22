@@ -22,19 +22,19 @@ $("#js-rotating").Morphext({
         <h1 class="text-white text-center">Devenir propriétaire est un beau et grand projet de vie.</h1>
         <h4 class="text-white text-center mb-3">Trouvez <span id="js-rotating" class="font-weight-bold">la parcelle, le terrain, la maison, la villa, l'immeuble</span> dont vous rêvez et faites votre acquisition en toute sécurité.</h4>
         <div class="py-3 px-3 rounded" style="background-color: rgba(0, 0, 0, 0.3)">
-            <%= form_with url: properties_path, method: :get, local: true do |f| %>
+            <%= form_with url: search_properties_path, method: :get, local: true do |f| %>
             <div class="form-row">
                 <div class="col-md-3 px-0 mb-2">
-                    <%= f.collection_select :property_type, PropertyType.all, :name, :name, { prompt: "Type de bien" }, { class: "rounded-0 form-control", required: true } %>
+                    <%= f.collection_select :property_type, PropertyType.all, :name, :name, { prompt: "Type de bien" }, { class: "rounded-0 form-control form-control-lg", required: true } %>
                 </div>
                 <div class="col-md-3 px-0 mb-2">
-                    <%= f.collection_select :ad_type, AdType.all, :name, :name, { prompt: "Type d'annonce" }, { class: "rounded-0 form-control", required: true } %>
+                    <%= f.collection_select :ad_type, AdType.all, :name, :name, { prompt: "Type d'annonce" }, { class: "rounded-0 form-control form-control-lg", required: true } %>
                 </div>
                 <div class="col-md-4 px-0 mb-2">
-                    <%= f.text_field :city, placeholder: "Ou ? Ouidah, Calavi, Allada, Zè, Parakou ...", class: "rounded-0 form-control", required: true %>
+                    <%= f.text_field :city, placeholder: "Ou ? Calavi, Allada, Zè, Parakou ...", class: "rounded-0 form-control form-control-lg", required: true %>
                 </div>
                 <div class="col-md-2 px-0 mb-2">
-                    <%= f.submit "Rechercher", class: "rounded-0 btn btn-primary btn-block"%>
+                    <%= f.submit "Rechercher", class: "rounded-0 btn btn-primary btn-lg btn-block"%>
                 </div>
             </div>
             <% end %>

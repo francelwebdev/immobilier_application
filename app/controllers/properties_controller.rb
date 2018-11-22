@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-    skip_before_action :authenticate_user!, only: [:index, :show]
+    skip_before_action :authenticate_user!, only: [:index, :show, :search]
     before_action :set_property, only: [:show, :edit, :update, :destroy]
 
     def publish
@@ -14,7 +14,7 @@ class PropertiesController < ApplicationController
         redirect_to @property_to_deactivate, notice: 'Annonce désactiver, OK'
     end
 
-    def index
+    def search
         if params.has_key?(:property_type) and params.has_key?(:ad_type) and params.has_key?(:city) and !params.has_key?(:room) and !params.has_key?(:price) and !params.has_key?(:area)
             property_type_id = PropertyType.find_by(name: params[:property_type]).id
             ad_type_id = AdType.find_by(name: params[:ad_type]).id
@@ -57,6 +57,11 @@ class PropertiesController < ApplicationController
             @properties = Property.includes(:user, :property_type, :ad_type, :city, :room).all.order("created_at DESC").published.paginate(page: params[:page], per_page: 6)
             @properties_numbers = @properties.count
         end
+    end
+
+    def index
+        @properties = Property.includes(:user, :property_type, :ad_type, :city, :room).all.order("created_at DESC").published.paginate(page: params[:page], per_page: 6)
+        @properties_numbers = @properties.count
     end
 
     def show

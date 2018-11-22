@@ -8,7 +8,7 @@
     <meta name="author" content="Francel AMAMOO">
     <meta name="keywords" content="<%= yield :page_meta_keywords %>" />
     <%= favicon_link_tag "148705-essential-collection/svg/home.svg" %>
-    <title><%= content_for?(:page_title) ? yield(:page_title) : "SICO" %></title>
+    <title><%= content_for?(:page_title) ? "SICO - #{yield(:page_title)}" : "SICO" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>

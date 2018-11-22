@@ -38,29 +38,27 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item mx-2 active">
+            <li class="nav-item mx-1 active">
                 <%= link_to home_page_path, class: "nav-link" do %>
                 Accueil <span class="sr-only">(current)</span>
                 <% end %>
             </li>
+            <li class="nav-item mx-1">
+                <%= link_to "Toutes les annonces", properties_path, class: "nav-link" %>
+            </li>
             <% AdType.all.each do |ad_type| %>
-            <li class="nav-item mx-2">
-                <%= link_to ad_type.name, properties_path(ad_type: ad_type.name), class: "nav-link" %>
+            <li class="nav-item mx-1">
+                <%= link_to ad_type.name, search_properties_path(ad_type: ad_type.name), class: "nav-link" %>
             </li>
             <% end %>
-
             <!-- <li class="nav-item mx-1">
-                <%#= link_to "Toutes les annonces", properties_path, class: "nav-link" %>
-            </li> -->
-           <!--  <li class="nav-item mx-2">
-                <%#= link_to "Les agents", home_page_path, class: "nav-link" %>
+                <%= link_to "Les agents", home_page_path, class: "nav-link" %>
             </li>
-            <li class="nav-item mx-2">
-                <%#= link_to "Nos services", home_page_path, class: "nav-link" %>
+            <li class="nav-item mx-1">
+                <%= link_to "Nos services", home_page_path, class: "nav-link" %>
             </li> -->
-
             <% if user_signed_in? %>
-            <li class="nav-item mx-2">
+            <li class="nav-item mx-1">
                 <%= link_to "Mes annonces", my_properties_path, class: "nav-link" %>
             </li>
             <% end %>

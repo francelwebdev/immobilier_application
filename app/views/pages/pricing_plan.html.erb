@@ -1,7 +1,6 @@
-
-<!-- #dee2e6
-jusqu'à ce que vos biens soit loués ou vendus
--->
+<% content_for :page_title, "Nos tarifs" %>
+<% content_for :page_meta_description, "Nos tarifs" %>
+<% content_for :page_meta_keywords, "tarifs" %>
 
 <section class="container-fluid py-5 bg-white">
 	<section class="container">
@@ -11,48 +10,47 @@ jusqu'à ce que vos biens soit loués ou vendus
 				<p class="lead"><span class="font-weight-bold h4">SICO</span> vous offre 3 différents tarifs pour répondre à vos besoins.</p>
 			</div>
 		</div>
-        <section class="row d-flex align-items-center">
+        <section class="row ">
             <div class="col-lg-4 mb-4">
                 <div class="card pricing_plan shadow-sm">
-                    <div class="card-header text-center">
-                        <h3 class="my-0">Basic</h3>
+                    <div class="card-header bg-light">
+                        <h3 class="text-center mb-0">Basic</h3>
                     </div>
-                    <div class="card-body text-center">
-                        <h1 class="card-title">
-                            Gratuit
-                        </h1>
-                        <hr>
-                        <ul class="list-unstyled">
-                            <li class="my-2">1 annonce.</li>
-                            <li class="my-2">Durée d'affichage: 1 semaine.</li>
-                            <li class="my-2">4 photos maximum.</li>
-                            <li class="my-2">Location ou vente.</li>
-                        </ul>
-                        <p>
+                    <div class="card-body">
+                        <h1 class="card-title text-center mb-0">Gratuit</h1>
+                    </div>
+                    <ul class="list-group list-group-flush text-center">
+                        <li class="list-group-item">1 annonce.</li>
+                        <li class="list-group-item">Durée d'affichage: 1 semaine.</li>
+                        <li class="list-group-item">3 photos maximum.</li>
+                        <li class="list-group-item">Location ou vente.</li>
+                    </ul>
+                    <div class="card-footer bg-white">
+                        <p class="mb-0 text-center">
                             <%= link_to "Choisir ce plan", new_property_path(pricing_plan_choosing: "basic"), class: "btn btn-outline-primary btn-lg" %>
                         </p>
                     </div>
                 </div>
-            </div>            
+            </div>
             <div class="col-lg-4 mb-4">
                 <div class="card border-primary pricing_plan shadow-sm">
-                    <div class="card-header bg-primary text-center">
-                        <h3 class="my-0 text-white">Premium</h3>
+                    <div class="card-header bg-primary">
+                        <h3 class="text-center my-0 text-white">Premium</h3>
                     </div>
-                    <div class="card-body text-center">
-                        <h1 class="card-title">
-                            <%= number_with_delimiter(sprintf("%0.00f", 15000)) %><sup>f</sup>
-                        </h1>
-                        <hr>
-                        <ul class="list-unstyled">
-                            <li class="my-2">5 annonces maximum.</li>
-                            <li class="my-2">Durée d'affichage: jusqu'a 6 mois.</li>
-                            <li class="my-2">12 photos maximum.</li>
-                            <li class="my-2">Location ou vente.</li>
-                            <li class="my-2">Téléchargements des modèles de contrats.</li>
-                            <li class="my-2">Support 24/7.</li>
-                        </ul>
-                        <p>
+                    <div class="card-body">
+                        <h1 class="card-title text-center mb-0">
+                            <%= number_with_delimiter(sprintf("%0.00f", 19000)) %><sup>f</sup>
+                        </h1>                        
+                    </div>
+                    <ul class="list-group list-group-flush text-center">
+                        <li class="list-group-item">5 annonces maximum.</li>
+                        <li class="list-group-item">Durée d'affichage: jusqu'a 6 mois.</li>
+                        <li class="list-group-item">8 photos maximum + photos du plan.</li>
+                        <li class="list-group-item">Location ou vente.</li>
+                        <li class="list-group-item">Des modèles de contrats sont mis à votre disposition dans votre espace propriétaire ou agent immobilier.</li>
+                    </ul>
+                    <div class="card-footer bg-white">
+                        <p class="mb-0 text-center">
                             <%= link_to "Contactez-nous", contact_us_path, class: "btn btn-primary btn-lg"  %>
                         </p>
                     </div>
@@ -60,31 +58,30 @@ jusqu'à ce que vos biens soit loués ou vendus
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="card pricing_plan shadow-sm">
-                    <div class="card-header text-center">
-                        <h3 class="my-0">Business</h3>
+                    <div class="card-header bg-light">
+                        <h3 class="text-center mb-0">Business</h3>
                     </div>
-                    <div class="card-body text-center">
-                        <h1 class="card-title">
+                    <div class="card-body">
+                        <h1 class="card-title text-center mb-0">
                             <%= number_with_delimiter(sprintf("%0.00f", 29000)) %><sup>f</sup>
                         </h1>
-                        <hr>
-                        <ul class="list-unstyled">
-                            <li class="my-2">Annonces illimités.</li>
-                            <li class="my-2">Durée d'affichage: jusqu'à la location ou à la vente de votre bien.</li>
-                            <li class="my-2">Photos illimités/annonce + 1 vidéo.</li>
-                            <li class="my-2">Location ou vente.</li>
-                            <li class="my-2">Téléchargements des modèles de contrats.</li>
-                            <li class="my-2">Assistance juridique mis à votre disposition.</li>
-                            <li class="my-2">Page vitrine pour présenter votre agence et vos offres.</li>
-                            <li>Support 24/7.</li>
-                        </ul>
-                        <p>
-                            <%= link_to "Contactez-nous", contact_us_path, class: "btn btn-outline-primary btn-lg"  %>
+                    </div>
+                    <ul class="list-group list-group-flush text-center">
+                        <li class="list-group-item">Nombres d'annonces illimités.</li>
+                        <li class="list-group-item">Durée d'affichage: jusqu'à ce que votre bien soit loué ou vendu <small>(dans la limite de 12 mois)</small>    .</li>
+                        <li class="list-group-item">Nombres de Photos illimités + photos du plan + 1 vidéo.</li>
+                        <li class="list-group-item">Location ou vente.</li>
+                        <li class="list-group-item">Des modèles de contrats sont mis à votre disposition dans votre espace propriétaire ou agent immobilier.</li>
+                        <li class="list-group-item">Vous avez un conseiller immobilier dédié et une assistance juridique.</li>
+                        <li class="list-group-item">Support 24/7.</li>
+                    </ul>
+                    <div class="card-footer bg-white">
+                        <p class="mb-0 text-center">
+                            <%= link_to "Contactez-nous", contact_us_path, class: "btn btn-outline-primary btn-lg" %>
                         </p>
                     </div>
                 </div>
             </div>
-
         </section>
     </section>
 </section>
