@@ -9,7 +9,7 @@
                 <h2 class="text-white">Recherche avancée</h2>
             </div>
             <div class="col-12 py-3 rounded" style="background-color: rgba(0, 0, 0, 0.3) !important;">
-                <%= form_with url: properties_path, method: :get, local: true do |f| %>
+                <%= form_with url: rechercher_un_bien_properties_path, method: :get, local: true do |f| %>
                 <div class="form-row">
                     <div class="col-md-3 px-0 mb-2">
                         <%= f.collection_select :property_type, PropertyType.all, :name, :name, { prompt: "Type de bien" }, { class: "rounded-0 form-control form-control-lg", required: true } %>
@@ -50,7 +50,7 @@
                             <ul class="list-unstyled">
                                 <% PropertyType.all.each do |property_type| %>
                                 <li class="my-3">
-                                   <%= link_to properties_path(property_type: property_type.name), class: "text-dark d-flex justify-content-between" do %>
+                                   <%= link_to rechercher_un_bien_properties_path(property_type: property_type.name), class: "text-dark d-flex justify-content-between" do %>
                                    <span><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i>&nbsp; <%= property_type.name %></span>
                                    <span>(<%= property_type.properties.count %>)</span>
                                    <% end %>
@@ -68,7 +68,7 @@
                         <ul class="list-unstyled">
                             <% AdType.all.each do |ad_type| %>
                             <li class="my-3">
-                                <%= link_to properties_path(ad_type: ad_type.name), class: "text-dark d-flex justify-content-between" do %>
+                                <%= link_to rechercher_un_bien_properties_path(ad_type: ad_type.name), class: "text-dark d-flex justify-content-between" do %>
                                 <span><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i>&nbsp; <%= ad_type.name %></span>
                                 <span>(<%= ad_type.properties.count %>)</span>
                                 <% end %>

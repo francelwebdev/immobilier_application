@@ -32,7 +32,9 @@ Rails.application.routes.draw do
         post "publish"
         post "deactivate"
       end
-      get "search", on: :collection
+      collection do
+        get "search", as: "rechercher_un_bien"
+      end
     end
 
     resources :messages, only: :create

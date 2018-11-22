@@ -15,12 +15,12 @@ class PropertiesController < ApplicationController
     end
 
     def search
-        if params.has_key?(:property_type) and params.has_key?(:ad_type) and params.has_key?(:city) and !params.has_key?(:room) and !params.has_key?(:price) and !params.has_key?(:area)
+        if params.has_key?(:property_type) && params.has_key?(:ad_type) && params.has_key?(:city) && !params.has_key?(:room) && !params.has_key?(:price) && !params.has_key?(:area)
             property_type_id = PropertyType.find_by(name: params[:property_type]).id
             ad_type_id = AdType.find_by(name: params[:ad_type]).id
             city = City.find_by(name: params[:city].capitalize)
             if city.nil?
-                @properties = Property.includes(:user, :property_type, :ad_type, :city, :room).where("property_type_id = :property_type_id and ad_type_id = :ad_type_id", property_type_id: property_type_id, ad_type_id: ad_type_id).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
+                @properties = Property.includes(:user, :property_type, :ad_type, :city).where("property_type_id = :property_type_id and ad_type_id = :ad_type_id", property_type_id: property_type_id, ad_type_id: ad_type_id).published.all.order("created_at DESC").paginate(page: params[:page], per_page: 6)
                 @properties_numbers = @properties.count
             else
                 property_type_id = PropertyType.find_by(name: params[:property_type]).id
@@ -60,7 +60,7 @@ class PropertiesController < ApplicationController
     end
 
     def index
-        @properties = Property.includes(:user, :property_type, :ad_type, :city, :room).all.order("created_at DESC").published.paginate(page: params[:page], per_page: 6)
+        @properties = Property.includes(:user, :property_type, :ad_type, :city).all.order("created_at DESC").published.paginate(page: params[:page], per_page: 6)
         @properties_numbers = @properties.count
     end
 
