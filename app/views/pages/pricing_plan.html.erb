@@ -2,11 +2,19 @@
 <% content_for :page_meta_description, "Nos tarifs" %>
 <% content_for :page_meta_keywords, "tarifs" %>
 
+<div class="jumbotron jumbotron-fluid d-flex align-items-center mb-0 jumbotron-nos-tarifs py-5">
+    <div class="container">
+        <!-- <h1 class="text-white text-center mb-3">Trouver <span id="js-rotating" class="font-weight-bold">la chambre, la maison, le villa, l'appartement, le bureau, la boutique, le magasin, le parcelle, le terrain</span> de vos rêves sans aucune difficulté.</h1> -->
+        <h2 class="text-white text-center">Nos tarifs</h2>
+        <!-- <h4 class="text-white text-center mb-3">Trouvez <span id="js-rotating" class="font-weight-bold">la parcelle, le terrain, la maison, la villa, l'immeuble</span> dont vous rêvez et faites votre acquisition en toute sécurité.</h4> -->
+    </div>
+</div>
+
 <section class="container-fluid py-5 bg-white">
 	<section class="container">
 		<div class="row">
 			<div class="col-12 text-center mb-3">
-				<h2>Nos tarifs</h2>
+				
 				<p class="lead"><span class="font-weight-bold h4">SICO</span> vous offre 3 différents tarifs pour répondre à vos besoins.</p>
 			</div>
 		</div>
@@ -20,14 +28,14 @@
                         <h1 class="card-title text-center mb-0">Gratuit</h1>
                     </div>
                     <ul class="list-group list-group-flush text-center">
-                        <li class="list-group-item">1 annonce.</li>
-                        <li class="list-group-item">Durée d'affichage: 1 semaine.</li>
-                        <li class="list-group-item">3 photos maximum.</li>
-                        <li class="list-group-item">Location ou vente.</li>
+                        <li class="list-group-item">Nombres d'annonces : 3 annonces maximum.</li>
+                        <li class="list-group-item">Durée de publication d'une annonce : 1 semaine.</li>
+                        <li class="list-group-item">Nombres de photos : 4 photos maximum.</li>
+                        <li class="list-group-item">Location + vente.</li>
                     </ul>
                     <div class="card-footer bg-white">
                         <p class="mb-0 text-center">
-                            <%= link_to "Choisir ce plan", new_property_path(pricing_plan_choosing: "basic"), class: "btn btn-outline-primary btn-lg" %>
+                            <%= link_to "Choisir", new_property_path(pricing_plan_choosing: "basic"), class: "btn btn-outline-primary btn-lg" %>
                         </p>
                     </div>
                 </div>
@@ -43,15 +51,16 @@
                         </h1>                        
                     </div>
                     <ul class="list-group list-group-flush text-center">
-                        <li class="list-group-item">5 annonces maximum.</li>
-                        <li class="list-group-item">Durée d'affichage: jusqu'a 6 mois.</li>
-                        <li class="list-group-item">8 photos maximum + photos du plan.</li>
-                        <li class="list-group-item">Location ou vente.</li>
+                        <li class="list-group-item">Noombres d'annonces : illimitées</li>
+                        <li class="list-group-item">Durée de publication d'une annonce : vous ne payez qu'une fois, et nous publions votre annonce jusqu'à ce que votre bien soit loué ou vendu <small>(dans la limite de 4 mois)</small>.</li>
+                        <li class="list-group-item">Nombres de photos : 12 photos maximum + 1 photo du plan.</li>
+                        <li class="list-group-item">Location + vente.</li>
                         <li class="list-group-item">Des modèles de contrats sont mis à votre disposition dans votre espace propriétaire ou agent immobilier.</li>
+                        <li class="list-group-item">Support 24/7.</li>
                     </ul>
                     <div class="card-footer bg-white">
                         <p class="mb-0 text-center">
-                            <%= link_to "Contactez-nous", contact_us_path, class: "btn btn-primary btn-lg"  %>
+                            <%= link_to "Choisir", contact_us_path, class: "btn btn-primary btn-lg"  %>
                         </p>
                     </div>
                 </div>
@@ -67,17 +76,17 @@
                         </h1>
                     </div>
                     <ul class="list-group list-group-flush text-center">
-                        <li class="list-group-item">Nombres d'annonces illimités.</li>
-                        <li class="list-group-item">Durée d'affichage: jusqu'à ce que votre bien soit loué ou vendu <small>(dans la limite de 12 mois)</small>    .</li>
-                        <li class="list-group-item">Nombres de Photos illimités + photos du plan + 1 vidéo.</li>
-                        <li class="list-group-item">Location ou vente.</li>
+                        <li class="list-group-item">Noombres d'annonces : illimitées.</li>
+                        <li class="list-group-item">Durée de publication d'une annonce : vous ne payez qu'une fois, et nous publions votre annonce jusqu'à ce que votre bien soit loué ou vendu <small>(dans la limite de 12 mois)</small>.</li>
+                        <li class="list-group-item">Nombres de photos : photos illimités + 1 photo du plan + 1 vidéo.</li>
+                        <li class="list-group-item">Location + vente.</li>
                         <li class="list-group-item">Des modèles de contrats sont mis à votre disposition dans votre espace propriétaire ou agent immobilier.</li>
                         <li class="list-group-item">Vous avez un conseiller immobilier dédié et une assistance juridique.</li>
                         <li class="list-group-item">Support 24/7.</li>
                     </ul>
                     <div class="card-footer bg-white">
                         <p class="mb-0 text-center">
-                            <%= link_to "Contactez-nous", contact_us_path, class: "btn btn-outline-primary btn-lg" %>
+                            <%= link_to "Choisir", contact_us_path, class: "btn btn-outline-primary btn-lg" %>
                         </p>
                     </div>
                 </div>

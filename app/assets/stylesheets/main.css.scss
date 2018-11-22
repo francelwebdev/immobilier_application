@@ -10,7 +10,7 @@ main {
 
 .jumbotron-accueil {
     height: 100vh !important;
-    background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("pexels-photo-277667.jpeg") !important;
+    background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("vendre_son_bien_s.jpg") !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -19,6 +19,15 @@ main {
 
 .card-photo-property {
     transition: 0.5s, ease;
+}
+
+.jumbotron-nos-tarifs {
+    height: 50vh !important;
+    background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("plan_image.png") !important;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 
@@ -35,7 +44,7 @@ main {
 
 .barre-recherche-avance {
     height: 75vh !important;
-    background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("pexels-photo-259950.jpeg") !important;
+    background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("clefs.jpg") !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
