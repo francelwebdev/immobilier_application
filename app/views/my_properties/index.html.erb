@@ -1,45 +1,47 @@
-    <% content_for :page_title, "Mes biens" %>
+<% content_for :page_title, "Mes biens" %>
+<% content_for :page_meta_description, "" %>
+<% content_for :page_meta_keywords, "" %>
 
-    <section class="container-fluid py-5 my_property-page-banner d-flex flex-column justify-content-center">
-        <div class="container">
-            <riv class="row">
-                <div class="col-lg-12 text-center">
-                    <h1 class="text-white">Mes biens</h1>
-                </div>
-            </riv>
-        </div>
-    </section>
+<section class="banner-my-properties d-flex align-items-center">
+    <div class="container">
+        <riv class="row">
+            <div class="col-lg-12 text-center">
+                <h1 class="text-white">Mes annonces</h1>
+            </div>
+        </riv>
+    </div>
+</section>
 
-    <section class="container-fluid py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <%= render "shareds/dashboard_sidebar_menu" %>
-                </div>
-                <div class="col-lg-8">
-                    <div class="row">
-                        <div class="col-12">
-                            <p>
-                                <%= pluralize(@my_properties_numbers, "annonces publié", "annonces publiés") %>
-                            </p>
-                        </div>
+<section class="container-fluid py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <%= render "shared/dashboard_sidebar_menu" %>
+            </div>
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-12">
+                        <p>
+                            <%= pluralize(@my_properties_numbers, "annonces publié", "annonces publiés") %>
+                        </p>
+                    </div>
 
-                        <div class="col-12">
-                            <div class="row">
-                                <% @my_properties.each do |my_property| %>
-                                <!-- Grid design -->
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card result_search_list_design shadow-sm">
-                                        <% if my_property.images.attached? %>
-                                        <%= image_tag url_for(my_property.images.first), class: "card-img-top", alt: "Photo de #{ my_property.title }" %>
-                                        <% else %>
-                                        <p class="m-0 d-flex flex-column justify-content-center align-items-center">
-                                            <%= image_tag "148705-essential-collection/svg/picture.svg", size: "207x207" %>
-                                            <span>Annonce sans photo</span>
-                                        </p>
-                                        <% end %>
+                    <div class="col-12">
+                        <div class="row">
+                            <% @my_properties.each do |my_property| %>
+                            <!-- Grid design -->
+                            <div class="col-lg-6 mb-4">
+                                <div class="card result_search_list_design shadow-sm">
+                                    <% if my_property.images.attached? %>
+                                    <%= image_tag url_for(my_property.images.first), class: "card-img-top", alt: "Photo de #{ my_property.title }" %>
+                                    <% else %>
+                                    <p class="m-0 d-flex flex-column justify-content-center align-items-center">
+                                        <%= image_tag "148705-essential-collection/svg/picture.svg", size: "207x207" %>
+                                        <span>Annonce sans photo</span>
+                                    </p>
+                                    <% end %>
 
-                                        <% if my_property.ad_type.name == "À vendre" %>
+                                    <% if my_property.ad_type.name == "À vendre" %>
                                     <h5 class="position-absolute" style="top: 10px; left: 20px;">
                                         <span class="badge badge-secondary p-2" >À vendre</span>
                                     </h5>
@@ -49,42 +51,42 @@
                                         <% end %>
                                     </h5>
 
-                                        <% if my_property.ad_type.name == "Vente" %>
-                                        <h5 class="position-absolute" style="top: 10px; left: 20px;">
-                                            <span class="badge badge-info p-2">À vendre</span>
-                                        </h5>
-                                        <% elsif my_property.ad_type.name == "Location" %>
-                                        <h5 class="position-absolute" style="top: 10px; left: 20px;">
-                                            <span class="badge badge-info p-2">À louer</span>
-                                        </h5>
-                                        <% end %>
+                                    <% if my_property.ad_type.name == "Vente" %>
+                                    <h5 class="position-absolute" style="top: 10px; left: 20px;">
+                                        <span class="badge badge-info p-2">À vendre</span>
+                                    </h5>
+                                    <% elsif my_property.ad_type.name == "Location" %>
+                                    <h5 class="position-absolute" style="top: 10px; left: 20px;">
+                                        <span class="badge badge-info p-2">À louer</span>
+                                    </h5>
+                                    <% end %>
 
-                                        <% if user_signed_in? %>
-                                        <% if current_user.admin? and my_property.published %>
-                                        <h4><span class="position-absolute badge badge-success p-2" style="top: 10px; right: 10px;">En ligne</span></h4>
-                                        <% elsif current_user.admin? and !my_property.published %>
-                                        <h4><span class="position-absolute badge badge-warning text-white p-2" style="top: 10px; right: 10px;">En attente de mise en ligne</span></h4>
-                                        <% end %>
-                                        <% end %>
+                                    <% if user_signed_in? %>
+                                    <% if current_user.admin? and my_property.published %>
+                                    <h4><span class="position-absolute badge badge-success p-2" style="top: 10px; right: 10px;">En ligne</span></h4>
+                                    <% elsif current_user.admin? and !my_property.published %>
+                                    <h4><span class="position-absolute badge badge-warning text-white p-2" style="top: 10px; right: 10px;">En attente de mise en ligne</span></h4>
+                                    <% end %>
+                                    <% end %>
 
-                                        <div class="card-body">
-                                            <h5 class="card-title text-dark">
-                                                <%= truncate(strip_tags(my_property.title.capitalize), length: 25) %>
-                                            </h5>
-                                            <address class="card-text text-secondary">
-                                                <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>&nbsp; <%= my_property.address %>, <%= my_property.city.name %>
-                                            </address>
-                                            <% if my_property.ad_type.name == "À vendre" %>
-                                            <p class="text-primary m-0 p-0 h3">
-                                                <%= number_to_currency(my_property.price, precision: 0) %>
-                                            </p>
-                                            <% elsif my_property.ad_type.name == "À louer" %>
-                                            <p class="text-primary m-0 p-0 h3">
-                                                <%= number_to_currency(my_property.price, precision: 0) %>/mois
-                                            </p>
-                                            <% end %>
-                                            <hr>
-                                            <div class="d-flex justify-content-between align-items-center mb-0">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-dark">
+                                            <%= truncate(strip_tags(my_property.title.capitalize), length: 25) %>
+                                        </h5>
+                                        <address class="card-text text-secondary">
+                                            <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>&nbsp; <%= my_property.address %>, <%= my_property.city.name %>
+                                        </address>
+                                        <% if my_property.ad_type.name == "À vendre" %>
+                                        <p class="text-primary m-0 p-0 h3">
+                                            <%= number_to_currency(my_property.price, precision: 0) %>
+                                        </p>
+                                        <% elsif my_property.ad_type.name == "À louer" %>
+                                        <p class="text-primary m-0 p-0 h3">
+                                            <%= number_to_currency(my_property.price, precision: 0) %>/mois
+                                        </p>
+                                        <% end %>
+                                        <hr>
+                                        <div class="d-flex justify-content-between align-items-center mb-0">
                                             <p class="mb-0">
                                                 <small class="text-dark">Publié il y a <%= distance_of_time_in_words(my_property.created_at, Time.now, include_seconds: false) %></small>
                                             </p>
@@ -92,17 +94,17 @@
                                                 <%= link_to "Modifier", edit_property_path(my_property), class: "btn btn-primary" %>
                                                 <%= link_to "Voir", my_property, class: "btn btn-primary" %>
                                             </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Grid design -->
-                                <% end %>
-
                             </div>
+                            <!-- Grid design -->
+                            <% end %>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>

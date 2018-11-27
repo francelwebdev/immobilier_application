@@ -8,9 +8,18 @@ main {
     background-color: #F2F6FF;
 }
 
-.jumbotron-accueil {
-    height: 100vh !important;
-    background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("vendre_son_bien_s.jpg") !important;
+section.banner-accueil {
+    height: 75vh;
+    background-image: linear-gradient(rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.5)), asset-url("vendre_son_bien_s.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+section.resultat-de-recherche, section.recherche-avance {
+    height: 75vh;
+    background-image: linear-gradient(rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.5)), asset-url("clefs.jpg") !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -21,15 +30,14 @@ main {
     transition: 0.5s, ease;
 }
 
-.jumbotron-nos-tarifs {
-    height: 50vh !important;
+section.nos-tarifs {
+    height: 40vh;
     background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("plan_image.png") !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
-
 
 .index-list-item:hover {
     text-decoration: none;
@@ -40,19 +48,6 @@ main {
         border-top-right-radius: 3px;
         border-bottom-right-radius: 3px;
     }
-}
-
-.barre-recherche-avance {
-    height: 75vh !important;
-    background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("clefs.jpg") !important;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-}
-
-section.banner-contact {
-    height: 50%;
 }
 
 .sans-text-decoration:hover {
@@ -69,10 +64,9 @@ ul > li > a {
 }
 // List design
 
-
-.contact-page-banner, .add-property-page-banner, .edit-property-page-banner, .my_property-page-banner, .property-show-page-banner {
-    height: 30% !important;
-    background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("philipp-berndt-173197.jpg") !important;
+section.banner-contact-us, section.banner-my-properties, section.banner-add-property, section.banner-edit-property, section.banner-show-property {
+    height: 40vh;
+    background-image: linear-gradient(rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.5)), asset-url("philipp-berndt-173197.jpg") !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -80,7 +74,7 @@ ul > li > a {
 }
 
 .agent-benefits-page-banner {
-    height: 75% !important;
+    height: 200px;
     background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("85.jpg") !important;
     background-size: cover;
     background-position: center;
@@ -88,13 +82,13 @@ ul > li > a {
     background-repeat: no-repeat;
 }
 
-section.vp_for_agent_or_agency {
+section.vp_for_owner_or_agency {
+    height: 50vh;
     background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("85.jpg") !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    height: 75%;
 }
 
 // Autre
