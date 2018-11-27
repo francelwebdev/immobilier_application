@@ -106,15 +106,18 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   # Pour postmark
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :authentication => :plain,
-    :address => "smtp.postmarkapp.com",
-    :port => 587,
-    :domain => "amadev.xyz",
-    :user_name => ENV["MAILGUN_LOGIN"],
-    :password => ENV["MAILGUN_PASSWORD"],
-    enable_starttls_auto: true
-  }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   :authentication => :plain,
+  #   :address => "smtp.postmarkapp.com",
+  #   :port => 587,
+  #   :domain => "amadev.xyz",
+  #   :user_name => ENV["MAILGUN_LOGIN"],
+  #   :password => ENV["MAILGUN_PASSWORD"],
+  #   enable_starttls_auto: true
+  # }
+
+  config.action_mailer.delivery_method = :postmark
+config.action_mailer.postmark_settings = { :api_token => "ea1c1d08-7b62-4f20-a763-78ae37b96be0" }
   # Mon code
 end
