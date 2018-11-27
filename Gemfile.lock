@@ -81,16 +81,6 @@ GEM
       momentjs-rails (~> 2.8)
       sass-rails (~> 5.0)
       selectize-rails (~> 0.6)
-    ahoy_matey (2.1.0)
-      addressable
-      browser (~> 2.0)
-      device_detector
-      geocoder (>= 1.4.5)
-      railties (>= 4.2)
-      referer-parser (>= 0.3)
-      request_store
-      safely_block (>= 0.2.1)
-      user_agent_parser
     arbre (1.1.1)
       activesupport (>= 3.0.0)
     archive-zip (0.11.0)
@@ -115,7 +105,6 @@ GEM
       sass (>= 3.5.2)
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
-    browser (2.5.3)
     builder (3.2.3)
     byebug (10.0.2)
     cancancan (2.3.0)
@@ -160,7 +149,6 @@ GEM
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
     debug_inspector (0.0.3)
-    device_detector (1.0.1)
     devise (4.5.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -171,7 +159,6 @@ GEM
       devise (>= 4.5)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
-    errbase (0.1.1)
     erubi (1.7.1)
     execjs (2.7.0)
     faraday (0.15.3)
@@ -184,7 +171,6 @@ GEM
     formtastic_i18n (0.6.0)
     friendly_id (5.2.4)
       activerecord (>= 4.0.0)
-    geocoder (1.5.0)
     gibbon (3.2.0)
       faraday (>= 0.9.1)
       multi_json (>= 1.11.0)
@@ -339,11 +325,8 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    referer-parser (0.3.0)
     regexp_parser (1.3.0)
     regexp_property_values (0.3.4)
-    request_store (1.4.1)
-      rack (>= 1.4)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
@@ -354,8 +337,6 @@ GEM
     rolify (5.2.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
-    safely_block (0.2.1)
-      errbase
     sass (3.7.2)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -414,7 +395,6 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
-    user_agent_parser (2.5.0)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -438,7 +418,6 @@ DEPENDENCIES
   activeadmin
   activestorage-cloudinary-service
   administrate
-  ahoy_matey
   autoprefixer-rails
   better_errors
   binding_of_caller
