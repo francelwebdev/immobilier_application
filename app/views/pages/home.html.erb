@@ -25,10 +25,10 @@ $("#js-rotating").Morphext({
             <%= form_with url: rechercher_un_bien_properties_path, method: :get, local: true do |f| %>
             <div class="form-row">
                 <div class="col-md-3 px-0 mb-2">
-                    <%= f.collection_select :property_type, PropertyType.all, :name, :name, { prompt: "Type de bien" }, { class: "rounded-0 form-control form-control-lg", required: true } %>
+                     <%= f.select :property_type, PropertyType.all.collect {|p| [p.name, p.name]}, { prompt: "Sélectionner le type de bien"}, {class: "rounded-0 form-control form-control-lg", required: true} %>
                 </div>
                 <div class="col-md-3 px-0 mb-2">
-                    <%= f.collection_select :ad_type, AdType.all, :name, :name, { prompt: "Type d'annonce" }, { class: "rounded-0 form-control form-control-lg", required: true } %>
+                    <%= f.select :ad_type, AdType.all.collect {|p| [p.name, p.name]}, { prompt: "Sélectionner le type d'annonce"}, {class: "rounded-0 form-control form-control-lg", required: true} %>
                 </div>
                 <div class="col-md-4 px-0 mb-2">
                     <%= f.text_field :city, placeholder: "Ou ? Calavi, Allada, Zè, Parakou ...", class: "rounded-0 form-control form-control-lg", required: true %>

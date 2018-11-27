@@ -6,12 +6,15 @@ class User < ApplicationRecord
     devise :confirmable
     devise :omniauthable, omniauth_providers: %i[facebook]
 
+    has_person_name    
+
     ROLE = ["Agent immobilier", "Propriétaire"].sort
     GENDER = { M: :Male, F: :Female }
 
-    # validates :role, presence: true, on: :update
-    validates :first_name, :last_name, :phone_number, presence: true, on: :update
-    validates :phone_number, uniqueness: true, numericality: { only_integer: true }, length: { is: 8 }, on: :update
+    validates :name, presence: true
+    validates :role, presence: true
+    validates :phone_number, presence: true
+    validates :phone_number, uniqueness: true, numericality: { only_integer: true }, length: { is: 8 }
 
     # before_create :create_administrator
     after_create :send_welcome_email

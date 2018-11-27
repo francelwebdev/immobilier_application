@@ -4,11 +4,12 @@ fr:
       user: "Utilisateur"
     attributes:
       user:
+        name: "Nom complet"
         first_name: "Prénom"
         last_name: "Nom"
         phone_number: "Numéros de téléphone"
-        gender: "Votre sexe"
+        gender: "Sexe"
         terms_and_conditions: "Conditions générales d'utilisation"
         profile_picture: "Photo de profile"
         role: "Rôle"
-        about_me: "A propos de moi"
+        about_me: "À propos de moi"

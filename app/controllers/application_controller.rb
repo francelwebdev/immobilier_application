@@ -20,11 +20,11 @@ class ApplicationController < ActionController::Base
     protected
 
     def configure_permitted_parameters
-        devise_parameter_sanitizer.permit(:sign_up, keys: [:role])
-        devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :gender, :phone_number, :profile_picture])
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :phone_number, :role])
+        devise_parameter_sanitizer.permit(:account_update, keys: [:name, :phone_number, :role, :gender, :profile_picture])
     end
 
     def after_sign_in_path_for(resource)
-        new_property_path
+        edit_user_registration_path
     end
 end

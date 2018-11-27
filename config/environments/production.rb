@@ -104,9 +104,7 @@ Rails.application.configure do
   # Pour l'envoie d'email en prodduction.
   config.action_mailer.default_url_options = { :host => "immobilier.amadev.xyz" }
   config.action_mailer.delivery_method = :smtp
-
-  # Pour postmark
-  # config.action_mailer.delivery_method = :smtp
+  
   # config.action_mailer.smtp_settings = {
   #   :authentication => :plain,
   #   :address => "smtp.postmarkapp.com",
@@ -118,6 +116,6 @@ Rails.application.configure do
   # }
 
   config.action_mailer.delivery_method = :postmark
-config.action_mailer.postmark_settings = { :api_token => "ea1c1d08-7b62-4f20-a763-78ae37b96be0" }
+  config.action_mailer.postmark_settings = { :api_token => "ea1c1d08-7b62-4f20-a763-78ae37b96be0" }
   # Mon code
 end
