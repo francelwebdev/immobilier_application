@@ -99,7 +99,7 @@ Rails.application.configure do
 
 
   # Mon code
-  config.active_storage.service = :amazon
+  config.active_storage.service = :local
 
   # Pour l'envoie d'email en prodduction.
   config.action_mailer.default_url_options = { :host => "immobilier.amadev.xyz" }
