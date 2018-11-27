@@ -106,8 +106,14 @@ gem 'friendly_id'
 
 gem 'rolify'
 
+# A suprimer ce gem
 gem 'cloudinary', require: false
 gem 'activestorage-cloudinary-service'
+# A suprimer ce gem
+
+# A ajouter
+# gem "postmark-rails
+# A ajouter
 
 gem 'gibbon'
 gem 'owlcarousel-rails', github: 'acrogenesis/owlcarousel-rails', branch: 'master'
@@ -135,3 +141,21 @@ gem 'meta-tags'
 gem 'koala'
 
 gem 'activeadmin'
+
+
+gem "seedbank"
+gem 'ahoy_matey'
+gem 'administrate'
+gem 'data-confirm-modal'
+# gem 'devise-bootstrapped', github: 'excid3/devise-bootstrapped', branch: 'bootstrap4'
+# gem 'devise_masquerade'
+# gem 'font-awesome-sass', '~> 5.5', '>= 5.5.0.1'
+# gem 'foreman'
+gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
+gem 'local_time'
+gem 'mini_magick'
+gem 'name_of_person'
+# gem 'sidekiq'
+# gem 'sitemap_generator'
+# gem 'webpacker'
+# gem 'whenever', require: false

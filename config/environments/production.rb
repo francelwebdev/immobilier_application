@@ -99,23 +99,22 @@ Rails.application.configure do
 
 
   # Mon code
-  config.active_storage.service = :cloudinary
+  config.active_storage.service = :amazon
 
   # Pour l'envoie d'email en prodduction.
-  config.action_mailer.default_url_options = { :host => "sicoapp.herokuapp.com" }
+  config.action_mailer.default_url_options = { :host => "immobilier.amadev.xyz" }
   config.action_mailer.delivery_method = :smtp
 
-# Pour mailgun
-config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
-  :authentication => :plain,
-  :address => "smtp.mailgun.org",
-  :port => 587,
-  :domain => "sandboxa69bf090788f48bc885fa291a873ada0.mailgun.org",
-  :user_name => ENV["MAILGUN_LOGIN"],
-  :password => ENV["MAILGUN_PASSWORD"],
-
-  # enable_starttls_auto: true
-}
+  # Pour postmark
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.postmarkapp.com",
+    :port => 587,
+    :domain => "amadev.xyz",
+    :user_name => ENV["MAILGUN_LOGIN"],
+    :password => ENV["MAILGUN_PASSWORD"],
+    enable_starttls_auto: true
+  }
   # Mon code
 end
