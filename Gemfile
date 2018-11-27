@@ -144,7 +144,7 @@ gem 'activeadmin'
 
 
 gem "seedbank"
-gem 'ahoy_matey'
+# gem 'ahoy_matey'
 gem 'administrate'
 gem 'data-confirm-modal'
 # gem 'devise-bootstrapped', github: 'excid3/devise-bootstrapped', branch: 'bootstrap4'
