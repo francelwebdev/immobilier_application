@@ -140,4 +140,6 @@ gem 'name_of_person'
 gem 'meta-tags', '~> 2.11'
 gem 'activestorage-validator'
 
-gem 'aws-sdk-s3', '~> 1.29'
+# gem 'aws-sdk-s3', '~> 1.29'
+# gem "aws-sdk-s3", require: false
+gem 'activestorage-digitalocean'
