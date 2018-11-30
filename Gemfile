@@ -139,7 +139,4 @@ gem 'name_of_person'
 # gem 'whenever', require: false
 gem 'meta-tags', '~> 2.11'
 gem 'activestorage-validator'
-
-# gem 'aws-sdk-s3', '~> 1.29'
-# gem "aws-sdk-s3", require: false
-gem 'activestorage-digitalocean'
+gem 'aws-sdk-s3'
