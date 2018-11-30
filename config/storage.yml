@@ -6,6 +6,16 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
+amazon:
+  service: S3
+  access_key_id: 47E77JPRMUBGHP5PJXMQ
+  secret_access_key: jKb1ph53XA5WgCvfqGH4ZQ4QmvC0NhvYK0y9QGVqrQg
+  region: ams3
+  bucket: mon-spaces-access-keys
+#  endpoint: https://mon-espace-de-stockage-de-fichier.ams3.digitaloceanspaces.com
+
+
+
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3
@@ -32,17 +42,3 @@ local:
 #   service: Mirror
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
-
-
-
-# Mon code
-# Pour DigitalOcean, c'est compatible avec aws s3
-amazon:
-  service: S3
-  access_key_id: 47E77JPRMUBGHP5PJXMQ
-  secret_access_key: jKb1ph53XA5WgCvfqGH4ZQ4QmvC0NhvYK0y9QGVqrQg
-  region: ams3
-  bucket: mon-spaces-access-keys
-  # endpoint: 'ams3.digitaloceanspaces.com'
-  # endpoint: 'https://mon-espace-de-stockage-de-fichier.ams3.digitaloceanspaces.com'
-# MOn code

@@ -21,6 +21,5 @@
 //= require typed
 //= require jquery.slick
 //= require slick_initialize
-//= require activestorage
 //= require turbolinks
 //= require_tree .

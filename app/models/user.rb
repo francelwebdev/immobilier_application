@@ -28,7 +28,7 @@ class User < ApplicationRecord
     private
 
     def send_welcome_email
-        UserMailer.welcome(self).deliver_now
+        NotificationsMailer.with(usr: self).welcome_email.deliver_now
     end
 
     # def suprimer_photo_de_profile

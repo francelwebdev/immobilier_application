@@ -9,7 +9,7 @@ main {
 }
 
 section.banner-accueil {
-    height: 75vh;
+    min-height: 75vh;
     background-image: linear-gradient(rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.5)), asset-url("vendre_son_bien_s.jpg") !important;
     background-size: cover;
     background-position: center;

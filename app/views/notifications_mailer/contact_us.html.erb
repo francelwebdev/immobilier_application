@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+	<p>You received a message from <%= @contact_infos.first_name %> <%= @contact_infos.last_name %> with email address <%= @contact_infos.email %>.</p>
+	<p>The visitor said :</p>
+	<p><%= @contact_infos.message %></p>
+	<p><%= link_to "Aller sur le site", home_page_url %></p>
+	<p>Merci,</p>
+	<p>L'équipe SICO</p>
+</body>
+</html>

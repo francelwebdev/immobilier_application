@@ -8,7 +8,7 @@
 
 <% content_for :dropdown_menu do %>
 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-    <h6 class="dropdown-header">Bienvenue <%= current_user.name.first.capitalize + " " + current_user.name.last.capitalize if user_signed_in? %></h6>
+    <h6 class="dropdown-header"><%= current_user.name.first.capitalize + " " + current_user.name.last.capitalize if user_signed_in? %></h6>
     <div class="dropdown-divider"></div>
     <%= link_to my_properties_path, class: "dropdown-item" do %>
     <i class="fa fa-list fa-lg" aria-hidden="true"></i>&nbsp; Mes annonces
@@ -61,7 +61,7 @@
             <%= yield :add_property %>
             <li class="nav-item dropdown mx-1">
                 <%= link_to "", class: "nav-link dropdown-toggle d-flex align-items-center", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" do %>
-                <%= image_tag url_for(current_user.profile_picture), size: "40", class: "rounded-circle" %>            
+                <%= image_tag url_for(current_user.profile_picture), size: "30", class: "rounded-circle" %>            
                 <% end %>
                 <%= yield :dropdown_menu %>
             </li>
@@ -69,7 +69,7 @@
             <%= yield :add_property %>
             <li class="nav-item dropdown mx-1">
                 <%= link_to "", class: "nav-link dropdown-toggle d-flex align-items-center", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" do %>
-                <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
+                <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
                 <% end %>
                 <%= yield :dropdown_menu %>
             </li>

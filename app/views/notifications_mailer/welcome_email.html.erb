@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+    <!-- <h1>Welcome to example.com, <%#= @user.name %></h1>
+    <p>
+      You have successfully signed up to example.com,
+      your username is: <%#= @user.login %>.<br>
+    </p>
+    <p>
+      To login to the site, just follow this link: <%= @url %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p> -->
+
+    <h2>Bienvenue <%= @user.name if @user.name.present? %>,</h2>
+    <p>Vous vous êtes inscrit avec succès sur <%= link_to home_page_url, home_page_url %>, votre adresse email est: <%= @user.email %> .</p>
+    <p>Pour vous connecter au site, il suffit de suivre ce lien: <%= link_to new_user_session_url, new_user_session_url %> .</p>
+    <p>Si vous avez des questions ou suggestions, n'hésitez pas à nous contacter dépuis notre page de contact <%= link_to contact_us_url, contact_us_url %>!</p>
+
+    <p>Merci de votre inscription et bonne journée!</p>
+    <p>L'équipe SICO</p>
+
+  </body>
+  </html>
