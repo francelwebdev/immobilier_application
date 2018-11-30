@@ -86,14 +86,12 @@ group :production do
 end
 
 gem 'rails-i18n'
-
 gem 'jquery-rails'
 gem 'popper_js'
 gem 'bootstrap'
 gem 'font-awesome-sass', '~> 4.7'
 gem 'bootstrap-datepicker-rails'
 gem 'autoprefixer-rails'
-
 gem 'simple_form'
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
@@ -103,47 +101,28 @@ gem 'devise-i18n'
 gem 'omniauth-facebook'
 gem 'jquery-slick-rails'
 gem 'friendly_id'
-
 gem 'rolify'
-
-# A suprimer ce gem
-gem 'cloudinary', require: false
-gem 'activestorage-cloudinary-service'
-# A suprimer ce gem
-
-# A ajouter
-# gem "postmark-rails
-# A ajouter
-
+gem 'postmark-rails'
 gem 'gibbon'
 gem 'owlcarousel-rails', github: 'acrogenesis/owlcarousel-rails', branch: 'master'
-
 gem 'cancancan'
 gem 'typedJS'
 gem 'sweetalert-rails'
 gem 'sweet-alert-confirm'
 gem 'sweetify'
 gem 'magnific-popup-rails'
-
 # Géolocalisation
 # gem 'geocoder', '~> 1.4', '>= 1.4.7'
 # gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
-
 gem 'trix'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'ransack'
-
-
 gem 'stripe'
 gem 'meta-tags'
-
 gem 'koala'
-
 gem 'activeadmin'
-
-
-gem "seedbank"
+# gem "seedbank"
 # gem 'ahoy_matey'
 gem 'administrate'
 gem 'data-confirm-modal'
@@ -151,7 +130,7 @@ gem 'data-confirm-modal'
 # gem 'devise_masquerade'
 # gem 'font-awesome-sass', '~> 5.5', '>= 5.5.0.1'
 # gem 'foreman'
-gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
+gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag' # Je vais commenté ce gem
 gem 'local_time'
 gem 'mini_magick'
 gem 'name_of_person'
@@ -159,4 +138,3 @@ gem 'name_of_person'
 # gem 'sitemap_generator'
 # gem 'webpacker'
 # gem 'whenever', require: false
-gem 'postmark-rails'
