@@ -163,3 +163,15 @@ section.vp_for_owner_or_agency {
   border-left: 6px solid transparent;
   content: '';
 }
+
+
+
+.navbar .navbar-right > li > .dropdown-menu:before,
+.navbar .nav > li > .dropdown-menu.navbar-right:before {
+    right: 12px; left: auto;
+}
+
+.navbar .navbar-right > li > .dropdown-menu:after,
+.navbar .nav > li > .dropdown-menu.navbar-right:after {
+    right: 13px; left: auto;
+}

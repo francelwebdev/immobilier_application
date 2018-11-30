@@ -98,7 +98,7 @@ gem 'client_side_validations-simple_form'
 # gem "cocoon"
 gem 'devise'
 gem 'devise-i18n'
-gem 'omniauth-facebook'
+# gem 'omniauth-facebook'
 gem 'jquery-slick-rails'
 gem 'friendly_id'
 gem 'rolify'
