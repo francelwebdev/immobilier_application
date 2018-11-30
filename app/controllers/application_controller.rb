@@ -25,6 +25,7 @@ class ApplicationController < ActionController::Base
     end
 
     def after_sign_in_path_for(resource)
-        edit_user_registration_path
+        # edit_user_registration_path
+        new_property_path
     end
 end
