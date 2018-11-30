@@ -138,3 +138,5 @@ gem 'name_of_person'
 # gem 'sitemap_generator'
 # gem 'webpacker'
 # gem 'whenever', require: false
+gem 'meta-tags'
+gem 'activestorage-validator'
