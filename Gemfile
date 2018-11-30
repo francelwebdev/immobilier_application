@@ -138,5 +138,5 @@ gem 'name_of_person'
 # gem 'webpacker'
 # gem 'whenever', require: false
 gem 'meta-tags', '~> 2.11'
-gem 'activestorage-validator'
-gem 'aws-sdk-s3'
+# gem 'activestorage-validator'
+gem "aws-sdk-s3", require: false
