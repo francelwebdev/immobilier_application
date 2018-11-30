@@ -14,7 +14,7 @@
             <%= f.input :name, required: true, autofocus: true, placeholder: "Prénom et Nom" %>
             <%= f.input :phone_number, as: :tel, required: true %>
             <%= f.input :gender, collection: User::GENDER, required: true %>
-            <%= f.input :profile_picture, as: :file, required: true, direct_upload: true %>
+            <%= f.input :profile_picture, as: :file, required: true %>
             <%= image_tag current_user.profile_picture, size: "200", class: "rounded mb-4" if current_user.profile_picture.attached? %>
             <%= f.input :email, required: true %>
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
