@@ -99,7 +99,8 @@ Rails.application.configure do
 
 
   # Mon code
-  config.active_storage.service = :digital_ocean
+  # Pour DigitalOcean, c'est compatible avec aws s3
+  config.active_storage.service = :amazon
 
   # Pour l'envoie d'email en prodduction.
   config.action_mailer.default_url_options = { :host => "immobilier.amadev.xyz" }
