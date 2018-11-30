@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   scope "/(:locale)", locale: /fr/ do
-
-    devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }, skip: :omniauth_callbacks
+    
+    devise_for :users
 
     root "pages#home", as: "home_page"
 

@@ -125,3 +125,41 @@ section.vp_for_owner_or_agency {
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
+
+
+
+
+.navbar-nav > li > .dropdown-menu {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.navbar-nav > .navbar-item.dropdown.show > a i:before {
+  bottom: -23px;
+}
+.navbar-nav > .navbar-item.dropdown.show > a i:after {
+  bottom: -24px;
+}
+
+
+.dropdown-menu:before {
+  position: absolute;
+  top: -7px;
+  left: 9px;
+  display: inline-block;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #ccc;
+  border-left: 7px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  content: '';
+}
+
+.dropdown-menu:after {
+  position: absolute;
+  top: -6px;
+  left: 10px;
+  display: inline-block;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #ffffff;
+  border-left: 6px solid transparent;
+  content: '';
+}

@@ -61,7 +61,7 @@
             <%= yield :add_property %>
             <li class="nav-item dropdown mx-1">
                 <%= link_to "", class: "nav-link dropdown-toggle d-flex align-items-center", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" do %>
-                <%= image_tag url_for(current_user.profile_picture), size: "30", class: "rounded-circle" %>            
+                <%= image_tag url_for(current_user.profile_picture), size: "40", class: "rounded-circle" %>            
                 <% end %>
                 <%= yield :dropdown_menu %>
             </li>
@@ -69,7 +69,7 @@
             <%= yield :add_property %>
             <li class="nav-item dropdown mx-1">
                 <%= link_to "", class: "nav-link dropdown-toggle d-flex align-items-center", id: "navbarDropdown", role: "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false" do %>
-                <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
                 <% end %>
                 <%= yield :dropdown_menu %>
             </li>

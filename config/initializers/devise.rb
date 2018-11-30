@@ -258,12 +258,10 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-
-  config.omniauth :facebook, 'APP_ID', 'APP_SECRET', scope: 'email', info_fields: "email,first_name,last_name,picture", display: "popup", client_options: {
-      site: 'https://graph.facebook.com/v3.1',
-      authorize_url: "https://www.facebook.com/v3.1/dialog/oauth"
-    }
-
+  # config.omniauth :facebook, 'APP_ID', 'APP_SECRET', scope: 'email', info_fields: "email,first_name,last_name,picture", display: "popup", client_options: {
+  #     site: 'https://graph.facebook.com/v3.1',
+  #     authorize_url: "https://www.facebook.com/v3.1/dialog/oauth"
+  #   }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
