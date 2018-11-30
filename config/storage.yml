@@ -36,9 +36,9 @@ local:
 
 
 # Mon code
-# Pour DigitalOcean
-digital_ocean:
-  service: DigitalOcean
+# Pour DigitalOcean, c'est compatible avec aws s3
+amazon:
+  service: S3
   access_key_id: 47E77JPRMUBGHP5PJXMQ
   secret_access_key: jKb1ph53XA5WgCvfqGH4ZQ4QmvC0NhvYK0y9QGVqrQg
   region: nyc3
