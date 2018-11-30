@@ -119,7 +119,6 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'ransack'
 gem 'stripe'
-gem 'meta-tags'
 gem 'koala'
 gem 'activeadmin'
 # gem "seedbank"

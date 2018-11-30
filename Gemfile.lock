@@ -105,6 +105,9 @@ GEM
       aws-sigv4 (~> 1.0)
     aws-sigv4 (1.0.3)
     bcrypt (3.1.12)
+    bcrypt (3.1.12-java)
+    bcrypt (3.1.12-x64-mingw32)
+    bcrypt (3.1.12-x86-mingw32)
     better_errors (2.5.0)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -113,6 +116,8 @@ GEM
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     bootsnap (1.3.2)
+      msgpack (~> 1.0)
+    bootsnap (1.3.2-java)
       msgpack (~> 1.0)
     bootstrap (4.1.3)
       autoprefixer-rails (>= 6.0.3)
@@ -132,6 +137,8 @@ GEM
       regexp_parser (~> 1.2)
       xpath (~> 3.2)
     character_set (1.1.2)
+    character_set (1.1.2-java)
+      range_compressor (~> 1.0)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (2.1.0)
@@ -173,6 +180,9 @@ GEM
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
+    ffi (1.9.25-java)
+    ffi (1.9.25-x64-mingw32)
+    ffi (1.9.25-x86-mingw32)
     font-awesome-sass (4.7.0)
       sass (>= 3.2)
     formtastic (3.1.5)
@@ -215,6 +225,7 @@ GEM
       regexp_parser (~> 1.1)
       regexp_property_values (~> 0.3)
     json (2.1.0)
+    json (2.1.0-java)
     jwt (2.1.0)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
@@ -259,6 +270,9 @@ GEM
     momentjs-rails (2.20.1)
       railties (>= 3.1)
     msgpack (1.2.4)
+    msgpack (1.2.4-java)
+    msgpack (1.2.4-x64-mingw32)
+    msgpack (1.2.4-x86-mingw32)
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
@@ -267,7 +281,13 @@ GEM
     net-http-persistent (3.0.0)
       connection_pool (~> 2.2)
     nio4r (2.3.1)
+    nio4r (2.3.1-java)
     nokogiri (1.8.5)
+      mini_portile2 (~> 2.3.0)
+    nokogiri (1.8.5-java)
+    nokogiri (1.8.5-x64-mingw32)
+      mini_portile2 (~> 2.3.0)
+    nokogiri (1.8.5-x86-mingw32)
       mini_portile2 (~> 2.3.0)
     oauth2 (1.4.1)
       faraday (>= 0.8, < 0.16.0)
@@ -285,6 +305,8 @@ GEM
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
     pg (1.1.3)
+    pg (1.1.3-x64-mingw32)
+    pg (1.1.3-x86-mingw32)
     popper_js (1.14.5)
     postmark (1.14.0)
       json
@@ -295,6 +317,10 @@ GEM
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
+    pry (0.12.2-java)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+      spoon (~> 0.0)
     pry-byebug (3.6.0)
       byebug (~> 10.0)
       pry (~> 0.10)
@@ -302,6 +328,7 @@ GEM
       pry (>= 0.10.4)
     public_suffix (3.0.3)
     puma (3.12.0)
+    puma (3.12.0-java)
     rack (2.0.6)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -333,6 +360,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
     rake (12.3.1)
+    range_compressor (1.0.0)
     ransack (2.1.0)
       actionpack (>= 5.0)
       activerecord (>= 5.0)
@@ -343,6 +371,7 @@ GEM
       ffi (>= 0.5.0, < 2)
     regexp_parser (1.3.0)
     regexp_property_values (0.3.4)
+    regexp_property_values (0.3.4-java)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
@@ -370,6 +399,8 @@ GEM
     simple_form (4.1.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
+    spoon (0.0.6)
+      ffi
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -392,6 +423,7 @@ GEM
       actionpack
     thor (0.20.3)
     thread_safe (0.3.6)
+    thread_safe (0.3.6-java)
     tilt (2.0.9)
     trix (0.10.1)
       rails
@@ -401,6 +433,8 @@ GEM
     typedJS (0.0.2)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2018.7)
+      tzinfo (>= 1.0.0)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
     warden (1.2.8)
@@ -412,6 +446,8 @@ GEM
       railties (>= 5.0)
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
+    websocket-driver (0.7.0-java)
+      websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
     will_paginate (3.1.6)
     will_paginate-bootstrap (1.0.1)
@@ -420,7 +456,11 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
+  java
   ruby
+  x64-mingw32
+  x86-mingw32
+  x86-mswin32
 
 DEPENDENCIES
   activeadmin
@@ -454,7 +494,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   local_time
   magnific-popup-rails
-  meta-tags
+  meta-tags (~> 2.11)
   mini_magick
   name_of_person
   omniauth-facebook
