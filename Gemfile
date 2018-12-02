@@ -136,5 +136,6 @@ gem 'name_of_person'
 gem 'meta-tags', '~> 2.11'
 # gem 'activestorage-validator'
 gem "aws-sdk-s3", require: false
-# gem 'cloudinary', require: false
-# gem 'activestorage-cloudinary-service'
+gem 'cloudinary', require: false
+gem 'activestorage-cloudinary-service'
+gem "bulma-rails"

@@ -1,11 +1,11 @@
 <% if notice %>
-<div class="alert alert-success alert-dismissible fade show mb-0 rounded-0" role="alert">
-    <p class="text-center mb-0"><i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>&nbsp; <%= notice %></p>
-	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<div class="notification is-success" style="margin-bottom: 0px;">
+	<button class="delete"></button>
+	<p class="has-text-centered"><i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>&nbsp; <%= notice %></p>
 </div>
 <% elsif alert %>
-<div class="alert alert-danger alert-dismissible fade show mb-0 rounded-0" role="alert">
-    <p class="text-center mb-0"><i class="fa fa-hand-o-right fa-lg" aria-hidden="true"></i>&nbsp; <%= alert %></p>
-	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<div class="notification is-danger" style="margin-bottom: 0px;">
+	<button class="delete"></button>
+	<p class="has-text-centered"><i class="fa fa-hand-o-right fa-lg" aria-hidden="true"></i>&nbsp; <%= alert %></p>
 </div>
 <% end %>

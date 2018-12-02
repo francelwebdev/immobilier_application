@@ -1,33 +1,48 @@
-<% content_for :page_title, "Inscription utilisateur" %>
 
-<section class="container py-5">
-  <div class="row">
-    <div class="col-lg-6 offset-lg-3 text-center mb-4">
-      <h2><%= t(".sign_up") %></h2>
-    </div>
-    <div class="col-lg-6 offset-lg-3">
-      <div class="card border-0 mon-box-shadow">
-        <div class="card-body px-5">
-          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= f.error_notification %>
-          <div class="form-inputs">
-            <%= f.input :name, required: true, autofocus: true, placeholder: "Prénom et Nom" %>
-            <%= f.input :phone_number, as: :tel, required: true %>
-            <%= f.input :role, collection: User::ROLE, label: "Je suis", required: true %>
-            <%= f.input :email, required: true %>
-            <%= f.input :password, required: true, hint: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length) %>
-            <%= f.input :password_confirmation, required: true %>
-            <p class="sr-only"><small>En appuyant sur Inscription, vous acceptez avoir lu et accepté nos <%= link_to "conditions générales d’utilisation", terms_and_conditions_path %>, notre politique de confidentialité. Vous pouvez à tout moment vous désinscrire.</small></p>
-          </div>
-          <div class="form-actions">
-            <%= f.button :submit, t(".sign_up"), class: "btn btn-primary btn-block" %>
-          </div>
-          <% end %>
-          <div class="text-center mt-4">
-            <%= render "devise/shared/links" %>
-          </div>
+
+<section class="section container">
+  <div class="columns">
+    <div class="column is-6 is-offset-3">
+     <div class="box">
+
+      <h2 class="title has-text-centered"><%= t('.sign_up') %></h2>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="field">
+        <div class="control">
+          <%= f.label :email, class: "label" %><!-- <br /> -->
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
         </div>
       </div>
+
+      <div class="field">
+        <div class="control">
+          <%= f.label :password, class: "label" %>
+          <% if @minimum_password_length %>
+          <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
+          <% end %><!-- <br /> -->
+          <%= f.password_field :password, autocomplete: "new-password", class: "input" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <%= f.label :password_confirmation, class: "label" %><!-- <br /> -->
+        </div>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
+      </div>
+
+      <div class="actions field">
+        <div class="control has-text-centered">
+          <%= f.submit t('.sign_up'), class: "button is-info" %>
+        </div>
+      </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
     </div>
   </div>
+</div>
 </section>

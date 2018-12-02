@@ -1,6 +1,6 @@
 <% content_for :script_choix_type_dannonce do %>
 <script>
-$(document).on('turbolinks:load', function() {
+    $(document).on('turbolinks:load', function() {
 // your code
 $("#property_ad_type_id").on("change", function() {
     var property_ad_type_id = $('#property_ad_type_id option:selected').val();
@@ -42,14 +42,16 @@ $("#property_ad_type_id").on("change", function() {
     </div>
 </section>
 
-<section class="py-5 container">
-    <div class="row">
-        <div class="col-lg-10 offset-lg-1 mb-3">
-            <p>(*) Champs obligatoires</p>
-            <%= render 'form', property: @property %>
-        </div>
-        <div class="col-12 sr-only">
-            <%= link_to 'Back', properties_path, class: "btn btn-secondary" %>
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-8 is-offset-2">
+                <p class="content">(*) Champs obligatoires</p>
+                <%= render 'form', property: @property %>
+            </div>
+            <!-- <div class="column is-8 is-offset-2">
+                <%#= link_to 'Back', properties_path, class: "btn btn-secondary" %>
+            </div> -->
         </div>
     </div>
 </section>
