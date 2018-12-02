@@ -1,25 +1,61 @@
-<h2><%= t('.change_your_password') %></h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, t('.new_password') %><br />
-    <% if @minimum_password_length %>
-      <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-6 is-offset-3">
+       <div class="box">
+        <h2 class="title has-text-centered"><%= t(".change_your_password") %></h2>
+        <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+
+        <% if resource.errors.any? %>
+        <div class="notification is-danger">
+          <%= f.error_notification %>
+        </div>
+        <% end %>
+
+        <div class="field">
+          <div class="control">
+            <%= f.input :reset_password_token, as: :hidden, wrapper: false, input_html: {class: "input"}, label_html: {class: "label"} %>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <%= f.full_error :reset_password_token, wrapper: false, input_html: {class: "input"}, label_html: {class: "label"} %>
+          </div>
+        </div>
+
+        <div class="form-inputs">
+          <div class="field">
+            <div class="control">
+              <%= f.input :password,
+              label: t(".new_password"),
+              required: true,
+              autofocus: true,
+              hint: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length),
+              input_html: { autocomplete: "new-password", class: "input" }, label_html: {class: "label"} %>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <%= f.input :password_confirmation, label: t(".confirm_new_password"), required: true, input_html: { autocomplete: "new-password", class: "input" }, label_html: {class: "label"} %>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <div class="field">
+            <div class="control">
+              <%= f.button :submit, t(".change_my_password"), class: "button is-info" %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+        <%= render "devise/shared/links" %>      
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, t('.confirm_new_password') %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit t('.change_my_password') %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
+</section>

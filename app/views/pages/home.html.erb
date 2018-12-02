@@ -24,8 +24,8 @@
         <div class="columns">
             <div class="column is-3">
                 <div class="field">
-                    <div class="control">
-                        <div class="select is-medium">
+                    <div class="control is-expanded">
+                        <div class="select is-fullwidth">
                             <%= f.select :property_type, PropertyType.all.collect {|p| [p.name, p.name]}, { prompt: "Sélectionner le type de bien"}, {required: true} %>
                         </div>
                     </div>
@@ -33,8 +33,8 @@
             </div>
             <div class="column is-3">
                 <div class="field">
-                    <div class="control">
-                        <div class="select is-medium">
+                    <div class="control is-expanded">
+                        <div class="select is-fullwidth">
                             <%= f.select :ad_type, AdType.all.collect {|p| [p.name, p.name]}, { prompt: "Sélectionner le type d'annonce"}, {required: true} %>
                         </div>
                     </div>
@@ -42,15 +42,15 @@
             </div>
             <div class="column is-4">
                 <div class="field">
-                    <div class="control">
-                        <%= f.text_field :city, placeholder: "Ou ? Calavi, Allada, Zè, Parakou ...", class: "input is-medium", required: true %>
+                    <div class="control is-expanded">
+                        <%= f.text_field :city, placeholder: "Ou ? Calavi, Allada, Zè, Parakou ...", class: "input is-fullwidth", required: true %>
                     </div>
                 </div>
             </div>
             <div class="column is-2">
                 <div class="field">
-                    <div class="control">
-                        <%= f.submit "Rechercher", class: "button is-info is-medium"%>
+                    <div class="control is-expanded">
+                        <%= f.submit "Rechercher", class: "button is-info is-fullwidth"%>
                     </div>
                 </div>
             </div>
