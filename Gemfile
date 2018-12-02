@@ -61,10 +61,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-
-
-
-
 #--------------------------#
 #---- MES GEMS ----#
 #--------------------------#
@@ -140,3 +136,5 @@ gem 'name_of_person'
 gem 'meta-tags', '~> 2.11'
 # gem 'activestorage-validator'
 gem "aws-sdk-s3", require: false
+# gem 'cloudinary', require: false
+# gem 'activestorage-cloudinary-service'

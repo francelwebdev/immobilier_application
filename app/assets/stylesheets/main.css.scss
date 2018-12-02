@@ -18,7 +18,7 @@ section.banner-accueil {
 }
 
 section.resultat-de-recherche, section.recherche-avance {
-    height: 75vh;
+    min-height: 75vh;
     background-image: linear-gradient(rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.5)), asset-url("clefs.jpg") !important;
     background-size: cover;
     background-position: center;
@@ -31,7 +31,7 @@ section.resultat-de-recherche, section.recherche-avance {
 }
 
 section.nos-tarifs {
-    height: 40vh;
+    min-height: 40vh;
     background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("plan_image.png") !important;
     background-size: cover;
     background-position: center;
@@ -65,7 +65,7 @@ ul > li > a {
 // List design
 
 section.banner-contact-us, section.banner-my-properties, section.banner-add-property, section.banner-edit-property, section.banner-show-property {
-    height: 40vh;
+    min-height: 40vh;
     background-image: linear-gradient(rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.5)), asset-url("philipp-berndt-173197.jpg") !important;
     background-size: cover;
     background-position: center;
@@ -74,7 +74,7 @@ section.banner-contact-us, section.banner-my-properties, section.banner-add-prop
 }
 
 .agent-benefits-page-banner {
-    height: 200px;
+    min-height: 200px;
     background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("85.jpg") !important;
     background-size: cover;
     background-position: center;
@@ -83,7 +83,7 @@ section.banner-contact-us, section.banner-my-properties, section.banner-add-prop
 }
 
 section.vp_for_owner_or_agency {
-    height: 50vh;
+    min-height: 50vh;
     background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("85.jpg") !important;
     background-size: cover;
     background-position: center;
@@ -118,7 +118,7 @@ section.vp_for_owner_or_agency {
 }
 
 .agency-list-banner {
-    height: 80% !important;
+    min-height: 80% !important;
     background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("85.jpg") !important;
     background-size: cover;
     background-position: center;
@@ -127,24 +127,10 @@ section.vp_for_owner_or_agency {
 }
 
 
-
-
-.navbar-nav > li > .dropdown-menu {
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-}
-.navbar-nav > .navbar-item.dropdown.show > a i:before {
-  bottom: -23px;
-}
-.navbar-nav > .navbar-item.dropdown.show > a i:after {
-  bottom: -24px;
-}
-
-
 .dropdown-menu:before {
   position: absolute;
   top: -7px;
-  left: 9px;
+  right: 25px;
   display: inline-block;
   border-right: 7px solid transparent;
   border-bottom: 7px solid #ccc;
@@ -156,22 +142,10 @@ section.vp_for_owner_or_agency {
 .dropdown-menu:after {
   position: absolute;
   top: -6px;
-  left: 10px;
+  right: 25px;
   display: inline-block;
   border-right: 6px solid transparent;
   border-bottom: 6px solid #ffffff;
   border-left: 6px solid transparent;
   content: '';
-}
-
-
-
-.navbar .navbar-right > li > .dropdown-menu:before,
-.navbar .nav > li > .dropdown-menu.navbar-right:before {
-    right: 12px; left: auto;
-}
-
-.navbar .navbar-right > li > .dropdown-menu:after,
-.navbar .nav > li > .dropdown-menu.navbar-right:after {
-    right: 13px; left: auto;
 }
