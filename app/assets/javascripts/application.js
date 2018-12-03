@@ -11,14 +11,11 @@
 // about supported directives.
 //
 //= require jquery3
-//= require popper
-//= require bootstrap
-//= require data-confirm-modal
-//= require local-time
-//= require typed
-//= require jquery.slick
-//= require slick_initialize
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require local-time
+//= require typed
+//= require jquery.slick
+//= require slick_initialize

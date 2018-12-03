@@ -22,34 +22,34 @@
         <h2 class="subtitle has-text-white has-text-centered">Trouvez <span id="js-rotating" class="font-weight-bold">la parcelle, le terrain, la maison, la villa, l'immeuble</span> dont vous rêvez et faites votre acquisition en toute sécurité.</h2>
         <%= form_with url: rechercher_un_bien_properties_path, method: :get, local: true do |f| %>
         <div class="columns">
-            <div class="column is-3" style="padding: 3px !important; ">
+            <div class="column is-3" style="padding: 3px !important;">
                 <div class="field">
-                    <div class="control is-expanded">
+                    <div class="control">
                         <div class="select is-fullwidth">
                             <%= f.select :property_type, PropertyType.all.collect {|p| [p.name, p.name]}, { prompt: "Sélectionner le type de bien"}, {required: true} %>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="column is-3" style="padding: 3px !important; ">
+            <div class="column is-3" style="padding: 3px !important;">
                 <div class="field">
-                    <div class="control is-expanded">
+                    <div class="control">
                         <div class="select is-fullwidth">
                             <%= f.select :ad_type, AdType.all.collect {|p| [p.name, p.name]}, { prompt: "Sélectionner le type d'annonce"}, {required: true} %>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="column is-4" style="padding: 3px !important; ">
+            <div class="column is-4" style="padding: 3px !important;">
                 <div class="field">
-                    <div class="control is-expanded">
-                        <%= f.text_field :city, placeholder: "Ou ? Calavi, Allada, Zè, Parakou ...", class: "input is-fullwidth", required: true %>
+                    <div class="control">
+                        <%= f.text_field :city, placeholder: "Ou ? Calavi, Allada, Zè, Parakou ...", class: "input", required: true %>
                     </div>
                 </div>
             </div>
-            <div class="column is-2" style="padding: 3px !important; ">
+            <div class="column is-2" style="padding: 3px !important;">
                 <div class="field">
-                    <div class="control is-expanded">
+                    <div class="control">
                         <%= f.submit "Rechercher", class: "button is-info is-fullwidth"%>
                     </div>
                 </div>

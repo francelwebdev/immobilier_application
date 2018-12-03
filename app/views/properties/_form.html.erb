@@ -1,6 +1,7 @@
-<%= form_with model: @property do |f| %>
+<%= simple_form_for(@property) do |f| %>
 <% if @property.errors.any? %>
 <div class="notification is-danger">
+<p><%= f.error_notification %></p>
     <p>
         <%= pluralize(@property.errors.count, "erreur", "erreurs") %> ont empêché l'enregistrement de cet annonce:
     </p>
@@ -11,40 +12,78 @@
     </ul>
 </div>
 <% end %>
-
 <div class="box">
     <div class="columns is-multiline">
         <div class="column is-12">
-            <h4 class="title">Description du bien</h4>
+            <h4 class="subtitle">Description du bien</h4>
+        </div>
+        <div class="column is-6">
+            <%= f.label :ad_type, class: "label" %>            
+            <div class="field">
+                <div class="control is-expanded">
+                    <div class="select is-fullwidth">
+                        <%= f.association :ad_type, input_html: { class: "choix_type_dannonce input" }, wrapper: false, label_html: {class: "label"}, label: false %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column is-6">
+            <%= f.label :property_type, class: "label" %>            
+            <div class="field">
+                <div class="control is-expanded">
+                    <div class="select is-fullwidth">
+                        <%= f.association :property_type, input_html: { class: "choix_type_de_bien input" }, wrapper: false, label_html: {class: "label"}, label: false %>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="column is-12">
             <div class="field">
                 <div class="control">
-                    <%= f.text_field :title, class: "input" %>
+                    <%= f.input :title, wrapper: false, label_html: {class: "label"}, input_html: {class: "input"} %>
                 </div>
             </div>
         </div>
         <div class="column is-12">
             <div class="field">
                 <div class="control">
-                    <%= f.text_area :description, input_html: { rows: 10 }, class: "textarea" %>
+                    <%= f.input :description, input_html: { rows: 15 }, input_html: {class: "textarea"}, wrapper: false, label_html: {class: "label"} %>
                 </div>
             </div>
         </div>
-        <div class="column is-6">
+        <div class="column is-4">
+            <%= f.label :room, class: "label" %>            
             <div class="field">
                 <div class="control is-expanded">
                     <div class="select is-fullwidth">
-                        <%= f.select :ad_type, AdType.all.collect {|p| [p.name, p.name]}, prompt: "Type d'annonce", class: "input choix_type_dannonce" %>
+                        <%= f.input :room, collection: Property::ROOM, label: false, wrapper: false %>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="column is-6">
+        <div class="column is-4">
+            <div class="field">
+                <div class="control">
+                    <%= f.input :area, input_html: { min: 1 }, wrapper: false, input_html: {class: "input"}, label_html: {class: "label"} %>
+                </div>
+            </div>
+        </div>
+        <div class="column is-4">
+            <%= f.label :available, class: "label" %>            
             <div class="field">
                 <div class="control is-expanded">
                     <div class="select is-fullwidth">
-                        <%= f.select :property_type, PropertyType.all.collect {|p| [p.name, p.name]}, prompt: "Type de bien", class: "choix_type_de_bien" %>
+                        <%= f.input :available, collection: Property::AVAILABLE, label: false, wrapper: false %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column is-4">
+            <%= f.label :etage, class: "label" %>            
+            <div class="field">
+                <div class="control is-expanded">
+                    <div class="select is-fullwidth">
+                        <%= f.input :etage, collection: Property::ETAGE, label: false, wrapper: false %>
                     </div>
                 </div>
             </div>
@@ -52,54 +91,19 @@
         <div class="column is-4">
             <div class="field">
                 <div class="control">
-                    <div class="select">
-                        <%= f.select :room, Property::ROOM, prompt: "Nombre de pièces" %>
-                    </div>
+                    <%= f.input :price, input_html: { min: 1 }, wrapper: false, input_html: {class: "input"}, label_html: {class: "label"} %>
                 </div>
             </div>
         </div>
         <div class="column is-4">
             <div class="field">
                 <div class="control">
-                    <%= f.number_field :area, input_html: { min: 1 }, class: "input" %>
-                </div>
-            </div>
-        </div>
-        <div class="column is-4">
-            <div class="field">
-                <div class="control">
-                    <div class="select">
-                        <%= f.select :available, Property::AVAILABLE, prompt: "Disponible ?" %>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column is-4">
-            <div class="field">
-                <div class="control">
-                    <div class="select">
-                        <%= f.select :etage, Property::ETAGE, prompt: "Éétage" %>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column is-6">
-            <div class="field">
-                <div class="control">
-                    <%= f.number_field :price, input_html: { min: 1 }, class: "input" %>
-                </div>
-            </div>
-        </div>
-        <div class="column is-6">
-            <div class="field">
-                <div class="control">
-                    <%= f.number_field :deposit, input_html: { min: 1 }, class: "input" %>
+                    <%= f.input :deposit, input_html: { min: 1 }, wrapper: false, input_html: {class: "input"}, label_html: {class: "label"} %>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
 <div class="box">
     <div class="columns is-multiline">
@@ -109,7 +113,9 @@
         <div class="column is-12">
             <div class="field">
                 <div class="control">
-                    <%= f.text_field :feature, as: :check_boxes, collection: Property::FEATURE, wrapper: :vertical_collection_inline %>
+                    <label for="" class="label">
+                        <%= f.input :feature, as: :check_boxes, collection: Property::FEATURE, label: false, wrapper: false %>
+                    </label>
                 </div>
             </div>
         </div>
@@ -120,7 +126,7 @@
     <div class="columns is-multiline">
         <div class="column is-12">
             <h4 class="subtitle">Photos du bien</h4>
-            <p>
+            <p class="content">
                 <small>Une annonce avec photo est 7 fois plus consultée qu'une annonce sans photo. <br> Ajouter les photos des différents pièces et de bonne qualité afin d'attirer plus de locataires potentiels.</small>
             </p>
         </div>
@@ -128,10 +134,26 @@
             <% 4.times do |i| %>
             <div class="field">
                 <div class="control">
-                    <%= f.file_field :images, input_html: { name: "property[images][]", class: "input"}, direct_upload: true, wrapper: :horizontal_file %>
-                    <%= image_tag url_for(@property.images["#{i}".to_i]), size: "200x150" if @property.images["#{i}".to_i].present? %>
+                    <div class="file">
+                        <label for="" class="file-label">
+                            <%= "Photo #{i + 1 }" %>
+                            <br>
+                            <span class="file-cta">    
+                                <span class="file-icon">
+                                    <%= f.input :images, as: :file, input_html: { name: "property[images][]", class: "file-input"}, wrapper: false, direct_upload: true %>
+                                    <%= image_tag url_for(@property.images["#{i}".to_i]), size: "200x150" if @property.images["#{i}".to_i].present? %>
+                                    <!-- <i class="fas fa-upload"></i> -->
+                                </span>                            
+
+                                <span class="file-label">
+                                    <%= "Photo #{i + 1 }" %>
+                                </span>
+
+                            </span>
+                        </label>
+                    </div>
                 </div>
-            </div>            
+            </div>
             <% end %>
         </div>
     </div>
@@ -142,53 +164,53 @@
         <div class="column is-12">
             <h4 class="subtitle">Localisation du bien</h4>
         </div>
-        <div class="column is-4">
+        <div class="column is-6">
+            <%= f.label :city, class: "label" %>            
             <div class="field">
-                <div class="control">
-                    <div class="select">
-                        <%= f.select :city, City.all.collect {|p| [p.name, p.name]}, prompt: "Commune" %>
+                <div class="control is-expanded">
+                    <div class="select is-fullwidth">
+                        <%= f.association :city, as: :select, prompt: "Sélectionner une commune", wrapper: false, label: false %>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="column is-8">
+        <div class="column is-6">
             <div class="field">
                 <div class="control">
-                    <%= f.text_field :address, label: "Adresse/Quartier", class: "input" %>
+                    <%= f.input :address, label: "Adresse/Quartier", wrapper: false, input_html: {class: "input"}, label_html: {class: "label"} %>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<% if user_signed_in? %>
-<% if current_user.first_name.blank? && current_user.last_name.blank? && current_user.phone_number.blank? %>
-<%= f.fields_for :user do |user_info| %>
-<div class="card border-0 mb-4 mon-box-shadow">
-    <div class="card-body">
-        <div class="form-row p-2">
-            <div class="col-12">
-                <h4 class="card-title mb-3">Information de contact</h4>
-            </div>
-            <div class="col-md-6">
-                <%= user_info.input :first_name, label: "Prénom" %>
-            </div>
-            <div class="col-md-6">
-                <%= user_info.input :last_name, label: "Nom" %>
-            </div>
-            <div class="col-md-6">
-                <%= user_info.input :phone_number, as: :tel, label: "Numéro de téléphone" %>
-            </div>
-        </div>
+<%# if user_signed_in? %>
+<%# if current_user.first_name.blank? && current_user.last_name.blank? && current_user.phone_number.blank? %>
+<%#= f.simple_fields_for :user do |user_info| %>
+<!-- <div class="card border-0 mb-4 mon-box-shadow"> -->
+    <!-- <div class="card-body"> -->
+        <!-- <div class="form-row p-2"> -->
+            <!-- <div class="column is-12"> -->
+                <!-- <h4 class="card-title mb-3">Information de contact</h4> -->
+            <!-- </div> -->
+            <!-- <div class="column is-6"> -->
+                <%#= user_info.input :first_name, label: "Prénom" %>
+            <!-- </div> -->
+            <!-- <div class="column is-6"> -->
+                <%#= user_info.input :last_name, label: "Nom" %>
+            <!-- </div> -->
+            <!-- <div class="column is-6"> -->
+                <%#= user_info.input :phone_number, as: :tel, label: "Numéro de téléphone" %>
+            <!-- </div> -->
+        <!-- </div> -->
+    <!-- </div> -->
+<!-- </div> -->
+<%# end %>
+<%# end %>
+<%# end %>
+<div class="columns">
+    <div class="column is-12">
+        <%= f.button :submit, @property.persisted? ? "Modifier" : "Ajouter" , class: "button is-info is-medium" %>
     </div>
 </div>
 <% end %>
-<% end %>
-<% end %>
-<div class="form-row">
-    <div class="col-12">
-        <%= f.submit :submit, class: "button is-info" %>
-    </div>
-</div>
-<% end %>
-    <!-- , @property.persisted? ? "Modifier" : "Ajouter" , -->

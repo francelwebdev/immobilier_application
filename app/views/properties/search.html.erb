@@ -2,73 +2,71 @@
 <% content_for :page_meta_description, "Resultat de recherche" %>
 <% content_for :page_meta_keywords, "Chambre a louer cotonou, Parcelle a vendre Benin, Appartement a louer cotonou, Boutique a louer cotonou" %>
 
-<section class="section resultat-de-recherche">
-    <div class="container">
-        <div class="columns is-multiline">
-            <div class="column is-12">
-                <h2 class="has-text-white subtitle">Recherche avancée</h2>
-            </div>
-            <div class="column is-12" style="background-color: rgba(0, 0, 0, 0.3) !important;">
-                <%= form_with url: rechercher_un_bien_properties_path, method: :get, local: true do |f| %>
-                <div class="columns is-multiline">
-                    <div class="column is-4">
-                        <div class="field">
-                            <div class="control">
-                                <div class="select is-medium">
-                                    <%= f.collection_select :property_type, PropertyType.all, :name, :name, { prompt: "Type de bien" }, { required: true} %>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column is-4">
-                        <div class="field">
-                            <div class="control">
-                                <div class="select is-medium">
-                                    <%= f.collection_select :ad_type, AdType.all, :name, :name, { prompt: "Type d'annonce" }, {required: true} %>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column is-4">
-                        <div class="field">
-                            <div class="control">
-                                <%= f.text_field :city, placeholder: "Ou ? Ex: Fidjrossè, Abomey-Calavi", class: "input", required: true %>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="field">
-                            <div class="control">
-                                <div class="select is-medium">
-                                    <%= f.select :room, Property::ROOM, { prompt: "Nombres de pièce" }, {required: true} %>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="field">
-                            <div class="control">
-                                <%= f.number_field :price, placeholder: "Loyer ou prix maximum", class: "input is-medium", required: true %>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="field">
-                            <div class="control">
-                                <%= f.number_field :area, placeholder: "Surface minimum", class: "input is-medium", required: true %>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="field">
-                            <div class="control">
-                                <%= f.submit "Rechercher", class: "button is-info is-medium" %>
+<section class="hero resultat-de-recherche is-medium">
+    <div class="hero-body">
+        <div class="container">
+            <%= form_with url: rechercher_un_bien_properties_path, method: :get, local: true do |f| %>
+            <div class="columns is-multiline">
+                <div class="column is-12">
+                    <h2 class="has-text-white subtitle">Recherche avancée</h2>
+                </div>
+                <div class="column is-4" style="padding: 3px !important;">
+                    <div class="field">
+                        <div class="control is-expanded">
+                            <div class="select is-fullwidth">
+                                <%= f.collection_select :property_type, PropertyType.all, :name, :name, { prompt: "Type de bien" }, { required: true} %>
                             </div>
                         </div>
                     </div>
                 </div>
-                <% end %>
+                <div class="column is-4" style="padding: 3px !important;">
+                    <div class="field">
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <%= f.collection_select :ad_type, AdType.all, :name, :name, { prompt: "Type d'annonce" }, {required: true} %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4" style="padding: 3px !important;">
+                    <div class="field">
+                        <div class="control">
+                            <%= f.text_field :city, placeholder: "Ou ? Ex: Fidjrossè, Abomey-Calavi", class: "input", required: true %>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-3" style="padding: 3px !important;">
+                    <div class="field">
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <%= f.select :room, Property::ROOM, { prompt: "Nombres de pièce" }, {required: true} %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-3" style="padding: 3px !important;">
+                    <div class="field">
+                        <div class="control">
+                            <%= f.number_field :price, placeholder: "Loyer ou prix maximum", class: "input", required: true %>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-3" style="padding: 3px !important;">
+                    <div class="field">
+                        <div class="control">
+                            <%= f.number_field :area, placeholder: "Surface minimum", class: "input", required: true %>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-3" style="padding: 3px !important;">
+                    <div class="field">
+                        <div class="control">
+                            <%= f.submit "Rechercher", class: "button is-info is-fullwidth" %>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <% end %>
         </div>
     </div>
 </section>
@@ -83,16 +81,16 @@
                         <ul class="content" style="list-style-type: none;">
                             <% PropertyType.all.each do |property_type| %>
                             <li>
-                               <%= link_to rechercher_un_bien_properties_path(property_type: property_type.name), class: "has-text-dark" do %>
-                               <span><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i>&nbsp; <%= property_type.name %></span>
-                               <span>(<%= property_type.properties.count %>)</span>
-                               <% end %>
-                           </li>
-                           <% end %>
-                       </ul>
-                   </nav>
-               </div>
-               <div class="column is-12">
+                             <%= link_to rechercher_un_bien_properties_path(property_type: property_type.name), class: "has-text-dark" do %>
+                             <span><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i>&nbsp; <%= property_type.name %></span>
+                             <span>(<%= property_type.properties.count %>)</span>
+                             <% end %>
+                         </li>
+                         <% end %>
+                     </ul>
+                 </nav>
+             </div>
+             <div class="column is-12">
                 <div class="box">
                     <h3 class="subtitle">Type d'annonce</h3>
                     <ul class="content" style="list-style-type: none;">

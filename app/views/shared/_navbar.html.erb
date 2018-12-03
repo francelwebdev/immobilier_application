@@ -20,10 +20,18 @@
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-end">
       <%= link_to "Accueil", home_page_path, class: "navbar-item" %>
-      <% AdType.all.each do |ad_type| %>
-      <%= link_to ad_type.name, rechercher_un_bien_properties_path(ad_type: ad_type.name), class: "navbar-item" %>
-      <% end %>
-      <%= link_to "Tout les agences", home_page_path, class: "navbar-item" %>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Annonces
+        </a>
+        <div class="navbar-dropdown">
+          <% AdType.all.each do |ad_type| %>
+          <%= link_to ad_type.name, rechercher_un_bien_properties_path(ad_type: ad_type.name), class: "navbar-item" %>
+          <% end %>
+          <%= link_to "Tout les annonces", properties_path, class: "navbar-item" %>
+        </div>
+      </div>      
+      <%= link_to "Annuaire des agences", home_page_path, class: "navbar-item" %>
       <%#= link_to "Nos services", home_page_path, class: "nav-link" %>            
     </div>
     <div class="navbar-end">
@@ -37,27 +45,6 @@
           <% end %>
           <% else %>
           <%= yield :add_property %>
-          <!-- <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              More
-            </a>
-            <div class="navbar-dropdown">
-              <a class="navbar-item">
-                About
-              </a>
-              <a class="navbar-item">
-                Jobs
-              </a>
-              <a class="navbar-item">
-                Contact
-              </a>
-              <hr class="navbar-divider">
-              <a class="navbar-item">
-                Report an issue
-              </a>
-            </div>
-          </div> -->
-
           <!-- <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link"><%= current_user.name.first.capitalize + " " + current_user.name.last.capitalize %></a>                
             <div class="navbar-dropdown">
