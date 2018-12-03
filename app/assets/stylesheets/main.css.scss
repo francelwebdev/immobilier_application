@@ -9,7 +9,6 @@ main {
 }
 
 section.banner-accueil {
-    min-height: 75vh;
     background-image: linear-gradient(rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.5)), asset-url("vendre_son_bien_s.jpg") !important;
     background-size: cover;
     background-position: center;
@@ -18,7 +17,6 @@ section.banner-accueil {
 }
 
 section.resultat-de-recherche, section.recherche-avance {
-    min-height: 75vh;
     background-image: linear-gradient(rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.5)), asset-url("clefs.jpg") !important;
     background-size: cover;
     background-position: center;
@@ -31,7 +29,6 @@ section.resultat-de-recherche, section.recherche-avance {
 }
 
 section.nos-tarifs {
-    min-height: 40vh;
     background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("plan_image.png") !important;
     background-size: cover;
     background-position: center;
@@ -65,7 +62,6 @@ ul > li > a {
 // List design
 
 section.banner-contact-us, section.banner-my-properties, section.banner-add-property, section.banner-edit-property, section.banner-show-property {
-    min-height: 40vh;
     background-image: linear-gradient(rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.5)), asset-url("philipp-berndt-173197.jpg") !important;
     background-size: cover;
     background-position: center;
@@ -74,7 +70,6 @@ section.banner-contact-us, section.banner-my-properties, section.banner-add-prop
 }
 
 .agent-benefits-page-banner {
-    min-height: 200px;
     background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("85.jpg") !important;
     background-size: cover;
     background-position: center;
@@ -83,7 +78,6 @@ section.banner-contact-us, section.banner-my-properties, section.banner-add-prop
 }
 
 section.vp_for_owner_or_agency {
-    min-height: 50vh;
     background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("85.jpg") !important;
     background-size: cover;
     background-position: center;
@@ -118,7 +112,6 @@ section.vp_for_owner_or_agency {
 }
 
 .agency-list-banner {
-    min-height: 80% !important;
     background-image: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), asset-url("85.jpg") !important;
     background-size: cover;
     background-position: center;

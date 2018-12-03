@@ -15,14 +15,14 @@
 </script>
 <% end %>
 
-<section class="section hero is-fullheight banner-accueil">
+<section class="hero is-large banner-accueil">
   <div class="hero-body">
     <div class="container">
         <h1 class="title has-text-white has-text-centered">Devenir propriétaire est un beau et grand projet de vie.</h1>
         <h2 class="subtitle has-text-white has-text-centered">Trouvez <span id="js-rotating" class="font-weight-bold">la parcelle, le terrain, la maison, la villa, l'immeuble</span> dont vous rêvez et faites votre acquisition en toute sécurité.</h2>
         <%= form_with url: rechercher_un_bien_properties_path, method: :get, local: true do |f| %>
         <div class="columns">
-            <div class="column is-3">
+            <div class="column is-3" style="padding: 3px !important; ">
                 <div class="field">
                     <div class="control is-expanded">
                         <div class="select is-fullwidth">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class="column is-3">
+            <div class="column is-3" style="padding: 3px !important; ">
                 <div class="field">
                     <div class="control is-expanded">
                         <div class="select is-fullwidth">
@@ -40,14 +40,14 @@
                     </div>
                 </div>
             </div>
-            <div class="column is-4">
+            <div class="column is-4" style="padding: 3px !important; ">
                 <div class="field">
                     <div class="control is-expanded">
                         <%= f.text_field :city, placeholder: "Ou ? Calavi, Allada, Zè, Parakou ...", class: "input is-fullwidth", required: true %>
                     </div>
                 </div>
             </div>
-            <div class="column is-2">
+            <div class="column is-2" style="padding: 3px !important; ">
                 <div class="field">
                     <div class="control is-expanded">
                         <%= f.submit "Rechercher", class: "button is-info is-fullwidth"%>
@@ -102,15 +102,15 @@
         </div>
         <div class="columns">
             <div class="column has-text-centered">
-                <i class="fa fa-search fa-5x has-text-info" aria-hidden="true"></i>
+                <i class="fas fa-search fa-5x has-text-info" aria-hidden="true"></i>
                 <p class="mt-3">Choisissez un bien parmis les résultats de recherche.</p>
             </div>
             <div class="column has-text-centered">
-                <i class="fa fa-mobile fa-5x has-text-info" aria-hidden="true"></i>
+                <i class="fas fa-mobile-alt fa-5x has-text-info" aria-hidden="true"></i>
                 <p class="mt-3">Contacter le vendeur et prenez RDV pour effectuer des visites.</p>
             </div>
             <div class="column has-text-centered">
-                <i class="fa fa-thumbs-o-up fa-5x has-text-info" aria-hidden="true"></i>
+                <i class="fas fa-thumbs-up fa-5x has-text-info" aria-hidden="true"></i>
                 <p class="mt-3">Concluer l’achat de votre bien devant un notaire et signé l'acte de vente.</p>
             </div>
         </div>

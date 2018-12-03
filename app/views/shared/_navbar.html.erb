@@ -23,7 +23,7 @@
       <% AdType.all.each do |ad_type| %>
       <%= link_to ad_type.name, rechercher_un_bien_properties_path(ad_type: ad_type.name), class: "navbar-item" %>
       <% end %>
-      <%= link_to "Tout les agances", home_page_path, class: "navbar-item" %>
+      <%= link_to "Tout les agences", home_page_path, class: "navbar-item" %>
       <%#= link_to "Nos services", home_page_path, class: "nav-link" %>            
     </div>
     <div class="navbar-end">

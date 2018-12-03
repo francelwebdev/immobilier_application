@@ -28,7 +28,7 @@
           </div>
 
           <div class="field">
-            <%= f.label :role, label_html: {class: "label"} %>
+            <%= f.label :role, class: "label" %>
             <div class="control is-expanded">
               <div class="select is-fullwidth">
                 <%= f.input :role, collection: User::ROLE, label: false, required: true, wrapper: false %>
