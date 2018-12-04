@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   scope "/(:locale)", locale: /fr/ do
     devise_for :users
     root "pages#home", as: "home_page"
-    get "contacts", to: redirect("fr/contact_us")
+    get "contacts", to: redirect("contact_us")
+    get "users", to: redirect("users/sign_up")
     # resource :profile
     # resource :agency, only: :show
     # resources :agencies, only: [:index, :show, :edit] do
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
     get "about_us", to: "pages#about_us", as: "about_us"
     get "contact_us", to: "pages#contact_us", as: "contact_us"
     get "faq", to: "pages#faq", as: "faq"
-    get "pricing_plan", to: "pages#pricing_plan", as: "pricing_plan"
+    get "pricing_table", to: "pages#pricing_plan", as: "pricing_plan"
     get "terms_and_conditions", to: "pages#terms_and_conditions", as: "terms_and_conditions"
     resources :properties do
       member do
