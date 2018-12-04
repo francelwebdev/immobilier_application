@@ -1,11 +1,11 @@
-<% if notice %>
-<div class="notification is-success" style="margin-bottom: 0px;">
-	<!-- <button class="delete"></button> -->
-	<p class="has-text-centered"><i class="fas fa-thumbs-up" aria-hidden="true"></i>&nbsp; <%= notice %></p>
-</div>
-<% elsif alert %>
-<div class="notification is-danger" style="margin-bottom: 0px;">
-	<!-- <button class="delete"></button> -->
-	<p class="has-text-centered"><i class="fas fa-hand-point-right" aria-hidden="true"></i>&nbsp; <%= alert %></p>
-</div>
-<% end %>
+	<% if notice %>
+	<div class="notification is-success flash-du-haut" style="margin-bottom: 0px;">
+		<button class="delete"></button>
+		<p class="has-text-centered"><i class="fas fa-thumbs-up" aria-hidden="true"></i>&nbsp; <%= notice %></p>
+	</div>
+	<% elsif alert %>
+	<div class="notification is-danger flash-du-haut" style="margin-bottom: 0px;">
+		<button class="delete"></button>
+		<p class="has-text-centered"><i class="fas fa-hand-point-right" aria-hidden="true"></i>&nbsp; <%= alert %></p>
+	</div>
+	<% end %>

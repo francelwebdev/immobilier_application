@@ -1,80 +1,81 @@
-<% content_for :add_property do %>
-<%= link_to "Ajouter un bien", new_property_path, class: "button is-info" %>
-<% end %>
+  <% content_for :add_property do %>
+  <%= link_to "Ajouter un bien", new_property_path, class: "button is-info" %>
+  <% end %>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="container">
-    <div class="navbar-brand">
-    <!-- <a class="navbar-item" href="https://bulma.io">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-    </a> -->
-    <%= link_to home_page_path, class: "navbar-item" do %>
-    <span class="title">SICO</span>
-    <% end %>
-    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-end">
-      <%= link_to "Accueil", home_page_path, class: "navbar-item" %>
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          Annonces
-        </a>
-        <div class="navbar-dropdown">
-          <% AdType.all.each do |ad_type| %>
-          <%= link_to ad_type.name, rechercher_un_bien_properties_path(ad_type: ad_type.name), class: "navbar-item" %>
-          <% end %>
-          <%= link_to "Tout les annonces", properties_path, class: "navbar-item" %>
-        </div>
-      </div>      
-      <%= link_to "Annuaire des agences", home_page_path, class: "navbar-item" %>
-      <%#= link_to "Nos services", home_page_path, class: "nav-link" %>            
+  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+      <!-- <a class="navbar-item" href="https://bulma.io">
+        <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+      </a> -->
+      <%= link_to home_page_path, class: "navbar-item" do %>
+      <span class="title">SICO</span>
+      <% end %>
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
     </div>
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">           
-          <% if user_signed_in? %>
-          <% if current_user.profile_picture.attached? %>
-          <%= yield :add_property %>
-          <%= link_to "", class: "" do %>
-          <%= image_tag url_for(current_user.profile_picture), size: "30", class: "" %>
-          <% end %>
-          <% else %>
-          <%= yield :add_property %>
-          <!-- <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link"><%= current_user.name.first.capitalize + " " + current_user.name.last.capitalize %></a>                
-            <div class="navbar-dropdown">
-              <%= link_to "Mes biens", my_properties_path, class: "navbar-item" %>
-              <%#= link_to "Mon agence", edit_agency_path(current_user.agency), class: "dropdown-item" %>
-              <%= link_to "Mon compte", edit_user_registration_path, class: "navbar-item" %>
-              <hr class="navbar-divider">
-              <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item", data: { confirm: 'Are you sure?' } %>
-            </div>            
-          </div>   -->            
-          <% end %>
-          <% else %>
-          <%= yield :add_property %>
-          <%= link_to "Connexion", new_user_session_path, class: "button " %>
-          <% end %>
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-end">
+        <%= link_to "Accueil", home_page_path, class: "navbar-item" %>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Annonces
+          </a>
+          <div class="navbar-dropdown is-left">
+            <% AdType.all.each do |ad_type| %>
+            <%= link_to ad_type.name, rechercher_un_bien_properties_path(ad_type: ad_type.name), class: "navbar-item" %>
+            <% end %>
+            <%= link_to "Tout les annonces", properties_path, class: "navbar-item" %>
+          </div>
+        </div>      
+        <%= link_to "Annuaire des agences", home_page_path, class: "navbar-item" %>
+        <%#= link_to "Nos services", home_page_path, class: "nav-link" %>            
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">           
+            <% if user_signed_in? %>
+            <% if current_user.profile_picture.attached? %>
+            <%= yield :add_property %>
+            <%= link_to "", class: "" do %>
+            <%= image_tag url_for(current_user.profile_picture), size: "30", class: "" %>
+            <% end %>
+            <% else %>
+            <%= yield :add_property %>
+            <!-- <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link"><%= current_user.name.first.capitalize + " " + current_user.name.last.capitalize %></a>                
+              <div class="navbar-dropdown">
+                <%= link_to "Mes biens", my_properties_path, class: "navbar-item" %>
+                <%#= link_to "Mon agence", edit_agency_path(current_user.agency), class: "dropdown-item" %>
+                <%= link_to "Mon compte", edit_user_registration_path, class: "navbar-item" %>
+                <hr class="navbar-divider">
+                <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item", data: { confirm: 'Are you sure?' } %>
+              </div>            
+            </div>   -->            
+            <% end %>
+            <% else %>
+            <%= yield :add_property %>
+            <%= link_to "Connexion", new_user_session_path, class: "button " %>
+            <% end %>
+          </div>
         </div>
       </div>
+      <% if user_signed_in? %>
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link"><%= current_user.name.first.capitalize + " " + current_user.name.last.capitalize %></a>                
+          <div class="navbar-dropdown is-right">
+            <%= link_to "Mes biens", my_properties_path, class: "navbar-item" %>
+            <%#= link_to "Mon agence", edit_agency_path(current_user.agency), class: "dropdown-item" %>
+            <%= link_to "Mon compte", edit_user_registration_path, class: "navbar-item" %>
+            <hr class="navbar-divider">
+            <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item", data: { confirm: 'Are you sure?' } %>
+          </div>            
+        </div> 
+      </div>
+      <% end %>    
     </div>
-    <% if user_signed_in? %>
-    <div class="navbar-end">
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link"><%= current_user.name.first.capitalize + " " + current_user.name.last.capitalize %></a>                
-        <div class="navbar-dropdown">
-          <%= link_to "Mes biens", my_properties_path, class: "navbar-item" %>
-          <%#= link_to "Mon agence", edit_agency_path(current_user.agency), class: "dropdown-item" %>
-          <%= link_to "Mon compte", edit_user_registration_path, class: "navbar-item" %>
-          <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item", data: { confirm: 'Are you sure?' } %>
-        </div>            
-      </div> 
-    </div>
-    <% end %>    
-  </div>
-</nav>
+  </nav>

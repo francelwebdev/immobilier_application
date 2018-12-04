@@ -1,0 +1,84 @@
+
+<!-- Pour gérer le changement de text du banner hero accueil -->
+<% if content_for?(:Morphext) %>
+<%= yield :Morphext %>
+<% end %>
+
+<!-- Pour gérer le choix type d'annonce -->
+<% if content_for? :script_choix_type_dannonce %>
+<%= yield :script_choix_type_dannonce %>
+<% end %>
+
+<!-- POur gérer le map -->
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+crossorigin=""></script>
+<script>
+    var mymap = L.map('mapid').setView([6.387477, 2.272057], 13);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'sk.eyJ1IjoiZnJhbmNlbHdlYmRldiIsImEiOiJjamttcjF1OWQwMDU0M2twMmJyMXgwd25oIn0.0VDbldYNAlxFfFxWA3LNZQ'
+    }).addTo(mymap);
+    var marker = L.marker([6.387477, 2.272057]).addTo(mymap);
+    marker.bindPopup("<h5>SICO</h5>").openPopup()
+</script>
+
+<!-- Pour gérer le menu burger sur mobile -->
+<script>
+    $(document).ready(function() {
+
+    // Check for click events on the navbar burger icon
+    $(".navbar-burger").click(function() {
+
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        $(".navbar-burger").toggleClass("is-active");
+        $(".navbar-menu").toggleClass("is-active");
+
+    });
+});
+</script>
+
+<!-- Pour fermer le flash du haut -->
+<script>
+    $(".delete").on("click", function(e) {
+        $(".flash-du-haut").hide("slow");
+    });
+</script>
+
+<!-- Pour gérer l'upload des photos des biens -->
+<script>
+    var file1 = document.getElementById("file-1");
+    file1.onchange = function(){
+        if(file1.files.length > 0)
+        {
+            document.getElementById('filename-1').innerHTML = file1.files[0].name;
+        }
+    };
+
+    var file2 = document.getElementById("file-2");
+    file2.onchange = function(){
+        if(file2.files.length > 0)
+        {
+            document.getElementById('filename-2').innerHTML = file2.files[0].name;
+        }
+    };
+
+    var file3 = document.getElementById("file-3");
+    file3.onchange = function(){
+        if(file3.files.length > 0)
+        {
+            document.getElementById('filename-3').innerHTML = file3.files[0].name;
+        }
+    };
+
+    var file4 = document.getElementById("file-4");
+    file4.onchange = function(){
+        if(file4.files.length > 0)
+        {
+            document.getElementById('filename-4').innerHTML = file4.files[0].name;
+        }
+    };
+</script>
