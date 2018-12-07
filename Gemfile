@@ -78,15 +78,12 @@ end
 # gem 'rails_db'
 
 group :production do
-  gem 'sendinblue'
+  gem 'postmark-rails'
 end
 
 gem 'rails-i18n'
 gem 'jquery-rails'
-gem 'popper_js'
-gem 'bootstrap'
 gem 'font-awesome-sass', '~> 5.5', '>= 5.5.0.1'
-gem 'bootstrap-datepicker-rails'
 gem 'autoprefixer-rails'
 gem 'simple_form'
 gem 'client_side_validations'
@@ -98,34 +95,28 @@ gem 'devise-i18n'
 gem 'jquery-slick-rails'
 gem 'friendly_id'
 gem 'rolify'
-gem 'postmark-rails'
+gem 'cancancan'
 gem 'gibbon'
 gem 'owlcarousel-rails', github: 'acrogenesis/owlcarousel-rails', branch: 'master'
-gem 'cancancan'
 gem 'typedJS'
-gem 'sweetalert-rails'
-gem 'sweet-alert-confirm'
-gem 'sweetify'
+# gem 'sweetalert-rails'
+# gem 'sweet-alert-confirm'
+# gem 'sweetify'
 gem 'magnific-popup-rails'
 # Géolocalisation
 # gem 'geocoder', '~> 1.4', '>= 1.4.7'
 # gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
 gem 'trix'
 gem 'will_paginate'
-gem 'will_paginate-bootstrap'
 gem 'ransack'
 gem 'stripe'
-gem 'koala'
-gem 'activeadmin'
+# gem 'activeadmin'
 # gem "seedbank"
 # gem 'ahoy_matey'
 gem 'administrate'
-gem 'data-confirm-modal'
-# gem 'devise-bootstrapped', github: 'excid3/devise-bootstrapped', branch: 'bootstrap4'
 # gem 'devise_masquerade'
-# gem 'font-awesome-sass', '~> 5.5', '>= 5.5.0.1'
 # gem 'foreman'
-gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag' # Je vais commenté ce gem
+gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 gem 'local_time'
 gem 'mini_magick'
 gem 'name_of_person'
@@ -135,7 +126,7 @@ gem 'name_of_person'
 # gem 'whenever', require: false
 gem 'meta-tags', '~> 2.11'
 # gem 'activestorage-validator'
-gem "aws-sdk-s3", require: false
+# gem "aws-sdk-s3", require: false
 gem 'cloudinary', require: false
 gem 'activestorage-cloudinary-service'
 gem "bulma-rails"
